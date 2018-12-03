@@ -1,3 +1,4 @@
 mixin logo(data)
-	+b('a').logo(href="index.html")
-		img(src=globals.logo alt=globals.logoAlt)
+	+b.logo
+		+e('a')(href="index.html")
+			img(src=globals.logo alt=globals.logoAlt)

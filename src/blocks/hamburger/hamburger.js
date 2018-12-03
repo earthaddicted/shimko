@@ -34,7 +34,7 @@
             McBar1.velocity("reverse", { delay: 400 });
         }
 
-        $('.nav').slideToggle('slow');
+        $('header .nav').slideToggle('slow');
         $('header').toggleClass('open');
         body.toggleClass('no-scroll');
     });
