@@ -1,0 +1,68 @@
+/*  contacts */
+.contacts
+	writing-mode: tb-rl;
+
+	&__block
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-direction: row
+		margin: 50px 0 20px 0
+
+	&__item
+		display: block
+		color: #515050
+		font-size: 15px
+		font-weight: 400
+		line-height: 18px
+		text-transform: uppercase
+		transform: rotate(180deg)
+		padding: 13px 0
+
+		@media screen and (max-width: 1820px)
+			font-size: 1.5vh
+
+	a
+		padding: 18px 0
+		border-bottom: 1px solid #515050
+
+/* contacts END */
+
+.contacts-n
+	.two-column__block
+		padding-top: 173px
+		padding-bottom: 129px
+
+
+		@media screen and (max-width: 1024px)
+			padding: 50px 0
+
+	.two-column .second-heading
+		padding-bottom: 9px
+
+	.two-column__content
+		padding: 0px 20px 0 0
+		padding-top: 36px
+		padding-left: 44px
+
+		@media screen and (max-width: 1260px)
+			padding-left: 0
+
+	&__block
+		margin-top: 50px
+
+	&__item
+		display: block
+		color: #333
+		font-size: 18px
+		font-weight: 300
+		line-height: 28px
+
+		@media screen and (max-width: 1024px)
+			line-height: 40px
+
+	.general h2::before,
+	.general .second-heading::before
+		bottom: -8px

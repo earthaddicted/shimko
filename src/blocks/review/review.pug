@@ -1,0 +1,25 @@
+mixin review(review)
+	+b.review__block
+		+e.outer
+			+b('span').special-title
+					| SHIMKO KITCHEN FURNITURE
+
+			+b.second-heading О НАС ГОВОРЯТ
+
+
+		+e.inner
+			+b.review-slider
+				if globals.review
+					each item in globals.review
+						+e.item
+							+e.img
+								img(src=item.img alt="user image")
+
+							+e.content
+								+e('span').title= item.user
+								+e.social
+									img(src= item.soc alt="facebook image")
+								+e('p').text= item.text
+
+								+e.quote
+									img(src=item.decor alt="quote image")

@@ -1,0 +1,43 @@
+include ../../node_modules/bemto.pug/bemto
+include ../globals/data
+include ../blocks/all
+
+- 
+	set_bemto_settings({
+		prefix: '',
+		element: '__',
+		modifier: '_'
+	})
+
+block params
+	- var page = ''
+	- var pageTitle = 'Main page'
+
+doctype html
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		title= globals.siteTitle + " - " + pageTitle
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="ie=edge")
+		link(rel="icon" type="image/png" href="assets/img/logo-s.png")
+		link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous")
+		
+		link(rel="stylesheet" href="assets/slick.css")
+		link(rel="stylesheet" href="assets/slick-theme.css")
+		link(rel="stylesheet" href="assets/app.css")
+
+	body(class=page)
+		+b.body-wrapper
+			block content
+
+		// script(src="//maps.googleapis.com/maps/api/js?extension=.js&output=embed")
+
+		script(src="assets/vendor.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js")
+
+		script(src="assets/app.js")
+
+
+
+

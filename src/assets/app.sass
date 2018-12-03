@@ -1,0 +1,165 @@
+@import '../globals/fonts.sass';
+@import '../globals/variables.sass';
+// @import '../globals/mixins.sass';
+@import '../blocks/aside/aside.sass';
+@import '../blocks/nav-menu/nav-menu.sass';
+@import '../blocks/section/section.sass';
+@import '../blocks/lang/lang.sass';
+@import '../blocks/social/social.sass';
+@import '../blocks/contacts/contacts.sass';
+@import '../blocks/header/header.sass';
+@import '../blocks/footer/footer.sass';
+@import '../blocks/slider/slider.sass';
+@import '../blocks/logo/logo.sass';
+@import '../blocks/form/form.sass';
+@import '../blocks/popup/popup.sass';
+@import '../blocks/btns/btns.sass';
+@import '../blocks/single/single.sass';
+@import '../blocks/multiple/multiple.sass';
+@import '../blocks/order/order.sass';
+@import '../blocks/methods/methods.sass';
+@import '../blocks/review/review.sass';
+@import '../blocks/news/news.sass';
+@import '../blocks/map/map.sass';
+@import '../blocks/hamburger/hamburger.sass';
+
+html
+	margin: 0
+	padding: 0
+	font-size: 14px
+	scroll-behavior: smooth
+
+body
+	margin: 0
+	padding: 0
+	font-weight: 400
+	min-width: 320px
+	font-family: 'Gotham Pro', sans-serif
+
+.section__wrapper
+	position: relative
+	max-width: 1745px
+	width: 100%
+	margin: 0 auto
+	text-align: center
+
+	// overflow: hidden
+
+a
+	text-decoration: none
+	cursor: pointer
+	transition: .2s ease-in-out
+
+	&:hover
+		text-decoration: none !important
+
+button
+	cursor: pointer
+	transition: .2s ease-in-out
+
+body *
+	box-sizing: border-box
+	outline: transparent
+	font-family: 'Gotham Pro', sans-serif
+
+ul
+	margin: 0
+	padding: 0
+
+	&>li
+		list-style: none
+		margin: 0
+		padding: 0
+
+img
+	max-width: 100%
+	height: auto
+
+.body-wrapper
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	max-width: 1920px
+	position: relative
+	width: 100%
+	justify-content: center
+	justify-content: space-between
+	margin: auto
+
+.general
+	width: 100%
+
+	h1
+		margin: 40px 10px
+		font-size: 60px
+		text-transform: uppercase
+		text-align: center
+
+		@media screen and (max-width: 1260px)
+			font-size: 40px
+
+		@media screen and (max-width: 768px)
+			font-size: 32px
+			margin: 10px
+
+	h2,
+	.second-heading
+		position: relative
+		font-size: 50px
+		font-weight: 900
+		line-height: 60px
+		text-transform: uppercase
+		color: $yellow
+		letter-spacing: -0.5px
+		letter-spacing: -0.75px
+
+		@media screen and (max-width: 1920px)
+			font-size: 2.7vw
+
+		@media screen and (max-width: 1260px)
+			padding-bottom: 18px
+
+		@media screen and (max-width: 1024px)
+			font-size: 32px
+			line-height: 42px
+			margin: 0 10px
+
+		&::before
+			position: absolute
+			content: ''
+			display: block
+			width: 80px
+			height: 2px
+			background: $yellow
+			left: 50%
+			transform: translateX(-50%)
+			bottom: 0
+
+		&__left
+			// text-align: left
+
+			&::before
+				left: 0%
+				transform: translateX(0%)
+
+
+				@media screen and (max-width: 1260px)
+					left: 50%
+					transform: translateX(-50%)
+
+.large-text
+	color: #515050
+	font-size: 25px
+	font-weight: 300
+	line-height: 18px
+	text-transform: none
+
+.special-title
+	color: #515050
+	font-size: 25px
+	font-weight: 300
+	// line-height: 18px
+	text-transform: uppercase
+

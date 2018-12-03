@@ -1,0 +1,18 @@
+mixin footer()
+	+b('footer').footer
+		+e.block
+			+logo(data)
+			+e.info
+				+e.item
+					+footer-menu(footerMenu)
+
+				+e.item
+					+contacts-n()
+					+social-v()
+
+		+b.block-bottom
+			+e('p').item ВСЕ права защищены
+				+e('span') &copy; 2018
+
+			+e('span').item
+				img(src='assets/img/opex-logo.png' alt='Opex logo')

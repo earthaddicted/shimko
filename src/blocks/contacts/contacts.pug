@@ -1,0 +1,25 @@
+mixin contacts-s(data)
+		+b.contacts
+			+e.block
+
+				+e.item
+					span Киев, ул. Хрустальная 3, оф. 7
+
+				+e('a').item(href="phone:+380937744032") +38 (093) 774-40-32
+
+				+e('a').item(href="mailto:artmeb1@gmail.com") artmeb1@gmail.com
+
+
+
+mixin contacts-n()
+		+b.contacts-n
+			+e.block
+
+				+e('a').item(href="mailto:artmeb1@gmail.com") artmeb1@gmail.com
+
+				+e('a').item(href="phone:+380937744032") +38 (093) 774-40-32
+
+				+e('a').item(href="phone:+380937744032") +38 (093) 774-40-32
+
+				+e.item
+					span Киев, ул. Хрустальная 3, оф. 7

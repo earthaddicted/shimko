@@ -1,0 +1,46 @@
+extends main
+
+append params
+	- page = 'index'
+	- pageTitle = 'Home'
+
+block main
+	+b.section.section-slider
+		+e.wrapper
+			// +sliderMain(sliderMain)
+
+	+b.section.single
+		+e.wrapper
+			+single()
+
+	+b.section.multiple-slider
+		+e.wrapper
+			// +sliderMultiple()
+
+	+b.section.two-column.order
+		+e.wrapper
+			+order()
+
+	+b.section.methods
+		+e.wrapper
+			+methods(methodsItems)
+
+	+b.section.review
+		+e.wrapper
+			// +review(review)
+
+
+	+b.section.news
+		+e.wrapper
+			// +news(news)
+
+	+b.section.two-column.contacts-n
+		+e.wrapper
+			+twoColumn()
+
+	+b.section.map
+		+e.wrapper
+			+map()
+
+
+

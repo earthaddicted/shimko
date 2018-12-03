@@ -1,0 +1,29 @@
+mixin news(news)
+	+b.news__block
+		+e.outer
+			+b('span').special-title
+					| SHIMKO KITCHEN FURNITURE
+
+			+b.second-heading ПОЛЕЗНАЯ ИНФОРМАЦИЯ
+
+		+e.inner
+			+b.news-slider
+				if globals.news
+					each item in globals.news
+						+e.item
+							.slider__item-wrapper
+								img(src= item.bg alt="news image")
+								+e.content
+									+e('span').date= item.date
+									+e.logo
+										img(src= item.img alt= 'logo')
+									+e('span').title= item.title
+									+e('p').text= item.description
+
+								+b-btnsCommonTransparentDeatails()
+
+			+b-btnsIndividualNews()
+
+
+
+

@@ -1,0 +1,193 @@
+/*   news */
+.news
+	.section__wrapper
+		background: url('../../assets/img/bg-2.png') no-repeat
+		background-position: 100% 50%
+		background-position: 129.5% -304px
+
+	.second-heading
+		margin: 4px 0 0
+		padding-bottom: 36px
+		font-size: 2.7vw
+
+	&__block
+		padding: 122px 0 104px
+
+		@media screen and (max-width: 480px)
+			padding: 60px 0 20px
+
+	&__inner
+
+
+	&-slider
+		width: 100%
+		// height: 517px
+		padding: 60px 0 78px
+
+		&__item
+			position: relative
+			height: 517px
+			overflow: hidden
+
+			@media screen and (max-width: 480px)
+				height: 390px
+
+			// &.slick-current,
+			&:hover
+				.slider__item-wrapper
+					&::before
+						top: 0
+						background: $yellow
+						opacity: 1
+
+					&::after
+						bottom: 0
+						background: $yellow
+						opacity: 1
+
+				.news-slider__logo,
+				.news-slider__text,
+				.btn-transparent
+					display: block
+					height: auto
+					opacity: 1
+					transform: translateY(0)
+					margin-bottom: 0
+
+				.news-slider__date
+					display: none
+					line-height: 32.49px
+
+				.news-slider__title
+					line-height: normal
+
+				.btn-transparent
+					margin: 40px auto 48px
+
+				.news-slider__logo
+					img
+						margin-bottom: 14px
+
+				.news-slider__text
+					margin-top: 48px
+
+					@media screen and (max-width: 960px)
+						margin-top: 20px
+
+		&__contetnt
+			padding: 48px 0
+
+		&__date
+			display: block
+			padding: 10px 0
+			font-size: 14px
+			font-weight: 400
+			line-height: 14px
+			color: rgba(255, 255, 255, .5)
+
+		&__logo
+			display: none
+			max-width: 44px
+			margin: auto
+			opacity: 0
+			transition: opacity .2s ease-in
+			transform: translateY(344%)
+			height: 0
+			margin-bottom: -200px;
+
+			@media screen and (max-width: 960px)
+				display: block
+				height: auto
+				opacity: 1
+				transform: translateY(0)
+				margin-bottom: 0
+
+		&__title
+			// padding-top: 30px
+			padding: 30px 10px 0
+			font-size: 24px
+			font-weight: 500
+			line-height: 24px
+
+			@media screen and (max-width: 960px)
+				display: block
+				line-height: normal
+				padding: 10px 10px 0
+
+		&__text
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			color: $white
+			opacity: 0
+			transition: opacity .2s ease-out
+			transform: translateY(344%)
+			height: 0
+			margin-bottom: -52px
+			padding: 0 17px
+
+			@media screen and (max-width: 960px)
+				display: block
+				height: auto
+				opacity: 1
+				transform: translateY(0)
+				margin-top: 22px
+				margin-bottom: 0
+
+
+		.btn-transparent
+			margin: 20px auto 40px
+			opacity: 0
+			transition: opacity .2s ease-out
+			transform: translateY(344%)
+			height: 0
+
+			@media screen and (max-width: 960px)
+				display: block
+				height: auto
+				opacity: 1
+				transform: translateY(0)
+				margin: 40px auto 48px
+
+.slider__item-wrapper
+	justify-content: flex-end
+	height: 100%
+	display: flex
+	flex-direction: column
+	color: $white
+	max-width: 427px
+	margin: auto
+	width: auto
+	position: relative
+	overflow: hidden
+
+	@media screen and (max-width: 480px)
+		max-width: 320px;
+
+	&::before
+		position: absolute
+		top: -50px
+		left: 0
+		width: 427px
+		height: 7px
+		background: $yellow
+		content: ''
+		transition: .2s ease-in-out
+		opacity: 0
+
+	&::after
+		position: absolute
+		bottom: -50px
+		opacity: 0
+		left: 0
+		width: 427px
+		height: 7px
+		background: $yellow
+		content: ''
+		transition: all .2s ease-in-out
+
+	&>img
+		position: absolute
+		z-index: -1
+
+/*  news END */

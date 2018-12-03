@@ -1,0 +1,128 @@
+/*  single */
+.review
+	background: #f7f7f7
+
+
+
+	&__outer
+		padding: 20px 0
+
+
+	&__inner
+		max-width: 1380px
+		padding: 20px 0 68px
+		margin: auto
+
+	&-slider
+
+		&__item
+			text-align: center
+
+			img
+				margin: auto
+
+		&__img
+			min-width: 149px
+			min-height: 149px
+
+			img
+				margin: auto
+				border-radius: 50%
+
+		&__title
+			display: block
+			margin: 26px 0
+			font-size: 14px
+			font-weight: 900
+			line-height: 18px
+			text-transform: uppercase
+			letter-spacing: 0.7px
+			color: $yellow
+
+		&__social
+			img
+				display: block
+				padding: 4px 0
+
+		&__text
+			margin: auto
+			color: #585858
+			font-size: 14px
+			font-weight: 300
+			line-height: 20px
+			max-width: 930px
+			padding: 25px 20px
+
+
+			@media screen and (max-width: 1260px)
+				padding: 25px 50px
+
+		&__quote
+			width: 51px
+			margin: 24px auto
+
+			@media screen and (max-width: 1024px)
+				width: 25px
+
+				margin: 12px auto
+
+			img
+				min-width: 50px
+
+				@media screen and (max-width: 1024px)
+					width: 25px
+					min-width: 25px
+
+
+	.slick-slider .slick-prev, 
+	.slick-slider .slick-next
+		background-color: #ccc
+		width: 40px
+		height: 40px
+		top: 53%
+		transform: translateY(-50%)
+
+	.slick-slider .slick-next::after
+		display: none
+
+	.slick-slider .slick-next
+		left: 0
+		right: unset
+
+
+		&::before
+			position: absolute
+			// display: block
+			content: " "
+			width: 22px
+			height: 18px
+			// background: url(../assets/img/right-arrow.png) no-repeat
+			left: 10px
+			top: 12px
+			background-size: 19px
+
+	.slick-slider .slick-prev
+		right: 0
+		left: unset
+
+
+		&::before
+			position: absolute
+			// display: block
+			content: " "
+			width: 22px
+			height: 18px
+			// background: url(../assets/img/right-arrow.png) no-repeat
+			left: 10px
+			top: 12px
+			background-size: 19px
+
+
+
+	.second-heading
+		margin: 4px 0 0
+		padding-bottom: 36px
+		font-size: 2.7vw
+
+
+/* single END */

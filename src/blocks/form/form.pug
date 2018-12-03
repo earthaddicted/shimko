@@ -1,0 +1,17 @@
+mixin b-form()
+	form(method='' action='')
+		.contact-form
+			div.form-group
+				input.form-control(type='text', placeholder='Ваше имя')
+				input.form-control(type='email', placeholder='Ваша почта')
+				input.form-control(type='tel' name='usrtel' placeholder='Ваш телефон')
+
+				+b.form-control_file
+					input(name="file" value=""  type="file" data-multiple-caption="files selected")#file
+
+					label(for="file")
+						span
+
+			div.form-group
+				textarea.msg.form-control(type='textarea', placeholder='Ваш сообщение')
+				button.form-submit(type="submit") Отправить заявку 

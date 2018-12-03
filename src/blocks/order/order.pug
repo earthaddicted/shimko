@@ -1,0 +1,23 @@
+mixin order()
+	//- +b.order__block
+	+b.two-column__block
+		+e.content
+			+b('span').special-title
+				| SHIMKO KITCHEN FURNITURE
+
+			+b.second-heading.second-heading__left Выбрали стиль? Сделате заказ
+
+		+b-form()
+
+mixin twoColumn()
+	+b.two-column__block
+		+e.content
+			+b('span').special-title
+				| СВЯЖИТЕСЬ С НАМИ
+
+			+b.second-heading.second-heading__left КОНТАКТЫ
+
+
+			+contacts-n()
+
+		+b-form()
