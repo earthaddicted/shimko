@@ -312,6 +312,7 @@
     @media screen and (max-width: 1024px) {
       .header__block {
         display: block;
+        padding: 0;
         background: rgba(255, 255, 255, 0.9); } }
 
 /* header  END */
@@ -1114,7 +1115,7 @@
       right: 13px;
       width: 37px;
       height: 37px;
-      background-image: url("../../assets/img/add.png");
+      background-image: url("../assets/img/add.png");
       background-position: 50%;
       background-repeat: no-repeat;
       background-size: 14px;
