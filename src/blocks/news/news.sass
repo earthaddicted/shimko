@@ -14,7 +14,7 @@
 		padding: 122px 0 104px
 
 		@media screen and (max-width: 480px)
-			padding: 60px 0 20px
+			padding: 60px 0
 
 	&__inner
 
@@ -24,6 +24,9 @@
 		// height: 517px
 		padding: 60px 0 78px
 
+		@media screen and (max-width: 1024px)
+			padding: 60px 0
+
 		&__item
 			position: relative
 			height: 517px
@@ -31,6 +34,10 @@
 
 			@media screen and (max-width: 480px)
 				height: 390px
+
+		&__logo
+			img
+				object-fit: contain !important
 
 			// &.slick-current,
 			&:hover
@@ -67,6 +74,7 @@
 				.news-slider__logo
 					img
 						margin-bottom: 14px
+
 
 				.news-slider__text
 					margin-top: 48px

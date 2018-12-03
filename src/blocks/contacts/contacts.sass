@@ -11,6 +11,9 @@
 		flex-direction: row
 		margin: 50px 0 20px 0
 
+		@media screen and (max-height: 1200px)
+			margin: 2vh 0 1vh 0
+
 	&__item
 		display: block
 		color: #515050
@@ -24,11 +27,17 @@
 		@media screen and (max-width: 1820px)
 			font-size: 1.5vh
 
+		@media screen and (max-height: 1200px)
+			font-size: 1.4vh
+			padding: 1vh 0
+
 	a
 		padding: 18px 0
 		border-bottom: 1px solid #515050
 
-/* contacts END */
+		@media screen and (max-height: 1200px)
+			padding: 1vh 0
+
 
 .contacts-n
 	.two-column__block
@@ -48,7 +57,7 @@
 		padding-left: 44px
 
 		@media screen and (max-width: 1260px)
-			padding-left: 0
+			padding: 0
 
 	&__block
 		margin-top: 50px
@@ -66,3 +75,5 @@
 	.general h2::before,
 	.general .second-heading::before
 		bottom: -8px
+
+/* contacts END */

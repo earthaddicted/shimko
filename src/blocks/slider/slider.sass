@@ -3,30 +3,34 @@
 	height: 100%
 	position: relative
 	max-width: auto
+	opacity: 0
 	// width: 100%
 	// min-height: 1013px
 
 	.slick-slide img
 		// height: 100%
-		// object-fit: fill
+		object-fit: cover
 
 	&__item
 		position: relative
 		min-height: 1013px
 		height: 100%
 
+		@media screen and (max-width: 1440px)
+			min-height: 813px
+
+		@media screen and (max-width: 1024px)
+			min-height: 613px
+
+		@media screen and (max-width: 768px)
+			min-height: 463px
+
 
 		&>img
 			width: initial
 			position: absolute
-			// top: 50%
-			// left: 50%
-			// -webkit-transform: translate(-50%, -50%)
-			// -ms-transform: translate(-50%, -50%)
-			// transform: translate(-50%, -50%)
 			z-index: -1
 			background-size: cover
-			// height: 100%
 
 	&__text
 		display: block
@@ -38,6 +42,15 @@
 		line-height: 18px
 		text-transform: none
 
+		@media screen and (max-width: 1024px)
+			font-size: 24px
+			line-height: normal
+
+
+		@media screen and (max-width: 768px)
+			font-size: 21px
+			padding: 20px 10px
+
 		&::after
 			display: block
 			position: absolute
@@ -45,9 +58,15 @@
 			width: 80px
 			height: 2px
 			background: #b9b9b7
-			left: 47.8%
+			left: 50%
 			bottom: -6px
-			transform: translateY(-50%)
+			transform: translate(-50%)
+
+			@media screen and (max-width: 1024px)
+				width: 40px
+				height: 2px
+				left: 47.8%
+				bottom: 6px
 
 	&__heading
 		display: block
@@ -59,15 +78,28 @@
 		text-transform: uppercase
 		letter-spacing: 0.84px
 
+
+		@media screen and (max-width: 768px)
+			line-height: 31.14px
+
 	&__logo
 		margin: auto
 
 		img
 			display: inline-block
+			object-fit: contain !important
+
+			@media screen and (max-width: 768px)
+				max-width: 32px
+				width: auto
+				object-fit: contain
 
 	&__content
 		padding-top: 19.8%
 		text-align: center
+
+		@media screen and (max-width: 768px)
+			padding-top: 120px
 
 		.btn
 			margin: 4.6% auto
@@ -85,8 +117,8 @@
 	.slick-slider .slick-next
 		top: 89.2%
 
-	.slick-slider .slick-next
-		top: 89.7%;
+	// .slick-slider .slick-next
+	// 	top: 89.7%;
 
 .text-multiple
 	position: absolute
@@ -102,10 +134,20 @@
 	transition: width .2s ease-in, all .5s ease 
 	overflow: hidden
 
+
+	@media screen and (max-width: 812px)
+		padding: 20px
+		width: 320px
+		height: 300px
+
 	&.hidden
 		width: 101px
 		padding: 30px 23px
 		// transition: all .1s ease-out
+
+		@media screen and (max-width: 812px)
+			width: 68px
+			padding: 30px 7px
 
 		.text-multiple__outer
 			display: block
@@ -145,10 +187,17 @@
 			padding-top: 23px
 			transform: translateX(0%) rotate(-180deg)
 
+			@media screen and (max-width: 500px)
+				display: none
+
+
 			&__wrapper
 				width: 55px
 				margin: auto
 				margin-right: 13px
+
+				@media screen and (max-width: 812px)
+					margin-right: 29px
 
 
 	&__inner
@@ -192,6 +241,9 @@
 		font-weight: 500
 		line-height: 60px
 
+		@media screen and (max-width: 812px)
+			text-align: left
+
 	&__product-block
 		display: -webkit-flex
 		display: -moz-flex
@@ -201,6 +253,10 @@
 		align-items: center
 		justify-content: space-between
 		color: #f7f7f7
+
+		@media screen and (max-width: 812px)
+			display: block
+			text-align: left
 
 
 		.btn
@@ -218,6 +274,9 @@
 			font-weight: 500
 			line-height: 60px
 
+			@media screen and (max-width: 7812px)
+				font-size: 20px
+
 	.product-text
 		padding: 6px 0
 		color: #f7f7f7
@@ -225,6 +284,9 @@
 		font-weight: 300
 		line-height: 20px
 		text-align: justify
+
+		@media screen and (max-width: 812px)
+			display: none
 
 		&__palette
 			display: inline-block
@@ -259,24 +321,78 @@
 
 
 .slider-multiple
-	height: 100%
+	// height: 100%
 	position: relative
-	// width: 100%
-	min-height: 762px
+	width: 100%
+	// min-height: 762px
 	max-height: 762px
+	overflow: hidden
+	opacity: 0
 
-	@media screen and (max-width: 1740px)
-		min-height: 682px
-		max-height: 682px
+	// @media screen and (max-width: 1740px)
+	// 	min-height: 682px
+	// 	max-height: 682px
+
+	// @media screen and (max-width: 1024px)
+	// 	min-height: 445px
+	// 	max-height: 445px
+
+	@media screen and (max-width: 812px)
+
+		// 	min-height: 335px
+		// 	max-height: 335px
+		max-height: 300px
+
+	// @media screen and (max-width: 812px) and (max-height: 400px)
+	// 	height: 300px
+
+	// @media screen and (max-width: 500px)
+	// 	max-height: 300px
+
 
 	.slick-slide img
-		height: 100%
+		// height: 100%
+		max-width: 100%
+		max-height: 100%
+		object-fit: cover
+
+		@media screen and (max-width: 812px)
+			// max-width: 100%;
+			// max-height: 100%;
+			// object-fit: cover;
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			// height: 400px
+			height: 300px
+
+
+		// @media screen and (max-width: 812px) and (max-height: 400px)
+		// 	height: 300px
+
 
 	&__item
 		position: relative
+		min-height: 762px
+		overflow: hidden
+
+		// max-height: 762px
 		// min-height: 762px
 		// max-height: 762px
-		// height: 100%
+		height: 100%
+
+		// @media screen and (max-width: 1740px)
+		// 	min-height: 682px
+		// 	max-height: 682px
+
+		// @media screen and (max-width: 1024px)
+		// 	min-height: 445px
+		// 	max-height: 445px
+
+		// @media screen and (max-width: 768px)
+		// 	min-height: 335px
+		// 	max-height: 335px
 
 
 	&__text
@@ -294,6 +410,10 @@
 		left: 0
 		padding-top: 19.8%
 		text-align: center
+
+.detail-long
+	@media screen and (max-width: 812px)
+		display: none
 
 
 .arrow-action
@@ -345,7 +465,7 @@
 
 .slick-slide img
 	height: 100%
-	object-fit: fill
+	object-fit: cover
 /* ============= slider section ============= */
 
 .slick-slider
@@ -359,7 +479,7 @@
 .slick-slider
 	.slick-prev,
 	.slick-next
-		z-index: 100
+		z-index: 2
 		width: 37px
 		height: 20px
 		top: 82.7%
@@ -369,12 +489,20 @@
 		color: #000
 		cursor: pointer
 
+
+		@media screen and (max-width: 1024px)
+			top: 90.4%
 		svg
 			path
 				fill: #000
 
 	.slick-prev
-		left: 52.1%;
+		// left: 52.1%
+		left: 50%
+		margin-left: 34px
+
+		@media screen and (max-width: 1024px)
+			// left: 53.1%
 
 		&::before
 			display: block
@@ -384,8 +512,13 @@
 			background: url('../assets/img/right-arrow.png') no-repeat
 
 	.slick-next
-		top: 83.1%
+		// top: 83.1%
 		right: 49.8%
+		padding-top: 4px
+
+		@media screen and (max-width: 1024px)
+			// top: 91.3%
+
 
 	.sr-text
 		position: absolute !important;

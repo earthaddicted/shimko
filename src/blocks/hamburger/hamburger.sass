@@ -3,12 +3,16 @@ $basic-icon-color: #c2c2c2
 
 .hamburger
 	&__block
+		display: none
 		position: fixed
 		width: 40px
 		height: 40px
 		top: 27px
 		right: 20px
 		z-index: 10
+
+		@media screen and (max-width: 1024px)
+			display: block
 
 	&__icon
 		position: absolute

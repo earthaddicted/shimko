@@ -89,7 +89,12 @@ img
 	margin: auto
 
 .general
-	width: 100%
+	display: flex
+	flex-direction: column
+	max-width: 100%
+	overflow: hidden
+	position: relative
+	
 
 	h1
 		margin: 40px 10px
@@ -102,7 +107,7 @@ img
 
 		@media screen and (max-width: 768px)
 			font-size: 32px
-			margin: 10px
+			margin: 20px 10px
 
 	h2,
 	.second-heading
@@ -124,7 +129,7 @@ img
 		@media screen and (max-width: 1024px)
 			font-size: 32px
 			line-height: 42px
-			margin: 0 10px
+			margin: 10px
 
 		&::before
 			position: absolute
@@ -138,7 +143,6 @@ img
 			bottom: 0
 
 		&__left
-			// text-align: left
 
 			&::before
 				left: 0%
@@ -160,6 +164,13 @@ img
 	color: #515050
 	font-size: 25px
 	font-weight: 300
-	// line-height: 18px
 	text-transform: uppercase
 
+
+.no-scroll
+	overflow: hidden
+
+main
+	display: block
+	max-width: 100%
+	overflow: hidden

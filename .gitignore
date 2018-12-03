@@ -13,6 +13,6 @@ archive/
 .git/**/
 .git/**/*
 .git/**/**
-build/
+
 .idea/
 .idea
