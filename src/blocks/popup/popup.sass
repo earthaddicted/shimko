@@ -1,3 +1,166 @@
 /*  popUp */
 
 /* popUp  END */
+
+
+// popup section
+
+.popup
+	body.no-scroll
+		overflow: hidden
+
+.popup-block
+	display: none
+	position: fixed
+	left: 0
+	right: 0
+	top: 0
+	bottom: 0
+	background-color: rgba(0, 0, 0, .8)
+	z-index: 101
+	z-index: -1
+	overflow: auto
+	overflow-y: scroll
+	visibility: hidden
+
+	.contact-form
+		display: block
+		margin-left: auto
+
+	h2
+		margin-top: 0
+		font-size: 24px !important
+		line-height: 40px !important
+		text-align: center
+
+		@media screen and (max-width: 1024px)
+			margin: 10px 30px !important
+
+		@media screen and (max-width: 600px)
+			font-size: 20px !important
+			line-height: 30px !important
+			margin-bottom: 20px
+			padding-bottom: 8px !important
+
+	.form-group
+		width: 100%
+		margin: auto
+		padding: 0
+		text-align: center
+
+		&:first-of-type
+			margin: auto
+
+	.form-control
+		@media screen and (max-width: 768px)
+			min-width: 260px
+			max-width: 280px
+
+	&.visible-popup
+		display: block
+		visibility: hidden
+		opacity: 1
+		visibility: visible
+		z-index: 102
+
+		.popup-item
+			visibility: visible
+
+	.form-submit
+		border: 1px solid #9b9b9a
+
+		@media screen and (max-width: 768px)
+			padding-right: 40px
+			max-width: 280px
+			margin: 20px auto
+			min-width: 260px
+
+		&:hover
+			color: $yellow
+
+	.form-control_file label
+		background: transparent
+
+.popup-item
+	position: absolute
+	top: 50%
+	left: 50%
+	max-width: 700px
+	width: 100%
+	padding: 30px
+	margin: 50px auto
+
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3)
+	border-radius: 10px
+	background-color: #fff
+	visibility: hidden
+	// -webkit-animation: fadeIn 1s
+	// animation: fadeIn 1s
+	transform: translate(-50%, -50%)
+
+	@media screen and (max-width: 839px)
+		max-width: 541px
+
+	@media screen and (max-width: 600px)
+		margin: 50px 10px
+		padding: 16px 20px
+		max-width: 320px
+
+	@media screen and (max-width: 359px)
+		margin: 50px 0
+		max-width: 300px
+
+	@media screen and (max-height: 600px)
+		top: 0
+		transform: translate(-50%, 0%)
+
+	&__wrapper
+		position: relative
+		width: 100%
+		margin: 0 auto
+
+	.close
+		position: absolute
+		display: block
+		width: 14px
+		height: 14px
+		right: 0
+		right: 17px
+		top: 10px
+		cursor: pointer
+		z-index: 10
+		fill: rgba(0, 0, 0, 0.74)
+
+	h1
+		font-size: 24px
+		line-height: 32px
+		padding-left: 14px
+
+		@media screen and (max-width: 359px)
+			padding: 0
+
+	.b-text
+		color: #434343
+
+		@media screen and (max-width: 359px)
+			padding: 0
+
+	.btns-block
+		@media screen and (max-width: 359px)
+			padding: 25px 0
+
+@-webkit-keyframes fadeIn
+  from
+    opacity: 0;
+  to
+    opacity: 1;
+
+@keyframes fadeIn
+  from
+    opacity: 0;
+  to
+    opacity: 1;
+// @keyframes formDisappear
+// 	0% {opacity: 0; visibility: hidden; z-index: 0}
+// 	5% {opacity: 1; visibility: visible; z-index: 101}
+// 	100% {opacity: 0; visibility: hidden; z-index: 0}
