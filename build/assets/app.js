@@ -316,15 +316,6 @@ const iterator = (index, item) => {
 
 $(".text-multiple").each(iterator);
 
-
-// $(".text-multiple").each(function(index, item) {
-//  	let button = $(item).find(".arrow-action");
-// 	button.on('click', function() {
-// 		$(item).toggleClass('hidden');
-// 	});
-// });
-
-// $(document).on("ready",initEventHandlers);
 $(window).on("load", adjustExpanding);
 $(window).on("resize", adjustExpanding);
 
@@ -333,20 +324,22 @@ function adjustExpanding (){
 	if ($(window).width () < 500) {
 		$('.text-multiple').removeClass('hidden');
 		$('.arrow-action').css({"display": "none"})
-		// $(".text-multiple").each(function(index, item) {
-		//  	let button = $(item).find(".arrow-action");
-		// 	button.on('click', function() {
-		// 		$('.text-multiple').removeClass('hidden');
-		// 	});
-		// });
 
 	} else {
 		$('.arrow-action').css({"display": "block"})
-		// $(".text-multiple").each(function(index, item) {
-		//  	let button = $(item).find(".arrow-action");
-		// 	button.on('click', function() {
-		// 		$('.text-multiple').toggleClass('hidden');
-		// 	});
-		// });
 	}
 }
+
+/* ========== slider kitchen block animation ==========  */
+;(function($){
+
+	var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: 0.1}});
+
+	new ScrollMagic.Scene({triggerElement: ".slider-multiple__wrapper:nth-of-type(2)"})
+		.setClassToggle(".slider-multiple__wrapper:nth-of-type(2) > .text-multiple", "hidden")
+		.addTo(controller);
+
+})(jQuery);
+
+/* ========== slider kitchen block animation END ==========  */
+
