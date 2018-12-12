@@ -1,6 +1,9 @@
 /*  contacts */
+.news + .contacts-n__section
+	color: #e7e7e4
+
 .contacts
-	writing-mode: tb-rl;
+	writing-mode: tb-rl
 
 	&__block
 		display: -webkit-flex
@@ -38,44 +41,57 @@
 		@media screen and (max-height: 1200px)
 			padding: 1vh 0
 
-.contacts-n
-	.two-column__block
-		padding-top: 173px
-		padding-bottom: 129px
+.contacts-n__section
+	.section-wrapper
+		max-width: 1440px
+		margin: auto
+		padding: 166px 20px 131px
+
+	.two-column
+
+		&__block
+			padding-top: 173px
+			padding-bottom: 129px
+			max-width: 1440px
+			padding: 166px 20px 131px
 
 
-		@media screen and (max-width: 1024px)
-			padding: 50px 0
+			@media screen and (max-width: 1024px)
+				padding: 50px 0
 
-	.two-column .second-heading
-		padding-bottom: 9px
+			.second-heading
+				padding-bottom: 20px
 
-	.two-column__content
-		padding: 0px 20px 0 0
-		padding-top: 36px
-		padding-left: 44px
+			@media screen and (max-width: 1260px)
+				padding: 0
 
-		@media screen and (max-width: 1260px)
-			padding: 0
+		&__content
+			padding: 0px 20px 0 0
+			padding-top: 18px
 
-	&__block
-		margin-top: 50px
+			@media screen and (max-width: 1260px)
+				padding: 0
 
-	&__item
-		display: block
-		color: #333
-		font-size: 18px
-		font-weight: 300
-		line-height: 28px
+	.contacts-n
+		&__block
+			margin-top: 50px
 
-		span
-			color: #efcc7d
+		&__item
+			display: block
+			color: #333
+			font-size: 18px
+			font-weight: 300
+			line-height: 28px
 
-		@media screen and (max-width: 1024px)
-			line-height: 40px
+			@media screen and (max-width: 1024px)
+				line-height: 40px
 
 	.general h2::before,
 	.general .second-heading::before
 		bottom: -8px
+
+
+	.form-group
+		padding: 22px 0
 
 /* contacts END */

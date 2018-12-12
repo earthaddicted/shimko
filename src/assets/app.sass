@@ -22,6 +22,7 @@
 @import '../blocks/news/news.sass';
 @import '../blocks/map/map.sass';
 @import '../blocks/hamburger/hamburger.sass';
+@import '../blocks/breadcrumbs/breadcrumbs.sass';
 
 html
 	margin: 0
@@ -91,10 +92,10 @@ img
 .general
 	display: flex
 	flex-direction: column
+	width: 100%
 	max-width: 100%
 	overflow: hidden
 	position: relative
-	
 
 	h1
 		margin: 40px 10px
@@ -153,6 +154,26 @@ img
 					left: 50%
 					transform: translateX(-50%)
 
+
+/* sticky footer */
+html,
+body
+    height: 100%
+    width 100%
+    overflow-x hidden
+    width: 100vw
+    background: #f7f7f7
+
+.main
+    flex: 1 0 auto
+    display -webkit-flex
+    display -moz-flex
+    display -ms-flex
+    display -o-flex
+    display flex
+    flex-direction column
+    justify-content: space-between
+
 .large-text
 	color: #515050
 	font-size: 25px
@@ -174,3 +195,37 @@ main
 	display: block
 	max-width: 100%
 	overflow: hidden
+
+
+.contacts-page .contacts-n__section,
+.contacts-n__section
+	background: #f7f7f7
+
+	.form-control_file label
+		background: inherit
+
+	.form-submit
+		&:hover
+			border-color: #9b9b9a
+			color: #4f4f4f
+
+
+.about-page
+	.methods .section__wrapper
+		padding: 90px 0 14px
+
+	.methods__content
+		min-height: 160px
+		max-height: unset
+
+	.methods__inner
+		padding: 36px 0 0
+
+	.special-title
+		text-transform: unset
+
+	.methods__content
+		padding-top: 64px
+
+	.methods__text
+		padding-top: 42px

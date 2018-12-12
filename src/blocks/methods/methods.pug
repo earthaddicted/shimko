@@ -24,3 +24,25 @@ mixin methods(methodsItems)
 							+b.btn__item= item.btn
 
 
+mixin methodsAbout(aboutItems)
+	+b.methods__block
+		+e.outer
+			+b('span').special-title
+					| О нас
+
+			+b.second-heading О SHIMKO
+
+			+b('p').small-p
+				| Компания работает с 2007 года, у нас большой опыт изготовления мебели на заказ. Мы каждый день работаем над тем, чтобы заказанная вами кухня была комфортной и уютной.
+
+
+		+e.inner
+			if globals.aboutItems
+				each item in globals.aboutItems
+					+e.item
+						+e.img
+							img(src=item.img alt="image")
+
+						+e.content
+							+e.title= item.title
+							+e('p').text= item.text

@@ -117,6 +117,49 @@
 		});
 	};
 
+
+	if ($('.slider-video').length) {
+
+		function activeSlick() {
+
+			$('.slider-video').on('init', function(slick) {
+                $('.slider-video').fadeTo("slow", 1);
+            });
+
+			$('.slider-video').slick({
+				infinite: true,
+				speed: 600,
+				// slidesToShow: 1,
+				slidesToScroll: 1,
+				// autoplay: true,
+				autoplaySpeed: 2600,
+				lazyLoad: 'ondemand',
+				pauseOnHover: true,
+				slide: '.slider-video__item',
+				slidesToShow: 2,
+				responsive: [
+				{
+					breakpoint: 1260,
+					settings: {
+						slidesToShow: 1,
+						centerMode: true,
+						centerPadding: '20px',
+					}
+				},
+			]
+				// initialSlide: 1,
+				// centerMode: true,
+				// centerPadding: '100px',
+				// customPaging: '0 60px 0 0'
+			});
+		}
+
+		$(window).on('load', function() {
+            activeSlick();
+        });
+	};
+
+
 })();
 
 /* ========== slider END ==========  */
@@ -164,3 +207,40 @@ function adjustExpanding (){
 
 /* ========== slider kitchen block animation END ==========  */
 
+
+/* ========== slider video OWL ==========  */
+
+// $('.owl-carousel').owlCarousel({
+// 	items:1,
+// 	merge:true,
+// 	loop:true,
+// 	// margin:10,
+// 	video:true,
+// 	lazyLoad:true,
+// 	nav: true,
+// 	rewindSpeed: 500,
+// 	dots: false,
+// 	startDragging: pauseOnDragging
+
+//     })
+
+
+// $(document).ready(function(){
+//   initializeVideoCarousel();
+// });
+
+// function initializeVideoCarousel () {
+// 	var video_carousel = $('.slider-video');
+
+// 	video_carousel.owlCarousel({
+// 		loop: true, // creat a loop of slides when sliding through
+// 		// center: true, // center the "active" slide
+// 		lazyLoad: true,
+// 		video:true,
+// 		nav: true,
+// 		merge:true,
+// 		items: 2, // total items you want to be seen on the screen
+// 	});
+// }
+
+/* ========== slider video OWL END ==========  */

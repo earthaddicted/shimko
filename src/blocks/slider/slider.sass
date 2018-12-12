@@ -31,6 +31,7 @@
 			position: absolute
 			z-index: -1
 			background-size: cover
+			background-image: #000
 
 	&__text
 		display: block
@@ -519,33 +520,115 @@
 		@media screen and (max-width: 1024px)
 			// top: 91.3%
 
-
 	.sr-text
-		position: absolute !important;
-		top: -9999px !important;
-		left: -9999px !important;
+		position: absolute !important
+		top: -9999px !important
+		left: -9999px !important
 
 
 	.slick-next
 		&::before
 			position: relative
-			display: block;
-			content: " ";
-			width: 37px;
-			height: 20px;
-			transform: rotate(180deg);
+			display: block
+			content: " "
+			width: 37px
+			height: 20px
+			transform: rotate(180deg)
 			background: url('../assets/img/right-arrow.png') no-repeat
 
 		&::after
 			position: absolute
-			top: 6px;
-			right: -19px;
+			top: 6px
+			right: -19px
 			content: ''
 			display: block
-			width: 8px;
-			height: 8px;
+			width: 8px
+			height: 8px
 			background-color: $yellow
 			border-radius: 50%
+
+
+
+
+.section-slider__video
+	.section__wrapper
+		padding: 100px 0 0
+
+		@media screen and (max-width: 1260px)
+			padding: 100px 0 50px
+
+.slider-video
+	position: relative
+	// max-height: 750px
+	height: 100%
+	padding: 20px 0
+
+	&__item
+		display: block
+		position: relative
+		max-height: 750px
+		max-width: 1175px
+		height: 750px
+
+		@media screen and (max-width: 1024px)
+			max-height: 450px
+			// max-width: 1175px
+			height: 450px
+
+
+	&__video
+		height: 100%
+		position: relative
+		// max-height: 750px
+
+		// @media screen and (max-width: 1024px)
+			
+
+	iframe
+		border: none
+		display: -webkit-box
+		display: -webkit-flex
+		display: -ms-flexbox
+		display: flex
+		display: block
+		max-height: 750px
+		// max-height: 310px
+		width: 100%
+		height: 100%
+
+		// display: block;
+		position: absolute
+		// top: 50%
+		// left: 50%
+		min-width: 100%
+		min-height: 100%
+		width: auto
+		height: auto
+		// transform:translate(-50%, -50%)
+
+	.slick-prev,
+	.slick-next
+		top: -70px
+		background-color: $yellow
+		width: 37px
+		height: 37px
+
+	.slick-next
+		padding-top: 8px
+
+		&::before
+			margin-left: -5px
+		// padding-right: 7px
+
+		&::after
+			content: none
+
+	.slick-prev
+		margin-left: 7px
+
+		&::before
+			margin-left: 5px
+
 
 
 /* ============= slider section END ============= */
