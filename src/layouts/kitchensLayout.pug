@@ -1,0 +1,35 @@
+extends main
+
+append params
+	- page = 'kitchens-page'
+	- pageTitle = 'Kitchens'
+
+
+block main
+	block kitchensParam
+		+b.section.breadcrumbs
+			+e.wrapper
+				+b.breadcrumbs-block
+					+e('ul').list
+						+e('li').item
+							+e('a').link(href="index.html") Главная
+						+e('li').item  Наши кухни
+		// +b.section.section-slider
+		// 	+e.wrapper
+		// 		+sliderMain(globals.sliderAbout)
+
+		// +b.section.methods
+		// 	+e.wrapper
+		// 		+methodsAbout(aboutItems)
+
+		// +b.section.section-slider__video
+		// 	+e.wrapper
+		// 		+sliderVideo(globals.sliderVideo)
+
+		+b.section.two-column.contacts-n__section
+			+e.wrapper
+				+twoColumn()
+
+		+b.section.map
+			+e.wrapper
+				+map()

@@ -4,11 +4,8 @@
 	position: relative
 	max-width: auto
 	opacity: 0
-	// width: 100%
-	// min-height: 1013px
 
 	.slick-slide img
-		// height: 100%
 		object-fit: cover
 
 	&__item
@@ -113,13 +110,9 @@
 	position: relative
 	margin-bottom: 2px
 
-
 	.slick-slider .slick-prev,
 	.slick-slider .slick-next
 		top: 89.2%
-
-	// .slick-slider .slick-next
-	// 	top: 89.7%;
 
 .text-multiple
 	position: absolute
@@ -275,7 +268,7 @@
 			font-weight: 500
 			line-height: 60px
 
-			@media screen and (max-width: 7812px)
+			@media screen and (max-width: 812px)
 				font-size: 20px
 
 	.product-text
@@ -322,78 +315,32 @@
 
 
 .slider-multiple
-	// height: 100%
 	position: relative
 	width: 100%
-	// min-height: 762px
 	max-height: 762px
 	overflow: hidden
 	opacity: 0
 
-	// @media screen and (max-width: 1740px)
-	// 	min-height: 682px
-	// 	max-height: 682px
-
-	// @media screen and (max-width: 1024px)
-	// 	min-height: 445px
-	// 	max-height: 445px
-
 	@media screen and (max-width: 812px)
-
-		// 	min-height: 335px
-		// 	max-height: 335px
 		max-height: 300px
 
-	// @media screen and (max-width: 812px) and (max-height: 400px)
-	// 	height: 300px
-
-	// @media screen and (max-width: 500px)
-	// 	max-height: 300px
-
-
 	.slick-slide img
-		// height: 100%
 		max-width: 100%
 		max-height: 100%
 		object-fit: cover
 
 		@media screen and (max-width: 812px)
-			// max-width: 100%;
-			// max-height: 100%;
-			// object-fit: cover;
 			position: absolute
 			top: 0
 			left: 0
 			width: 100%
-			// height: 400px
 			height: 300px
-
-
-		// @media screen and (max-width: 812px) and (max-height: 400px)
-		// 	height: 300px
-
 
 	&__item
 		position: relative
 		min-height: 762px
 		overflow: hidden
-
-		// max-height: 762px
-		// min-height: 762px
-		// max-height: 762px
 		height: 100%
-
-		// @media screen and (max-width: 1740px)
-		// 	min-height: 682px
-		// 	max-height: 682px
-
-		// @media screen and (max-width: 1024px)
-		// 	min-height: 445px
-		// 	max-height: 445px
-
-		// @media screen and (max-width: 768px)
-		// 	min-height: 335px
-		// 	max-height: 335px
 
 
 	&__text
@@ -416,7 +363,6 @@
 	@media screen and (max-width: 812px)
 		display: none
 
-
 .arrow-action
 	position: absolute
 	top: 14px
@@ -426,7 +372,6 @@
 	padding-top: 10px
 	cursor: pointer
 	z-index: 10
-	// background: green
 
 	&__wrapper
 		position: relative
@@ -470,12 +415,11 @@
 /* ============= slider section ============= */
 
 .slick-slider
-	width: 100%;
-	opacity: 0;
+	width: 100%
+	opacity: 0
 
 .slick-slider.slick-slider.slick-initialized
-	opacity: 1;
-
+	opacity: 1
 
 .slick-slider
 	.slick-prev,
@@ -547,9 +491,6 @@
 			background-color: $yellow
 			border-radius: 50%
 
-
-
-
 .section-slider__video
 	.section__wrapper
 		padding: 100px 0 0
@@ -572,8 +513,11 @@
 
 		@media screen and (max-width: 1024px)
 			max-height: 450px
-			// max-width: 1175px
 			height: 450px
+
+		@media screen and (max-width: 500px)
+			max-height: 250px
+			height: 250px
 
 
 	&__video
@@ -626,9 +570,10 @@
 	.slick-prev
 		margin-left: 7px
 
+		@media screen and (max-width: 500px)
+			margin-left: unset
+
 		&::before
 			margin-left: 5px
-
-
 
 /* ============= slider section END ============= */

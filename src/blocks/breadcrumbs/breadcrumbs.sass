@@ -3,9 +3,13 @@
 	position: absolute
 	width: 100%
 	margin-top: 140px
+	z-index: 2
 
 	@media screen and (max-width: 1260px)
 		margin-top: 110px
+
+	@media screen and (max-width: 812px)
+		margin-top: 97px
 
 	.section__wrapper
 		max-width: 1445px
@@ -19,9 +23,10 @@
 			display: -ms-flex
 			display: -o-flex
 			display: flex
+			justify-content: center
 
-			@media screen and (max-width: 1260px)
-				justify-content: center
+			// @media screen and (max-width: 1260px)
+			// 	justify-content: center
 
 		&__item,
 		&__link
@@ -65,12 +70,19 @@
 		padding-top: 0
 
 
-.about-page
+
+
+.contacts-page
 	.breadcrumbs
 		margin-top: 139px
-		z-index: 2
+
+		@media screen and (max-width: 1260px)
+			margin-top: 110px
 
 		&-block
 			&__list
-				justify-content: center
+				justify-content: flex-start
+
+				@media screen and (max-width: 1260px)
+					justify-content: center
 /* breadcrumbs END */
