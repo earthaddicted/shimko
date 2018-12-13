@@ -1,0 +1,8 @@
+mixin blockHeader(data)
+	+b.block-header
+		+e.logo
+			img(src= data.logoS alt= data.logoSAlt)
+
+		+e('span').text= data.description
+
+		+e('h1').heading= data.title

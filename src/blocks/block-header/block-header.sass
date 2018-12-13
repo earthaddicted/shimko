@@ -1,0 +1,65 @@
+/*  Block header */
+
+.block-header
+	padding: 40px 20px
+
+	@media screen and (max-width: 1024px)
+		padding: 40px 20px 0
+
+	&__logo
+		display: block
+		width: 58px
+		margin: auto
+
+
+	&__text
+		display: block
+		position: relative
+		padding: 35px 0 29px
+		color: #515151
+		font-size: 30px
+		font-weight: 300
+		line-height: 18px
+		text-transform: none
+
+		@media screen and (max-width: 1024px)
+			font-size: 24px
+			line-height: normal
+
+
+		@media screen and (max-width: 768px)
+			font-size: 21px
+			padding: 20px 10px
+
+		&::after
+			display: block
+			position: absolute
+			content: ' '
+			width: 80px
+			height: 2px
+			background: #b9b9b7
+			left: 50%
+			bottom: -6px
+			transform: translate(-50%)
+
+			@media screen and (max-width: 1024px)
+				width: 40px
+				height: 2px
+				left: 47.8%
+				bottom: 6px
+
+	&__heading
+		display: block
+		// text-shadow: 1px 3px 7px rgba(26, 26, 26, 0.26)
+		color: #efcc7d
+		font-size: 61px
+		font-weight: 900
+		line-height: 51.14px
+		text-transform: uppercase
+		letter-spacing: 0.84px
+
+
+		@media screen and (max-width: 768px)
+			line-height: 31.14px
+
+/* Block header END */
