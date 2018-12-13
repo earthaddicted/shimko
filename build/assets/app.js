@@ -439,6 +439,8 @@ function adjustExpanding (){
 		.setClassToggle(".slider-multiple__wrapper:nth-of-type(2) > .text-multiple", "hidden")
 		.addTo(controller);
 
+	// controller.enabled(false);
+
 })(jQuery);
 
 /* ========== slider kitchen block animation END ==========  */

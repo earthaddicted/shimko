@@ -18,6 +18,23 @@ mixin sliderMain(data)
 
 
 
+mixin sliderTop(data)
+	+b.slider-main
+
+		if data
+			each item in data
+				+e.item
+					img(src=item.imgBg alt="image")
+
+					+e.content
+						+e.logo
+							img(src=item.logoS alt="logo")
+
+						+e('span').text= item.description
+
+						+e('h1').heading= item.title
+
+
 
 //- first
 

@@ -1406,7 +1406,8 @@ a.btn {
     align-items: center;
     position: relative;
     border-radius: 3px;
-    white-space: nowrap; }
+    white-space: nowrap;
+    font-size: 16px; }
   .btn-yellow {
     background: #efcc7d;
     color: #fff;
