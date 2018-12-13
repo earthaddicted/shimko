@@ -1146,7 +1146,9 @@
   height: 58px;
   width: 100%;
   max-width: 430px;
-  margin: 13px 0; }
+  margin: 13px 0;
+  transition: .3s ease-in-out;
+  cursor: pointer; }
   .form-submit::after {
     display: block;
     position: absolute;
@@ -2233,6 +2235,76 @@ a.btn {
   text-align: left; }
 
 /* portfolio END */
+/*  household */
+.large-text {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 60px;
+  text-transform: uppercase;
+  color: #efcc7d;
+  text-align: left;
+  max-width: 1320px;
+  width: 100%;
+  padding: 20px 0;
+  margin: auto; }
+  .large-text span {
+    color: #b9b9b7; }
+
+.section-sale .section__wrapper {
+  padding: 62px 20px 0;
+  max-width: 1342px;
+  width: 100%; }
+  @media screen and (max-width: 1024px) {
+    .section-sale .section__wrapper {
+      padding: 50px 10px 0; } }
+
+.section-sale .second-heading::before {
+  display: none !important;
+  content: none; }
+
+.section-sale .form-submit {
+  margin: 25px 0 35px;
+  line-height: 56px;
+  transition: .3s ease-in-out;
+  cursor: pointer; }
+  @media screen and (max-width: 812px) {
+    .section-sale .form-submit {
+      padding: 0 12px;
+      font-size: 14px;
+      text-align: left; } }
+  .section-sale .form-submit:hover {
+    border-color: #9b9b9a;
+    color: #4f4f4f; }
+
+.section-logo .section__wrapper {
+  max-width: 1500px;
+  padding: 20px 20px 0; }
+
+.logo-block {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-left: 31px;
+  padding: 34px 0 0; }
+  @media screen and (max-width: 1024px) {
+    .logo-block {
+      margin-left: 0;
+      padding: 0; } }
+  @media screen and (max-width: 600px) {
+    .logo-block {
+      justify-content: center; } }
+  .logo-block__item {
+    margin: 44px 51px;
+    width: 129px; }
+    @media screen and (max-width: 812px) {
+      .logo-block__item {
+        margin: 20px; } }
+
+/* household END */
 html {
   margin: 0;
   padding: 0;

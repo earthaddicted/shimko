@@ -1,0 +1,6 @@
+mixin logoBlock(data)
+	+b.logo-block
+		if data
+			each item in data
+				+e.item
+					img(src= item.logoItem alt='product logo')

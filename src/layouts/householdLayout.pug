@@ -19,13 +19,22 @@ block main
 			+e.wrapper
 				+sliderTop(globals.sliderHousehold)
 
-		// +b.section.methods
-		// 	+e.wrapper
-		// 		+methodsAbout(aboutItems)
+		+b.section.section-sale
+			+e.wrapper
+				.large-text
+					.second-heading При заказе кухни 
 
-		// +b.section.section-slider__video
-		// 	+e.wrapper
-		// 		+sliderVideo(globals.sliderVideo)
+						+e('span') скидка до 10%
+							br
+							| на всю технику и мойки
+						br
+						|  Постоянные акции
+
+				+b('div').form-submit Подробнее у менеджеров
+
+		+b.section.section-logo
+			+e.wrapper
+				+logoBlock(globals.logoBlockImage)
 
 		+b.section.two-column.contacts-n__section
 			+e.wrapper
