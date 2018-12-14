@@ -13,6 +13,21 @@
 	// 	height: 100%
 	// 	overflow-y: auto
 	// 	padding: 95px 0 30px
+	.lang
+		display: none
+
+		@media screen and (max-width: 1024px)
+			display: block
+
+		&__item
+			display: block
+			visibility: visible
+			opacity: 1
+			color: #c2c2c2
+
+		&__block
+			justify-content: flex-start
+			margin: 0 2.3vw
 
 	&__menu
 		display: -webkit-flex
@@ -29,8 +44,10 @@
 
 		@media screen and (max-width: 1024px)
 			display: block
+			margin: 0 2.3vw
 			// height: 100%
 			// overflow-y: auto
+
 
 	&__item
 		display: block

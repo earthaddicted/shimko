@@ -1,12 +1,15 @@
 /* slider */
 .slider-main
-	height: 100%
+	// height: 100%
 	position: relative
 	max-width: auto
 	opacity: 0
+	max-height: 1013px
+	height: 100%
 
 	.slick-slide img
 		object-fit: cover
+		height: 100%
 
 	&__item
 		position: relative
@@ -22,13 +25,15 @@
 		@media screen and (max-width: 768px)
 			min-height: 463px
 
-
 		&>img
 			width: initial
 			position: absolute
 			z-index: -1
 			background-size: cover
 			background-image: #000
+
+			@media screen and (max-width: 768px)
+				height: 100%
 
 	&__text
 		display: block
@@ -102,22 +107,39 @@
 		.btn
 			margin: 4.6% auto
 
+
 /*slider  END */
 
 
 /* slider multiple */
+
 .slider-multiple__wrapper
 	position: relative
 	margin-bottom: 2px
+	overflow: hidden
 
 	.slick-slider .slick-prev,
 	.slick-slider .slick-next
 		top: 89.2%
 
+		@media screen and (max-width: 768px)
+			top: 60%
+
+		@media screen and (max-width: 500px)
+			top: 55%
+
+.index
+	.multiple-slider
+		.slick-slider .slick-prev,
+		.slick-slider .slick-next
+			@media screen and (max-width: 500px)
+				display: none !important
+
+
 .text-multiple
 	position: absolute
 	width: 609px
-	height: 443px
+	// height: 443px
 	left: 0
 	bottom: 0
 	z-index: 10
@@ -125,14 +147,16 @@
 	background-color: rgba(19, 19, 19, .56) //#131313
 	color: #fff
 	padding: 43px 56px 43px 77px
-	transition: width .2s ease-in, all .5s ease 
+	// transition: width .2s ease-in, all .5s ease 
 	overflow: hidden
 
+	@media screen and (max-width: 1266px)
+		padding: 0 56px 43px 77px
 
 	@media screen and (max-width: 812px)
 		padding: 20px
 		width: 320px
-		height: 300px
+		// height: 300px
 
 	&.hidden
 		width: 101px
@@ -202,8 +226,6 @@
 		width: 100%
 		height: auto
 		transform: translateX(0)
-		// transition: opacity .2s ease-in
-		// transition: all .1s ease-in-out
 
 
 	&__outer
@@ -234,9 +256,13 @@
 		font-size: 24px
 		font-weight: 500
 		line-height: 60px
+		text-align: left
 
 		@media screen and (max-width: 812px)
 			text-align: left
+
+		@media screen and (max-width: 600px)
+			line-height: unset
 
 	&__product-block
 		display: -webkit-flex
@@ -260,10 +286,13 @@
 		color: #f7f7f7
 		padding-top: 7px
 
+		@media screen and (max-width: 600px)
+			display: none
+
 		&__sum,
 		&__detail
 			margin-left: 6px
-			color: #f7f7f7;
+			color: #f7f7f7
 			font-size: 24px
 			font-weight: 500
 			line-height: 60px
@@ -317,6 +346,7 @@
 .slider-multiple
 	position: relative
 	width: 100%
+	height: 100%
 	max-height: 762px
 	overflow: hidden
 	opacity: 0
@@ -324,23 +354,23 @@
 	@media screen and (max-width: 812px)
 		max-height: 300px
 
-	.slick-slide img
+	.slick-slide > img
 		max-width: 100%
 		max-height: 100%
 		object-fit: cover
 
-		@media screen and (max-width: 812px)
-			position: absolute
-			top: 0
-			left: 0
-			width: 100%
-			height: 300px
+		// @media screen and (max-width: 812px)
+		// 	position: absolute
+		// 	top: 0
+		// 	left: 0
+		// 	width: 100%
+		// 	height: 300px
 
 	&__item
 		position: relative
-		min-height: 762px
+		// min-height: 762px
 		overflow: hidden
-		height: 100%
+		// height: 100%
 
 
 	&__text
@@ -409,8 +439,9 @@
 
 /* slider multiple END */
 
-.slick-slide img
-	height: 100%
+.slick-slide > img
+	// height: 100%
+	width: 100%
 	object-fit: cover
 /* ============= slider section ============= */
 
@@ -496,7 +527,7 @@
 		padding: 100px 0 0
 
 		@media screen and (max-width: 1260px)
-			padding: 100px 0 50px
+			padding: 66px 0 50px
 
 .slider-video
 	position: relative
@@ -508,7 +539,7 @@
 		display: block
 		position: relative
 		max-height: 750px
-		max-width: 1175px
+		// max-width: 1175px
 		height: 750px
 
 		@media screen and (max-width: 1024px)
@@ -526,7 +557,7 @@
 		// max-height: 750px
 
 		// @media screen and (max-width: 1024px)
-			
+
 
 	iframe
 		border: none
@@ -569,11 +600,27 @@
 
 	.slick-prev
 		margin-left: 7px
+		left: 52%
 
 		@media screen and (max-width: 500px)
 			margin-left: unset
 
 		&::before
 			margin-left: 5px
+
+
+.multiple-slider__decor
+	.slider-multiple__item
+		position: relative
+
+		&::before
+			content: ' '
+			display: block
+			position: absolute
+			width: 100%
+			bottom: 0
+			left: 0
+			box-shadow: 0 0 25px 2px rgba(190, 142, 0, .3)
+			border-bottom: 7px solid $yellow
 
 /* ============= slider section END ============= */

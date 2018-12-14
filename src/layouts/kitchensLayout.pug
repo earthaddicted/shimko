@@ -13,18 +13,53 @@ block main
 					+e('ul').list
 						+e('li').item
 							+e('a').link(href="index.html") Главная
-						+e('li').item  Наши кухни
-		// +b.section.section-slider
-		// 	+e.wrapper
-		// 		+sliderMain(globals.sliderAbout)
+						+e('li').item  Тип кухни
 
-		// +b.section.methods
-		// 	+e.wrapper
-		// 		+methodsAbout(aboutItems)
+		+b.section.section-slider
+			+e.wrapper
+				+sliderTopOrder(globals.sliderKitchens)
 
-		// +b.section.section-slider__video
-		// 	+e.wrapper
-		// 		+sliderVideo(globals.sliderVideo)
+		+b.section.single
+			+e.wrapper
+				+single(globals.singleSectionKitchen)
+
+				+b.palette-block
+					+e.title Выберите палитру:
+						+e.item
+							img(src='assets/img/palette.png')
+
+					+e.price-block
+						| Цена:
+						+e.price-sum
+							|  15 000 грн п.м
+
+		+b.section.multiple-slider.multiple-slider__decor
+			+e.wrapper
+				+sliderSingle()
+
+		+b.section.materials-section
+			+e.wrapper
+				+e.two-column__block
+					+b.two-column__block
+						+e.content
+							+b('span').special-title
+								| СТИЛЬ МИНИМАЛИЗМ
+
+							+b.second-heading.second-heading__left Материалы
+
+							+b('p') Основновной идеей использования материалов в данной кухне является комбинация текстур натурального дерева с однотонными глянцевыми или матовыми. Такие материалы очень практичны и износоустойчивы. Для изготовления данной модели кухни мы использовали глянцевые акриловые МДФ плиты и высококачественное ДСП итальянских производителей
+
+						+e.materials-image
+							img(src='assets/img/materials-1.png' alt='materials')
+							img(src='assets/img/materials-2.png' alt='materials')
+
+		+b.section.single
+			+e.wrapper
+				+single(globals.singleSectionFunctionalKitchen)
+				+b.functional
+					+e.item
+						img(src='assets/img/kitchen-functional.png' alt='functional')
+
 
 		+b.section.two-column.contacts-n__section
 			+e.wrapper

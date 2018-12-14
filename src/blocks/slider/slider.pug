@@ -16,8 +16,6 @@ mixin sliderMain(data)
 
 						+b-btnsCommonTransparent()
 
-
-
 mixin sliderTop(data)
 	+b.slider-main
 
@@ -33,6 +31,25 @@ mixin sliderTop(data)
 						+e('span').text= item.description
 
 						+e('h1').heading= item.title
+
+
+mixin sliderTopOrder(data)
+	+b.slider-main
+
+		if data
+			each item in data
+				+e.item
+					img(src=item.imgBg alt="image")
+
+					+e.content
+						+e.logo
+							img(src=item.logoS alt="logo")
+
+						+e('span').text= item.description
+
+						+e('h1').heading= item.title
+
+						+b-btnsCommonTransparentOrder()
 
 //- first
 
@@ -87,49 +104,15 @@ mixin sliderMultiple()
 								img(src='assets/img/palette.png' alt='palette')
 
 
-
 		+b.slider-multiple
 			+e.item
 				img(src='assets/img/kitchen-1.jpg' alt='image')
 
-				//- +e.content
-				//- 	+e.logo
-				//- 		img(src='assets/img/logo-s.png' alt="logo")
-
-				//- 	+e('span').text Дизайнерские кухни от 45000 грн
-
-				//- 	+e('h1').heading Дизайнерские кухни
-
-				//- 	+b-btnsCommonTransparent()
+			+e.item
+				img(src='assets/img/kitchen-1.jpg' alt='image')
 
 			+e.item
-				//- +b.slider-main__item-wrapper
-				img(src='assets/img/kitchen-4.jpg' alt='image')
-
-				//- +e.content
-				//- 	+e.logo
-				//- 		img(src='assets/img/logo-s.png' alt="logo")
-
-				//- 	+e('span').text Дизайнерские кухни от 45000 грн
-
-				//- 	+e('h1').heading Дизайнерские кухни
-
-				//- 	+b-btnsCommonTransparent()
-
-
-			+e.item
-				//- +b.slider-main__item-wrapper
-				img(src='assets/img/kitchen-2.jpg' alt='image')
-
-				//- +e.content
-				//- 	+e.logo
-				//- 		img(src='assets/img/logo-s.png' alt="logo")
-
-				//- 	+e('span').text Дизайнерские кухни от 45000 грн
-
-				//- 	+e('h1').heading Дизайнерские кухни
-
-				//- 	+b-btnsCommonTransparent()
+				img(src='assets/img/kitchen-1.jpg' alt='image')
 
 
 	+b.slider-multiple__wrapper
@@ -182,50 +165,15 @@ mixin sliderMultiple()
 								img(src='assets/img/palette.png' alt='palette')
 
 
-
 		+b.slider-multiple
 			+e.item
 				img(src='assets/img/kitchen-2.jpg' alt='image')
 
-				//- +e.content
-				//- 	+e.logo
-				//- 		img(src='assets/img/logo-s.png' alt="logo")
-
-				//- 	+e('span').text Дизайнерские кухни от 45000 грн
-
-				//- 	+e('h1').heading Дизайнерские кухни
-
-				//- 	+b-btnsCommonTransparent()
+			+e.item
+				img(src='assets/img/kitchen-2.jpg' alt='image')
 
 			+e.item
-				//- +b.slider-main__item-wrapper
-				img(src='assets/img/kitchen-1.jpg' alt='image')
-
-				//- +e.content
-				//- 	+e.logo
-				//- 		img(src='assets/img/logo-s.png' alt="logo")
-
-				//- 	+e('span').text Дизайнерские кухни от 45000 грн
-
-				//- 	+e('h1').heading Дизайнерские кухни
-
-				//- 	+b-btnsCommonTransparent()
-
-
-			+e.item
-				//- +b.slider-main__item-wrapper
-				img(src='assets/img/kitchen-4.jpg' alt='image')
-
-				//- +e.content
-				//- 	+e.logo
-				//- 		img(src='assets/img/logo-s.png' alt="logo")
-
-				//- 	+e('span').text Дизайнерские кухни от 45000 грн
-
-				//- 	+e('h1').heading Дизайнерские кухни
-
-				//- 	+b-btnsCommonTransparent()
-
+				img(src='assets/img/kitchen-2.jpg' alt='image')
 
 	+b.slider-multiple__wrapper
 		+b.text-multiple.hidden
@@ -278,16 +226,14 @@ mixin sliderMultiple()
 							+e.palette-elements
 								img(src='assets/img/palette.png' alt='palette')
 
-
-
 		+b.slider-multiple
 			+e.item
 				img(src='assets/img/kitchen-3.jpg' alt='image')
 			+e.item
-				img(src='assets/img/main-img-1.jpg' alt='image')
+				img(src='assets/img/kitchen-3.jpg' alt='image')
 
 			+e.item
-				img(src='assets/img/main-img-1.jpg' alt='image')
+				img(src='assets/img/kitchen-3.jpg' alt='image')
 
 	+b.slider-multiple__wrapper
 		+b.text-multiple.hidden
@@ -337,14 +283,26 @@ mixin sliderMultiple()
 							+e.palette-elements
 								img(src='assets/img/palette.png' alt='palette')
 
-
-
 		+b.slider-multiple
 			+e.item
 				img(src='assets/img/kitchen-4.jpg' alt='image')
 
 			+e.item
-				img(src='assets/img/kitchen-3.jpg' alt='image')
+				img(src='assets/img/kitchen-4.jpg' alt='image')
+
+			+e.item
+				img(src='assets/img/kitchen-4.jpg' alt='image')
+
+
+mixin sliderSingle()
+	+b.slider-multiple__wrapper
+
+		+b.slider-multiple
+			+e.item
+				img(src='assets/img/kitchen-1.jpg' alt='image')
+
+			+e.item
+				img(src='assets/img/kitchen-4.jpg' alt='image')
 
 			+e.item
 				img(src='assets/img/kitchen-2.jpg' alt='image')

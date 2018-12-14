@@ -15,7 +15,7 @@
 				speed: 600,
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				autoplay: true,
+				// autoplay: true,
 				autoplaySpeed: 2600,
 				lazyLoad: 'ondemand',
 				pauseOnHover: true,
@@ -48,7 +48,7 @@
 					{
 						breakpoint: 500,
 						settings: {
-							arrows: false,
+							// arrows: false,
 						}
 					}
 				]
@@ -136,21 +136,17 @@
 				lazyLoad: 'ondemand',
 				pauseOnHover: true,
 				slide: '.slider-video__item',
-				slidesToShow: 2,
+				slidesToShow: 1,
 				responsive: [
 				{
 					breakpoint: 1260,
 					settings: {
 						slidesToShow: 1,
-						centerMode: true,
-						centerPadding: '20px',
+						// centerMode: true,
+						// centerPadding: '20px',
 					}
 				},
 			]
-				// initialSlide: 1,
-				// centerMode: true,
-				// centerPadding: '100px',
-				// customPaging: '0 60px 0 0'
 			});
 		}
 

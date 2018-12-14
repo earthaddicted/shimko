@@ -6,7 +6,7 @@ function initMap() {
     function initialize() {
 
       /* position Chicago */
-      var latlng = new google.maps.LatLng(50.454200, 30.465273);
+      var latlng = new google.maps.LatLng(50.4386326, 30.3556419);
       var mapOptions = {
         zoomControl: true,
         zoomControlOptions: {
@@ -58,11 +58,16 @@ function initMap() {
           }]
         }, {
           "featureType": "road.local",
-          "stylers": [{
-            "saturation": 70
-          }, {
-            "lightness": 40
-          }, {
+          "stylers": [
+          {
+            "saturation": 100
+          },
+          {
+            "lightness": 20
+          },
+          {"hue": "#efcc7d" //road names
+          },
+          {
             "visibility": "on"
           }]
         }, {
@@ -70,10 +75,9 @@ function initMap() {
           "stylers": [{
             "saturation": 80
           },
-                      
             {"hue": "#efcc7d"
           },{
-            "visibility": "simplified"
+            "visibility": "on"
           }]
         }, {
           "featureType": "administrative.province",
