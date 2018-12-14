@@ -1071,7 +1071,7 @@
     left: 52%; }
     @media screen and (max-width: 500px) {
       .slider-video .slick-prev {
-        margin-left: unset; } }
+        margin-left: 21px; } }
     .slider-video .slick-prev::before {
       margin-left: 5px; }
 
