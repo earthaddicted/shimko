@@ -16,8 +16,11 @@
 	&__block
 		padding: 122px 0 104px
 
+		@media screen and (max-width: 1024px)
+			padding: 50px 0
+
 		@media screen and (max-width: 480px)
-			padding: 60px 0
+			padding: 50px 0 20px
 
 	&-slider
 		width: 100%
@@ -26,6 +29,9 @@
 
 		@media screen and (max-width: 1024px)
 			padding: 60px 0
+
+		@media screen and (max-width: 480px)
+			padding: 20px 0
 
 		&__item
 			position: relative
@@ -42,11 +48,13 @@
 						top: 0
 						background: $yellow
 						opacity: 1
+						z-index: 1
 
 					&::after
 						bottom: 0
 						background: $yellow
 						opacity: 1
+						z-index: 1
 
 				.news-slider__logo,
 				.news-slider__text,
@@ -123,9 +131,9 @@
 				padding: 10px 10px 0
 
 		&__text
-			font-size: 14px;
-			font-weight: 400;
-			line-height: 20px;
+			font-size: 14px
+			font-weight: 400
+			line-height: 20px
 			color: $white
 			opacity: 0
 			transition: opacity .2s ease-out
@@ -141,7 +149,6 @@
 				transform: translateY(0)
 				margin-top: 22px
 				margin-bottom: 0
-
 
 		.btn-transparent
 			margin: 20px auto 40px
@@ -170,7 +177,7 @@
 	overflow: hidden
 
 	@media screen and (max-width: 480px)
-		max-width: 320px;
+		max-width: 320px
 
 	&::before
 		position: absolute
@@ -198,4 +205,54 @@
 		position: absolute
 		z-index: -1
 
+.project-section
+	.news-slider
+		padding-bottom: 0
+
+	.news-slider__date
+		display: none
+		opacity: 0
+		transition: opacity .2s ease-in
+		transform: translateY(344%)
+		height: 0
+		margin-bottom: -200px
+
+	.news-slider__content
+		position: relative
+		height: 100%
+		z-index: 0
+
+		&::before
+			position: absolute
+			z-index: 0
+			content: ' '
+			display: block
+			top: 0
+			// left: 5px
+			width: 427px
+			height: 100%
+			background: rgba(0, 0, 0, 0)
+			transition: .2s ease-in-out
+
+	.news-slider__item
+		position: relative
+		overflow: hidden
+
+		&:hover
+			.news-slider__content
+				&::before
+					background: rgba(0, 0, 0, .7)
+
+			.news-slider__date
+				display: block
+				opacity: 1
+				display: block
+				height: auto
+				opacity: 1
+				transform: translateY(0)
+				margin-top: 50%
+				z-index: 1
+
+.project__block
+	padding-bottom: 0
 /*  news END */

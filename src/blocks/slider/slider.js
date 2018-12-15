@@ -89,7 +89,7 @@
         	centerPadding: '15px',
 			responsive: [
 				{
-					breakpoint: 1800,
+					breakpoint: 1890,
 					settings: {
 						slidesToShow: 3,
 						centerMode: true,
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					breakpoint: 1124,
+					breakpoint: 1434,
 					settings: {
 						slidesToShow: 2,
 						centerMode: true,

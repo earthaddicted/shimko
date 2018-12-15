@@ -61,6 +61,32 @@ block main
 						img(src='assets/img/kitchen-functional.png' alt='functional')
 
 
+		+b.section.terms-section
+			+e.wrapper
+				+b.two-column__block
+					+b.two-column__content
+						+e.logo
+							img(src='assets/img/logo-s.png' alt='logo')
+
+						+e.price-block
+							+b('h3') Стоимость
+							+b('span') Стоимость модели: 50 000 грн
+							+b('span') Стоимость за метр: от 15  000 грн
+
+					+b.two-column__content
+						+e.price-block
+							+b('h3') Срок реализации
+							+b('span') 35 дней (при наличии всех необходимых размеров
+							+b('span') и точных моделей бытовой техники)
+
+						+b('div').form-submit.btn-popup Сделать заказ
+
+
+		+b.section.project-section
+			+e.wrapper
+				+projets(globals.readyProjects)
+
+
 		+b.section.two-column.contacts-n__section
 			+e.wrapper
 				+twoColumn()

@@ -31,35 +31,35 @@
     }
 })();
 
-(function() {
-    // var wrapPopup = document.querySelector('.popup-block');
-    var popup = document.querySelector('.popup-block');
-    var close = document.querySelector('.close');
-    var prompt = document.querySelector('.btn-popup');
-    var body = document.querySelector('body');
 
-    if (prompt) {
-        prompt.addEventListener('click', showPopup);
+    $('.btn-popup').each(function () {
+        var popup = document.querySelector('.popup-block');
+        var close = document.querySelector('.close');
+        var prompt = document.querySelector('.btn-popup');
+        var body = document.querySelector('body');
 
-        function showPopup() {
-            popup.classList.add('visible-popup');
-            body.classList.add('no-scroll');
-        }
+        if (prompt) {
+            prompt.addEventListener('click', showPopup);
 
-        close.addEventListener('click', hidePopup);
+            function showPopup() {
+                popup.classList.add('visible-popup');
+                body.classList.add('no-scroll');
+            }
 
-        function hidePopup() {
-            popup.classList.remove('visible-popup');
-            body.classList.remove('no-scroll');
-        }
+            close.addEventListener('click', hidePopup);
 
-        window.addEventListener('click', removePopup);
+            function hidePopup() {
+                popup.classList.remove('visible-popup');
+                body.classList.remove('no-scroll');
+            }
 
-        function removePopup(e) {
-            var target = e.target;
-            if (target == popup) {
-                hidePopup();
+            window.addEventListener('click', removePopup);
+
+            function removePopup(e) {
+                var target = e.target;
+                if (target == popup) {
+                    hidePopup();
+                }
             }
         }
-    }
-})();
+    });

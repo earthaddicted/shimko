@@ -1,4 +1,4 @@
-mixin news(news)
+mixin news(data)
 	+b.news__block
 		+e.outer
 			+b('span').special-title
@@ -8,8 +8,8 @@ mixin news(news)
 
 		+e.inner
 			+b.news-slider
-				if globals.news
-					each item in globals.news
+				if data
+					each item in data
 						+e.item
 							.slider__item-wrapper
 								img(src= item.bg alt="news image")
@@ -27,3 +27,20 @@ mixin news(news)
 
 
 
+mixin projets(data)
+	+b.news__block.project__block
+		+e.outer
+			+b('span').special-title
+					| СТИЛЬ МИНИМАЛИЗМ
+
+			+b.second-heading РЕАЛИЗОВАНЫЕ ПРОЕКТЫ
+
+		+e.inner
+			+b.news-slider
+				if data
+					each item in data
+						+e.item
+							.slider__item-wrapper
+								img(src= item.bg alt="news image")
+								+e.content
+									+e('span').date= item.date
