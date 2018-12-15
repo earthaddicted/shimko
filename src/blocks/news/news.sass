@@ -79,6 +79,10 @@
 					img
 						margin-bottom: 14px
 
+				.news-slider__content
+					&::before
+						background: rgba(0, 0, 0, .7)
+
 
 				.news-slider__text
 					margin-top: 48px
@@ -90,8 +94,29 @@
 			img
 				object-fit: contain !important
 
-		&__contetnt
+		&__content
+			position: relative
 			padding: 48px 0
+			height: 100%
+
+			// position: relative
+			height: 100%
+			z-index: 0
+			height: 100vh
+			padding-top: 165px
+			// padding-top: 116px
+
+			&::before
+				position: absolute
+				z-index: -1
+				content: ' '
+				display: block
+				top: 0
+				// left: 5px
+				width: 427px
+				height: 600%
+				background: rgba(0, 0, 0, 0)
+				transition: .2s ease-in-out
 
 		&__date
 			display: block
@@ -218,30 +243,30 @@
 		margin-bottom: -200px
 
 	.news-slider__content
-		position: relative
-		height: 100%
-		z-index: 0
+		// position: relative
+		// height: 100%
+		// z-index: 0
 
 		&::before
-			position: absolute
-			z-index: 0
-			content: ' '
-			display: block
-			top: 0
-			// left: 5px
-			width: 427px
-			height: 100%
-			background: rgba(0, 0, 0, 0)
-			transition: .2s ease-in-out
+		// 	position: absolute
+			z-index: -1
+		// 	content: ' '
+		// 	display: block
+		// 	top: 0
+		// 	// left: 5px
+		// 	width: 427px
+		// 	height: 100%
+		// 	background: rgba(0, 0, 0, 0)
+		// 	transition: .2s ease-in-out
 
 	.news-slider__item
 		position: relative
 		overflow: hidden
 
 		&:hover
-			.news-slider__content
-				&::before
-					background: rgba(0, 0, 0, .7)
+			// .news-slider__content
+			// 	&::before
+			// 		background: rgba(0, 0, 0, .7)
 
 			.news-slider__date
 				display: block
@@ -250,7 +275,7 @@
 				height: auto
 				opacity: 1
 				transform: translateY(0)
-				margin-top: 50%
+				margin-top: 20%
 				z-index: 1
 
 .project__block

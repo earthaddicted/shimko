@@ -1,0 +1,18 @@
+mixin blog(data)
+	+b.blog-block.grid
+		if data
+			each item in data
+				//- +e('a').item.masonry-grid-item(href="kitchens.html")
+				+e.item.masonry-grid-item
+
+					+e('div').container
+						+e.img
+							img(src=item.kitchenImage alt="kitchen image")
+							+b-btnsCommonTransparentReadMore()
+
+						+e.text-block
+							+e.title= item.title
+							+e.date= item.date
+							+e.text= item.text
+
+	+b-btnsMore()

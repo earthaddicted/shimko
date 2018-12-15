@@ -14,17 +14,12 @@ block main
 						+e('li').item
 							+e('a').link(href="index.html") Главная
 						+e('li').item  Блог
-		// +b.section.section-slider
-		// 	+e.wrapper
-		// 		+sliderMain(globals.sliderAbout)
 
-		// +b.section.methods
-		// 	+e.wrapper
-		// 		+methodsAbout(aboutItems)
+		+b.section.section-blog
+			+e.wrapper
+				+blockHeader(globals.blockHeaderBlog)
 
-		// +b.section.section-slider__video
-		// 	+e.wrapper
-		// 		+sliderVideo(globals.sliderVideo)
+				+blog(globals.blogItem)
 
 		+b.section.two-column.contacts-n__section
 			+e.wrapper
