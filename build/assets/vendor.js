@@ -10,2798 +10,6 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 !function(e){function t(e){var t=e.length,r=$.type(e);return"function"===r||$.isWindow(e)?!1:1===e.nodeType&&t?!0:"array"===r||0===t||"number"==typeof t&&t>0&&t-1 in e}if(!e.jQuery){var $=function(e,t){return new $.fn.init(e,t)};$.isWindow=function(e){return null!=e&&e==e.window},$.type=function(e){return null==e?e+"":"object"==typeof e||"function"==typeof e?a[o.call(e)]||"object":typeof e},$.isArray=Array.isArray||function(e){return"array"===$.type(e)},$.isPlainObject=function(e){var t;if(!e||"object"!==$.type(e)||e.nodeType||$.isWindow(e))return!1;try{if(e.constructor&&!n.call(e,"constructor")&&!n.call(e.constructor.prototype,"isPrototypeOf"))return!1}catch(r){return!1}for(t in e);return void 0===t||n.call(e,t)},$.each=function(e,r,a){var n,o=0,i=e.length,s=t(e);if(a){if(s)for(;i>o&&(n=r.apply(e[o],a),n!==!1);o++);else for(o in e)if(n=r.apply(e[o],a),n===!1)break}else if(s)for(;i>o&&(n=r.call(e[o],o,e[o]),n!==!1);o++);else for(o in e)if(n=r.call(e[o],o,e[o]),n===!1)break;return e},$.data=function(e,t,a){if(void 0===a){var n=e[$.expando],o=n&&r[n];if(void 0===t)return o;if(o&&t in o)return o[t]}else if(void 0!==t){var n=e[$.expando]||(e[$.expando]=++$.uuid);return r[n]=r[n]||{},r[n][t]=a,a}},$.removeData=function(e,t){var a=e[$.expando],n=a&&r[a];n&&$.each(t,function(e,t){delete n[t]})},$.extend=function(){var e,t,r,a,n,o,i=arguments[0]||{},s=1,l=arguments.length,u=!1;for("boolean"==typeof i&&(u=i,i=arguments[s]||{},s++),"object"!=typeof i&&"function"!==$.type(i)&&(i={}),s===l&&(i=this,s--);l>s;s++)if(null!=(n=arguments[s]))for(a in n)e=i[a],r=n[a],i!==r&&(u&&r&&($.isPlainObject(r)||(t=$.isArray(r)))?(t?(t=!1,o=e&&$.isArray(e)?e:[]):o=e&&$.isPlainObject(e)?e:{},i[a]=$.extend(u,o,r)):void 0!==r&&(i[a]=r));return i},$.queue=function(e,r,a){function n(e,r){var a=r||[];return null!=e&&(t(Object(e))?!function(e,t){for(var r=+t.length,a=0,n=e.length;r>a;)e[n++]=t[a++];if(r!==r)for(;void 0!==t[a];)e[n++]=t[a++];return e.length=n,e}(a,"string"==typeof e?[e]:e):[].push.call(a,e)),a}if(e){r=(r||"fx")+"queue";var o=$.data(e,r);return a?(!o||$.isArray(a)?o=$.data(e,r,n(a)):o.push(a),o):o||[]}},$.dequeue=function(e,t){$.each(e.nodeType?[e]:e,function(e,r){t=t||"fx";var a=$.queue(r,t),n=a.shift();"inprogress"===n&&(n=a.shift()),n&&("fx"===t&&a.unshift("inprogress"),n.call(r,function(){$.dequeue(r,t)}))})},$.fn=$.prototype={init:function(e){if(e.nodeType)return this[0]=e,this;throw new Error("Not a DOM node.")},offset:function(){var t=this[0].getBoundingClientRect?this[0].getBoundingClientRect():{top:0,left:0};return{top:t.top+(e.pageYOffset||document.scrollTop||0)-(document.clientTop||0),left:t.left+(e.pageXOffset||document.scrollLeft||0)-(document.clientLeft||0)}},position:function(){function e(){for(var e=this.offsetParent||document;e&&"html"===!e.nodeType.toLowerCase&&"static"===e.style.position;)e=e.offsetParent;return e||document}var t=this[0],e=e.apply(t),r=this.offset(),a=/^(?:body|html)$/i.test(e.nodeName)?{top:0,left:0}:$(e).offset();return r.top-=parseFloat(t.style.marginTop)||0,r.left-=parseFloat(t.style.marginLeft)||0,e.style&&(a.top+=parseFloat(e.style.borderTopWidth)||0,a.left+=parseFloat(e.style.borderLeftWidth)||0),{top:r.top-a.top,left:r.left-a.left}}};var r={};$.expando="velocity"+(new Date).getTime(),$.uuid=0;for(var a={},n=a.hasOwnProperty,o=a.toString,i="Boolean Number String Function Array Date RegExp Object Error".split(" "),s=0;s<i.length;s++)a["[object "+i[s]+"]"]=i[s].toLowerCase();$.fn.init.prototype=$.fn,e.Velocity={Utilities:$}}}(window),function(e){"object"==typeof module&&"object"==typeof module.exports?module.exports=e():"function"==typeof define&&define.amd?define(e):e()}(function(){return function(e,t,r,a){function n(e){for(var t=-1,r=e?e.length:0,a=[];++t<r;){var n=e[t];n&&a.push(n)}return a}function o(e){return g.isWrapped(e)?e=[].slice.call(e):g.isNode(e)&&(e=[e]),e}function i(e){var t=$.data(e,"velocity");return null===t?a:t}function s(e){return function(t){return Math.round(t*e)*(1/e)}}function l(e,r,a,n){function o(e,t){return 1-3*t+3*e}function i(e,t){return 3*t-6*e}function s(e){return 3*e}function l(e,t,r){return((o(t,r)*e+i(t,r))*e+s(t))*e}function u(e,t,r){return 3*o(t,r)*e*e+2*i(t,r)*e+s(t)}function c(t,r){for(var n=0;m>n;++n){var o=u(r,e,a);if(0===o)return r;var i=l(r,e,a)-t;r-=i/o}return r}function p(){for(var t=0;b>t;++t)w[t]=l(t*x,e,a)}function f(t,r,n){var o,i,s=0;do i=r+(n-r)/2,o=l(i,e,a)-t,o>0?n=i:r=i;while(Math.abs(o)>h&&++s<v);return i}function d(t){for(var r=0,n=1,o=b-1;n!=o&&w[n]<=t;++n)r+=x;--n;var i=(t-w[n])/(w[n+1]-w[n]),s=r+i*x,l=u(s,e,a);return l>=y?c(t,s):0==l?s:f(t,r,r+x)}function g(){V=!0,(e!=r||a!=n)&&p()}var m=4,y=.001,h=1e-7,v=10,b=11,x=1/(b-1),S="Float32Array"in t;if(4!==arguments.length)return!1;for(var P=0;4>P;++P)if("number"!=typeof arguments[P]||isNaN(arguments[P])||!isFinite(arguments[P]))return!1;e=Math.min(e,1),a=Math.min(a,1),e=Math.max(e,0),a=Math.max(a,0);var w=S?new Float32Array(b):new Array(b),V=!1,C=function(t){return V||g(),e===r&&a===n?t:0===t?0:1===t?1:l(d(t),r,n)};C.getControlPoints=function(){return[{x:e,y:r},{x:a,y:n}]};var T="generateBezier("+[e,r,a,n]+")";return C.toString=function(){return T},C}function u(e,t){var r=e;return g.isString(e)?v.Easings[e]||(r=!1):r=g.isArray(e)&&1===e.length?s.apply(null,e):g.isArray(e)&&2===e.length?b.apply(null,e.concat([t])):g.isArray(e)&&4===e.length?l.apply(null,e):!1,r===!1&&(r=v.Easings[v.defaults.easing]?v.defaults.easing:h),r}function c(e){if(e){var t=(new Date).getTime(),r=v.State.calls.length;r>1e4&&(v.State.calls=n(v.State.calls));for(var o=0;r>o;o++)if(v.State.calls[o]){var s=v.State.calls[o],l=s[0],u=s[2],f=s[3],d=!!f,m=null;f||(f=v.State.calls[o][3]=t-16);for(var y=Math.min((t-f)/u.duration,1),h=0,b=l.length;b>h;h++){var S=l[h],w=S.element;if(i(w)){var V=!1;if(u.display!==a&&null!==u.display&&"none"!==u.display){if("flex"===u.display){var C=["-webkit-box","-moz-box","-ms-flexbox","-webkit-flex"];$.each(C,function(e,t){x.setPropertyValue(w,"display",t)})}x.setPropertyValue(w,"display",u.display)}u.visibility!==a&&"hidden"!==u.visibility&&x.setPropertyValue(w,"visibility",u.visibility);for(var T in S)if("element"!==T){var k=S[T],A,F=g.isString(k.easing)?v.Easings[k.easing]:k.easing;if(1===y)A=k.endValue;else{var E=k.endValue-k.startValue;if(A=k.startValue+E*F(y,u,E),!d&&A===k.currentValue)continue}if(k.currentValue=A,"tween"===T)m=A;else{if(x.Hooks.registered[T]){var j=x.Hooks.getRoot(T),H=i(w).rootPropertyValueCache[j];H&&(k.rootPropertyValue=H)}var N=x.setPropertyValue(w,T,k.currentValue+(0===parseFloat(A)?"":k.unitType),k.rootPropertyValue,k.scrollData);x.Hooks.registered[T]&&(i(w).rootPropertyValueCache[j]=x.Normalizations.registered[j]?x.Normalizations.registered[j]("extract",null,N[1]):N[1]),"transform"===N[0]&&(V=!0)}}u.mobileHA&&i(w).transformCache.translate3d===a&&(i(w).transformCache.translate3d="(0px, 0px, 0px)",V=!0),V&&x.flushTransformCache(w)}}u.display!==a&&"none"!==u.display&&(v.State.calls[o][2].display=!1),u.visibility!==a&&"hidden"!==u.visibility&&(v.State.calls[o][2].visibility=!1),u.progress&&u.progress.call(s[1],s[1],y,Math.max(0,f+u.duration-t),f,m),1===y&&p(o)}}v.State.isTicking&&P(c)}function p(e,t){if(!v.State.calls[e])return!1;for(var r=v.State.calls[e][0],n=v.State.calls[e][1],o=v.State.calls[e][2],s=v.State.calls[e][4],l=!1,u=0,c=r.length;c>u;u++){var p=r[u].element;if(t||o.loop||("none"===o.display&&x.setPropertyValue(p,"display",o.display),"hidden"===o.visibility&&x.setPropertyValue(p,"visibility",o.visibility)),o.loop!==!0&&($.queue(p)[1]===a||!/\.velocityQueueEntryFlag/i.test($.queue(p)[1]))&&i(p)){i(p).isAnimating=!1,i(p).rootPropertyValueCache={};var f=!1;$.each(x.Lists.transforms3D,function(e,t){var r=/^scale/.test(t)?1:0,n=i(p).transformCache[t];i(p).transformCache[t]!==a&&new RegExp("^\\("+r+"[^.]").test(n)&&(f=!0,delete i(p).transformCache[t])}),o.mobileHA&&(f=!0,delete i(p).transformCache.translate3d),f&&x.flushTransformCache(p),x.Values.removeClass(p,"velocity-animating")}if(!t&&o.complete&&!o.loop&&u===c-1)try{o.complete.call(n,n)}catch(d){setTimeout(function(){throw d},1)}s&&o.loop!==!0&&s(n),i(p)&&o.loop===!0&&!t&&($.each(i(p).tweensContainer,function(e,t){/^rotate/.test(e)&&360===parseFloat(t.endValue)&&(t.endValue=0,t.startValue=360),/^backgroundPosition/.test(e)&&100===parseFloat(t.endValue)&&"%"===t.unitType&&(t.endValue=0,t.startValue=100)}),v(p,"reverse",{loop:!0,delay:o.delay})),o.queue!==!1&&$.dequeue(p,o.queue)}v.State.calls[e]=!1;for(var g=0,m=v.State.calls.length;m>g;g++)if(v.State.calls[g]!==!1){l=!0;break}l===!1&&(v.State.isTicking=!1,delete v.State.calls,v.State.calls=[])}var f=function(){if(r.documentMode)return r.documentMode;for(var e=7;e>4;e--){var t=r.createElement("div");if(t.innerHTML="<!--[if IE "+e+"]><span></span><![endif]-->",t.getElementsByTagName("span").length)return t=null,e}return a}(),d=function(){var e=0;return t.webkitRequestAnimationFrame||t.mozRequestAnimationFrame||function(t){var r=(new Date).getTime(),a;return a=Math.max(0,16-(r-e)),e=r+a,setTimeout(function(){t(r+a)},a)}}(),g={isString:function(e){return"string"==typeof e},isArray:Array.isArray||function(e){return"[object Array]"===Object.prototype.toString.call(e)},isFunction:function(e){return"[object Function]"===Object.prototype.toString.call(e)},isNode:function(e){return e&&e.nodeType},isNodeList:function(e){return"object"==typeof e&&/^\[object (HTMLCollection|NodeList|Object)\]$/.test(Object.prototype.toString.call(e))&&e.length!==a&&(0===e.length||"object"==typeof e[0]&&e[0].nodeType>0)},isWrapped:function(e){return e&&(e.jquery||t.Zepto&&t.Zepto.zepto.isZ(e))},isSVG:function(e){return t.SVGElement&&e instanceof t.SVGElement},isEmptyObject:function(e){for(var t in e)return!1;return!0}},$,m=!1;if(e.fn&&e.fn.jquery?($=e,m=!0):$=t.Velocity.Utilities,8>=f&&!m)throw new Error("Velocity: IE8 and below require jQuery to be loaded before Velocity.");if(7>=f)return void(jQuery.fn.velocity=jQuery.fn.animate);var y=400,h="swing",v={State:{isMobile:/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),isAndroid:/Android/i.test(navigator.userAgent),isGingerbread:/Android 2\.3\.[3-7]/i.test(navigator.userAgent),isChrome:t.chrome,isFirefox:/Firefox/i.test(navigator.userAgent),prefixElement:r.createElement("div"),prefixMatches:{},scrollAnchor:null,scrollPropertyLeft:null,scrollPropertyTop:null,isTicking:!1,calls:[]},CSS:{},Utilities:$,Redirects:{},Easings:{},Promise:t.Promise,defaults:{queue:"",duration:y,easing:h,begin:a,complete:a,progress:a,display:a,visibility:a,loop:!1,delay:!1,mobileHA:!0,_cacheValues:!0},init:function(e){$.data(e,"velocity",{isSVG:g.isSVG(e),isAnimating:!1,computedStyle:null,tweensContainer:null,rootPropertyValueCache:{},transformCache:{}})},hook:null,mock:!1,version:{major:1,minor:2,patch:2},debug:!1};t.pageYOffset!==a?(v.State.scrollAnchor=t,v.State.scrollPropertyLeft="pageXOffset",v.State.scrollPropertyTop="pageYOffset"):(v.State.scrollAnchor=r.documentElement||r.body.parentNode||r.body,v.State.scrollPropertyLeft="scrollLeft",v.State.scrollPropertyTop="scrollTop");var b=function(){function e(e){return-e.tension*e.x-e.friction*e.v}function t(t,r,a){var n={x:t.x+a.dx*r,v:t.v+a.dv*r,tension:t.tension,friction:t.friction};return{dx:n.v,dv:e(n)}}function r(r,a){var n={dx:r.v,dv:e(r)},o=t(r,.5*a,n),i=t(r,.5*a,o),s=t(r,a,i),l=1/6*(n.dx+2*(o.dx+i.dx)+s.dx),u=1/6*(n.dv+2*(o.dv+i.dv)+s.dv);return r.x=r.x+l*a,r.v=r.v+u*a,r}return function a(e,t,n){var o={x:-1,v:0,tension:null,friction:null},i=[0],s=0,l=1e-4,u=.016,c,p,f;for(e=parseFloat(e)||500,t=parseFloat(t)||20,n=n||null,o.tension=e,o.friction=t,c=null!==n,c?(s=a(e,t),p=s/n*u):p=u;;)if(f=r(f||o,p),i.push(1+f.x),s+=16,!(Math.abs(f.x)>l&&Math.abs(f.v)>l))break;return c?function(e){return i[e*(i.length-1)|0]}:s}}();v.Easings={linear:function(e){return e},swing:function(e){return.5-Math.cos(e*Math.PI)/2},spring:function(e){return 1-Math.cos(4.5*e*Math.PI)*Math.exp(6*-e)}},$.each([["ease",[.25,.1,.25,1]],["ease-in",[.42,0,1,1]],["ease-out",[0,0,.58,1]],["ease-in-out",[.42,0,.58,1]],["easeInSine",[.47,0,.745,.715]],["easeOutSine",[.39,.575,.565,1]],["easeInOutSine",[.445,.05,.55,.95]],["easeInQuad",[.55,.085,.68,.53]],["easeOutQuad",[.25,.46,.45,.94]],["easeInOutQuad",[.455,.03,.515,.955]],["easeInCubic",[.55,.055,.675,.19]],["easeOutCubic",[.215,.61,.355,1]],["easeInOutCubic",[.645,.045,.355,1]],["easeInQuart",[.895,.03,.685,.22]],["easeOutQuart",[.165,.84,.44,1]],["easeInOutQuart",[.77,0,.175,1]],["easeInQuint",[.755,.05,.855,.06]],["easeOutQuint",[.23,1,.32,1]],["easeInOutQuint",[.86,0,.07,1]],["easeInExpo",[.95,.05,.795,.035]],["easeOutExpo",[.19,1,.22,1]],["easeInOutExpo",[1,0,0,1]],["easeInCirc",[.6,.04,.98,.335]],["easeOutCirc",[.075,.82,.165,1]],["easeInOutCirc",[.785,.135,.15,.86]]],function(e,t){v.Easings[t[0]]=l.apply(null,t[1])});var x=v.CSS={RegEx:{isHex:/^#([A-f\d]{3}){1,2}$/i,valueUnwrap:/^[A-z]+\((.*)\)$/i,wrappedValueAlreadyExtracted:/[0-9.]+ [0-9.]+ [0-9.]+( [0-9.]+)?/,valueSplit:/([A-z]+\(.+\))|(([A-z0-9#-.]+?)(?=\s|$))/gi},Lists:{colors:["fill","stroke","stopColor","color","backgroundColor","borderColor","borderTopColor","borderRightColor","borderBottomColor","borderLeftColor","outlineColor"],transformsBase:["translateX","translateY","scale","scaleX","scaleY","skewX","skewY","rotateZ"],transforms3D:["transformPerspective","translateZ","scaleZ","rotateX","rotateY"]},Hooks:{templates:{textShadow:["Color X Y Blur","black 0px 0px 0px"],boxShadow:["Color X Y Blur Spread","black 0px 0px 0px 0px"],clip:["Top Right Bottom Left","0px 0px 0px 0px"],backgroundPosition:["X Y","0% 0%"],transformOrigin:["X Y Z","50% 50% 0px"],perspectiveOrigin:["X Y","50% 50%"]},registered:{},register:function(){for(var e=0;e<x.Lists.colors.length;e++){var t="color"===x.Lists.colors[e]?"0 0 0 1":"255 255 255 1";x.Hooks.templates[x.Lists.colors[e]]=["Red Green Blue Alpha",t]}var r,a,n;if(f)for(r in x.Hooks.templates){a=x.Hooks.templates[r],n=a[0].split(" ");var o=a[1].match(x.RegEx.valueSplit);"Color"===n[0]&&(n.push(n.shift()),o.push(o.shift()),x.Hooks.templates[r]=[n.join(" "),o.join(" ")])}for(r in x.Hooks.templates){a=x.Hooks.templates[r],n=a[0].split(" ");for(var e in n){var i=r+n[e],s=e;x.Hooks.registered[i]=[r,s]}}},getRoot:function(e){var t=x.Hooks.registered[e];return t?t[0]:e},cleanRootPropertyValue:function(e,t){return x.RegEx.valueUnwrap.test(t)&&(t=t.match(x.RegEx.valueUnwrap)[1]),x.Values.isCSSNullValue(t)&&(t=x.Hooks.templates[e][1]),t},extractValue:function(e,t){var r=x.Hooks.registered[e];if(r){var a=r[0],n=r[1];return t=x.Hooks.cleanRootPropertyValue(a,t),t.toString().match(x.RegEx.valueSplit)[n]}return t},injectValue:function(e,t,r){var a=x.Hooks.registered[e];if(a){var n=a[0],o=a[1],i,s;return r=x.Hooks.cleanRootPropertyValue(n,r),i=r.toString().match(x.RegEx.valueSplit),i[o]=t,s=i.join(" ")}return r}},Normalizations:{registered:{clip:function(e,t,r){switch(e){case"name":return"clip";case"extract":var a;return x.RegEx.wrappedValueAlreadyExtracted.test(r)?a=r:(a=r.toString().match(x.RegEx.valueUnwrap),a=a?a[1].replace(/,(\s+)?/g," "):r),a;case"inject":return"rect("+r+")"}},blur:function(e,t,r){switch(e){case"name":return v.State.isFirefox?"filter":"-webkit-filter";case"extract":var a=parseFloat(r);if(!a&&0!==a){var n=r.toString().match(/blur\(([0-9]+[A-z]+)\)/i);a=n?n[1]:0}return a;case"inject":return parseFloat(r)?"blur("+r+")":"none"}},opacity:function(e,t,r){if(8>=f)switch(e){case"name":return"filter";case"extract":var a=r.toString().match(/alpha\(opacity=(.*)\)/i);return r=a?a[1]/100:1;case"inject":return t.style.zoom=1,parseFloat(r)>=1?"":"alpha(opacity="+parseInt(100*parseFloat(r),10)+")"}else switch(e){case"name":return"opacity";case"extract":return r;case"inject":return r}}},register:function(){9>=f||v.State.isGingerbread||(x.Lists.transformsBase=x.Lists.transformsBase.concat(x.Lists.transforms3D));for(var e=0;e<x.Lists.transformsBase.length;e++)!function(){var t=x.Lists.transformsBase[e];x.Normalizations.registered[t]=function(e,r,n){switch(e){case"name":return"transform";case"extract":return i(r)===a||i(r).transformCache[t]===a?/^scale/i.test(t)?1:0:i(r).transformCache[t].replace(/[()]/g,"");case"inject":var o=!1;switch(t.substr(0,t.length-1)){case"translate":o=!/(%|px|em|rem|vw|vh|\d)$/i.test(n);break;case"scal":case"scale":v.State.isAndroid&&i(r).transformCache[t]===a&&1>n&&(n=1),o=!/(\d)$/i.test(n);break;case"skew":o=!/(deg|\d)$/i.test(n);break;case"rotate":o=!/(deg|\d)$/i.test(n)}return o||(i(r).transformCache[t]="("+n+")"),i(r).transformCache[t]}}}();for(var e=0;e<x.Lists.colors.length;e++)!function(){var t=x.Lists.colors[e];x.Normalizations.registered[t]=function(e,r,n){switch(e){case"name":return t;case"extract":var o;if(x.RegEx.wrappedValueAlreadyExtracted.test(n))o=n;else{var i,s={black:"rgb(0, 0, 0)",blue:"rgb(0, 0, 255)",gray:"rgb(128, 128, 128)",green:"rgb(0, 128, 0)",red:"rgb(255, 0, 0)",white:"rgb(255, 255, 255)"};/^[A-z]+$/i.test(n)?i=s[n]!==a?s[n]:s.black:x.RegEx.isHex.test(n)?i="rgb("+x.Values.hexToRgb(n).join(" ")+")":/^rgba?\(/i.test(n)||(i=s.black),o=(i||n).toString().match(x.RegEx.valueUnwrap)[1].replace(/,(\s+)?/g," ")}return 8>=f||3!==o.split(" ").length||(o+=" 1"),o;case"inject":return 8>=f?4===n.split(" ").length&&(n=n.split(/\s+/).slice(0,3).join(" ")):3===n.split(" ").length&&(n+=" 1"),(8>=f?"rgb":"rgba")+"("+n.replace(/\s+/g,",").replace(/\.(\d)+(?=,)/g,"")+")"}}}()}},Names:{camelCase:function(e){return e.replace(/-(\w)/g,function(e,t){return t.toUpperCase()})},SVGAttribute:function(e){var t="width|height|x|y|cx|cy|r|rx|ry|x1|x2|y1|y2";return(f||v.State.isAndroid&&!v.State.isChrome)&&(t+="|transform"),new RegExp("^("+t+")$","i").test(e)},prefixCheck:function(e){if(v.State.prefixMatches[e])return[v.State.prefixMatches[e],!0];for(var t=["","Webkit","Moz","ms","O"],r=0,a=t.length;a>r;r++){var n;if(n=0===r?e:t[r]+e.replace(/^\w/,function(e){return e.toUpperCase()}),g.isString(v.State.prefixElement.style[n]))return v.State.prefixMatches[e]=n,[n,!0]}return[e,!1]}},Values:{hexToRgb:function(e){var t=/^#?([a-f\d])([a-f\d])([a-f\d])$/i,r=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i,a;return e=e.replace(t,function(e,t,r,a){return t+t+r+r+a+a}),a=r.exec(e),a?[parseInt(a[1],16),parseInt(a[2],16),parseInt(a[3],16)]:[0,0,0]},isCSSNullValue:function(e){return 0==e||/^(none|auto|transparent|(rgba\(0, ?0, ?0, ?0\)))$/i.test(e)},getUnitType:function(e){return/^(rotate|skew)/i.test(e)?"deg":/(^(scale|scaleX|scaleY|scaleZ|alpha|flexGrow|flexHeight|zIndex|fontWeight)$)|((opacity|red|green|blue|alpha)$)/i.test(e)?"":"px"},getDisplayType:function(e){var t=e&&e.tagName.toString().toLowerCase();return/^(b|big|i|small|tt|abbr|acronym|cite|code|dfn|em|kbd|strong|samp|var|a|bdo|br|img|map|object|q|script|span|sub|sup|button|input|label|select|textarea)$/i.test(t)?"inline":/^(li)$/i.test(t)?"list-item":/^(tr)$/i.test(t)?"table-row":/^(table)$/i.test(t)?"table":/^(tbody)$/i.test(t)?"table-row-group":"block"},addClass:function(e,t){e.classList?e.classList.add(t):e.className+=(e.className.length?" ":"")+t},removeClass:function(e,t){e.classList?e.classList.remove(t):e.className=e.className.toString().replace(new RegExp("(^|\\s)"+t.split(" ").join("|")+"(\\s|$)","gi")," ")}},getPropertyValue:function(e,r,n,o){function s(e,r){function n(){u&&x.setPropertyValue(e,"display","none")}var l=0;if(8>=f)l=$.css(e,r);else{var u=!1;if(/^(width|height)$/.test(r)&&0===x.getPropertyValue(e,"display")&&(u=!0,x.setPropertyValue(e,"display",x.Values.getDisplayType(e))),!o){if("height"===r&&"border-box"!==x.getPropertyValue(e,"boxSizing").toString().toLowerCase()){var c=e.offsetHeight-(parseFloat(x.getPropertyValue(e,"borderTopWidth"))||0)-(parseFloat(x.getPropertyValue(e,"borderBottomWidth"))||0)-(parseFloat(x.getPropertyValue(e,"paddingTop"))||0)-(parseFloat(x.getPropertyValue(e,"paddingBottom"))||0);return n(),c}if("width"===r&&"border-box"!==x.getPropertyValue(e,"boxSizing").toString().toLowerCase()){var p=e.offsetWidth-(parseFloat(x.getPropertyValue(e,"borderLeftWidth"))||0)-(parseFloat(x.getPropertyValue(e,"borderRightWidth"))||0)-(parseFloat(x.getPropertyValue(e,"paddingLeft"))||0)-(parseFloat(x.getPropertyValue(e,"paddingRight"))||0);return n(),p}}var d;d=i(e)===a?t.getComputedStyle(e,null):i(e).computedStyle?i(e).computedStyle:i(e).computedStyle=t.getComputedStyle(e,null),"borderColor"===r&&(r="borderTopColor"),l=9===f&&"filter"===r?d.getPropertyValue(r):d[r],(""===l||null===l)&&(l=e.style[r]),n()}if("auto"===l&&/^(top|right|bottom|left)$/i.test(r)){var g=s(e,"position");("fixed"===g||"absolute"===g&&/top|left/i.test(r))&&(l=$(e).position()[r]+"px")}return l}var l;if(x.Hooks.registered[r]){var u=r,c=x.Hooks.getRoot(u);n===a&&(n=x.getPropertyValue(e,x.Names.prefixCheck(c)[0])),x.Normalizations.registered[c]&&(n=x.Normalizations.registered[c]("extract",e,n)),l=x.Hooks.extractValue(u,n)}else if(x.Normalizations.registered[r]){var p,d;p=x.Normalizations.registered[r]("name",e),"transform"!==p&&(d=s(e,x.Names.prefixCheck(p)[0]),x.Values.isCSSNullValue(d)&&x.Hooks.templates[r]&&(d=x.Hooks.templates[r][1])),l=x.Normalizations.registered[r]("extract",e,d)}if(!/^[\d-]/.test(l))if(i(e)&&i(e).isSVG&&x.Names.SVGAttribute(r))if(/^(height|width)$/i.test(r))try{l=e.getBBox()[r]}catch(g){l=0}else l=e.getAttribute(r);else l=s(e,x.Names.prefixCheck(r)[0]);return x.Values.isCSSNullValue(l)&&(l=0),v.debug>=2&&console.log("Get "+r+": "+l),l},setPropertyValue:function(e,r,a,n,o){var s=r;if("scroll"===r)o.container?o.container["scroll"+o.direction]=a:"Left"===o.direction?t.scrollTo(a,o.alternateValue):t.scrollTo(o.alternateValue,a);else if(x.Normalizations.registered[r]&&"transform"===x.Normalizations.registered[r]("name",e))x.Normalizations.registered[r]("inject",e,a),s="transform",a=i(e).transformCache[r];else{if(x.Hooks.registered[r]){var l=r,u=x.Hooks.getRoot(r);n=n||x.getPropertyValue(e,u),a=x.Hooks.injectValue(l,a,n),r=u}if(x.Normalizations.registered[r]&&(a=x.Normalizations.registered[r]("inject",e,a),r=x.Normalizations.registered[r]("name",e)),s=x.Names.prefixCheck(r)[0],8>=f)try{e.style[s]=a}catch(c){v.debug&&console.log("Browser does not support ["+a+"] for ["+s+"]")}else i(e)&&i(e).isSVG&&x.Names.SVGAttribute(r)?e.setAttribute(r,a):e.style[s]=a;v.debug>=2&&console.log("Set "+r+" ("+s+"): "+a)}return[s,a]},flushTransformCache:function(e){function t(t){return parseFloat(x.getPropertyValue(e,t))}var r="";if((f||v.State.isAndroid&&!v.State.isChrome)&&i(e).isSVG){var a={translate:[t("translateX"),t("translateY")],skewX:[t("skewX")],skewY:[t("skewY")],scale:1!==t("scale")?[t("scale"),t("scale")]:[t("scaleX"),t("scaleY")],rotate:[t("rotateZ"),0,0]};$.each(i(e).transformCache,function(e){/^translate/i.test(e)?e="translate":/^scale/i.test(e)?e="scale":/^rotate/i.test(e)&&(e="rotate"),a[e]&&(r+=e+"("+a[e].join(" ")+") ",delete a[e])})}else{var n,o;$.each(i(e).transformCache,function(t){return n=i(e).transformCache[t],"transformPerspective"===t?(o=n,!0):(9===f&&"rotateZ"===t&&(t="rotate"),void(r+=t+n+" "))}),o&&(r="perspective"+o+" "+r)}x.setPropertyValue(e,"transform",r)}};x.Hooks.register(),x.Normalizations.register(),v.hook=function(e,t,r){var n=a;return e=o(e),$.each(e,function(e,o){if(i(o)===a&&v.init(o),r===a)n===a&&(n=v.CSS.getPropertyValue(o,t));else{var s=v.CSS.setPropertyValue(o,t,r);"transform"===s[0]&&v.CSS.flushTransformCache(o),n=s}}),n};var S=function(){function e(){return l?T.promise||null:f}function n(){function e(e){function p(e,t){var r=a,i=a,s=a;return g.isArray(e)?(r=e[0],!g.isArray(e[1])&&/^[\d-]/.test(e[1])||g.isFunction(e[1])||x.RegEx.isHex.test(e[1])?s=e[1]:(g.isString(e[1])&&!x.RegEx.isHex.test(e[1])||g.isArray(e[1]))&&(i=t?e[1]:u(e[1],o.duration),e[2]!==a&&(s=e[2]))):r=e,t||(i=i||o.easing),g.isFunction(r)&&(r=r.call(n,w,P)),g.isFunction(s)&&(s=s.call(n,w,P)),[r||0,i,s]}function f(e,t){var r,a;return a=(t||"0").toString().toLowerCase().replace(/[%A-z]+$/,function(e){return r=e,""}),r||(r=x.Values.getUnitType(e)),[a,r]}function d(){var e={myParent:n.parentNode||r.body,position:x.getPropertyValue(n,"position"),fontSize:x.getPropertyValue(n,"fontSize")},a=e.position===N.lastPosition&&e.myParent===N.lastParent,o=e.fontSize===N.lastFontSize;N.lastParent=e.myParent,N.lastPosition=e.position,N.lastFontSize=e.fontSize;var s=100,l={};if(o&&a)l.emToPx=N.lastEmToPx,l.percentToPxWidth=N.lastPercentToPxWidth,l.percentToPxHeight=N.lastPercentToPxHeight;else{var u=i(n).isSVG?r.createElementNS("http://www.w3.org/2000/svg","rect"):r.createElement("div");v.init(u),e.myParent.appendChild(u),$.each(["overflow","overflowX","overflowY"],function(e,t){v.CSS.setPropertyValue(u,t,"hidden")}),v.CSS.setPropertyValue(u,"position",e.position),v.CSS.setPropertyValue(u,"fontSize",e.fontSize),v.CSS.setPropertyValue(u,"boxSizing","content-box"),$.each(["minWidth","maxWidth","width","minHeight","maxHeight","height"],function(e,t){v.CSS.setPropertyValue(u,t,s+"%")}),v.CSS.setPropertyValue(u,"paddingLeft",s+"em"),l.percentToPxWidth=N.lastPercentToPxWidth=(parseFloat(x.getPropertyValue(u,"width",null,!0))||1)/s,l.percentToPxHeight=N.lastPercentToPxHeight=(parseFloat(x.getPropertyValue(u,"height",null,!0))||1)/s,l.emToPx=N.lastEmToPx=(parseFloat(x.getPropertyValue(u,"paddingLeft"))||1)/s,e.myParent.removeChild(u)}return null===N.remToPx&&(N.remToPx=parseFloat(x.getPropertyValue(r.body,"fontSize"))||16),null===N.vwToPx&&(N.vwToPx=parseFloat(t.innerWidth)/100,N.vhToPx=parseFloat(t.innerHeight)/100),l.remToPx=N.remToPx,l.vwToPx=N.vwToPx,l.vhToPx=N.vhToPx,v.debug>=1&&console.log("Unit ratios: "+JSON.stringify(l),n),l}if(o.begin&&0===w)try{o.begin.call(m,m)}catch(y){setTimeout(function(){throw y},1)}if("scroll"===k){var S=/^x$/i.test(o.axis)?"Left":"Top",V=parseFloat(o.offset)||0,C,A,F;o.container?g.isWrapped(o.container)||g.isNode(o.container)?(o.container=o.container[0]||o.container,C=o.container["scroll"+S],F=C+$(n).position()[S.toLowerCase()]+V):o.container=null:(C=v.State.scrollAnchor[v.State["scrollProperty"+S]],A=v.State.scrollAnchor[v.State["scrollProperty"+("Left"===S?"Top":"Left")]],F=$(n).offset()[S.toLowerCase()]+V),s={scroll:{rootPropertyValue:!1,startValue:C,currentValue:C,endValue:F,unitType:"",easing:o.easing,scrollData:{container:o.container,direction:S,alternateValue:A}},element:n},v.debug&&console.log("tweensContainer (scroll): ",s.scroll,n)}else if("reverse"===k){if(!i(n).tweensContainer)return void $.dequeue(n,o.queue);"none"===i(n).opts.display&&(i(n).opts.display="auto"),"hidden"===i(n).opts.visibility&&(i(n).opts.visibility="visible"),i(n).opts.loop=!1,i(n).opts.begin=null,i(n).opts.complete=null,b.easing||delete o.easing,b.duration||delete o.duration,o=$.extend({},i(n).opts,o);var E=$.extend(!0,{},i(n).tweensContainer);for(var j in E)if("element"!==j){var H=E[j].startValue;E[j].startValue=E[j].currentValue=E[j].endValue,E[j].endValue=H,g.isEmptyObject(b)||(E[j].easing=o.easing),v.debug&&console.log("reverse tweensContainer ("+j+"): "+JSON.stringify(E[j]),n)}s=E}else if("start"===k){var E;i(n).tweensContainer&&i(n).isAnimating===!0&&(E=i(n).tweensContainer),$.each(h,function(e,t){if(RegExp("^"+x.Lists.colors.join("$|^")+"$").test(e)){var r=p(t,!0),n=r[0],o=r[1],i=r[2];if(x.RegEx.isHex.test(n)){for(var s=["Red","Green","Blue"],l=x.Values.hexToRgb(n),u=i?x.Values.hexToRgb(i):a,c=0;c<s.length;c++){var f=[l[c]];o&&f.push(o),u!==a&&f.push(u[c]),h[e+s[c]]=f}delete h[e]}}});for(var R in h){var O=p(h[R]),z=O[0],q=O[1],M=O[2];R=x.Names.camelCase(R);var I=x.Hooks.getRoot(R),B=!1;if(i(n).isSVG||"tween"===I||x.Names.prefixCheck(I)[1]!==!1||x.Normalizations.registered[I]!==a){(o.display!==a&&null!==o.display&&"none"!==o.display||o.visibility!==a&&"hidden"!==o.visibility)&&/opacity|filter/.test(R)&&!M&&0!==z&&(M=0),o._cacheValues&&E&&E[R]?(M===a&&(M=E[R].endValue+E[R].unitType),B=i(n).rootPropertyValueCache[I]):x.Hooks.registered[R]?M===a?(B=x.getPropertyValue(n,I),M=x.getPropertyValue(n,R,B)):B=x.Hooks.templates[I][1]:M===a&&(M=x.getPropertyValue(n,R));var W,G,D,X=!1;if(W=f(R,M),M=W[0],D=W[1],W=f(R,z),z=W[0].replace(/^([+-\/*])=/,function(e,t){return X=t,""}),G=W[1],M=parseFloat(M)||0,z=parseFloat(z)||0,"%"===G&&(/^(fontSize|lineHeight)$/.test(R)?(z/=100,G="em"):/^scale/.test(R)?(z/=100,G=""):/(Red|Green|Blue)$/i.test(R)&&(z=z/100*255,G="")),/[\/*]/.test(X))G=D;else if(D!==G&&0!==M)if(0===z)G=D;else{l=l||d();var Y=/margin|padding|left|right|width|text|word|letter/i.test(R)||/X$/.test(R)||"x"===R?"x":"y";switch(D){case"%":M*="x"===Y?l.percentToPxWidth:l.percentToPxHeight;break;case"px":break;default:M*=l[D+"ToPx"]}switch(G){case"%":M*=1/("x"===Y?l.percentToPxWidth:l.percentToPxHeight);break;case"px":break;default:M*=1/l[G+"ToPx"]}}switch(X){case"+":z=M+z;break;case"-":z=M-z;break;case"*":z=M*z;break;case"/":z=M/z}s[R]={rootPropertyValue:B,startValue:M,currentValue:M,endValue:z,unitType:G,easing:q},v.debug&&console.log("tweensContainer ("+R+"): "+JSON.stringify(s[R]),n)}else v.debug&&console.log("Skipping ["+I+"] due to a lack of browser support.")}s.element=n}s.element&&(x.Values.addClass(n,"velocity-animating"),L.push(s),""===o.queue&&(i(n).tweensContainer=s,i(n).opts=o),i(n).isAnimating=!0,w===P-1?(v.State.calls.push([L,m,o,null,T.resolver]),v.State.isTicking===!1&&(v.State.isTicking=!0,c())):w++)}var n=this,o=$.extend({},v.defaults,b),s={},l;switch(i(n)===a&&v.init(n),parseFloat(o.delay)&&o.queue!==!1&&$.queue(n,o.queue,function(e){v.velocityQueueEntryFlag=!0,i(n).delayTimer={setTimeout:setTimeout(e,parseFloat(o.delay)),next:e}}),o.duration.toString().toLowerCase()){case"fast":o.duration=200;break;case"normal":o.duration=y;break;case"slow":o.duration=600;break;default:o.duration=parseFloat(o.duration)||1}v.mock!==!1&&(v.mock===!0?o.duration=o.delay=1:(o.duration*=parseFloat(v.mock)||1,o.delay*=parseFloat(v.mock)||1)),o.easing=u(o.easing,o.duration),o.begin&&!g.isFunction(o.begin)&&(o.begin=null),o.progress&&!g.isFunction(o.progress)&&(o.progress=null),o.complete&&!g.isFunction(o.complete)&&(o.complete=null),o.display!==a&&null!==o.display&&(o.display=o.display.toString().toLowerCase(),"auto"===o.display&&(o.display=v.CSS.Values.getDisplayType(n))),o.visibility!==a&&null!==o.visibility&&(o.visibility=o.visibility.toString().toLowerCase()),o.mobileHA=o.mobileHA&&v.State.isMobile&&!v.State.isGingerbread,o.queue===!1?o.delay?setTimeout(e,o.delay):e():$.queue(n,o.queue,function(t,r){return r===!0?(T.promise&&T.resolver(m),!0):(v.velocityQueueEntryFlag=!0,void e(t))}),""!==o.queue&&"fx"!==o.queue||"inprogress"===$.queue(n)[0]||$.dequeue(n)}var s=arguments[0]&&(arguments[0].p||$.isPlainObject(arguments[0].properties)&&!arguments[0].properties.names||g.isString(arguments[0].properties)),l,f,d,m,h,b;if(g.isWrapped(this)?(l=!1,d=0,m=this,f=this):(l=!0,d=1,m=s?arguments[0].elements||arguments[0].e:arguments[0]),m=o(m)){s?(h=arguments[0].properties||arguments[0].p,b=arguments[0].options||arguments[0].o):(h=arguments[d],b=arguments[d+1]);var P=m.length,w=0;if(!/^(stop|finish)$/i.test(h)&&!$.isPlainObject(b)){var V=d+1;b={};for(var C=V;C<arguments.length;C++)g.isArray(arguments[C])||!/^(fast|normal|slow)$/i.test(arguments[C])&&!/^\d/.test(arguments[C])?g.isString(arguments[C])||g.isArray(arguments[C])?b.easing=arguments[C]:g.isFunction(arguments[C])&&(b.complete=arguments[C]):b.duration=arguments[C]}var T={promise:null,resolver:null,rejecter:null};l&&v.Promise&&(T.promise=new v.Promise(function(e,t){T.resolver=e,T.rejecter=t}));var k;switch(h){case"scroll":k="scroll";break;case"reverse":k="reverse";break;case"finish":case"stop":$.each(m,function(e,t){i(t)&&i(t).delayTimer&&(clearTimeout(i(t).delayTimer.setTimeout),i(t).delayTimer.next&&i(t).delayTimer.next(),delete i(t).delayTimer)});var A=[];return $.each(v.State.calls,function(e,t){t&&$.each(t[1],function(r,n){var o=b===a?"":b;return o===!0||t[2].queue===o||b===a&&t[2].queue===!1?void $.each(m,function(r,a){a===n&&((b===!0||g.isString(b))&&($.each($.queue(a,g.isString(b)?b:""),function(e,t){g.isFunction(t)&&t(null,!0)}),$.queue(a,g.isString(b)?b:"",[])),"stop"===h?(i(a)&&i(a).tweensContainer&&o!==!1&&$.each(i(a).tweensContainer,function(e,t){t.endValue=t.currentValue
 }),A.push(e)):"finish"===h&&(t[2].duration=1))}):!0})}),"stop"===h&&($.each(A,function(e,t){p(t,!0)}),T.promise&&T.resolver(m)),e();default:if(!$.isPlainObject(h)||g.isEmptyObject(h)){if(g.isString(h)&&v.Redirects[h]){var F=$.extend({},b),E=F.duration,j=F.delay||0;return F.backwards===!0&&(m=$.extend(!0,[],m).reverse()),$.each(m,function(e,t){parseFloat(F.stagger)?F.delay=j+parseFloat(F.stagger)*e:g.isFunction(F.stagger)&&(F.delay=j+F.stagger.call(t,e,P)),F.drag&&(F.duration=parseFloat(E)||(/^(callout|transition)/.test(h)?1e3:y),F.duration=Math.max(F.duration*(F.backwards?1-e/P:(e+1)/P),.75*F.duration,200)),v.Redirects[h].call(t,t,F||{},e,P,m,T.promise?T:a)}),e()}var H="Velocity: First argument ("+h+") was not a property map, a known action, or a registered redirect. Aborting.";return T.promise?T.rejecter(new Error(H)):console.log(H),e()}k="start"}var N={lastParent:null,lastPosition:null,lastFontSize:null,lastPercentToPxWidth:null,lastPercentToPxHeight:null,lastEmToPx:null,remToPx:null,vwToPx:null,vhToPx:null},L=[];$.each(m,function(e,t){g.isNode(t)&&n.call(t)});var F=$.extend({},v.defaults,b),R;if(F.loop=parseInt(F.loop),R=2*F.loop-1,F.loop)for(var O=0;R>O;O++){var z={delay:F.delay,progress:F.progress};O===R-1&&(z.display=F.display,z.visibility=F.visibility,z.complete=F.complete),S(m,"reverse",z)}return e()}};v=$.extend(S,v),v.animate=S;var P=t.requestAnimationFrame||d;return v.State.isMobile||r.hidden===a||r.addEventListener("visibilitychange",function(){r.hidden?(P=function(e){return setTimeout(function(){e(!0)},16)},c()):P=t.requestAnimationFrame||d}),e.Velocity=v,e!==t&&(e.fn.velocity=S,e.fn.velocity.defaults=v.defaults),$.each(["Down","Up"],function(e,t){v.Redirects["slide"+t]=function(e,r,n,o,i,s){var l=$.extend({},r),u=l.begin,c=l.complete,p={height:"",marginTop:"",marginBottom:"",paddingTop:"",paddingBottom:""},f={};l.display===a&&(l.display="Down"===t?"inline"===v.CSS.Values.getDisplayType(e)?"inline-block":"block":"none"),l.begin=function(){u&&u.call(i,i);for(var r in p){f[r]=e.style[r];var a=v.CSS.getPropertyValue(e,r);p[r]="Down"===t?[a,0]:[0,a]}f.overflow=e.style.overflow,e.style.overflow="hidden"},l.complete=function(){for(var t in f)e.style[t]=f[t];c&&c.call(i,i),s&&s.resolver(i)},v(e,p,l)}}),$.each(["In","Out"],function(e,t){v.Redirects["fade"+t]=function(e,r,n,o,i,s){var l=$.extend({},r),u={opacity:"In"===t?1:0},c=l.complete;l.complete=n!==o-1?l.begin=null:function(){c&&c.call(i,i),s&&s.resolver(i)},l.display===a&&(l.display="In"===t?"auto":"none"),v(this,u,l)}}),v}(window.jQuery||window.Zepto||window,window,document)});
 /*!
- * ScrollMagic v2.0.6 (2018-10-08)
- * The javascript library for magical scroll interactions.
- * (c) 2018 Jan Paepke (@janpaepke)
- * Project Website: http://scrollmagic.io
- * 
- * @version 2.0.6
- * @license Dual licensed under MIT license and GPL.
- * @author Jan Paepke - e-mail@janpaepke.de
- *
- * @file ScrollMagic main library.
- */
-/**
- * @namespace ScrollMagic
- */
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define(factory);
-	} else if (typeof exports === 'object') {
-		// CommonJS
-		module.exports = factory();
-	} else {
-		// Browser global
-		root.ScrollMagic = factory();
-	}
-}(this, function () {
-	"use strict";
-
-	var ScrollMagic = function () {
-		_util.log(2, '(COMPATIBILITY NOTICE) -> As of ScrollMagic 2.0.0 you need to use \'new ScrollMagic.Controller()\' to create a new controller instance. Use \'new ScrollMagic.Scene()\' to instance a scene.');
-	};
-
-	ScrollMagic.version = "2.0.6";
-
-	// TODO: temporary workaround for chrome's scroll jitter bug
-	window.addEventListener("mousewheel", function () {});
-
-	// global const
-	var PIN_SPACER_ATTRIBUTE = "data-scrollmagic-pin-spacer";
-
-	/**
-	 * The main class that is needed once per scroll container.
-	 *
-	 * @class
-	 *
-	 * @example
-	 * // basic initialization
-	 * var controller = new ScrollMagic.Controller();
-	 *
-	 * // passing options
-	 * var controller = new ScrollMagic.Controller({container: "#myContainer", loglevel: 3});
-	 *
-	 * @param {object} [options] - An object containing one or more options for the controller.
-	 * @param {(string|object)} [options.container=window] - A selector, DOM object that references the main container for scrolling.
-	 * @param {boolean} [options.vertical=true] - Sets the scroll mode to vertical (`true`) or horizontal (`false`) scrolling.
-	 * @param {object} [options.globalSceneOptions={}] - These options will be passed to every Scene that is added to the controller using the addScene method. For more information on Scene options see {@link ScrollMagic.Scene}.
-	 * @param {number} [options.loglevel=2] Loglevel for debugging. Note that logging is disabled in the minified version of ScrollMagic.
-	 ** `0` => silent
-	 ** `1` => errors
-	 ** `2` => errors, warnings
-	 ** `3` => errors, warnings, debuginfo
-	 * @param {boolean} [options.refreshInterval=100] - Some changes don't call events by default, like changing the container size or moving a scene trigger element.  
-	 This interval polls these parameters to fire the necessary events.  
-	 If you don't use custom containers, trigger elements or have static layouts, where the positions of the trigger elements don't change, you can set this to 0 disable interval checking and improve performance.
-	 *
-	 */
-	ScrollMagic.Controller = function (options) {
-/*
-	 * ----------------------------------------------------------------
-	 * settings
-	 * ----------------------------------------------------------------
-	 */
-		var
-		NAMESPACE = 'ScrollMagic.Controller',
-			SCROLL_DIRECTION_FORWARD = 'FORWARD',
-			SCROLL_DIRECTION_REVERSE = 'REVERSE',
-			SCROLL_DIRECTION_PAUSED = 'PAUSED',
-			DEFAULT_OPTIONS = CONTROLLER_OPTIONS.defaults;
-
-/*
-	 * ----------------------------------------------------------------
-	 * private vars
-	 * ----------------------------------------------------------------
-	 */
-		var
-		Controller = this,
-			_options = _util.extend({}, DEFAULT_OPTIONS, options),
-			_sceneObjects = [],
-			_updateScenesOnNextCycle = false,
-			// can be boolean (true => all scenes) or an array of scenes to be updated
-			_scrollPos = 0,
-			_scrollDirection = SCROLL_DIRECTION_PAUSED,
-			_isDocument = true,
-			_viewPortSize = 0,
-			_enabled = true,
-			_updateTimeout, _refreshTimeout;
-
-/*
-	 * ----------------------------------------------------------------
-	 * private functions
-	 * ----------------------------------------------------------------
-	 */
-
-		/**
-		 * Internal constructor function of the ScrollMagic Controller
-		 * @private
-		 */
-		var construct = function () {
-			for (var key in _options) {
-				if (!DEFAULT_OPTIONS.hasOwnProperty(key)) {
-					log(2, "WARNING: Unknown option \"" + key + "\"");
-					delete _options[key];
-				}
-			}
-			_options.container = _util.get.elements(_options.container)[0];
-			// check ScrollContainer
-			if (!_options.container) {
-				log(1, "ERROR creating object " + NAMESPACE + ": No valid scroll container supplied");
-				throw NAMESPACE + " init failed."; // cancel
-			}
-			_isDocument = _options.container === window || _options.container === document.body || !document.body.contains(_options.container);
-			// normalize to window
-			if (_isDocument) {
-				_options.container = window;
-			}
-			// update container size immediately
-			_viewPortSize = getViewportSize();
-			// set event handlers
-			_options.container.addEventListener("resize", onChange);
-			_options.container.addEventListener("scroll", onChange);
-
-			var ri = parseInt(_options.refreshInterval, 10);
-			_options.refreshInterval = _util.type.Number(ri) ? ri : DEFAULT_OPTIONS.refreshInterval;
-			scheduleRefresh();
-
-			log(3, "added new " + NAMESPACE + " controller (v" + ScrollMagic.version + ")");
-		};
-
-		/**
-		 * Schedule the next execution of the refresh function
-		 * @private
-		 */
-		var scheduleRefresh = function () {
-			if (_options.refreshInterval > 0) {
-				_refreshTimeout = window.setTimeout(refresh, _options.refreshInterval);
-			}
-		};
-
-		/**
-		 * Default function to get scroll pos - overwriteable using `Controller.scrollPos(newFunction)`
-		 * @private
-		 */
-		var getScrollPos = function () {
-			return _options.vertical ? _util.get.scrollTop(_options.container) : _util.get.scrollLeft(_options.container);
-		};
-
-		/**
-		 * Returns the current viewport Size (width vor horizontal, height for vertical)
-		 * @private
-		 */
-		var getViewportSize = function () {
-			return _options.vertical ? _util.get.height(_options.container) : _util.get.width(_options.container);
-		};
-
-		/**
-		 * Default function to set scroll pos - overwriteable using `Controller.scrollTo(newFunction)`
-		 * Make available publicly for pinned mousewheel workaround.
-		 * @private
-		 */
-		var setScrollPos = this._setScrollPos = function (pos) {
-			if (_options.vertical) {
-				if (_isDocument) {
-					window.scrollTo(_util.get.scrollLeft(), pos);
-				} else {
-					_options.container.scrollTop = pos;
-				}
-			} else {
-				if (_isDocument) {
-					window.scrollTo(pos, _util.get.scrollTop());
-				} else {
-					_options.container.scrollLeft = pos;
-				}
-			}
-		};
-
-		/**
-		 * Handle updates in cycles instead of on scroll (performance)
-		 * @private
-		 */
-		var updateScenes = function () {
-			if (_enabled && _updateScenesOnNextCycle) {
-				// determine scenes to update
-				var scenesToUpdate = _util.type.Array(_updateScenesOnNextCycle) ? _updateScenesOnNextCycle : _sceneObjects.slice(0);
-				// reset scenes
-				_updateScenesOnNextCycle = false;
-				var oldScrollPos = _scrollPos;
-				// update scroll pos now instead of onChange, as it might have changed since scheduling (i.e. in-browser smooth scroll)
-				_scrollPos = Controller.scrollPos();
-				var deltaScroll = _scrollPos - oldScrollPos;
-				if (deltaScroll !== 0) { // scroll position changed?
-					_scrollDirection = (deltaScroll > 0) ? SCROLL_DIRECTION_FORWARD : SCROLL_DIRECTION_REVERSE;
-				}
-				// reverse order of scenes if scrolling reverse
-				if (_scrollDirection === SCROLL_DIRECTION_REVERSE) {
-					scenesToUpdate.reverse();
-				}
-				// update scenes
-				scenesToUpdate.forEach(function (scene, index) {
-					log(3, "updating Scene " + (index + 1) + "/" + scenesToUpdate.length + " (" + _sceneObjects.length + " total)");
-					scene.update(true);
-				});
-				if (scenesToUpdate.length === 0 && _options.loglevel >= 3) {
-					log(3, "updating 0 Scenes (nothing added to controller)");
-				}
-			}
-		};
-
-		/**
-		 * Initializes rAF callback
-		 * @private
-		 */
-		var debounceUpdate = function () {
-			_updateTimeout = _util.rAF(updateScenes);
-		};
-
-		/**
-		 * Handles Container changes
-		 * @private
-		 */
-		var onChange = function (e) {
-			log(3, "event fired causing an update:", e.type);
-			if (e.type == "resize") {
-				// resize
-				_viewPortSize = getViewportSize();
-				_scrollDirection = SCROLL_DIRECTION_PAUSED;
-			}
-			// schedule update
-			if (_updateScenesOnNextCycle !== true) {
-				_updateScenesOnNextCycle = true;
-				debounceUpdate();
-			}
-		};
-
-		var refresh = function () {
-			if (!_isDocument) {
-				// simulate resize event. Only works for viewport relevant param (performance)
-				if (_viewPortSize != getViewportSize()) {
-					var resizeEvent;
-					try {
-						resizeEvent = new Event('resize', {
-							bubbles: false,
-							cancelable: false
-						});
-					} catch (e) { // stupid IE
-						resizeEvent = document.createEvent("Event");
-						resizeEvent.initEvent("resize", false, false);
-					}
-					_options.container.dispatchEvent(resizeEvent);
-				}
-			}
-			_sceneObjects.forEach(function (scene, index) { // refresh all scenes
-				scene.refresh();
-			});
-			scheduleRefresh();
-		};
-
-		/**
-		 * Send a debug message to the console.
-		 * provided publicly with _log for plugins
-		 * @private
-		 *
-		 * @param {number} loglevel - The loglevel required to initiate output for the message.
-		 * @param {...mixed} output - One or more variables that should be passed to the console.
-		 */
-		var log = this._log = function (loglevel, output) {
-			if (_options.loglevel >= loglevel) {
-				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ") ->");
-				_util.log.apply(window, arguments);
-			}
-		};
-		// for scenes we have getters for each option, but for the controller we don't, so we need to make it available externally for plugins
-		this._options = _options;
-
-		/**
-		 * Sort scenes in ascending order of their start offset.
-		 * @private
-		 *
-		 * @param {array} ScenesArray - an array of ScrollMagic Scenes that should be sorted
-		 * @return {array} The sorted array of Scenes.
-		 */
-		var sortScenes = function (ScenesArray) {
-			if (ScenesArray.length <= 1) {
-				return ScenesArray;
-			} else {
-				var scenes = ScenesArray.slice(0);
-				scenes.sort(function (a, b) {
-					return a.scrollOffset() > b.scrollOffset() ? 1 : -1;
-				});
-				return scenes;
-			}
-		};
-
-		/**
-		 * ----------------------------------------------------------------
-		 * public functions
-		 * ----------------------------------------------------------------
-		 */
-
-		/**
-		 * Add one ore more scene(s) to the controller.  
-		 * This is the equivalent to `Scene.addTo(controller)`.
-		 * @public
-		 * @example
-		 * // with a previously defined scene
-		 * controller.addScene(scene);
-		 *
-		 * // with a newly created scene.
-		 * controller.addScene(new ScrollMagic.Scene({duration : 0}));
-		 *
-		 * // adding multiple scenes
-		 * controller.addScene([scene, scene2, new ScrollMagic.Scene({duration : 0})]);
-		 *
-		 * @param {(ScrollMagic.Scene|array)} newScene - ScrollMagic Scene or Array of Scenes to be added to the controller.
-		 * @return {Controller} Parent object for chaining.
-		 */
-		this.addScene = function (newScene) {
-			if (_util.type.Array(newScene)) {
-				newScene.forEach(function (scene, index) {
-					Controller.addScene(scene);
-				});
-			} else if (newScene instanceof ScrollMagic.Scene) {
-				if (newScene.controller() !== Controller) {
-					newScene.addTo(Controller);
-				} else if (_sceneObjects.indexOf(newScene) < 0) {
-					// new scene
-					_sceneObjects.push(newScene); // add to array
-					_sceneObjects = sortScenes(_sceneObjects); // sort
-					newScene.on("shift.controller_sort", function () { // resort whenever scene moves
-						_sceneObjects = sortScenes(_sceneObjects);
-					});
-					// insert Global defaults.
-					for (var key in _options.globalSceneOptions) {
-						if (newScene[key]) {
-							newScene[key].call(newScene, _options.globalSceneOptions[key]);
-						}
-					}
-					log(3, "adding Scene (now " + _sceneObjects.length + " total)");
-				}
-			} else {
-				log(1, "ERROR: invalid argument supplied for '.addScene()'");
-			}
-			return Controller;
-		};
-
-		/**
-		 * Remove one ore more scene(s) from the controller.  
-		 * This is the equivalent to `Scene.remove()`.
-		 * @public
-		 * @example
-		 * // remove a scene from the controller
-		 * controller.removeScene(scene);
-		 *
-		 * // remove multiple scenes from the controller
-		 * controller.removeScene([scene, scene2, scene3]);
-		 *
-		 * @param {(ScrollMagic.Scene|array)} Scene - ScrollMagic Scene or Array of Scenes to be removed from the controller.
-		 * @returns {Controller} Parent object for chaining.
-		 */
-		this.removeScene = function (Scene) {
-			if (_util.type.Array(Scene)) {
-				Scene.forEach(function (scene, index) {
-					Controller.removeScene(scene);
-				});
-			} else {
-				var index = _sceneObjects.indexOf(Scene);
-				if (index > -1) {
-					Scene.off("shift.controller_sort");
-					_sceneObjects.splice(index, 1);
-					log(3, "removing Scene (now " + _sceneObjects.length + " left)");
-					Scene.remove();
-				}
-			}
-			return Controller;
-		};
-
-		/**
-		 * Update one ore more scene(s) according to the scroll position of the container.  
-		 * This is the equivalent to `Scene.update()`.  
-		 * The update method calculates the scene's start and end position (based on the trigger element, trigger hook, duration and offset) and checks it against the current scroll position of the container.  
-		 * It then updates the current scene state accordingly (or does nothing, if the state is already correct) – Pins will be set to their correct position and tweens will be updated to their correct progress.  
-		 * _**Note:** This method gets called constantly whenever Controller detects a change. The only application for you is if you change something outside of the realm of ScrollMagic, like moving the trigger or changing tween parameters._
-		 * @public
-		 * @example
-		 * // update a specific scene on next cycle
-		 * controller.updateScene(scene);
-		 *
-		 * // update a specific scene immediately
-		 * controller.updateScene(scene, true);
-		 *
-		 * // update multiple scenes scene on next cycle
-		 * controller.updateScene([scene1, scene2, scene3]);
-		 *
-		 * @param {ScrollMagic.Scene} Scene - ScrollMagic Scene or Array of Scenes that is/are supposed to be updated.
-		 * @param {boolean} [immediately=false] - If `true` the update will be instant, if `false` it will wait until next update cycle.  
-		 This is useful when changing multiple properties of the scene - this way it will only be updated once all new properties are set (updateScenes).
-		 * @return {Controller} Parent object for chaining.
-		 */
-		this.updateScene = function (Scene, immediately) {
-			if (_util.type.Array(Scene)) {
-				Scene.forEach(function (scene, index) {
-					Controller.updateScene(scene, immediately);
-				});
-			} else {
-				if (immediately) {
-					Scene.update(true);
-				} else if (_updateScenesOnNextCycle !== true && Scene instanceof ScrollMagic.Scene) { // if _updateScenesOnNextCycle is true, all connected scenes are already scheduled for update
-					// prep array for next update cycle
-					_updateScenesOnNextCycle = _updateScenesOnNextCycle || [];
-					if (_updateScenesOnNextCycle.indexOf(Scene) == -1) {
-						_updateScenesOnNextCycle.push(Scene);
-					}
-					_updateScenesOnNextCycle = sortScenes(_updateScenesOnNextCycle); // sort
-					debounceUpdate();
-				}
-			}
-			return Controller;
-		};
-
-		/**
-		 * Updates the controller params and calls updateScene on every scene, that is attached to the controller.  
-		 * See `Controller.updateScene()` for more information about what this means.  
-		 * In most cases you will not need this function, as it is called constantly, whenever ScrollMagic detects a state change event, like resize or scroll.  
-		 * The only application for this method is when ScrollMagic fails to detect these events.  
-		 * One application is with some external scroll libraries (like iScroll) that move an internal container to a negative offset instead of actually scrolling. In this case the update on the controller needs to be called whenever the child container's position changes.
-		 * For this case there will also be the need to provide a custom function to calculate the correct scroll position. See `Controller.scrollPos()` for details.
-		 * @public
-		 * @example
-		 * // update the controller on next cycle (saves performance due to elimination of redundant updates)
-		 * controller.update();
-		 *
-		 * // update the controller immediately
-		 * controller.update(true);
-		 *
-		 * @param {boolean} [immediately=false] - If `true` the update will be instant, if `false` it will wait until next update cycle (better performance)
-		 * @return {Controller} Parent object for chaining.
-		 */
-		this.update = function (immediately) {
-			onChange({
-				type: "resize"
-			}); // will update size and set _updateScenesOnNextCycle to true
-			if (immediately) {
-				updateScenes();
-			}
-			return Controller;
-		};
-
-		/**
-		 * Scroll to a numeric scroll offset, a DOM element, the start of a scene or provide an alternate method for scrolling.  
-		 * For vertical controllers it will change the top scroll offset and for horizontal applications it will change the left offset.
-		 * @public
-		 *
-		 * @since 1.1.0
-		 * @example
-		 * // scroll to an offset of 100
-		 * controller.scrollTo(100);
-		 *
-		 * // scroll to a DOM element
-		 * controller.scrollTo("#anchor");
-		 *
-		 * // scroll to the beginning of a scene
-		 * var scene = new ScrollMagic.Scene({offset: 200});
-		 * controller.scrollTo(scene);
-		 *
-		 * // define a new scroll position modification function (jQuery animate instead of jump)
-		 * controller.scrollTo(function (newScrollPos) {
-		 *	$("html, body").animate({scrollTop: newScrollPos});
-		 * });
-		 * controller.scrollTo(100); // call as usual, but the new function will be used instead
-		 *
-		 * // define a new scroll function with an additional parameter
-		 * controller.scrollTo(function (newScrollPos, message) {
-		 *  console.log(message);
-		 *	$(this).animate({scrollTop: newScrollPos});
-		 * });
-		 * // call as usual, but supply an extra parameter to the defined custom function
-		 * controller.scrollTo(100, "my message");
-		 *
-		 * // define a new scroll function with an additional parameter containing multiple variables
-		 * controller.scrollTo(function (newScrollPos, options) {
-		 *  someGlobalVar = options.a + options.b;
-		 *	$(this).animate({scrollTop: newScrollPos});
-		 * });
-		 * // call as usual, but supply an extra parameter containing multiple options
-		 * controller.scrollTo(100, {a: 1, b: 2});
-		 *
-		 * // define a new scroll function with a callback supplied as an additional parameter
-		 * controller.scrollTo(function (newScrollPos, callback) {
-		 *	$(this).animate({scrollTop: newScrollPos}, 400, "swing", callback);
-		 * });
-		 * // call as usual, but supply an extra parameter, which is used as a callback in the previously defined custom scroll function
-		 * controller.scrollTo(100, function() {
-		 *	console.log("scroll has finished.");
-		 * });
-		 *
-		 * @param {mixed} scrollTarget - The supplied argument can be one of these types:
-		 * 1. `number` -> The container will scroll to this new scroll offset.
-		 * 2. `string` or `object` -> Can be a selector or a DOM object.  
-		 *  The container will scroll to the position of this element.
-		 * 3. `ScrollMagic Scene` -> The container will scroll to the start of this scene.
-		 * 4. `function` -> This function will be used for future scroll position modifications.  
-		 *  This provides a way for you to change the behaviour of scrolling and adding new behaviour like animation. The function receives the new scroll position as a parameter and a reference to the container element using `this`.  
-		 *  It may also optionally receive an optional additional parameter (see below)  
-		 *  _**NOTE:**  
-		 *  All other options will still work as expected, using the new function to scroll._
-		 * @param {mixed} [additionalParameter] - If a custom scroll function was defined (see above 4.), you may want to supply additional parameters to it, when calling it. You can do this using this parameter – see examples for details. Please note, that this parameter will have no effect, if you use the default scrolling function.
-		 * @returns {Controller} Parent object for chaining.
-		 */
-		this.scrollTo = function (scrollTarget, additionalParameter) {
-			if (_util.type.Number(scrollTarget)) { // excecute
-				setScrollPos.call(_options.container, scrollTarget, additionalParameter);
-			} else if (scrollTarget instanceof ScrollMagic.Scene) { // scroll to scene
-				if (scrollTarget.controller() === Controller) { // check if the controller is associated with this scene
-					Controller.scrollTo(scrollTarget.scrollOffset(), additionalParameter);
-				} else {
-					log(2, "scrollTo(): The supplied scene does not belong to this controller. Scroll cancelled.", scrollTarget);
-				}
-			} else if (_util.type.Function(scrollTarget)) { // assign new scroll function
-				setScrollPos = scrollTarget;
-			} else { // scroll to element
-				var elem = _util.get.elements(scrollTarget)[0];
-				if (elem) {
-					// if parent is pin spacer, use spacer position instead so correct start position is returned for pinned elements.
-					while (elem.parentNode.hasAttribute(PIN_SPACER_ATTRIBUTE)) {
-						elem = elem.parentNode;
-					}
-
-					var
-					param = _options.vertical ? "top" : "left",
-						// which param is of interest ?
-						containerOffset = _util.get.offset(_options.container),
-						// container position is needed because element offset is returned in relation to document, not in relation to container.
-						elementOffset = _util.get.offset(elem);
-
-					if (!_isDocument) { // container is not the document root, so substract scroll Position to get correct trigger element position relative to scrollcontent
-						containerOffset[param] -= Controller.scrollPos();
-					}
-
-					Controller.scrollTo(elementOffset[param] - containerOffset[param], additionalParameter);
-				} else {
-					log(2, "scrollTo(): The supplied argument is invalid. Scroll cancelled.", scrollTarget);
-				}
-			}
-			return Controller;
-		};
-
-		/**
-		 * **Get** the current scrollPosition or **Set** a new method to calculate it.  
-		 * -> **GET**:
-		 * When used as a getter this function will return the current scroll position.  
-		 * To get a cached value use Controller.info("scrollPos"), which will be updated in the update cycle.  
-		 * For vertical controllers it will return the top scroll offset and for horizontal applications it will return the left offset.
-		 *
-		 * -> **SET**:
-		 * When used as a setter this method prodes a way to permanently overwrite the controller's scroll position calculation.  
-		 * A typical usecase is when the scroll position is not reflected by the containers scrollTop or scrollLeft values, but for example by the inner offset of a child container.  
-		 * Moving a child container inside a parent is a commonly used method for several scrolling frameworks, including iScroll.  
-		 * By providing an alternate calculation function you can make sure ScrollMagic receives the correct scroll position.  
-		 * Please also bear in mind that your function should return y values for vertical scrolls an x for horizontals.
-		 *
-		 * To change the current scroll position please use `Controller.scrollTo()`.
-		 * @public
-		 *
-		 * @example
-		 * // get the current scroll Position
-		 * var scrollPos = controller.scrollPos();
-		 *
-		 * // set a new scroll position calculation method
-		 * controller.scrollPos(function () {
-		 *	return this.info("vertical") ? -mychildcontainer.y : -mychildcontainer.x
-		 * });
-		 *
-		 * @param {function} [scrollPosMethod] - The function to be used for the scroll position calculation of the container.
-		 * @returns {(number|Controller)} Current scroll position or parent object for chaining.
-		 */
-		this.scrollPos = function (scrollPosMethod) {
-			if (!arguments.length) { // get
-				return getScrollPos.call(Controller);
-			} else { // set
-				if (_util.type.Function(scrollPosMethod)) {
-					getScrollPos = scrollPosMethod;
-				} else {
-					log(2, "Provided value for method 'scrollPos' is not a function. To change the current scroll position use 'scrollTo()'.");
-				}
-			}
-			return Controller;
-		};
-
-		/**
-		 * **Get** all infos or one in particular about the controller.
-		 * @public
-		 * @example
-		 * // returns the current scroll position (number)
-		 * var scrollPos = controller.info("scrollPos");
-		 *
-		 * // returns all infos as an object
-		 * var infos = controller.info();
-		 *
-		 * @param {string} [about] - If passed only this info will be returned instead of an object containing all.  
-		 Valid options are:
-		 ** `"size"` => the current viewport size of the container
-		 ** `"vertical"` => true if vertical scrolling, otherwise false
-		 ** `"scrollPos"` => the current scroll position
-		 ** `"scrollDirection"` => the last known direction of the scroll
-		 ** `"container"` => the container element
-		 ** `"isDocument"` => true if container element is the document.
-		 * @returns {(mixed|object)} The requested info(s).
-		 */
-		this.info = function (about) {
-			var values = {
-				size: _viewPortSize,
-				// contains height or width (in regard to orientation);
-				vertical: _options.vertical,
-				scrollPos: _scrollPos,
-				scrollDirection: _scrollDirection,
-				container: _options.container,
-				isDocument: _isDocument
-			};
-			if (!arguments.length) { // get all as an object
-				return values;
-			} else if (values[about] !== undefined) {
-				return values[about];
-			} else {
-				log(1, "ERROR: option \"" + about + "\" is not available");
-				return;
-			}
-		};
-
-		/**
-		 * **Get** or **Set** the current loglevel option value.
-		 * @public
-		 *
-		 * @example
-		 * // get the current value
-		 * var loglevel = controller.loglevel();
-		 *
-		 * // set a new value
-		 * controller.loglevel(3);
-		 *
-		 * @param {number} [newLoglevel] - The new loglevel setting of the Controller. `[0-3]`
-		 * @returns {(number|Controller)} Current loglevel or parent object for chaining.
-		 */
-		this.loglevel = function (newLoglevel) {
-			if (!arguments.length) { // get
-				return _options.loglevel;
-			} else if (_options.loglevel != newLoglevel) { // set
-				_options.loglevel = newLoglevel;
-			}
-			return Controller;
-		};
-
-		/**
-		 * **Get** or **Set** the current enabled state of the controller.  
-		 * This can be used to disable all Scenes connected to the controller without destroying or removing them.
-		 * @public
-		 *
-		 * @example
-		 * // get the current value
-		 * var enabled = controller.enabled();
-		 *
-		 * // disable the controller
-		 * controller.enabled(false);
-		 *
-		 * @param {boolean} [newState] - The new enabled state of the controller `true` or `false`.
-		 * @returns {(boolean|Controller)} Current enabled state or parent object for chaining.
-		 */
-		this.enabled = function (newState) {
-			if (!arguments.length) { // get
-				return _enabled;
-			} else if (_enabled != newState) { // set
-				_enabled = !! newState;
-				Controller.updateScene(_sceneObjects, true);
-			}
-			return Controller;
-		};
-
-		/**
-		 * Destroy the Controller, all Scenes and everything.
-		 * @public
-		 *
-		 * @example
-		 * // without resetting the scenes
-		 * controller = controller.destroy();
-		 *
-		 * // with scene reset
-		 * controller = controller.destroy(true);
-		 *
-		 * @param {boolean} [resetScenes=false] - If `true` the pins and tweens (if existent) of all scenes will be reset.
-		 * @returns {null} Null to unset handler variables.
-		 */
-		this.destroy = function (resetScenes) {
-			window.clearTimeout(_refreshTimeout);
-			var i = _sceneObjects.length;
-			while (i--) {
-				_sceneObjects[i].destroy(resetScenes);
-			}
-			_options.container.removeEventListener("resize", onChange);
-			_options.container.removeEventListener("scroll", onChange);
-			_util.cAF(_updateTimeout);
-			log(3, "destroyed " + NAMESPACE + " (reset: " + (resetScenes ? "true" : "false") + ")");
-			return null;
-		};
-
-		// INIT
-		construct();
-		return Controller;
-	};
-
-	// store pagewide controller options
-	var CONTROLLER_OPTIONS = {
-		defaults: {
-			container: window,
-			vertical: true,
-			globalSceneOptions: {},
-			loglevel: 2,
-			refreshInterval: 100
-		}
-	};
-/*
- * method used to add an option to ScrollMagic Scenes.
- */
-	ScrollMagic.Controller.addOption = function (name, defaultValue) {
-		CONTROLLER_OPTIONS.defaults[name] = defaultValue;
-	};
-	// instance extension function for plugins
-	ScrollMagic.Controller.extend = function (extension) {
-		var oldClass = this;
-		ScrollMagic.Controller = function () {
-			oldClass.apply(this, arguments);
-			this.$super = _util.extend({}, this); // copy parent state
-			return extension.apply(this, arguments) || this;
-		};
-		_util.extend(ScrollMagic.Controller, oldClass); // copy properties
-		ScrollMagic.Controller.prototype = oldClass.prototype; // copy prototype
-		ScrollMagic.Controller.prototype.constructor = ScrollMagic.Controller; // restore constructor
-	};
-
-
-	/**
-	 * A Scene defines where the controller should react and how.
-	 *
-	 * @class
-	 *
-	 * @example
-	 * // create a standard scene and add it to a controller
-	 * new ScrollMagic.Scene()
-	 *		.addTo(controller);
-	 *
-	 * // create a scene with custom options and assign a handler to it.
-	 * var scene = new ScrollMagic.Scene({
-	 * 		duration: 100,
-	 *		offset: 200,
-	 *		triggerHook: "onEnter",
-	 *		reverse: false
-	 * });
-	 *
-	 * @param {object} [options] - Options for the Scene. The options can be updated at any time.  
-	 Instead of setting the options for each scene individually you can also set them globally in the controller as the controllers `globalSceneOptions` option. The object accepts the same properties as the ones below.  
-	 When a scene is added to the controller the options defined using the Scene constructor will be overwritten by those set in `globalSceneOptions`.
-	 * @param {(number|function)} [options.duration=0] - The duration of the scene. 
-	 If `0` tweens will auto-play when reaching the scene start point, pins will be pinned indefinetly starting at the start position.  
-	 A function retuning the duration value is also supported. Please see `Scene.duration()` for details.
-	 * @param {number} [options.offset=0] - Offset Value for the Trigger Position. If no triggerElement is defined this will be the scroll distance from the start of the page, after which the scene will start.
-	 * @param {(string|object)} [options.triggerElement=null] - Selector or DOM object that defines the start of the scene. If undefined the scene will start right at the start of the page (unless an offset is set).
-	 * @param {(number|string)} [options.triggerHook="onCenter"] - Can be a number between 0 and 1 defining the position of the trigger Hook in relation to the viewport.  
-	 Can also be defined using a string:
-	 ** `"onEnter"` => `1`
-	 ** `"onCenter"` => `0.5`
-	 ** `"onLeave"` => `0`
-	 * @param {boolean} [options.reverse=true] - Should the scene reverse, when scrolling up?
-	 * @param {number} [options.loglevel=2] - Loglevel for debugging. Note that logging is disabled in the minified version of ScrollMagic.
-	 ** `0` => silent
-	 ** `1` => errors
-	 ** `2` => errors, warnings
-	 ** `3` => errors, warnings, debuginfo
-	 * 
-	 */
-	ScrollMagic.Scene = function (options) {
-
-/*
-	 * ----------------------------------------------------------------
-	 * settings
-	 * ----------------------------------------------------------------
-	 */
-
-		var
-		NAMESPACE = 'ScrollMagic.Scene',
-			SCENE_STATE_BEFORE = 'BEFORE',
-			SCENE_STATE_DURING = 'DURING',
-			SCENE_STATE_AFTER = 'AFTER',
-			DEFAULT_OPTIONS = SCENE_OPTIONS.defaults;
-
-/*
-	 * ----------------------------------------------------------------
-	 * private vars
-	 * ----------------------------------------------------------------
-	 */
-
-		var
-		Scene = this,
-			_options = _util.extend({}, DEFAULT_OPTIONS, options),
-			_state = SCENE_STATE_BEFORE,
-			_progress = 0,
-			_scrollOffset = {
-				start: 0,
-				end: 0
-			},
-			// reflects the controllers's scroll position for the start and end of the scene respectively
-			_triggerPos = 0,
-			_enabled = true,
-			_durationUpdateMethod, _controller;
-
-		/**
-		 * Internal constructor function of the ScrollMagic Scene
-		 * @private
-		 */
-		var construct = function () {
-			for (var key in _options) { // check supplied options
-				if (!DEFAULT_OPTIONS.hasOwnProperty(key)) {
-					log(2, "WARNING: Unknown option \"" + key + "\"");
-					delete _options[key];
-				}
-			}
-			// add getters/setters for all possible options
-			for (var optionName in DEFAULT_OPTIONS) {
-				addSceneOption(optionName);
-			}
-			// validate all options
-			validateOption();
-		};
-
-/*
- * ----------------------------------------------------------------
- * Event Management
- * ----------------------------------------------------------------
- */
-
-		var _listeners = {};
-		/**
-		 * Scene start event.  
-		 * Fires whenever the scroll position its the starting point of the scene.  
-		 * It will also fire when scrolling back up going over the start position of the scene. If you want something to happen only when scrolling down/right, use the scrollDirection parameter passed to the callback.
-		 *
-		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
-		 *
-		 * @event ScrollMagic.Scene#start
-		 *
-		 * @example
-		 * scene.on("start", function (event) {
-		 * 	console.log("Hit start point of scene.");
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {number} event.progress - Reflects the current progress of the scene
-		 * @property {string} event.state - The current state of the scene `"BEFORE"` or `"DURING"`
-		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
-		 */
-		/**
-		 * Scene end event.  
-		 * Fires whenever the scroll position its the ending point of the scene.  
-		 * It will also fire when scrolling back up from after the scene and going over its end position. If you want something to happen only when scrolling down/right, use the scrollDirection parameter passed to the callback.
-		 *
-		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
-		 *
-		 * @event ScrollMagic.Scene#end
-		 *
-		 * @example
-		 * scene.on("end", function (event) {
-		 * 	console.log("Hit end point of scene.");
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {number} event.progress - Reflects the current progress of the scene
-		 * @property {string} event.state - The current state of the scene `"DURING"` or `"AFTER"`
-		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
-		 */
-		/**
-		 * Scene enter event.  
-		 * Fires whenever the scene enters the "DURING" state.  
-		 * Keep in mind that it doesn't matter if the scene plays forward or backward: This event always fires when the scene enters its active scroll timeframe, regardless of the scroll-direction.
-		 *
-		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
-		 *
-		 * @event ScrollMagic.Scene#enter
-		 *
-		 * @example
-		 * scene.on("enter", function (event) {
-		 * 	console.log("Scene entered.");
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {number} event.progress - Reflects the current progress of the scene
-		 * @property {string} event.state - The current state of the scene - always `"DURING"`
-		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
-		 */
-		/**
-		 * Scene leave event.  
-		 * Fires whenever the scene's state goes from "DURING" to either "BEFORE" or "AFTER".  
-		 * Keep in mind that it doesn't matter if the scene plays forward or backward: This event always fires when the scene leaves its active scroll timeframe, regardless of the scroll-direction.
-		 *
-		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
-		 *
-		 * @event ScrollMagic.Scene#leave
-		 *
-		 * @example
-		 * scene.on("leave", function (event) {
-		 * 	console.log("Scene left.");
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {number} event.progress - Reflects the current progress of the scene
-		 * @property {string} event.state - The current state of the scene `"BEFORE"` or `"AFTER"`
-		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
-		 */
-		/**
-		 * Scene update event.  
-		 * Fires whenever the scene is updated (but not necessarily changes the progress).
-		 *
-		 * @event ScrollMagic.Scene#update
-		 *
-		 * @example
-		 * scene.on("update", function (event) {
-		 * 	console.log("Scene updated.");
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {number} event.startPos - The starting position of the scene (in relation to the conainer)
-		 * @property {number} event.endPos - The ending position of the scene (in relation to the conainer)
-		 * @property {number} event.scrollPos - The current scroll position of the container
-		 */
-		/**
-		 * Scene progress event.  
-		 * Fires whenever the progress of the scene changes.
-		 *
-		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
-		 *
-		 * @event ScrollMagic.Scene#progress
-		 *
-		 * @example
-		 * scene.on("progress", function (event) {
-		 * 	console.log("Scene progress changed to " + event.progress);
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {number} event.progress - Reflects the current progress of the scene
-		 * @property {string} event.state - The current state of the scene `"BEFORE"`, `"DURING"` or `"AFTER"`
-		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
-		 */
-		/**
-		 * Scene change event.  
-		 * Fires whenvever a property of the scene is changed.
-		 *
-		 * @event ScrollMagic.Scene#change
-		 *
-		 * @example
-		 * scene.on("change", function (event) {
-		 * 	console.log("Scene Property \"" + event.what + "\" changed to " + event.newval);
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {string} event.what - Indicates what value has been changed
-		 * @property {mixed} event.newval - The new value of the changed property
-		 */
-		/**
-		 * Scene shift event.  
-		 * Fires whenvever the start or end **scroll offset** of the scene change.
-		 * This happens explicitely, when one of these values change: `offset`, `duration` or `triggerHook`.
-		 * It will fire implicitly when the `triggerElement` changes, if the new element has a different position (most cases).
-		 * It will also fire implicitly when the size of the container changes and the triggerHook is anything other than `onLeave`.
-		 *
-		 * @event ScrollMagic.Scene#shift
-		 * @since 1.1.0
-		 *
-		 * @example
-		 * scene.on("shift", function (event) {
-		 * 	console.log("Scene moved, because the " + event.reason + " has changed.)");
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {string} event.reason - Indicates why the scene has shifted
-		 */
-		/**
-		 * Scene destroy event.  
-		 * Fires whenvever the scene is destroyed.
-		 * This can be used to tidy up custom behaviour used in events.
-		 *
-		 * @event ScrollMagic.Scene#destroy
-		 * @since 1.1.0
-		 *
-		 * @example
-		 * scene.on("enter", function (event) {
-		 *        // add custom action
-		 *        $("#my-elem").left("200");
-		 *      })
-		 *      .on("destroy", function (event) {
-		 *        // reset my element to start position
-		 *        if (event.reset) {
-		 *          $("#my-elem").left("0");
-		 *        }
-		 *      });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {boolean} event.reset - Indicates if the destroy method was called with reset `true` or `false`.
-		 */
-		/**
-		 * Scene add event.  
-		 * Fires when the scene is added to a controller.
-		 * This is mostly used by plugins to know that change might be due.
-		 *
-		 * @event ScrollMagic.Scene#add
-		 * @since 2.0.0
-		 *
-		 * @example
-		 * scene.on("add", function (event) {
-		 * 	console.log('Scene was added to a new controller.');
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 * @property {boolean} event.controller - The controller object the scene was added to.
-		 */
-		/**
-		 * Scene remove event.  
-		 * Fires when the scene is removed from a controller.
-		 * This is mostly used by plugins to know that change might be due.
-		 *
-		 * @event ScrollMagic.Scene#remove
-		 * @since 2.0.0
-		 *
-		 * @example
-		 * scene.on("remove", function (event) {
-		 * 	console.log('Scene was removed from its controller.');
-		 * });
-		 *
-		 * @property {object} event - The event Object passed to each callback
-		 * @property {string} event.type - The name of the event
-		 * @property {Scene} event.target - The Scene object that triggered this event
-		 */
-
-		/**
-		 * Add one ore more event listener.  
-		 * The callback function will be fired at the respective event, and an object containing relevant data will be passed to the callback.
-		 * @method ScrollMagic.Scene#on
-		 *
-		 * @example
-		 * function callback (event) {
-		 * 		console.log("Event fired! (" + event.type + ")");
-		 * }
-		 * // add listeners
-		 * scene.on("change update progress start end enter leave", callback);
-		 *
-		 * @param {string} names - The name or names of the event the callback should be attached to.
-		 * @param {function} callback - A function that should be executed, when the event is dispatched. An event object will be passed to the callback.
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.on = function (names, callback) {
-			if (_util.type.Function(callback)) {
-				names = names.trim().split(' ');
-				names.forEach(function (fullname) {
-					var
-					nameparts = fullname.split('.'),
-						eventname = nameparts[0],
-						namespace = nameparts[1];
-					if (eventname != "*") { // disallow wildcards
-						if (!_listeners[eventname]) {
-							_listeners[eventname] = [];
-						}
-						_listeners[eventname].push({
-							namespace: namespace || '',
-							callback: callback
-						});
-					}
-				});
-			} else {
-				log(1, "ERROR when calling '.on()': Supplied callback for '" + names + "' is not a valid function!");
-			}
-			return Scene;
-		};
-
-		/**
-		 * Remove one or more event listener.
-		 * @method ScrollMagic.Scene#off
-		 *
-		 * @example
-		 * function callback (event) {
-		 * 		console.log("Event fired! (" + event.type + ")");
-		 * }
-		 * // add listeners
-		 * scene.on("change update", callback);
-		 * // remove listeners
-		 * scene.off("change update", callback);
-		 *
-		 * @param {string} names - The name or names of the event that should be removed.
-		 * @param {function} [callback] - A specific callback function that should be removed. If none is passed all callbacks to the event listener will be removed.
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.off = function (names, callback) {
-			if (!names) {
-				log(1, "ERROR: Invalid event name supplied.");
-				return Scene;
-			}
-			names = names.trim().split(' ');
-			names.forEach(function (fullname, key) {
-				var
-				nameparts = fullname.split('.'),
-					eventname = nameparts[0],
-					namespace = nameparts[1] || '',
-					removeList = eventname === '*' ? Object.keys(_listeners) : [eventname];
-				removeList.forEach(function (remove) {
-					var
-					list = _listeners[remove] || [],
-						i = list.length;
-					while (i--) {
-						var listener = list[i];
-						if (listener && (namespace === listener.namespace || namespace === '*') && (!callback || callback == listener.callback)) {
-							list.splice(i, 1);
-						}
-					}
-					if (!list.length) {
-						delete _listeners[remove];
-					}
-				});
-			});
-			return Scene;
-		};
-
-		/**
-		 * Trigger an event.
-		 * @method ScrollMagic.Scene#trigger
-		 *
-		 * @example
-		 * this.trigger("change");
-		 *
-		 * @param {string} name - The name of the event that should be triggered.
-		 * @param {object} [vars] - An object containing info that should be passed to the callback.
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.trigger = function (name, vars) {
-			if (name) {
-				var
-				nameparts = name.trim().split('.'),
-					eventname = nameparts[0],
-					namespace = nameparts[1],
-					listeners = _listeners[eventname];
-				log(3, 'event fired:', eventname, vars ? "->" : '', vars || '');
-				if (listeners) {
-					listeners.forEach(function (listener, key) {
-						if (!namespace || namespace === listener.namespace) {
-							listener.callback.call(Scene, new ScrollMagic.Event(eventname, listener.namespace, Scene, vars));
-						}
-					});
-				}
-			} else {
-				log(1, "ERROR: Invalid event name supplied.");
-			}
-			return Scene;
-		};
-
-		// set event listeners
-		Scene.on("change.internal", function (e) {
-			if (e.what !== "loglevel" && e.what !== "tweenChanges") { // no need for a scene update scene with these options...
-				if (e.what === "triggerElement") {
-					updateTriggerElementPosition();
-				} else if (e.what === "reverse") { // the only property left that may have an impact on the current scene state. Everything else is handled by the shift event.
-					Scene.update();
-				}
-			}
-		}).on("shift.internal", function (e) {
-			updateScrollOffset();
-			Scene.update(); // update scene to reflect new position
-		});
-
-		/**
-		 * Send a debug message to the console.
-		 * @private
-		 * but provided publicly with _log for plugins
-		 *
-		 * @param {number} loglevel - The loglevel required to initiate output for the message.
-		 * @param {...mixed} output - One or more variables that should be passed to the console.
-		 */
-		var log = this._log = function (loglevel, output) {
-			if (_options.loglevel >= loglevel) {
-				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ") ->");
-				_util.log.apply(window, arguments);
-			}
-		};
-
-		/**
-		 * Add the scene to a controller.  
-		 * This is the equivalent to `Controller.addScene(scene)`.
-		 * @method ScrollMagic.Scene#addTo
-		 *
-		 * @example
-		 * // add a scene to a ScrollMagic Controller
-		 * scene.addTo(controller);
-		 *
-		 * @param {ScrollMagic.Controller} controller - The controller to which the scene should be added.
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.addTo = function (controller) {
-			if (!(controller instanceof ScrollMagic.Controller)) {
-				log(1, "ERROR: supplied argument of 'addTo()' is not a valid ScrollMagic Controller");
-			} else if (_controller != controller) {
-				// new controller
-				if (_controller) { // was associated to a different controller before, so remove it...
-					_controller.removeScene(Scene);
-				}
-				_controller = controller;
-				validateOption();
-				updateDuration(true);
-				updateTriggerElementPosition(true);
-				updateScrollOffset();
-				_controller.info("container").addEventListener('resize', onContainerResize);
-				controller.addScene(Scene);
-				Scene.trigger("add", {
-					controller: _controller
-				});
-				log(3, "added " + NAMESPACE + " to controller");
-				Scene.update();
-			}
-			return Scene;
-		};
-
-		/**
-		 * **Get** or **Set** the current enabled state of the scene.  
-		 * This can be used to disable this scene without removing or destroying it.
-		 * @method ScrollMagic.Scene#enabled
-		 *
-		 * @example
-		 * // get the current value
-		 * var enabled = scene.enabled();
-		 *
-		 * // disable the scene
-		 * scene.enabled(false);
-		 *
-		 * @param {boolean} [newState] - The new enabled state of the scene `true` or `false`.
-		 * @returns {(boolean|Scene)} Current enabled state or parent object for chaining.
-		 */
-		this.enabled = function (newState) {
-			if (!arguments.length) { // get
-				return _enabled;
-			} else if (_enabled != newState) { // set
-				_enabled = !! newState;
-				Scene.update(true);
-			}
-			return Scene;
-		};
-
-		/**
-		 * Remove the scene from the controller.  
-		 * This is the equivalent to `Controller.removeScene(scene)`.
-		 * The scene will not be updated anymore until you readd it to a controller.
-		 * To remove the pin or the tween you need to call removeTween() or removePin() respectively.
-		 * @method ScrollMagic.Scene#remove
-		 * @example
-		 * // remove the scene from its controller
-		 * scene.remove();
-		 *
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.remove = function () {
-			if (_controller) {
-				_controller.info("container").removeEventListener('resize', onContainerResize);
-				var tmpParent = _controller;
-				_controller = undefined;
-				tmpParent.removeScene(Scene);
-				Scene.trigger("remove");
-				log(3, "removed " + NAMESPACE + " from controller");
-			}
-			return Scene;
-		};
-
-		/**
-		 * Destroy the scene and everything.
-		 * @method ScrollMagic.Scene#destroy
-		 * @example
-		 * // destroy the scene without resetting the pin and tween to their initial positions
-		 * scene = scene.destroy();
-		 *
-		 * // destroy the scene and reset the pin and tween
-		 * scene = scene.destroy(true);
-		 *
-		 * @param {boolean} [reset=false] - If `true` the pin and tween (if existent) will be reset.
-		 * @returns {null} Null to unset handler variables.
-		 */
-		this.destroy = function (reset) {
-			Scene.trigger("destroy", {
-				reset: reset
-			});
-			Scene.remove();
-			Scene.off("*.*");
-			log(3, "destroyed " + NAMESPACE + " (reset: " + (reset ? "true" : "false") + ")");
-			return null;
-		};
-
-
-		/**
-		 * Updates the Scene to reflect the current state.  
-		 * This is the equivalent to `Controller.updateScene(scene, immediately)`.  
-		 * The update method calculates the scene's start and end position (based on the trigger element, trigger hook, duration and offset) and checks it against the current scroll position of the container.  
-		 * It then updates the current scene state accordingly (or does nothing, if the state is already correct) – Pins will be set to their correct position and tweens will be updated to their correct progress.
-		 * This means an update doesn't necessarily result in a progress change. The `progress` event will be fired if the progress has indeed changed between this update and the last.  
-		 * _**NOTE:** This method gets called constantly whenever ScrollMagic detects a change. The only application for you is if you change something outside of the realm of ScrollMagic, like moving the trigger or changing tween parameters._
-		 * @method ScrollMagic.Scene#update
-		 * @example
-		 * // update the scene on next tick
-		 * scene.update();
-		 *
-		 * // update the scene immediately
-		 * scene.update(true);
-		 *
-		 * @fires Scene.update
-		 *
-		 * @param {boolean} [immediately=false] - If `true` the update will be instant, if `false` it will wait until next update cycle (better performance).
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.update = function (immediately) {
-			if (_controller) {
-				if (immediately) {
-					if (_controller.enabled() && _enabled) {
-						var
-						scrollPos = _controller.info("scrollPos"),
-							newProgress;
-
-						if (_options.duration > 0) {
-							newProgress = (scrollPos - _scrollOffset.start) / (_scrollOffset.end - _scrollOffset.start);
-						} else {
-							newProgress = scrollPos >= _scrollOffset.start ? 1 : 0;
-						}
-
-						Scene.trigger("update", {
-							startPos: _scrollOffset.start,
-							endPos: _scrollOffset.end,
-							scrollPos: scrollPos
-						});
-
-						Scene.progress(newProgress);
-					} else if (_pin && _state === SCENE_STATE_DURING) {
-						updatePinState(true); // unpin in position
-					}
-				} else {
-					_controller.updateScene(Scene, false);
-				}
-			}
-			return Scene;
-		};
-
-		/**
-		 * Updates dynamic scene variables like the trigger element position or the duration.
-		 * This method is automatically called in regular intervals from the controller. See {@link ScrollMagic.Controller} option `refreshInterval`.
-		 * 
-		 * You can call it to minimize lag, for example when you intentionally change the position of the triggerElement.
-		 * If you don't it will simply be updated in the next refresh interval of the container, which is usually sufficient.
-		 *
-		 * @method ScrollMagic.Scene#refresh
-		 * @since 1.1.0
-		 * @example
-		 * scene = new ScrollMagic.Scene({triggerElement: "#trigger"});
-		 * 
-		 * // change the position of the trigger
-		 * $("#trigger").css("top", 500);
-		 * // immediately let the scene know of this change
-		 * scene.refresh();
-		 *
-		 * @fires {@link Scene.shift}, if the trigger element position or the duration changed
-		 * @fires {@link Scene.change}, if the duration changed
-		 *
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.refresh = function () {
-			updateDuration();
-			updateTriggerElementPosition();
-			// update trigger element position
-			return Scene;
-		};
-
-		/**
-		 * **Get** or **Set** the scene's progress.  
-		 * Usually it shouldn't be necessary to use this as a setter, as it is set automatically by scene.update().  
-		 * The order in which the events are fired depends on the duration of the scene:
-		 *  1. Scenes with `duration == 0`:  
-		 *  Scenes that have no duration by definition have no ending. Thus the `end` event will never be fired.  
-		 *  When the trigger position of the scene is passed the events are always fired in this order:  
-		 *  `enter`, `start`, `progress` when scrolling forward  
-		 *  and  
-		 *  `progress`, `start`, `leave` when scrolling in reverse
-		 *  2. Scenes with `duration > 0`:  
-		 *  Scenes with a set duration have a defined start and end point.  
-		 *  When scrolling past the start position of the scene it will fire these events in this order:  
-		 *  `enter`, `start`, `progress`  
-		 *  When continuing to scroll and passing the end point it will fire these events:  
-		 *  `progress`, `end`, `leave`  
-		 *  When reversing through the end point these events are fired:  
-		 *  `enter`, `end`, `progress`  
-		 *  And when continuing to scroll past the start position in reverse it will fire:  
-		 *  `progress`, `start`, `leave`  
-		 *  In between start and end the `progress` event will be called constantly, whenever the progress changes.
-		 * 
-		 * In short:  
-		 * `enter` events will always trigger **before** the progress update and `leave` envents will trigger **after** the progress update.  
-		 * `start` and `end` will always trigger at their respective position.
-		 * 
-		 * Please review the event descriptions for details on the events and the event object that is passed to the callback.
-		 * 
-		 * @method ScrollMagic.Scene#progress
-		 * @example
-		 * // get the current scene progress
-		 * var progress = scene.progress();
-		 *
-		 * // set new scene progress
-		 * scene.progress(0.3);
-		 *
-		 * @fires {@link Scene.enter}, when used as setter
-		 * @fires {@link Scene.start}, when used as setter
-		 * @fires {@link Scene.progress}, when used as setter
-		 * @fires {@link Scene.end}, when used as setter
-		 * @fires {@link Scene.leave}, when used as setter
-		 *
-		 * @param {number} [progress] - The new progress value of the scene `[0-1]`.
-		 * @returns {number} `get` -  Current scene progress.
-		 * @returns {Scene} `set` -  Parent object for chaining.
-		 */
-		this.progress = function (progress) {
-			if (!arguments.length) { // get
-				return _progress;
-			} else { // set
-				var
-				doUpdate = false,
-					oldState = _state,
-					scrollDirection = _controller ? _controller.info("scrollDirection") : 'PAUSED',
-					reverseOrForward = _options.reverse || progress >= _progress;
-				if (_options.duration === 0) {
-					// zero duration scenes
-					doUpdate = _progress != progress;
-					_progress = progress < 1 && reverseOrForward ? 0 : 1;
-					_state = _progress === 0 ? SCENE_STATE_BEFORE : SCENE_STATE_DURING;
-				} else {
-					// scenes with start and end
-					if (progress < 0 && _state !== SCENE_STATE_BEFORE && reverseOrForward) {
-						// go back to initial state
-						_progress = 0;
-						_state = SCENE_STATE_BEFORE;
-						doUpdate = true;
-					} else if (progress >= 0 && progress < 1 && reverseOrForward) {
-						_progress = progress;
-						_state = SCENE_STATE_DURING;
-						doUpdate = true;
-					} else if (progress >= 1 && _state !== SCENE_STATE_AFTER) {
-						_progress = 1;
-						_state = SCENE_STATE_AFTER;
-						doUpdate = true;
-					} else if (_state === SCENE_STATE_DURING && !reverseOrForward) {
-						updatePinState(); // in case we scrolled backwards mid-scene and reverse is disabled => update the pin position, so it doesn't move back as well.
-					}
-				}
-				if (doUpdate) {
-					// fire events
-					var
-					eventVars = {
-						progress: _progress,
-						state: _state,
-						scrollDirection: scrollDirection
-					},
-						stateChanged = _state != oldState;
-
-					var trigger = function (eventName) { // tmp helper to simplify code
-						Scene.trigger(eventName, eventVars);
-					};
-
-					if (stateChanged) { // enter events
-						if (oldState !== SCENE_STATE_DURING) {
-							trigger("enter");
-							trigger(oldState === SCENE_STATE_BEFORE ? "start" : "end");
-						}
-					}
-					trigger("progress");
-					if (stateChanged) { // leave events
-						if (_state !== SCENE_STATE_DURING) {
-							trigger(_state === SCENE_STATE_BEFORE ? "start" : "end");
-							trigger("leave");
-						}
-					}
-				}
-
-				return Scene;
-			}
-		};
-
-
-		/**
-		 * Update the start and end scrollOffset of the container.
-		 * The positions reflect what the controller's scroll position will be at the start and end respectively.
-		 * Is called, when:
-		 *   - Scene event "change" is called with: offset, triggerHook, duration 
-		 *   - scroll container event "resize" is called
-		 *   - the position of the triggerElement changes
-		 *   - the controller changes -> addTo()
-		 * @private
-		 */
-		var updateScrollOffset = function () {
-			_scrollOffset = {
-				start: _triggerPos + _options.offset
-			};
-			if (_controller && _options.triggerElement) {
-				// take away triggerHook portion to get relative to top
-				_scrollOffset.start -= _controller.info("size") * _options.triggerHook;
-			}
-			_scrollOffset.end = _scrollOffset.start + _options.duration;
-		};
-
-		/**
-		 * Updates the duration if set to a dynamic function.
-		 * This method is called when the scene is added to a controller and in regular intervals from the controller through scene.refresh().
-		 * 
-		 * @fires {@link Scene.change}, if the duration changed
-		 * @fires {@link Scene.shift}, if the duration changed
-		 *
-		 * @param {boolean} [suppressEvents=false] - If true the shift event will be suppressed.
-		 * @private
-		 */
-		var updateDuration = function (suppressEvents) {
-			// update duration
-			if (_durationUpdateMethod) {
-				var varname = "duration";
-				if (changeOption(varname, _durationUpdateMethod.call(Scene)) && !suppressEvents) { // set
-					Scene.trigger("change", {
-						what: varname,
-						newval: _options[varname]
-					});
-					Scene.trigger("shift", {
-						reason: varname
-					});
-				}
-			}
-		};
-
-		/**
-		 * Updates the position of the triggerElement, if present.
-		 * This method is called ...
-		 *  - ... when the triggerElement is changed
-		 *  - ... when the scene is added to a (new) controller
-		 *  - ... in regular intervals from the controller through scene.refresh().
-		 * 
-		 * @fires {@link Scene.shift}, if the position changed
-		 *
-		 * @param {boolean} [suppressEvents=false] - If true the shift event will be suppressed.
-		 * @private
-		 */
-		var updateTriggerElementPosition = function (suppressEvents) {
-			var
-			elementPos = 0,
-				telem = _options.triggerElement;
-			if (_controller && (telem || _triggerPos > 0)) { // either an element exists or was removed and the triggerPos is still > 0
-				if (telem) { // there currently a triggerElement set
-					if (telem.parentNode) { // check if element is still attached to DOM
-						var
-						controllerInfo = _controller.info(),
-							containerOffset = _util.get.offset(controllerInfo.container),
-							// container position is needed because element offset is returned in relation to document, not in relation to container.
-							param = controllerInfo.vertical ? "top" : "left"; // which param is of interest ?
-						// if parent is spacer, use spacer position instead so correct start position is returned for pinned elements.
-						while (telem.parentNode.hasAttribute(PIN_SPACER_ATTRIBUTE)) {
-							telem = telem.parentNode;
-						}
-
-						var elementOffset = _util.get.offset(telem);
-
-						if (!controllerInfo.isDocument) { // container is not the document root, so substract scroll Position to get correct trigger element position relative to scrollcontent
-							containerOffset[param] -= _controller.scrollPos();
-						}
-
-						elementPos = elementOffset[param] - containerOffset[param];
-
-					} else { // there was an element, but it was removed from DOM
-						log(2, "WARNING: triggerElement was removed from DOM and will be reset to", undefined);
-						Scene.triggerElement(undefined); // unset, so a change event is triggered
-					}
-				}
-
-				var changed = elementPos != _triggerPos;
-				_triggerPos = elementPos;
-				if (changed && !suppressEvents) {
-					Scene.trigger("shift", {
-						reason: "triggerElementPosition"
-					});
-				}
-			}
-		};
-
-		/**
-		 * Trigger a shift event, when the container is resized and the triggerHook is > 1.
-		 * @private
-		 */
-		var onContainerResize = function (e) {
-			if (_options.triggerHook > 0) {
-				Scene.trigger("shift", {
-					reason: "containerResize"
-				});
-			}
-		};
-
-
-		var _validate = _util.extend(SCENE_OPTIONS.validate, {
-			// validation for duration handled internally for reference to private var _durationMethod
-			duration: function (val) {
-				if (_util.type.String(val) && val.match(/^(\.|\d)*\d+%$/)) {
-					// percentage value
-					var perc = parseFloat(val) / 100;
-					val = function () {
-						return _controller ? _controller.info("size") * perc : 0;
-					};
-				}
-				if (_util.type.Function(val)) {
-					// function
-					_durationUpdateMethod = val;
-					try {
-						val = parseFloat(_durationUpdateMethod());
-					} catch (e) {
-						val = -1; // will cause error below
-					}
-				}
-				// val has to be float
-				val = parseFloat(val);
-				if (!_util.type.Number(val) || val < 0) {
-					if (_durationUpdateMethod) {
-						_durationUpdateMethod = undefined;
-						throw ["Invalid return value of supplied function for option \"duration\":", val];
-					} else {
-						throw ["Invalid value for option \"duration\":", val];
-					}
-				}
-				return val;
-			}
-		});
-
-		/**
-		 * Checks the validity of a specific or all options and reset to default if neccessary.
-		 * @private
-		 */
-		var validateOption = function (check) {
-			check = arguments.length ? [check] : Object.keys(_validate);
-			check.forEach(function (optionName, key) {
-				var value;
-				if (_validate[optionName]) { // there is a validation method for this option
-					try { // validate value
-						value = _validate[optionName](_options[optionName]);
-					} catch (e) { // validation failed -> reset to default
-						value = DEFAULT_OPTIONS[optionName];
-						var logMSG = _util.type.String(e) ? [e] : e;
-						if (_util.type.Array(logMSG)) {
-							logMSG[0] = "ERROR: " + logMSG[0];
-							logMSG.unshift(1); // loglevel 1 for error msg
-							log.apply(this, logMSG);
-						} else {
-							log(1, "ERROR: Problem executing validation callback for option '" + optionName + "':", e.message);
-						}
-					} finally {
-						_options[optionName] = value;
-					}
-				}
-			});
-		};
-
-		/**
-		 * Helper used by the setter/getters for scene options
-		 * @private
-		 */
-		var changeOption = function (varname, newval) {
-			var
-			changed = false,
-				oldval = _options[varname];
-			if (_options[varname] != newval) {
-				_options[varname] = newval;
-				validateOption(varname); // resets to default if necessary
-				changed = oldval != _options[varname];
-			}
-			return changed;
-		};
-
-		// generate getters/setters for all options
-		var addSceneOption = function (optionName) {
-			if (!Scene[optionName]) {
-				Scene[optionName] = function (newVal) {
-					if (!arguments.length) { // get
-						return _options[optionName];
-					} else {
-						if (optionName === "duration") { // new duration is set, so any previously set function must be unset
-							_durationUpdateMethod = undefined;
-						}
-						if (changeOption(optionName, newVal)) { // set
-							Scene.trigger("change", {
-								what: optionName,
-								newval: _options[optionName]
-							});
-							if (SCENE_OPTIONS.shifts.indexOf(optionName) > -1) {
-								Scene.trigger("shift", {
-									reason: optionName
-								});
-							}
-						}
-					}
-					return Scene;
-				};
-			}
-		};
-
-		/**
-		 * **Get** or **Set** the duration option value.
-		 * As a setter it also accepts a function returning a numeric value.  
-		 * This is particularly useful for responsive setups.
-		 *
-		 * The duration is updated using the supplied function every time `Scene.refresh()` is called, which happens periodically from the controller (see ScrollMagic.Controller option `refreshInterval`).  
-		 * _**NOTE:** Be aware that it's an easy way to kill performance, if you supply a function that has high CPU demand.  
-		 * Even for size and position calculations it is recommended to use a variable to cache the value. (see example)  
-		 * This counts double if you use the same function for multiple scenes._
-		 *
-		 * @method ScrollMagic.Scene#duration
-		 * @example
-		 * // get the current duration value
-		 * var duration = scene.duration();
-		 *
-		 * // set a new duration
-		 * scene.duration(300);
-		 *
-		 * // use a function to automatically adjust the duration to the window height.
-		 * var durationValueCache;
-		 * function getDuration () {
-		 *   return durationValueCache;
-		 * }
-		 * function updateDuration (e) {
-		 *   durationValueCache = window.innerHeight;
-		 * }
-		 * $(window).on("resize", updateDuration); // update the duration when the window size changes
-		 * $(window).triggerHandler("resize"); // set to initial value
-		 * scene.duration(getDuration); // supply duration method
-		 *
-		 * @fires {@link Scene.change}, when used as setter
-		 * @fires {@link Scene.shift}, when used as setter
-		 * @param {(number|function)} [newDuration] - The new duration of the scene.
-		 * @returns {number} `get` -  Current scene duration.
-		 * @returns {Scene} `set` -  Parent object for chaining.
-		 */
-
-		/**
-		 * **Get** or **Set** the offset option value.
-		 * @method ScrollMagic.Scene#offset
-		 * @example
-		 * // get the current offset
-		 * var offset = scene.offset();
-		 *
-		 * // set a new offset
-		 * scene.offset(100);
-		 *
-		 * @fires {@link Scene.change}, when used as setter
-		 * @fires {@link Scene.shift}, when used as setter
-		 * @param {number} [newOffset] - The new offset of the scene.
-		 * @returns {number} `get` -  Current scene offset.
-		 * @returns {Scene} `set` -  Parent object for chaining.
-		 */
-
-		/**
-		 * **Get** or **Set** the triggerElement option value.
-		 * Does **not** fire `Scene.shift`, because changing the trigger Element doesn't necessarily mean the start position changes. This will be determined in `Scene.refresh()`, which is automatically triggered.
-		 * @method ScrollMagic.Scene#triggerElement
-		 * @example
-		 * // get the current triggerElement
-		 * var triggerElement = scene.triggerElement();
-		 *
-		 * // set a new triggerElement using a selector
-		 * scene.triggerElement("#trigger");
-		 * // set a new triggerElement using a DOM object
-		 * scene.triggerElement(document.getElementById("trigger"));
-		 *
-		 * @fires {@link Scene.change}, when used as setter
-		 * @param {(string|object)} [newTriggerElement] - The new trigger element for the scene.
-		 * @returns {(string|object)} `get` -  Current triggerElement.
-		 * @returns {Scene} `set` -  Parent object for chaining.
-		 */
-
-		/**
-		 * **Get** or **Set** the triggerHook option value.
-		 * @method ScrollMagic.Scene#triggerHook
-		 * @example
-		 * // get the current triggerHook value
-		 * var triggerHook = scene.triggerHook();
-		 *
-		 * // set a new triggerHook using a string
-		 * scene.triggerHook("onLeave");
-		 * // set a new triggerHook using a number
-		 * scene.triggerHook(0.7);
-		 *
-		 * @fires {@link Scene.change}, when used as setter
-		 * @fires {@link Scene.shift}, when used as setter
-		 * @param {(number|string)} [newTriggerHook] - The new triggerHook of the scene. See {@link Scene} parameter description for value options.
-		 * @returns {number} `get` -  Current triggerHook (ALWAYS numerical).
-		 * @returns {Scene} `set` -  Parent object for chaining.
-		 */
-
-		/**
-		 * **Get** or **Set** the reverse option value.
-		 * @method ScrollMagic.Scene#reverse
-		 * @example
-		 * // get the current reverse option
-		 * var reverse = scene.reverse();
-		 *
-		 * // set new reverse option
-		 * scene.reverse(false);
-		 *
-		 * @fires {@link Scene.change}, when used as setter
-		 * @param {boolean} [newReverse] - The new reverse setting of the scene.
-		 * @returns {boolean} `get` -  Current reverse option value.
-		 * @returns {Scene} `set` -  Parent object for chaining.
-		 */
-
-		/**
-		 * **Get** or **Set** the loglevel option value.
-		 * @method ScrollMagic.Scene#loglevel
-		 * @example
-		 * // get the current loglevel
-		 * var loglevel = scene.loglevel();
-		 *
-		 * // set new loglevel
-		 * scene.loglevel(3);
-		 *
-		 * @fires {@link Scene.change}, when used as setter
-		 * @param {number} [newLoglevel] - The new loglevel setting of the scene. `[0-3]`
-		 * @returns {number} `get` -  Current loglevel.
-		 * @returns {Scene} `set` -  Parent object for chaining.
-		 */
-
-		/**
-		 * **Get** the associated controller.
-		 * @method ScrollMagic.Scene#controller
-		 * @example
-		 * // get the controller of a scene
-		 * var controller = scene.controller();
-		 *
-		 * @returns {ScrollMagic.Controller} Parent controller or `undefined`
-		 */
-		this.controller = function () {
-			return _controller;
-		};
-
-		/**
-		 * **Get** the current state.
-		 * @method ScrollMagic.Scene#state
-		 * @example
-		 * // get the current state
-		 * var state = scene.state();
-		 *
-		 * @returns {string} `"BEFORE"`, `"DURING"` or `"AFTER"`
-		 */
-		this.state = function () {
-			return _state;
-		};
-
-		/**
-		 * **Get** the current scroll offset for the start of the scene.  
-		 * Mind, that the scrollOffset is related to the size of the container, if `triggerHook` is bigger than `0` (or `"onLeave"`).  
-		 * This means, that resizing the container or changing the `triggerHook` will influence the scene's start offset.
-		 * @method ScrollMagic.Scene#scrollOffset
-		 * @example
-		 * // get the current scroll offset for the start and end of the scene.
-		 * var start = scene.scrollOffset();
-		 * var end = scene.scrollOffset() + scene.duration();
-		 * console.log("the scene starts at", start, "and ends at", end);
-		 *
-		 * @returns {number} The scroll offset (of the container) at which the scene will trigger. Y value for vertical and X value for horizontal scrolls.
-		 */
-		this.scrollOffset = function () {
-			return _scrollOffset.start;
-		};
-
-		/**
-		 * **Get** the trigger position of the scene (including the value of the `offset` option).  
-		 * @method ScrollMagic.Scene#triggerPosition
-		 * @example
-		 * // get the scene's trigger position
-		 * var triggerPosition = scene.triggerPosition();
-		 *
-		 * @returns {number} Start position of the scene. Top position value for vertical and left position value for horizontal scrolls.
-		 */
-		this.triggerPosition = function () {
-			var pos = _options.offset; // the offset is the basis
-			if (_controller) {
-				// get the trigger position
-				if (_options.triggerElement) {
-					// Element as trigger
-					pos += _triggerPos;
-				} else {
-					// return the height of the triggerHook to start at the beginning
-					pos += _controller.info("size") * Scene.triggerHook();
-				}
-			}
-			return pos;
-		};
-
-		var
-		_pin, _pinOptions;
-
-		Scene.on("shift.internal", function (e) {
-			var durationChanged = e.reason === "duration";
-			if ((_state === SCENE_STATE_AFTER && durationChanged) || (_state === SCENE_STATE_DURING && _options.duration === 0)) {
-				// if [duration changed after a scene (inside scene progress updates pin position)] or [duration is 0, we are in pin phase and some other value changed].
-				updatePinState();
-			}
-			if (durationChanged) {
-				updatePinDimensions();
-			}
-		}).on("progress.internal", function (e) {
-			updatePinState();
-		}).on("add.internal", function (e) {
-			updatePinDimensions();
-		}).on("destroy.internal", function (e) {
-			Scene.removePin(e.reset);
-		});
-		/**
-		 * Update the pin state.
-		 * @private
-		 */
-		var updatePinState = function (forceUnpin) {
-			if (_pin && _controller) {
-				var
-				containerInfo = _controller.info(),
-					pinTarget = _pinOptions.spacer.firstChild; // may be pin element or another spacer, if cascading pins
-				if (!forceUnpin && _state === SCENE_STATE_DURING) { // during scene or if duration is 0 and we are past the trigger
-					// pinned state
-					if (_util.css(pinTarget, "position") != "fixed") {
-						// change state before updating pin spacer (position changes due to fixed collapsing might occur.)
-						_util.css(pinTarget, {
-							"position": "fixed"
-						});
-						// update pin spacer
-						updatePinDimensions();
-					}
-
-					var
-					fixedPos = _util.get.offset(_pinOptions.spacer, true),
-						// get viewport position of spacer
-						scrollDistance = _options.reverse || _options.duration === 0 ? containerInfo.scrollPos - _scrollOffset.start // quicker
-						: Math.round(_progress * _options.duration * 10) / 10; // if no reverse and during pin the position needs to be recalculated using the progress
-					// add scrollDistance
-					fixedPos[containerInfo.vertical ? "top" : "left"] += scrollDistance;
-
-					// set new values
-					_util.css(_pinOptions.spacer.firstChild, {
-						top: fixedPos.top,
-						left: fixedPos.left
-					});
-				} else {
-					// unpinned state
-					var
-					newCSS = {
-						position: _pinOptions.inFlow ? "relative" : "absolute",
-						top: 0,
-						left: 0
-					},
-						change = _util.css(pinTarget, "position") != newCSS.position;
-
-					if (!_pinOptions.pushFollowers) {
-						newCSS[containerInfo.vertical ? "top" : "left"] = _options.duration * _progress;
-					} else if (_options.duration > 0) { // only concerns scenes with duration
-						if (_state === SCENE_STATE_AFTER && parseFloat(_util.css(_pinOptions.spacer, "padding-top")) === 0) {
-							change = true; // if in after state but havent updated spacer yet (jumped past pin)
-						} else if (_state === SCENE_STATE_BEFORE && parseFloat(_util.css(_pinOptions.spacer, "padding-bottom")) === 0) { // before
-							change = true; // jumped past fixed state upward direction
-						}
-					}
-					// set new values
-					_util.css(pinTarget, newCSS);
-					if (change) {
-						// update pin spacer if state changed
-						updatePinDimensions();
-					}
-				}
-			}
-		};
-
-		/**
-		 * Update the pin spacer and/or element size.
-		 * The size of the spacer needs to be updated whenever the duration of the scene changes, if it is to push down following elements.
-		 * @private
-		 */
-		var updatePinDimensions = function () {
-			if (_pin && _controller && _pinOptions.inFlow) { // no spacerresize, if original position is absolute
-				var
-				after = (_state === SCENE_STATE_AFTER),
-					before = (_state === SCENE_STATE_BEFORE),
-					during = (_state === SCENE_STATE_DURING),
-					vertical = _controller.info("vertical"),
-					pinTarget = _pinOptions.spacer.firstChild,
-					// usually the pined element but can also be another spacer (cascaded pins)
-					marginCollapse = _util.isMarginCollapseType(_util.css(_pinOptions.spacer, "display")),
-					css = {};
-
-				// set new size
-				// if relsize: spacer -> pin | else: pin -> spacer
-				if (_pinOptions.relSize.width || _pinOptions.relSize.autoFullWidth) {
-					if (during) {
-						_util.css(_pin, {
-							"width": _util.get.width(_pinOptions.spacer)
-						});
-					} else {
-						_util.css(_pin, {
-							"width": "100%"
-						});
-					}
-				} else {
-					// minwidth is needed for cascaded pins.
-					css["min-width"] = _util.get.width(vertical ? _pin : pinTarget, true, true);
-					css.width = during ? css["min-width"] : "auto";
-				}
-				if (_pinOptions.relSize.height) {
-					if (during) {
-						// the only padding the spacer should ever include is the duration (if pushFollowers = true), so we need to substract that.
-						_util.css(_pin, {
-							"height": _util.get.height(_pinOptions.spacer) - (_pinOptions.pushFollowers ? _options.duration : 0)
-						});
-					} else {
-						_util.css(_pin, {
-							"height": "100%"
-						});
-					}
-				} else {
-					// margin is only included if it's a cascaded pin to resolve an IE9 bug
-					css["min-height"] = _util.get.height(vertical ? pinTarget : _pin, true, !marginCollapse); // needed for cascading pins
-					css.height = during ? css["min-height"] : "auto";
-				}
-
-				// add space for duration if pushFollowers is true
-				if (_pinOptions.pushFollowers) {
-					css["padding" + (vertical ? "Top" : "Left")] = _options.duration * _progress;
-					css["padding" + (vertical ? "Bottom" : "Right")] = _options.duration * (1 - _progress);
-				}
-				_util.css(_pinOptions.spacer, css);
-			}
-		};
-
-		/**
-		 * Updates the Pin state (in certain scenarios)
-		 * If the controller container is not the document and we are mid-pin-phase scrolling or resizing the main document can result to wrong pin positions.
-		 * So this function is called on resize and scroll of the document.
-		 * @private
-		 */
-		var updatePinInContainer = function () {
-			if (_controller && _pin && _state === SCENE_STATE_DURING && !_controller.info("isDocument")) {
-				updatePinState();
-			}
-		};
-
-		/**
-		 * Updates the Pin spacer size state (in certain scenarios)
-		 * If container is resized during pin and relatively sized the size of the pin might need to be updated...
-		 * So this function is called on resize of the container.
-		 * @private
-		 */
-		var updateRelativePinSpacer = function () {
-			if (_controller && _pin && // well, duh
-			_state === SCENE_STATE_DURING && // element in pinned state?
-			( // is width or height relatively sized, but not in relation to body? then we need to recalc.
-			((_pinOptions.relSize.width || _pinOptions.relSize.autoFullWidth) && _util.get.width(window) != _util.get.width(_pinOptions.spacer.parentNode)) || (_pinOptions.relSize.height && _util.get.height(window) != _util.get.height(_pinOptions.spacer.parentNode)))) {
-				updatePinDimensions();
-			}
-		};
-
-		/**
-		 * Is called, when the mousewhel is used while over a pinned element inside a div container.
-		 * If the scene is in fixed state scroll events would be counted towards the body. This forwards the event to the scroll container.
-		 * @private
-		 */
-		var onMousewheelOverPin = function (e) {
-			if (_controller && _pin && _state === SCENE_STATE_DURING && !_controller.info("isDocument")) { // in pin state
-				e.preventDefault();
-				_controller._setScrollPos(_controller.info("scrollPos") - ((e.wheelDelta || e[_controller.info("vertical") ? "wheelDeltaY" : "wheelDeltaX"]) / 3 || -e.detail * 30));
-			}
-		};
-
-		/**
-		 * Pin an element for the duration of the tween.  
-		 * If the scene duration is 0 the element will only be unpinned, if the user scrolls back past the start position.  
-		 * Make sure only one pin is applied to an element at the same time.
-		 * An element can be pinned multiple times, but only successively.
-		 * _**NOTE:** The option `pushFollowers` has no effect, when the scene duration is 0._
-		 * @method ScrollMagic.Scene#setPin
-		 * @example
-		 * // pin element and push all following elements down by the amount of the pin duration.
-		 * scene.setPin("#pin");
-		 *
-		 * // pin element and keeping all following elements in their place. The pinned element will move past them.
-		 * scene.setPin("#pin", {pushFollowers: false});
-		 *
-		 * @param {(string|object)} element - A Selector targeting an element or a DOM object that is supposed to be pinned.
-		 * @param {object} [settings] - settings for the pin
-		 * @param {boolean} [settings.pushFollowers=true] - If `true` following elements will be "pushed" down for the duration of the pin, if `false` the pinned element will just scroll past them.  
-		 Ignored, when duration is `0`.
-		 * @param {string} [settings.spacerClass="scrollmagic-pin-spacer"] - Classname of the pin spacer element, which is used to replace the element.
-		 *
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.setPin = function (element, settings) {
-			var
-			defaultSettings = {
-				pushFollowers: true,
-				spacerClass: "scrollmagic-pin-spacer"
-			};
-			settings = _util.extend({}, defaultSettings, settings);
-
-			// validate Element
-			element = _util.get.elements(element)[0];
-			if (!element) {
-				log(1, "ERROR calling method 'setPin()': Invalid pin element supplied.");
-				return Scene; // cancel
-			} else if (_util.css(element, "position") === "fixed") {
-				log(1, "ERROR calling method 'setPin()': Pin does not work with elements that are positioned 'fixed'.");
-				return Scene; // cancel
-			}
-
-			if (_pin) { // preexisting pin?
-				if (_pin === element) {
-					// same pin we already have -> do nothing
-					return Scene; // cancel
-				} else {
-					// kill old pin
-					Scene.removePin();
-				}
-
-			}
-			_pin = element;
-
-			var
-			parentDisplay = _pin.parentNode.style.display,
-				boundsParams = ["top", "left", "bottom", "right", "margin", "marginLeft", "marginRight", "marginTop", "marginBottom"];
-
-			_pin.parentNode.style.display = 'none'; // hack start to force css to return stylesheet values instead of calculated px values.
-			var
-			inFlow = _util.css(_pin, "position") != "absolute",
-				pinCSS = _util.css(_pin, boundsParams.concat(["display"])),
-				sizeCSS = _util.css(_pin, ["width", "height"]);
-			_pin.parentNode.style.display = parentDisplay; // hack end.
-			if (!inFlow && settings.pushFollowers) {
-				log(2, "WARNING: If the pinned element is positioned absolutely pushFollowers will be disabled.");
-				settings.pushFollowers = false;
-			}
-			window.setTimeout(function () { // wait until all finished, because with responsive duration it will only be set after scene is added to controller
-				if (_pin && _options.duration === 0 && settings.pushFollowers) {
-					log(2, "WARNING: pushFollowers =", true, "has no effect, when scene duration is 0.");
-				}
-			}, 0);
-
-			// create spacer and insert
-			var
-			spacer = _pin.parentNode.insertBefore(document.createElement('div'), _pin),
-				spacerCSS = _util.extend(pinCSS, {
-					position: inFlow ? "relative" : "absolute",
-					boxSizing: "content-box",
-					mozBoxSizing: "content-box",
-					webkitBoxSizing: "content-box"
-				});
-
-			if (!inFlow) { // copy size if positioned absolutely, to work for bottom/right positioned elements.
-				_util.extend(spacerCSS, _util.css(_pin, ["width", "height"]));
-			}
-
-			_util.css(spacer, spacerCSS);
-			spacer.setAttribute(PIN_SPACER_ATTRIBUTE, "");
-			_util.addClass(spacer, settings.spacerClass);
-
-			// set the pin Options
-			_pinOptions = {
-				spacer: spacer,
-				relSize: { // save if size is defined using % values. if so, handle spacer resize differently...
-					width: sizeCSS.width.slice(-1) === "%",
-					height: sizeCSS.height.slice(-1) === "%",
-					autoFullWidth: sizeCSS.width === "auto" && inFlow && _util.isMarginCollapseType(pinCSS.display)
-				},
-				pushFollowers: settings.pushFollowers,
-				inFlow: inFlow,
-				// stores if the element takes up space in the document flow
-			};
-
-			if (!_pin.___origStyle) {
-				_pin.___origStyle = {};
-				var
-				pinInlineCSS = _pin.style,
-					copyStyles = boundsParams.concat(["width", "height", "position", "boxSizing", "mozBoxSizing", "webkitBoxSizing"]);
-				copyStyles.forEach(function (val) {
-					_pin.___origStyle[val] = pinInlineCSS[val] || "";
-				});
-			}
-
-			// if relative size, transfer it to spacer and make pin calculate it...
-			if (_pinOptions.relSize.width) {
-				_util.css(spacer, {
-					width: sizeCSS.width
-				});
-			}
-			if (_pinOptions.relSize.height) {
-				_util.css(spacer, {
-					height: sizeCSS.height
-				});
-			}
-
-			// now place the pin element inside the spacer	
-			spacer.appendChild(_pin);
-			// and set new css
-			_util.css(_pin, {
-				position: inFlow ? "relative" : "absolute",
-				margin: "auto",
-				top: "auto",
-				left: "auto",
-				bottom: "auto",
-				right: "auto"
-			});
-
-			if (_pinOptions.relSize.width || _pinOptions.relSize.autoFullWidth) {
-				_util.css(_pin, {
-					boxSizing: "border-box",
-					mozBoxSizing: "border-box",
-					webkitBoxSizing: "border-box"
-				});
-			}
-
-			// add listener to document to update pin position in case controller is not the document.
-			window.addEventListener('scroll', updatePinInContainer);
-			window.addEventListener('resize', updatePinInContainer);
-			window.addEventListener('resize', updateRelativePinSpacer);
-			// add mousewheel listener to catch scrolls over fixed elements
-			_pin.addEventListener("mousewheel", onMousewheelOverPin);
-			_pin.addEventListener("DOMMouseScroll", onMousewheelOverPin);
-
-			log(3, "added pin");
-
-			// finally update the pin to init
-			updatePinState();
-
-			return Scene;
-		};
-
-		/**
-		 * Remove the pin from the scene.
-		 * @method ScrollMagic.Scene#removePin
-		 * @example
-		 * // remove the pin from the scene without resetting it (the spacer is not removed)
-		 * scene.removePin();
-		 *
-		 * // remove the pin from the scene and reset the pin element to its initial position (spacer is removed)
-		 * scene.removePin(true);
-		 *
-		 * @param {boolean} [reset=false] - If `false` the spacer will not be removed and the element's position will not be reset.
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.removePin = function (reset) {
-			if (_pin) {
-				if (_state === SCENE_STATE_DURING) {
-					updatePinState(true); // force unpin at position
-				}
-				if (reset || !_controller) { // if there's no controller no progress was made anyway...
-					var pinTarget = _pinOptions.spacer.firstChild; // usually the pin element, but may be another spacer (cascaded pins)...
-					if (pinTarget.hasAttribute(PIN_SPACER_ATTRIBUTE)) { // copy margins to child spacer
-						var
-						style = _pinOptions.spacer.style,
-							values = ["margin", "marginLeft", "marginRight", "marginTop", "marginBottom"],
-							margins = {};
-						values.forEach(function (val) {
-							margins[val] = style[val] || "";
-						});
-						_util.css(pinTarget, margins);
-					}
-					_pinOptions.spacer.parentNode.insertBefore(pinTarget, _pinOptions.spacer);
-					_pinOptions.spacer.parentNode.removeChild(_pinOptions.spacer);
-					if (!_pin.parentNode.hasAttribute(PIN_SPACER_ATTRIBUTE)) { // if it's the last pin for this element -> restore inline styles
-						// TODO: only correctly set for first pin (when cascading) - how to fix?
-						_util.css(_pin, _pin.___origStyle);
-						delete _pin.___origStyle;
-					}
-				}
-				window.removeEventListener('scroll', updatePinInContainer);
-				window.removeEventListener('resize', updatePinInContainer);
-				window.removeEventListener('resize', updateRelativePinSpacer);
-				_pin.removeEventListener("mousewheel", onMousewheelOverPin);
-				_pin.removeEventListener("DOMMouseScroll", onMousewheelOverPin);
-				_pin = undefined;
-				log(3, "removed pin (reset: " + (reset ? "true" : "false") + ")");
-			}
-			return Scene;
-		};
-
-
-		var
-		_cssClasses, _cssClassElems = [];
-
-		Scene.on("destroy.internal", function (e) {
-			Scene.removeClassToggle(e.reset);
-		});
-		/**
-		 * Define a css class modification while the scene is active.  
-		 * When the scene triggers the classes will be added to the supplied element and removed, when the scene is over.
-		 * If the scene duration is 0 the classes will only be removed if the user scrolls back past the start position.
-		 * @method ScrollMagic.Scene#setClassToggle
-		 * @example
-		 * // add the class 'myclass' to the element with the id 'my-elem' for the duration of the scene
-		 * scene.setClassToggle("#my-elem", "myclass");
-		 *
-		 * // add multiple classes to multiple elements defined by the selector '.classChange'
-		 * scene.setClassToggle(".classChange", "class1 class2 class3");
-		 *
-		 * @param {(string|object)} element - A Selector targeting one or more elements or a DOM object that is supposed to be modified.
-		 * @param {string} classes - One or more Classnames (separated by space) that should be added to the element during the scene.
-		 *
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.setClassToggle = function (element, classes) {
-			var elems = _util.get.elements(element);
-			if (elems.length === 0 || !_util.type.String(classes)) {
-				log(1, "ERROR calling method 'setClassToggle()': Invalid " + (elems.length === 0 ? "element" : "classes") + " supplied.");
-				return Scene;
-			}
-			if (_cssClassElems.length > 0) {
-				// remove old ones
-				Scene.removeClassToggle();
-			}
-			_cssClasses = classes;
-			_cssClassElems = elems;
-			Scene.on("enter.internal_class leave.internal_class", function (e) {
-				var toggle = e.type === "enter" ? _util.addClass : _util.removeClass;
-				_cssClassElems.forEach(function (elem, key) {
-					toggle(elem, _cssClasses);
-				});
-			});
-			return Scene;
-		};
-
-		/**
-		 * Remove the class binding from the scene.
-		 * @method ScrollMagic.Scene#removeClassToggle
-		 * @example
-		 * // remove class binding from the scene without reset
-		 * scene.removeClassToggle();
-		 *
-		 * // remove class binding and remove the changes it caused
-		 * scene.removeClassToggle(true);
-		 *
-		 * @param {boolean} [reset=false] - If `false` and the classes are currently active, they will remain on the element. If `true` they will be removed.
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		this.removeClassToggle = function (reset) {
-			if (reset) {
-				_cssClassElems.forEach(function (elem, key) {
-					_util.removeClass(elem, _cssClasses);
-				});
-			}
-			Scene.off("start.internal_class end.internal_class");
-			_cssClasses = undefined;
-			_cssClassElems = [];
-			return Scene;
-		};
-
-		// INIT
-		construct();
-		return Scene;
-	};
-
-	// store pagewide scene options
-	var SCENE_OPTIONS = {
-		defaults: {
-			duration: 0,
-			offset: 0,
-			triggerElement: undefined,
-			triggerHook: 0.5,
-			reverse: true,
-			loglevel: 2
-		},
-		validate: {
-			offset: function (val) {
-				val = parseFloat(val);
-				if (!_util.type.Number(val)) {
-					throw ["Invalid value for option \"offset\":", val];
-				}
-				return val;
-			},
-			triggerElement: function (val) {
-				val = val || undefined;
-				if (val) {
-					var elem = _util.get.elements(val)[0];
-					if (elem && elem.parentNode) {
-						val = elem;
-					} else {
-						throw ["Element defined in option \"triggerElement\" was not found:", val];
-					}
-				}
-				return val;
-			},
-			triggerHook: function (val) {
-				var translate = {
-					"onCenter": 0.5,
-					"onEnter": 1,
-					"onLeave": 0
-				};
-				if (_util.type.Number(val)) {
-					val = Math.max(0, Math.min(parseFloat(val), 1)); //  make sure its betweeen 0 and 1
-				} else if (val in translate) {
-					val = translate[val];
-				} else {
-					throw ["Invalid value for option \"triggerHook\": ", val];
-				}
-				return val;
-			},
-			reverse: function (val) {
-				return !!val; // force boolean
-			},
-			loglevel: function (val) {
-				val = parseInt(val);
-				if (!_util.type.Number(val) || val < 0 || val > 3) {
-					throw ["Invalid value for option \"loglevel\":", val];
-				}
-				return val;
-			}
-		},
-		// holder for  validation methods. duration validation is handled in 'getters-setters.js'
-		shifts: ["duration", "offset", "triggerHook"],
-		// list of options that trigger a `shift` event
-	};
-/*
- * method used to add an option to ScrollMagic Scenes.
- * TODO: DOC (private for dev)
- */
-	ScrollMagic.Scene.addOption = function (name, defaultValue, validationCallback, shifts) {
-		if (!(name in SCENE_OPTIONS.defaults)) {
-			SCENE_OPTIONS.defaults[name] = defaultValue;
-			SCENE_OPTIONS.validate[name] = validationCallback;
-			if (shifts) {
-				SCENE_OPTIONS.shifts.push(name);
-			}
-		} else {
-			ScrollMagic._util.log(1, "[static] ScrollMagic.Scene -> Cannot add Scene option '" + name + "', because it already exists.");
-		}
-	};
-	// instance extension function for plugins
-	// TODO: DOC (private for dev)
-	ScrollMagic.Scene.extend = function (extension) {
-		var oldClass = this;
-		ScrollMagic.Scene = function () {
-			oldClass.apply(this, arguments);
-			this.$super = _util.extend({}, this); // copy parent state
-			return extension.apply(this, arguments) || this;
-		};
-		_util.extend(ScrollMagic.Scene, oldClass); // copy properties
-		ScrollMagic.Scene.prototype = oldClass.prototype; // copy prototype
-		ScrollMagic.Scene.prototype.constructor = ScrollMagic.Scene; // restore constructor
-	};
-
-
-
-	/**
-	 * TODO: DOCS (private for dev)
-	 * @class
-	 * @private
-	 */
-
-	ScrollMagic.Event = function (type, namespace, target, vars) {
-		vars = vars || {};
-		for (var key in vars) {
-			this[key] = vars[key];
-		}
-		this.type = type;
-		this.target = this.currentTarget = target;
-		this.namespace = namespace || '';
-		this.timeStamp = this.timestamp = Date.now();
-		return this;
-	};
-
-/*
- * TODO: DOCS (private for dev)
- */
-
-	var _util = ScrollMagic._util = (function (window) {
-		var U = {},
-			i;
-
-		/**
-		 * ------------------------------
-		 * internal helpers
-		 * ------------------------------
-		 */
-
-		// parse float and fall back to 0.
-		var floatval = function (number) {
-			return parseFloat(number) || 0;
-		};
-		// get current style IE safe (otherwise IE would return calculated values for 'auto')
-		var _getComputedStyle = function (elem) {
-			return elem.currentStyle ? elem.currentStyle : window.getComputedStyle(elem);
-		};
-
-		// get element dimension (width or height)
-		var _dimension = function (which, elem, outer, includeMargin) {
-			elem = (elem === document) ? window : elem;
-			if (elem === window) {
-				includeMargin = false;
-			} else if (!_type.DomElement(elem)) {
-				return 0;
-			}
-			which = which.charAt(0).toUpperCase() + which.substr(1).toLowerCase();
-			var dimension = (outer ? elem['offset' + which] || elem['outer' + which] : elem['client' + which] || elem['inner' + which]) || 0;
-			if (outer && includeMargin) {
-				var style = _getComputedStyle(elem);
-				dimension += which === 'Height' ? floatval(style.marginTop) + floatval(style.marginBottom) : floatval(style.marginLeft) + floatval(style.marginRight);
-			}
-			return dimension;
-		};
-		// converts 'margin-top' into 'marginTop'
-		var _camelCase = function (str) {
-			return str.replace(/^[^a-z]+([a-z])/g, '$1').replace(/-([a-z])/g, function (g) {
-				return g[1].toUpperCase();
-			});
-		};
-
-		/**
-		 * ------------------------------
-		 * external helpers
-		 * ------------------------------
-		 */
-
-		// extend obj – same as jQuery.extend({}, objA, objB)
-		U.extend = function (obj) {
-			obj = obj || {};
-			for (i = 1; i < arguments.length; i++) {
-				if (!arguments[i]) {
-					continue;
-				}
-				for (var key in arguments[i]) {
-					if (arguments[i].hasOwnProperty(key)) {
-						obj[key] = arguments[i][key];
-					}
-				}
-			}
-			return obj;
-		};
-
-		// check if a css display type results in margin-collapse or not
-		U.isMarginCollapseType = function (str) {
-			return ["block", "flex", "list-item", "table", "-webkit-box"].indexOf(str) > -1;
-		};
-
-		// implementation of requestAnimationFrame
-		// based on https://gist.github.com/paulirish/1579671
-		var
-		lastTime = 0,
-			vendors = ['ms', 'moz', 'webkit', 'o'];
-		var _requestAnimationFrame = window.requestAnimationFrame;
-		var _cancelAnimationFrame = window.cancelAnimationFrame;
-		// try vendor prefixes if the above doesn't work
-		for (i = 0; !_requestAnimationFrame && i < vendors.length; ++i) {
-			_requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
-			_cancelAnimationFrame = window[vendors[i] + 'CancelAnimationFrame'] || window[vendors[i] + 'CancelRequestAnimationFrame'];
-		}
-
-		// fallbacks
-		if (!_requestAnimationFrame) {
-			_requestAnimationFrame = function (callback) {
-				var
-				currTime = new Date().getTime(),
-					timeToCall = Math.max(0, 16 - (currTime - lastTime)),
-					id = window.setTimeout(function () {
-						callback(currTime + timeToCall);
-					}, timeToCall);
-				lastTime = currTime + timeToCall;
-				return id;
-			};
-		}
-		if (!_cancelAnimationFrame) {
-			_cancelAnimationFrame = function (id) {
-				window.clearTimeout(id);
-			};
-		}
-		U.rAF = _requestAnimationFrame.bind(window);
-		U.cAF = _cancelAnimationFrame.bind(window);
-
-		var
-		loglevels = ["error", "warn", "log"],
-			console = window.console || {};
-
-		console.log = console.log ||
-		function () {}; // no console log, well - do nothing then...
-		// make sure methods for all levels exist.
-		for (i = 0; i < loglevels.length; i++) {
-			var method = loglevels[i];
-			if (!console[method]) {
-				console[method] = console.log; // prefer .log over nothing
-			}
-		}
-		U.log = function (loglevel) {
-			if (loglevel > loglevels.length || loglevel <= 0) loglevel = loglevels.length;
-			var now = new Date(),
-				time = ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2) + ":" + ("0" + now.getSeconds()).slice(-2) + ":" + ("00" + now.getMilliseconds()).slice(-3),
-				method = loglevels[loglevel - 1],
-				args = Array.prototype.splice.call(arguments, 1),
-				func = Function.prototype.bind.call(console[method], console);
-			args.unshift(time);
-			func.apply(console, args);
-		};
-
-		/**
-		 * ------------------------------
-		 * type testing
-		 * ------------------------------
-		 */
-
-		var _type = U.type = function (v) {
-			return Object.prototype.toString.call(v).replace(/^\[object (.+)\]$/, "$1").toLowerCase();
-		};
-		_type.String = function (v) {
-			return _type(v) === 'string';
-		};
-		_type.Function = function (v) {
-			return _type(v) === 'function';
-		};
-		_type.Array = function (v) {
-			return Array.isArray(v);
-		};
-		_type.Number = function (v) {
-			return !_type.Array(v) && (v - parseFloat(v) + 1) >= 0;
-		};
-		_type.DomElement = function (o) {
-			return (
-			typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
-			o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string");
-		};
-
-		/**
-		 * ------------------------------
-		 * DOM Element info
-		 * ------------------------------
-		 */
-		// always returns a list of matching DOM elements, from a selector, a DOM element or an list of elements or even an array of selectors
-		var _get = U.get = {};
-		_get.elements = function (selector) {
-			var arr = [];
-			if (_type.String(selector)) {
-				try {
-					selector = document.querySelectorAll(selector);
-				} catch (e) { // invalid selector
-					return arr;
-				}
-			}
-			if (_type(selector) === 'nodelist' || _type.Array(selector)) {
-				for (var i = 0, ref = arr.length = selector.length; i < ref; i++) { // list of elements
-					var elem = selector[i];
-					arr[i] = _type.DomElement(elem) ? elem : _get.elements(elem); // if not an element, try to resolve recursively
-				}
-			} else if (_type.DomElement(selector) || selector === document || selector === window) {
-				arr = [selector]; // only the element
-			}
-			return arr;
-		};
-		// get scroll top value
-		_get.scrollTop = function (elem) {
-			return (elem && typeof elem.scrollTop === 'number') ? elem.scrollTop : window.pageYOffset || 0;
-		};
-		// get scroll left value
-		_get.scrollLeft = function (elem) {
-			return (elem && typeof elem.scrollLeft === 'number') ? elem.scrollLeft : window.pageXOffset || 0;
-		};
-		// get element height
-		_get.width = function (elem, outer, includeMargin) {
-			return _dimension('width', elem, outer, includeMargin);
-		};
-		// get element width
-		_get.height = function (elem, outer, includeMargin) {
-			return _dimension('height', elem, outer, includeMargin);
-		};
-
-		// get element position (optionally relative to viewport)
-		_get.offset = function (elem, relativeToViewport) {
-			var offset = {
-				top: 0,
-				left: 0
-			};
-			if (elem && elem.getBoundingClientRect) { // check if available
-				var rect = elem.getBoundingClientRect();
-				offset.top = rect.top;
-				offset.left = rect.left;
-				if (!relativeToViewport) { // clientRect is by default relative to viewport...
-					offset.top += _get.scrollTop();
-					offset.left += _get.scrollLeft();
-				}
-			}
-			return offset;
-		};
-
-		/**
-		 * ------------------------------
-		 * DOM Element manipulation
-		 * ------------------------------
-		 */
-
-		U.addClass = function (elem, classname) {
-			if (classname) {
-				if (elem.classList) elem.classList.add(classname);
-				else elem.className += ' ' + classname;
-			}
-		};
-		U.removeClass = function (elem, classname) {
-			if (classname) {
-				if (elem.classList) elem.classList.remove(classname);
-				else elem.className = elem.className.replace(new RegExp('(^|\\b)' + classname.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-			}
-		};
-		// if options is string -> returns css value
-		// if options is array -> returns object with css value pairs
-		// if options is object -> set new css values
-		U.css = function (elem, options) {
-			if (_type.String(options)) {
-				return _getComputedStyle(elem)[_camelCase(options)];
-			} else if (_type.Array(options)) {
-				var
-				obj = {},
-					style = _getComputedStyle(elem);
-				options.forEach(function (option, key) {
-					obj[option] = style[_camelCase(option)];
-				});
-				return obj;
-			} else {
-				for (var option in options) {
-					var val = options[option];
-					if (val == parseFloat(val)) { // assume pixel for seemingly numerical values
-						val += 'px';
-					}
-					elem.style[_camelCase(option)] = val;
-				}
-			}
-		};
-
-		return U;
-	}(window || {}));
-
-	ScrollMagic.Scene.prototype.addIndicators = function () {
-		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling addIndicators() due to missing Plugin \'debug.addIndicators\'. Please make sure to include plugins/debug.addIndicators.js');
-		return this;
-	}
-	ScrollMagic.Scene.prototype.removeIndicators = function () {
-		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling removeIndicators() due to missing Plugin \'debug.addIndicators\'. Please make sure to include plugins/debug.addIndicators.js');
-		return this;
-	}
-	ScrollMagic.Scene.prototype.setTween = function () {
-		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling setTween() due to missing Plugin \'animation.gsap\'. Please make sure to include plugins/animation.gsap.js');
-		return this;
-	}
-	ScrollMagic.Scene.prototype.removeTween = function () {
-		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling removeTween() due to missing Plugin \'animation.gsap\'. Please make sure to include plugins/animation.gsap.js');
-		return this;
-	}
-	ScrollMagic.Scene.prototype.setVelocity = function () {
-		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling setVelocity() due to missing Plugin \'animation.velocity\'. Please make sure to include plugins/animation.velocity.js');
-		return this;
-	}
-	ScrollMagic.Scene.prototype.removeVelocity = function () {
-		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling removeVelocity() due to missing Plugin \'animation.velocity\'. Please make sure to include plugins/animation.velocity.js');
-		return this;
-	}
-
-	return ScrollMagic;
-}));
-/*!
  * VERSION: 2.0.2
  * DATE: 2018-08-27
  * UPDATES AND DOCS AT: http://greensock.com
@@ -15076,6 +12284,2798 @@ if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); } //necessary in case Tween
 	};
 
 }(jQuery));
+/*!
+ * ScrollMagic v2.0.6 (2018-10-08)
+ * The javascript library for magical scroll interactions.
+ * (c) 2018 Jan Paepke (@janpaepke)
+ * Project Website: http://scrollmagic.io
+ * 
+ * @version 2.0.6
+ * @license Dual licensed under MIT license and GPL.
+ * @author Jan Paepke - e-mail@janpaepke.de
+ *
+ * @file ScrollMagic main library.
+ */
+/**
+ * @namespace ScrollMagic
+ */
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		module.exports = factory();
+	} else {
+		// Browser global
+		root.ScrollMagic = factory();
+	}
+}(this, function () {
+	"use strict";
+
+	var ScrollMagic = function () {
+		_util.log(2, '(COMPATIBILITY NOTICE) -> As of ScrollMagic 2.0.0 you need to use \'new ScrollMagic.Controller()\' to create a new controller instance. Use \'new ScrollMagic.Scene()\' to instance a scene.');
+	};
+
+	ScrollMagic.version = "2.0.6";
+
+	// TODO: temporary workaround for chrome's scroll jitter bug
+	window.addEventListener("mousewheel", function () {});
+
+	// global const
+	var PIN_SPACER_ATTRIBUTE = "data-scrollmagic-pin-spacer";
+
+	/**
+	 * The main class that is needed once per scroll container.
+	 *
+	 * @class
+	 *
+	 * @example
+	 * // basic initialization
+	 * var controller = new ScrollMagic.Controller();
+	 *
+	 * // passing options
+	 * var controller = new ScrollMagic.Controller({container: "#myContainer", loglevel: 3});
+	 *
+	 * @param {object} [options] - An object containing one or more options for the controller.
+	 * @param {(string|object)} [options.container=window] - A selector, DOM object that references the main container for scrolling.
+	 * @param {boolean} [options.vertical=true] - Sets the scroll mode to vertical (`true`) or horizontal (`false`) scrolling.
+	 * @param {object} [options.globalSceneOptions={}] - These options will be passed to every Scene that is added to the controller using the addScene method. For more information on Scene options see {@link ScrollMagic.Scene}.
+	 * @param {number} [options.loglevel=2] Loglevel for debugging. Note that logging is disabled in the minified version of ScrollMagic.
+	 ** `0` => silent
+	 ** `1` => errors
+	 ** `2` => errors, warnings
+	 ** `3` => errors, warnings, debuginfo
+	 * @param {boolean} [options.refreshInterval=100] - Some changes don't call events by default, like changing the container size or moving a scene trigger element.  
+	 This interval polls these parameters to fire the necessary events.  
+	 If you don't use custom containers, trigger elements or have static layouts, where the positions of the trigger elements don't change, you can set this to 0 disable interval checking and improve performance.
+	 *
+	 */
+	ScrollMagic.Controller = function (options) {
+/*
+	 * ----------------------------------------------------------------
+	 * settings
+	 * ----------------------------------------------------------------
+	 */
+		var
+		NAMESPACE = 'ScrollMagic.Controller',
+			SCROLL_DIRECTION_FORWARD = 'FORWARD',
+			SCROLL_DIRECTION_REVERSE = 'REVERSE',
+			SCROLL_DIRECTION_PAUSED = 'PAUSED',
+			DEFAULT_OPTIONS = CONTROLLER_OPTIONS.defaults;
+
+/*
+	 * ----------------------------------------------------------------
+	 * private vars
+	 * ----------------------------------------------------------------
+	 */
+		var
+		Controller = this,
+			_options = _util.extend({}, DEFAULT_OPTIONS, options),
+			_sceneObjects = [],
+			_updateScenesOnNextCycle = false,
+			// can be boolean (true => all scenes) or an array of scenes to be updated
+			_scrollPos = 0,
+			_scrollDirection = SCROLL_DIRECTION_PAUSED,
+			_isDocument = true,
+			_viewPortSize = 0,
+			_enabled = true,
+			_updateTimeout, _refreshTimeout;
+
+/*
+	 * ----------------------------------------------------------------
+	 * private functions
+	 * ----------------------------------------------------------------
+	 */
+
+		/**
+		 * Internal constructor function of the ScrollMagic Controller
+		 * @private
+		 */
+		var construct = function () {
+			for (var key in _options) {
+				if (!DEFAULT_OPTIONS.hasOwnProperty(key)) {
+					log(2, "WARNING: Unknown option \"" + key + "\"");
+					delete _options[key];
+				}
+			}
+			_options.container = _util.get.elements(_options.container)[0];
+			// check ScrollContainer
+			if (!_options.container) {
+				log(1, "ERROR creating object " + NAMESPACE + ": No valid scroll container supplied");
+				throw NAMESPACE + " init failed."; // cancel
+			}
+			_isDocument = _options.container === window || _options.container === document.body || !document.body.contains(_options.container);
+			// normalize to window
+			if (_isDocument) {
+				_options.container = window;
+			}
+			// update container size immediately
+			_viewPortSize = getViewportSize();
+			// set event handlers
+			_options.container.addEventListener("resize", onChange);
+			_options.container.addEventListener("scroll", onChange);
+
+			var ri = parseInt(_options.refreshInterval, 10);
+			_options.refreshInterval = _util.type.Number(ri) ? ri : DEFAULT_OPTIONS.refreshInterval;
+			scheduleRefresh();
+
+			log(3, "added new " + NAMESPACE + " controller (v" + ScrollMagic.version + ")");
+		};
+
+		/**
+		 * Schedule the next execution of the refresh function
+		 * @private
+		 */
+		var scheduleRefresh = function () {
+			if (_options.refreshInterval > 0) {
+				_refreshTimeout = window.setTimeout(refresh, _options.refreshInterval);
+			}
+		};
+
+		/**
+		 * Default function to get scroll pos - overwriteable using `Controller.scrollPos(newFunction)`
+		 * @private
+		 */
+		var getScrollPos = function () {
+			return _options.vertical ? _util.get.scrollTop(_options.container) : _util.get.scrollLeft(_options.container);
+		};
+
+		/**
+		 * Returns the current viewport Size (width vor horizontal, height for vertical)
+		 * @private
+		 */
+		var getViewportSize = function () {
+			return _options.vertical ? _util.get.height(_options.container) : _util.get.width(_options.container);
+		};
+
+		/**
+		 * Default function to set scroll pos - overwriteable using `Controller.scrollTo(newFunction)`
+		 * Make available publicly for pinned mousewheel workaround.
+		 * @private
+		 */
+		var setScrollPos = this._setScrollPos = function (pos) {
+			if (_options.vertical) {
+				if (_isDocument) {
+					window.scrollTo(_util.get.scrollLeft(), pos);
+				} else {
+					_options.container.scrollTop = pos;
+				}
+			} else {
+				if (_isDocument) {
+					window.scrollTo(pos, _util.get.scrollTop());
+				} else {
+					_options.container.scrollLeft = pos;
+				}
+			}
+		};
+
+		/**
+		 * Handle updates in cycles instead of on scroll (performance)
+		 * @private
+		 */
+		var updateScenes = function () {
+			if (_enabled && _updateScenesOnNextCycle) {
+				// determine scenes to update
+				var scenesToUpdate = _util.type.Array(_updateScenesOnNextCycle) ? _updateScenesOnNextCycle : _sceneObjects.slice(0);
+				// reset scenes
+				_updateScenesOnNextCycle = false;
+				var oldScrollPos = _scrollPos;
+				// update scroll pos now instead of onChange, as it might have changed since scheduling (i.e. in-browser smooth scroll)
+				_scrollPos = Controller.scrollPos();
+				var deltaScroll = _scrollPos - oldScrollPos;
+				if (deltaScroll !== 0) { // scroll position changed?
+					_scrollDirection = (deltaScroll > 0) ? SCROLL_DIRECTION_FORWARD : SCROLL_DIRECTION_REVERSE;
+				}
+				// reverse order of scenes if scrolling reverse
+				if (_scrollDirection === SCROLL_DIRECTION_REVERSE) {
+					scenesToUpdate.reverse();
+				}
+				// update scenes
+				scenesToUpdate.forEach(function (scene, index) {
+					log(3, "updating Scene " + (index + 1) + "/" + scenesToUpdate.length + " (" + _sceneObjects.length + " total)");
+					scene.update(true);
+				});
+				if (scenesToUpdate.length === 0 && _options.loglevel >= 3) {
+					log(3, "updating 0 Scenes (nothing added to controller)");
+				}
+			}
+		};
+
+		/**
+		 * Initializes rAF callback
+		 * @private
+		 */
+		var debounceUpdate = function () {
+			_updateTimeout = _util.rAF(updateScenes);
+		};
+
+		/**
+		 * Handles Container changes
+		 * @private
+		 */
+		var onChange = function (e) {
+			log(3, "event fired causing an update:", e.type);
+			if (e.type == "resize") {
+				// resize
+				_viewPortSize = getViewportSize();
+				_scrollDirection = SCROLL_DIRECTION_PAUSED;
+			}
+			// schedule update
+			if (_updateScenesOnNextCycle !== true) {
+				_updateScenesOnNextCycle = true;
+				debounceUpdate();
+			}
+		};
+
+		var refresh = function () {
+			if (!_isDocument) {
+				// simulate resize event. Only works for viewport relevant param (performance)
+				if (_viewPortSize != getViewportSize()) {
+					var resizeEvent;
+					try {
+						resizeEvent = new Event('resize', {
+							bubbles: false,
+							cancelable: false
+						});
+					} catch (e) { // stupid IE
+						resizeEvent = document.createEvent("Event");
+						resizeEvent.initEvent("resize", false, false);
+					}
+					_options.container.dispatchEvent(resizeEvent);
+				}
+			}
+			_sceneObjects.forEach(function (scene, index) { // refresh all scenes
+				scene.refresh();
+			});
+			scheduleRefresh();
+		};
+
+		/**
+		 * Send a debug message to the console.
+		 * provided publicly with _log for plugins
+		 * @private
+		 *
+		 * @param {number} loglevel - The loglevel required to initiate output for the message.
+		 * @param {...mixed} output - One or more variables that should be passed to the console.
+		 */
+		var log = this._log = function (loglevel, output) {
+			if (_options.loglevel >= loglevel) {
+				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ") ->");
+				_util.log.apply(window, arguments);
+			}
+		};
+		// for scenes we have getters for each option, but for the controller we don't, so we need to make it available externally for plugins
+		this._options = _options;
+
+		/**
+		 * Sort scenes in ascending order of their start offset.
+		 * @private
+		 *
+		 * @param {array} ScenesArray - an array of ScrollMagic Scenes that should be sorted
+		 * @return {array} The sorted array of Scenes.
+		 */
+		var sortScenes = function (ScenesArray) {
+			if (ScenesArray.length <= 1) {
+				return ScenesArray;
+			} else {
+				var scenes = ScenesArray.slice(0);
+				scenes.sort(function (a, b) {
+					return a.scrollOffset() > b.scrollOffset() ? 1 : -1;
+				});
+				return scenes;
+			}
+		};
+
+		/**
+		 * ----------------------------------------------------------------
+		 * public functions
+		 * ----------------------------------------------------------------
+		 */
+
+		/**
+		 * Add one ore more scene(s) to the controller.  
+		 * This is the equivalent to `Scene.addTo(controller)`.
+		 * @public
+		 * @example
+		 * // with a previously defined scene
+		 * controller.addScene(scene);
+		 *
+		 * // with a newly created scene.
+		 * controller.addScene(new ScrollMagic.Scene({duration : 0}));
+		 *
+		 * // adding multiple scenes
+		 * controller.addScene([scene, scene2, new ScrollMagic.Scene({duration : 0})]);
+		 *
+		 * @param {(ScrollMagic.Scene|array)} newScene - ScrollMagic Scene or Array of Scenes to be added to the controller.
+		 * @return {Controller} Parent object for chaining.
+		 */
+		this.addScene = function (newScene) {
+			if (_util.type.Array(newScene)) {
+				newScene.forEach(function (scene, index) {
+					Controller.addScene(scene);
+				});
+			} else if (newScene instanceof ScrollMagic.Scene) {
+				if (newScene.controller() !== Controller) {
+					newScene.addTo(Controller);
+				} else if (_sceneObjects.indexOf(newScene) < 0) {
+					// new scene
+					_sceneObjects.push(newScene); // add to array
+					_sceneObjects = sortScenes(_sceneObjects); // sort
+					newScene.on("shift.controller_sort", function () { // resort whenever scene moves
+						_sceneObjects = sortScenes(_sceneObjects);
+					});
+					// insert Global defaults.
+					for (var key in _options.globalSceneOptions) {
+						if (newScene[key]) {
+							newScene[key].call(newScene, _options.globalSceneOptions[key]);
+						}
+					}
+					log(3, "adding Scene (now " + _sceneObjects.length + " total)");
+				}
+			} else {
+				log(1, "ERROR: invalid argument supplied for '.addScene()'");
+			}
+			return Controller;
+		};
+
+		/**
+		 * Remove one ore more scene(s) from the controller.  
+		 * This is the equivalent to `Scene.remove()`.
+		 * @public
+		 * @example
+		 * // remove a scene from the controller
+		 * controller.removeScene(scene);
+		 *
+		 * // remove multiple scenes from the controller
+		 * controller.removeScene([scene, scene2, scene3]);
+		 *
+		 * @param {(ScrollMagic.Scene|array)} Scene - ScrollMagic Scene or Array of Scenes to be removed from the controller.
+		 * @returns {Controller} Parent object for chaining.
+		 */
+		this.removeScene = function (Scene) {
+			if (_util.type.Array(Scene)) {
+				Scene.forEach(function (scene, index) {
+					Controller.removeScene(scene);
+				});
+			} else {
+				var index = _sceneObjects.indexOf(Scene);
+				if (index > -1) {
+					Scene.off("shift.controller_sort");
+					_sceneObjects.splice(index, 1);
+					log(3, "removing Scene (now " + _sceneObjects.length + " left)");
+					Scene.remove();
+				}
+			}
+			return Controller;
+		};
+
+		/**
+		 * Update one ore more scene(s) according to the scroll position of the container.  
+		 * This is the equivalent to `Scene.update()`.  
+		 * The update method calculates the scene's start and end position (based on the trigger element, trigger hook, duration and offset) and checks it against the current scroll position of the container.  
+		 * It then updates the current scene state accordingly (or does nothing, if the state is already correct) – Pins will be set to their correct position and tweens will be updated to their correct progress.  
+		 * _**Note:** This method gets called constantly whenever Controller detects a change. The only application for you is if you change something outside of the realm of ScrollMagic, like moving the trigger or changing tween parameters._
+		 * @public
+		 * @example
+		 * // update a specific scene on next cycle
+		 * controller.updateScene(scene);
+		 *
+		 * // update a specific scene immediately
+		 * controller.updateScene(scene, true);
+		 *
+		 * // update multiple scenes scene on next cycle
+		 * controller.updateScene([scene1, scene2, scene3]);
+		 *
+		 * @param {ScrollMagic.Scene} Scene - ScrollMagic Scene or Array of Scenes that is/are supposed to be updated.
+		 * @param {boolean} [immediately=false] - If `true` the update will be instant, if `false` it will wait until next update cycle.  
+		 This is useful when changing multiple properties of the scene - this way it will only be updated once all new properties are set (updateScenes).
+		 * @return {Controller} Parent object for chaining.
+		 */
+		this.updateScene = function (Scene, immediately) {
+			if (_util.type.Array(Scene)) {
+				Scene.forEach(function (scene, index) {
+					Controller.updateScene(scene, immediately);
+				});
+			} else {
+				if (immediately) {
+					Scene.update(true);
+				} else if (_updateScenesOnNextCycle !== true && Scene instanceof ScrollMagic.Scene) { // if _updateScenesOnNextCycle is true, all connected scenes are already scheduled for update
+					// prep array for next update cycle
+					_updateScenesOnNextCycle = _updateScenesOnNextCycle || [];
+					if (_updateScenesOnNextCycle.indexOf(Scene) == -1) {
+						_updateScenesOnNextCycle.push(Scene);
+					}
+					_updateScenesOnNextCycle = sortScenes(_updateScenesOnNextCycle); // sort
+					debounceUpdate();
+				}
+			}
+			return Controller;
+		};
+
+		/**
+		 * Updates the controller params and calls updateScene on every scene, that is attached to the controller.  
+		 * See `Controller.updateScene()` for more information about what this means.  
+		 * In most cases you will not need this function, as it is called constantly, whenever ScrollMagic detects a state change event, like resize or scroll.  
+		 * The only application for this method is when ScrollMagic fails to detect these events.  
+		 * One application is with some external scroll libraries (like iScroll) that move an internal container to a negative offset instead of actually scrolling. In this case the update on the controller needs to be called whenever the child container's position changes.
+		 * For this case there will also be the need to provide a custom function to calculate the correct scroll position. See `Controller.scrollPos()` for details.
+		 * @public
+		 * @example
+		 * // update the controller on next cycle (saves performance due to elimination of redundant updates)
+		 * controller.update();
+		 *
+		 * // update the controller immediately
+		 * controller.update(true);
+		 *
+		 * @param {boolean} [immediately=false] - If `true` the update will be instant, if `false` it will wait until next update cycle (better performance)
+		 * @return {Controller} Parent object for chaining.
+		 */
+		this.update = function (immediately) {
+			onChange({
+				type: "resize"
+			}); // will update size and set _updateScenesOnNextCycle to true
+			if (immediately) {
+				updateScenes();
+			}
+			return Controller;
+		};
+
+		/**
+		 * Scroll to a numeric scroll offset, a DOM element, the start of a scene or provide an alternate method for scrolling.  
+		 * For vertical controllers it will change the top scroll offset and for horizontal applications it will change the left offset.
+		 * @public
+		 *
+		 * @since 1.1.0
+		 * @example
+		 * // scroll to an offset of 100
+		 * controller.scrollTo(100);
+		 *
+		 * // scroll to a DOM element
+		 * controller.scrollTo("#anchor");
+		 *
+		 * // scroll to the beginning of a scene
+		 * var scene = new ScrollMagic.Scene({offset: 200});
+		 * controller.scrollTo(scene);
+		 *
+		 * // define a new scroll position modification function (jQuery animate instead of jump)
+		 * controller.scrollTo(function (newScrollPos) {
+		 *	$("html, body").animate({scrollTop: newScrollPos});
+		 * });
+		 * controller.scrollTo(100); // call as usual, but the new function will be used instead
+		 *
+		 * // define a new scroll function with an additional parameter
+		 * controller.scrollTo(function (newScrollPos, message) {
+		 *  console.log(message);
+		 *	$(this).animate({scrollTop: newScrollPos});
+		 * });
+		 * // call as usual, but supply an extra parameter to the defined custom function
+		 * controller.scrollTo(100, "my message");
+		 *
+		 * // define a new scroll function with an additional parameter containing multiple variables
+		 * controller.scrollTo(function (newScrollPos, options) {
+		 *  someGlobalVar = options.a + options.b;
+		 *	$(this).animate({scrollTop: newScrollPos});
+		 * });
+		 * // call as usual, but supply an extra parameter containing multiple options
+		 * controller.scrollTo(100, {a: 1, b: 2});
+		 *
+		 * // define a new scroll function with a callback supplied as an additional parameter
+		 * controller.scrollTo(function (newScrollPos, callback) {
+		 *	$(this).animate({scrollTop: newScrollPos}, 400, "swing", callback);
+		 * });
+		 * // call as usual, but supply an extra parameter, which is used as a callback in the previously defined custom scroll function
+		 * controller.scrollTo(100, function() {
+		 *	console.log("scroll has finished.");
+		 * });
+		 *
+		 * @param {mixed} scrollTarget - The supplied argument can be one of these types:
+		 * 1. `number` -> The container will scroll to this new scroll offset.
+		 * 2. `string` or `object` -> Can be a selector or a DOM object.  
+		 *  The container will scroll to the position of this element.
+		 * 3. `ScrollMagic Scene` -> The container will scroll to the start of this scene.
+		 * 4. `function` -> This function will be used for future scroll position modifications.  
+		 *  This provides a way for you to change the behaviour of scrolling and adding new behaviour like animation. The function receives the new scroll position as a parameter and a reference to the container element using `this`.  
+		 *  It may also optionally receive an optional additional parameter (see below)  
+		 *  _**NOTE:**  
+		 *  All other options will still work as expected, using the new function to scroll._
+		 * @param {mixed} [additionalParameter] - If a custom scroll function was defined (see above 4.), you may want to supply additional parameters to it, when calling it. You can do this using this parameter – see examples for details. Please note, that this parameter will have no effect, if you use the default scrolling function.
+		 * @returns {Controller} Parent object for chaining.
+		 */
+		this.scrollTo = function (scrollTarget, additionalParameter) {
+			if (_util.type.Number(scrollTarget)) { // excecute
+				setScrollPos.call(_options.container, scrollTarget, additionalParameter);
+			} else if (scrollTarget instanceof ScrollMagic.Scene) { // scroll to scene
+				if (scrollTarget.controller() === Controller) { // check if the controller is associated with this scene
+					Controller.scrollTo(scrollTarget.scrollOffset(), additionalParameter);
+				} else {
+					log(2, "scrollTo(): The supplied scene does not belong to this controller. Scroll cancelled.", scrollTarget);
+				}
+			} else if (_util.type.Function(scrollTarget)) { // assign new scroll function
+				setScrollPos = scrollTarget;
+			} else { // scroll to element
+				var elem = _util.get.elements(scrollTarget)[0];
+				if (elem) {
+					// if parent is pin spacer, use spacer position instead so correct start position is returned for pinned elements.
+					while (elem.parentNode.hasAttribute(PIN_SPACER_ATTRIBUTE)) {
+						elem = elem.parentNode;
+					}
+
+					var
+					param = _options.vertical ? "top" : "left",
+						// which param is of interest ?
+						containerOffset = _util.get.offset(_options.container),
+						// container position is needed because element offset is returned in relation to document, not in relation to container.
+						elementOffset = _util.get.offset(elem);
+
+					if (!_isDocument) { // container is not the document root, so substract scroll Position to get correct trigger element position relative to scrollcontent
+						containerOffset[param] -= Controller.scrollPos();
+					}
+
+					Controller.scrollTo(elementOffset[param] - containerOffset[param], additionalParameter);
+				} else {
+					log(2, "scrollTo(): The supplied argument is invalid. Scroll cancelled.", scrollTarget);
+				}
+			}
+			return Controller;
+		};
+
+		/**
+		 * **Get** the current scrollPosition or **Set** a new method to calculate it.  
+		 * -> **GET**:
+		 * When used as a getter this function will return the current scroll position.  
+		 * To get a cached value use Controller.info("scrollPos"), which will be updated in the update cycle.  
+		 * For vertical controllers it will return the top scroll offset and for horizontal applications it will return the left offset.
+		 *
+		 * -> **SET**:
+		 * When used as a setter this method prodes a way to permanently overwrite the controller's scroll position calculation.  
+		 * A typical usecase is when the scroll position is not reflected by the containers scrollTop or scrollLeft values, but for example by the inner offset of a child container.  
+		 * Moving a child container inside a parent is a commonly used method for several scrolling frameworks, including iScroll.  
+		 * By providing an alternate calculation function you can make sure ScrollMagic receives the correct scroll position.  
+		 * Please also bear in mind that your function should return y values for vertical scrolls an x for horizontals.
+		 *
+		 * To change the current scroll position please use `Controller.scrollTo()`.
+		 * @public
+		 *
+		 * @example
+		 * // get the current scroll Position
+		 * var scrollPos = controller.scrollPos();
+		 *
+		 * // set a new scroll position calculation method
+		 * controller.scrollPos(function () {
+		 *	return this.info("vertical") ? -mychildcontainer.y : -mychildcontainer.x
+		 * });
+		 *
+		 * @param {function} [scrollPosMethod] - The function to be used for the scroll position calculation of the container.
+		 * @returns {(number|Controller)} Current scroll position or parent object for chaining.
+		 */
+		this.scrollPos = function (scrollPosMethod) {
+			if (!arguments.length) { // get
+				return getScrollPos.call(Controller);
+			} else { // set
+				if (_util.type.Function(scrollPosMethod)) {
+					getScrollPos = scrollPosMethod;
+				} else {
+					log(2, "Provided value for method 'scrollPos' is not a function. To change the current scroll position use 'scrollTo()'.");
+				}
+			}
+			return Controller;
+		};
+
+		/**
+		 * **Get** all infos or one in particular about the controller.
+		 * @public
+		 * @example
+		 * // returns the current scroll position (number)
+		 * var scrollPos = controller.info("scrollPos");
+		 *
+		 * // returns all infos as an object
+		 * var infos = controller.info();
+		 *
+		 * @param {string} [about] - If passed only this info will be returned instead of an object containing all.  
+		 Valid options are:
+		 ** `"size"` => the current viewport size of the container
+		 ** `"vertical"` => true if vertical scrolling, otherwise false
+		 ** `"scrollPos"` => the current scroll position
+		 ** `"scrollDirection"` => the last known direction of the scroll
+		 ** `"container"` => the container element
+		 ** `"isDocument"` => true if container element is the document.
+		 * @returns {(mixed|object)} The requested info(s).
+		 */
+		this.info = function (about) {
+			var values = {
+				size: _viewPortSize,
+				// contains height or width (in regard to orientation);
+				vertical: _options.vertical,
+				scrollPos: _scrollPos,
+				scrollDirection: _scrollDirection,
+				container: _options.container,
+				isDocument: _isDocument
+			};
+			if (!arguments.length) { // get all as an object
+				return values;
+			} else if (values[about] !== undefined) {
+				return values[about];
+			} else {
+				log(1, "ERROR: option \"" + about + "\" is not available");
+				return;
+			}
+		};
+
+		/**
+		 * **Get** or **Set** the current loglevel option value.
+		 * @public
+		 *
+		 * @example
+		 * // get the current value
+		 * var loglevel = controller.loglevel();
+		 *
+		 * // set a new value
+		 * controller.loglevel(3);
+		 *
+		 * @param {number} [newLoglevel] - The new loglevel setting of the Controller. `[0-3]`
+		 * @returns {(number|Controller)} Current loglevel or parent object for chaining.
+		 */
+		this.loglevel = function (newLoglevel) {
+			if (!arguments.length) { // get
+				return _options.loglevel;
+			} else if (_options.loglevel != newLoglevel) { // set
+				_options.loglevel = newLoglevel;
+			}
+			return Controller;
+		};
+
+		/**
+		 * **Get** or **Set** the current enabled state of the controller.  
+		 * This can be used to disable all Scenes connected to the controller without destroying or removing them.
+		 * @public
+		 *
+		 * @example
+		 * // get the current value
+		 * var enabled = controller.enabled();
+		 *
+		 * // disable the controller
+		 * controller.enabled(false);
+		 *
+		 * @param {boolean} [newState] - The new enabled state of the controller `true` or `false`.
+		 * @returns {(boolean|Controller)} Current enabled state or parent object for chaining.
+		 */
+		this.enabled = function (newState) {
+			if (!arguments.length) { // get
+				return _enabled;
+			} else if (_enabled != newState) { // set
+				_enabled = !! newState;
+				Controller.updateScene(_sceneObjects, true);
+			}
+			return Controller;
+		};
+
+		/**
+		 * Destroy the Controller, all Scenes and everything.
+		 * @public
+		 *
+		 * @example
+		 * // without resetting the scenes
+		 * controller = controller.destroy();
+		 *
+		 * // with scene reset
+		 * controller = controller.destroy(true);
+		 *
+		 * @param {boolean} [resetScenes=false] - If `true` the pins and tweens (if existent) of all scenes will be reset.
+		 * @returns {null} Null to unset handler variables.
+		 */
+		this.destroy = function (resetScenes) {
+			window.clearTimeout(_refreshTimeout);
+			var i = _sceneObjects.length;
+			while (i--) {
+				_sceneObjects[i].destroy(resetScenes);
+			}
+			_options.container.removeEventListener("resize", onChange);
+			_options.container.removeEventListener("scroll", onChange);
+			_util.cAF(_updateTimeout);
+			log(3, "destroyed " + NAMESPACE + " (reset: " + (resetScenes ? "true" : "false") + ")");
+			return null;
+		};
+
+		// INIT
+		construct();
+		return Controller;
+	};
+
+	// store pagewide controller options
+	var CONTROLLER_OPTIONS = {
+		defaults: {
+			container: window,
+			vertical: true,
+			globalSceneOptions: {},
+			loglevel: 2,
+			refreshInterval: 100
+		}
+	};
+/*
+ * method used to add an option to ScrollMagic Scenes.
+ */
+	ScrollMagic.Controller.addOption = function (name, defaultValue) {
+		CONTROLLER_OPTIONS.defaults[name] = defaultValue;
+	};
+	// instance extension function for plugins
+	ScrollMagic.Controller.extend = function (extension) {
+		var oldClass = this;
+		ScrollMagic.Controller = function () {
+			oldClass.apply(this, arguments);
+			this.$super = _util.extend({}, this); // copy parent state
+			return extension.apply(this, arguments) || this;
+		};
+		_util.extend(ScrollMagic.Controller, oldClass); // copy properties
+		ScrollMagic.Controller.prototype = oldClass.prototype; // copy prototype
+		ScrollMagic.Controller.prototype.constructor = ScrollMagic.Controller; // restore constructor
+	};
+
+
+	/**
+	 * A Scene defines where the controller should react and how.
+	 *
+	 * @class
+	 *
+	 * @example
+	 * // create a standard scene and add it to a controller
+	 * new ScrollMagic.Scene()
+	 *		.addTo(controller);
+	 *
+	 * // create a scene with custom options and assign a handler to it.
+	 * var scene = new ScrollMagic.Scene({
+	 * 		duration: 100,
+	 *		offset: 200,
+	 *		triggerHook: "onEnter",
+	 *		reverse: false
+	 * });
+	 *
+	 * @param {object} [options] - Options for the Scene. The options can be updated at any time.  
+	 Instead of setting the options for each scene individually you can also set them globally in the controller as the controllers `globalSceneOptions` option. The object accepts the same properties as the ones below.  
+	 When a scene is added to the controller the options defined using the Scene constructor will be overwritten by those set in `globalSceneOptions`.
+	 * @param {(number|function)} [options.duration=0] - The duration of the scene. 
+	 If `0` tweens will auto-play when reaching the scene start point, pins will be pinned indefinetly starting at the start position.  
+	 A function retuning the duration value is also supported. Please see `Scene.duration()` for details.
+	 * @param {number} [options.offset=0] - Offset Value for the Trigger Position. If no triggerElement is defined this will be the scroll distance from the start of the page, after which the scene will start.
+	 * @param {(string|object)} [options.triggerElement=null] - Selector or DOM object that defines the start of the scene. If undefined the scene will start right at the start of the page (unless an offset is set).
+	 * @param {(number|string)} [options.triggerHook="onCenter"] - Can be a number between 0 and 1 defining the position of the trigger Hook in relation to the viewport.  
+	 Can also be defined using a string:
+	 ** `"onEnter"` => `1`
+	 ** `"onCenter"` => `0.5`
+	 ** `"onLeave"` => `0`
+	 * @param {boolean} [options.reverse=true] - Should the scene reverse, when scrolling up?
+	 * @param {number} [options.loglevel=2] - Loglevel for debugging. Note that logging is disabled in the minified version of ScrollMagic.
+	 ** `0` => silent
+	 ** `1` => errors
+	 ** `2` => errors, warnings
+	 ** `3` => errors, warnings, debuginfo
+	 * 
+	 */
+	ScrollMagic.Scene = function (options) {
+
+/*
+	 * ----------------------------------------------------------------
+	 * settings
+	 * ----------------------------------------------------------------
+	 */
+
+		var
+		NAMESPACE = 'ScrollMagic.Scene',
+			SCENE_STATE_BEFORE = 'BEFORE',
+			SCENE_STATE_DURING = 'DURING',
+			SCENE_STATE_AFTER = 'AFTER',
+			DEFAULT_OPTIONS = SCENE_OPTIONS.defaults;
+
+/*
+	 * ----------------------------------------------------------------
+	 * private vars
+	 * ----------------------------------------------------------------
+	 */
+
+		var
+		Scene = this,
+			_options = _util.extend({}, DEFAULT_OPTIONS, options),
+			_state = SCENE_STATE_BEFORE,
+			_progress = 0,
+			_scrollOffset = {
+				start: 0,
+				end: 0
+			},
+			// reflects the controllers's scroll position for the start and end of the scene respectively
+			_triggerPos = 0,
+			_enabled = true,
+			_durationUpdateMethod, _controller;
+
+		/**
+		 * Internal constructor function of the ScrollMagic Scene
+		 * @private
+		 */
+		var construct = function () {
+			for (var key in _options) { // check supplied options
+				if (!DEFAULT_OPTIONS.hasOwnProperty(key)) {
+					log(2, "WARNING: Unknown option \"" + key + "\"");
+					delete _options[key];
+				}
+			}
+			// add getters/setters for all possible options
+			for (var optionName in DEFAULT_OPTIONS) {
+				addSceneOption(optionName);
+			}
+			// validate all options
+			validateOption();
+		};
+
+/*
+ * ----------------------------------------------------------------
+ * Event Management
+ * ----------------------------------------------------------------
+ */
+
+		var _listeners = {};
+		/**
+		 * Scene start event.  
+		 * Fires whenever the scroll position its the starting point of the scene.  
+		 * It will also fire when scrolling back up going over the start position of the scene. If you want something to happen only when scrolling down/right, use the scrollDirection parameter passed to the callback.
+		 *
+		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
+		 *
+		 * @event ScrollMagic.Scene#start
+		 *
+		 * @example
+		 * scene.on("start", function (event) {
+		 * 	console.log("Hit start point of scene.");
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {number} event.progress - Reflects the current progress of the scene
+		 * @property {string} event.state - The current state of the scene `"BEFORE"` or `"DURING"`
+		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
+		 */
+		/**
+		 * Scene end event.  
+		 * Fires whenever the scroll position its the ending point of the scene.  
+		 * It will also fire when scrolling back up from after the scene and going over its end position. If you want something to happen only when scrolling down/right, use the scrollDirection parameter passed to the callback.
+		 *
+		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
+		 *
+		 * @event ScrollMagic.Scene#end
+		 *
+		 * @example
+		 * scene.on("end", function (event) {
+		 * 	console.log("Hit end point of scene.");
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {number} event.progress - Reflects the current progress of the scene
+		 * @property {string} event.state - The current state of the scene `"DURING"` or `"AFTER"`
+		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
+		 */
+		/**
+		 * Scene enter event.  
+		 * Fires whenever the scene enters the "DURING" state.  
+		 * Keep in mind that it doesn't matter if the scene plays forward or backward: This event always fires when the scene enters its active scroll timeframe, regardless of the scroll-direction.
+		 *
+		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
+		 *
+		 * @event ScrollMagic.Scene#enter
+		 *
+		 * @example
+		 * scene.on("enter", function (event) {
+		 * 	console.log("Scene entered.");
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {number} event.progress - Reflects the current progress of the scene
+		 * @property {string} event.state - The current state of the scene - always `"DURING"`
+		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
+		 */
+		/**
+		 * Scene leave event.  
+		 * Fires whenever the scene's state goes from "DURING" to either "BEFORE" or "AFTER".  
+		 * Keep in mind that it doesn't matter if the scene plays forward or backward: This event always fires when the scene leaves its active scroll timeframe, regardless of the scroll-direction.
+		 *
+		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
+		 *
+		 * @event ScrollMagic.Scene#leave
+		 *
+		 * @example
+		 * scene.on("leave", function (event) {
+		 * 	console.log("Scene left.");
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {number} event.progress - Reflects the current progress of the scene
+		 * @property {string} event.state - The current state of the scene `"BEFORE"` or `"AFTER"`
+		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
+		 */
+		/**
+		 * Scene update event.  
+		 * Fires whenever the scene is updated (but not necessarily changes the progress).
+		 *
+		 * @event ScrollMagic.Scene#update
+		 *
+		 * @example
+		 * scene.on("update", function (event) {
+		 * 	console.log("Scene updated.");
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {number} event.startPos - The starting position of the scene (in relation to the conainer)
+		 * @property {number} event.endPos - The ending position of the scene (in relation to the conainer)
+		 * @property {number} event.scrollPos - The current scroll position of the container
+		 */
+		/**
+		 * Scene progress event.  
+		 * Fires whenever the progress of the scene changes.
+		 *
+		 * For details on this event and the order in which it is fired, please review the {@link Scene.progress} method.
+		 *
+		 * @event ScrollMagic.Scene#progress
+		 *
+		 * @example
+		 * scene.on("progress", function (event) {
+		 * 	console.log("Scene progress changed to " + event.progress);
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {number} event.progress - Reflects the current progress of the scene
+		 * @property {string} event.state - The current state of the scene `"BEFORE"`, `"DURING"` or `"AFTER"`
+		 * @property {string} event.scrollDirection - Indicates which way we are scrolling `"PAUSED"`, `"FORWARD"` or `"REVERSE"`
+		 */
+		/**
+		 * Scene change event.  
+		 * Fires whenvever a property of the scene is changed.
+		 *
+		 * @event ScrollMagic.Scene#change
+		 *
+		 * @example
+		 * scene.on("change", function (event) {
+		 * 	console.log("Scene Property \"" + event.what + "\" changed to " + event.newval);
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {string} event.what - Indicates what value has been changed
+		 * @property {mixed} event.newval - The new value of the changed property
+		 */
+		/**
+		 * Scene shift event.  
+		 * Fires whenvever the start or end **scroll offset** of the scene change.
+		 * This happens explicitely, when one of these values change: `offset`, `duration` or `triggerHook`.
+		 * It will fire implicitly when the `triggerElement` changes, if the new element has a different position (most cases).
+		 * It will also fire implicitly when the size of the container changes and the triggerHook is anything other than `onLeave`.
+		 *
+		 * @event ScrollMagic.Scene#shift
+		 * @since 1.1.0
+		 *
+		 * @example
+		 * scene.on("shift", function (event) {
+		 * 	console.log("Scene moved, because the " + event.reason + " has changed.)");
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {string} event.reason - Indicates why the scene has shifted
+		 */
+		/**
+		 * Scene destroy event.  
+		 * Fires whenvever the scene is destroyed.
+		 * This can be used to tidy up custom behaviour used in events.
+		 *
+		 * @event ScrollMagic.Scene#destroy
+		 * @since 1.1.0
+		 *
+		 * @example
+		 * scene.on("enter", function (event) {
+		 *        // add custom action
+		 *        $("#my-elem").left("200");
+		 *      })
+		 *      .on("destroy", function (event) {
+		 *        // reset my element to start position
+		 *        if (event.reset) {
+		 *          $("#my-elem").left("0");
+		 *        }
+		 *      });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {boolean} event.reset - Indicates if the destroy method was called with reset `true` or `false`.
+		 */
+		/**
+		 * Scene add event.  
+		 * Fires when the scene is added to a controller.
+		 * This is mostly used by plugins to know that change might be due.
+		 *
+		 * @event ScrollMagic.Scene#add
+		 * @since 2.0.0
+		 *
+		 * @example
+		 * scene.on("add", function (event) {
+		 * 	console.log('Scene was added to a new controller.');
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 * @property {boolean} event.controller - The controller object the scene was added to.
+		 */
+		/**
+		 * Scene remove event.  
+		 * Fires when the scene is removed from a controller.
+		 * This is mostly used by plugins to know that change might be due.
+		 *
+		 * @event ScrollMagic.Scene#remove
+		 * @since 2.0.0
+		 *
+		 * @example
+		 * scene.on("remove", function (event) {
+		 * 	console.log('Scene was removed from its controller.');
+		 * });
+		 *
+		 * @property {object} event - The event Object passed to each callback
+		 * @property {string} event.type - The name of the event
+		 * @property {Scene} event.target - The Scene object that triggered this event
+		 */
+
+		/**
+		 * Add one ore more event listener.  
+		 * The callback function will be fired at the respective event, and an object containing relevant data will be passed to the callback.
+		 * @method ScrollMagic.Scene#on
+		 *
+		 * @example
+		 * function callback (event) {
+		 * 		console.log("Event fired! (" + event.type + ")");
+		 * }
+		 * // add listeners
+		 * scene.on("change update progress start end enter leave", callback);
+		 *
+		 * @param {string} names - The name or names of the event the callback should be attached to.
+		 * @param {function} callback - A function that should be executed, when the event is dispatched. An event object will be passed to the callback.
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.on = function (names, callback) {
+			if (_util.type.Function(callback)) {
+				names = names.trim().split(' ');
+				names.forEach(function (fullname) {
+					var
+					nameparts = fullname.split('.'),
+						eventname = nameparts[0],
+						namespace = nameparts[1];
+					if (eventname != "*") { // disallow wildcards
+						if (!_listeners[eventname]) {
+							_listeners[eventname] = [];
+						}
+						_listeners[eventname].push({
+							namespace: namespace || '',
+							callback: callback
+						});
+					}
+				});
+			} else {
+				log(1, "ERROR when calling '.on()': Supplied callback for '" + names + "' is not a valid function!");
+			}
+			return Scene;
+		};
+
+		/**
+		 * Remove one or more event listener.
+		 * @method ScrollMagic.Scene#off
+		 *
+		 * @example
+		 * function callback (event) {
+		 * 		console.log("Event fired! (" + event.type + ")");
+		 * }
+		 * // add listeners
+		 * scene.on("change update", callback);
+		 * // remove listeners
+		 * scene.off("change update", callback);
+		 *
+		 * @param {string} names - The name or names of the event that should be removed.
+		 * @param {function} [callback] - A specific callback function that should be removed. If none is passed all callbacks to the event listener will be removed.
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.off = function (names, callback) {
+			if (!names) {
+				log(1, "ERROR: Invalid event name supplied.");
+				return Scene;
+			}
+			names = names.trim().split(' ');
+			names.forEach(function (fullname, key) {
+				var
+				nameparts = fullname.split('.'),
+					eventname = nameparts[0],
+					namespace = nameparts[1] || '',
+					removeList = eventname === '*' ? Object.keys(_listeners) : [eventname];
+				removeList.forEach(function (remove) {
+					var
+					list = _listeners[remove] || [],
+						i = list.length;
+					while (i--) {
+						var listener = list[i];
+						if (listener && (namespace === listener.namespace || namespace === '*') && (!callback || callback == listener.callback)) {
+							list.splice(i, 1);
+						}
+					}
+					if (!list.length) {
+						delete _listeners[remove];
+					}
+				});
+			});
+			return Scene;
+		};
+
+		/**
+		 * Trigger an event.
+		 * @method ScrollMagic.Scene#trigger
+		 *
+		 * @example
+		 * this.trigger("change");
+		 *
+		 * @param {string} name - The name of the event that should be triggered.
+		 * @param {object} [vars] - An object containing info that should be passed to the callback.
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.trigger = function (name, vars) {
+			if (name) {
+				var
+				nameparts = name.trim().split('.'),
+					eventname = nameparts[0],
+					namespace = nameparts[1],
+					listeners = _listeners[eventname];
+				log(3, 'event fired:', eventname, vars ? "->" : '', vars || '');
+				if (listeners) {
+					listeners.forEach(function (listener, key) {
+						if (!namespace || namespace === listener.namespace) {
+							listener.callback.call(Scene, new ScrollMagic.Event(eventname, listener.namespace, Scene, vars));
+						}
+					});
+				}
+			} else {
+				log(1, "ERROR: Invalid event name supplied.");
+			}
+			return Scene;
+		};
+
+		// set event listeners
+		Scene.on("change.internal", function (e) {
+			if (e.what !== "loglevel" && e.what !== "tweenChanges") { // no need for a scene update scene with these options...
+				if (e.what === "triggerElement") {
+					updateTriggerElementPosition();
+				} else if (e.what === "reverse") { // the only property left that may have an impact on the current scene state. Everything else is handled by the shift event.
+					Scene.update();
+				}
+			}
+		}).on("shift.internal", function (e) {
+			updateScrollOffset();
+			Scene.update(); // update scene to reflect new position
+		});
+
+		/**
+		 * Send a debug message to the console.
+		 * @private
+		 * but provided publicly with _log for plugins
+		 *
+		 * @param {number} loglevel - The loglevel required to initiate output for the message.
+		 * @param {...mixed} output - One or more variables that should be passed to the console.
+		 */
+		var log = this._log = function (loglevel, output) {
+			if (_options.loglevel >= loglevel) {
+				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ") ->");
+				_util.log.apply(window, arguments);
+			}
+		};
+
+		/**
+		 * Add the scene to a controller.  
+		 * This is the equivalent to `Controller.addScene(scene)`.
+		 * @method ScrollMagic.Scene#addTo
+		 *
+		 * @example
+		 * // add a scene to a ScrollMagic Controller
+		 * scene.addTo(controller);
+		 *
+		 * @param {ScrollMagic.Controller} controller - The controller to which the scene should be added.
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.addTo = function (controller) {
+			if (!(controller instanceof ScrollMagic.Controller)) {
+				log(1, "ERROR: supplied argument of 'addTo()' is not a valid ScrollMagic Controller");
+			} else if (_controller != controller) {
+				// new controller
+				if (_controller) { // was associated to a different controller before, so remove it...
+					_controller.removeScene(Scene);
+				}
+				_controller = controller;
+				validateOption();
+				updateDuration(true);
+				updateTriggerElementPosition(true);
+				updateScrollOffset();
+				_controller.info("container").addEventListener('resize', onContainerResize);
+				controller.addScene(Scene);
+				Scene.trigger("add", {
+					controller: _controller
+				});
+				log(3, "added " + NAMESPACE + " to controller");
+				Scene.update();
+			}
+			return Scene;
+		};
+
+		/**
+		 * **Get** or **Set** the current enabled state of the scene.  
+		 * This can be used to disable this scene without removing or destroying it.
+		 * @method ScrollMagic.Scene#enabled
+		 *
+		 * @example
+		 * // get the current value
+		 * var enabled = scene.enabled();
+		 *
+		 * // disable the scene
+		 * scene.enabled(false);
+		 *
+		 * @param {boolean} [newState] - The new enabled state of the scene `true` or `false`.
+		 * @returns {(boolean|Scene)} Current enabled state or parent object for chaining.
+		 */
+		this.enabled = function (newState) {
+			if (!arguments.length) { // get
+				return _enabled;
+			} else if (_enabled != newState) { // set
+				_enabled = !! newState;
+				Scene.update(true);
+			}
+			return Scene;
+		};
+
+		/**
+		 * Remove the scene from the controller.  
+		 * This is the equivalent to `Controller.removeScene(scene)`.
+		 * The scene will not be updated anymore until you readd it to a controller.
+		 * To remove the pin or the tween you need to call removeTween() or removePin() respectively.
+		 * @method ScrollMagic.Scene#remove
+		 * @example
+		 * // remove the scene from its controller
+		 * scene.remove();
+		 *
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.remove = function () {
+			if (_controller) {
+				_controller.info("container").removeEventListener('resize', onContainerResize);
+				var tmpParent = _controller;
+				_controller = undefined;
+				tmpParent.removeScene(Scene);
+				Scene.trigger("remove");
+				log(3, "removed " + NAMESPACE + " from controller");
+			}
+			return Scene;
+		};
+
+		/**
+		 * Destroy the scene and everything.
+		 * @method ScrollMagic.Scene#destroy
+		 * @example
+		 * // destroy the scene without resetting the pin and tween to their initial positions
+		 * scene = scene.destroy();
+		 *
+		 * // destroy the scene and reset the pin and tween
+		 * scene = scene.destroy(true);
+		 *
+		 * @param {boolean} [reset=false] - If `true` the pin and tween (if existent) will be reset.
+		 * @returns {null} Null to unset handler variables.
+		 */
+		this.destroy = function (reset) {
+			Scene.trigger("destroy", {
+				reset: reset
+			});
+			Scene.remove();
+			Scene.off("*.*");
+			log(3, "destroyed " + NAMESPACE + " (reset: " + (reset ? "true" : "false") + ")");
+			return null;
+		};
+
+
+		/**
+		 * Updates the Scene to reflect the current state.  
+		 * This is the equivalent to `Controller.updateScene(scene, immediately)`.  
+		 * The update method calculates the scene's start and end position (based on the trigger element, trigger hook, duration and offset) and checks it against the current scroll position of the container.  
+		 * It then updates the current scene state accordingly (or does nothing, if the state is already correct) – Pins will be set to their correct position and tweens will be updated to their correct progress.
+		 * This means an update doesn't necessarily result in a progress change. The `progress` event will be fired if the progress has indeed changed between this update and the last.  
+		 * _**NOTE:** This method gets called constantly whenever ScrollMagic detects a change. The only application for you is if you change something outside of the realm of ScrollMagic, like moving the trigger or changing tween parameters._
+		 * @method ScrollMagic.Scene#update
+		 * @example
+		 * // update the scene on next tick
+		 * scene.update();
+		 *
+		 * // update the scene immediately
+		 * scene.update(true);
+		 *
+		 * @fires Scene.update
+		 *
+		 * @param {boolean} [immediately=false] - If `true` the update will be instant, if `false` it will wait until next update cycle (better performance).
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.update = function (immediately) {
+			if (_controller) {
+				if (immediately) {
+					if (_controller.enabled() && _enabled) {
+						var
+						scrollPos = _controller.info("scrollPos"),
+							newProgress;
+
+						if (_options.duration > 0) {
+							newProgress = (scrollPos - _scrollOffset.start) / (_scrollOffset.end - _scrollOffset.start);
+						} else {
+							newProgress = scrollPos >= _scrollOffset.start ? 1 : 0;
+						}
+
+						Scene.trigger("update", {
+							startPos: _scrollOffset.start,
+							endPos: _scrollOffset.end,
+							scrollPos: scrollPos
+						});
+
+						Scene.progress(newProgress);
+					} else if (_pin && _state === SCENE_STATE_DURING) {
+						updatePinState(true); // unpin in position
+					}
+				} else {
+					_controller.updateScene(Scene, false);
+				}
+			}
+			return Scene;
+		};
+
+		/**
+		 * Updates dynamic scene variables like the trigger element position or the duration.
+		 * This method is automatically called in regular intervals from the controller. See {@link ScrollMagic.Controller} option `refreshInterval`.
+		 * 
+		 * You can call it to minimize lag, for example when you intentionally change the position of the triggerElement.
+		 * If you don't it will simply be updated in the next refresh interval of the container, which is usually sufficient.
+		 *
+		 * @method ScrollMagic.Scene#refresh
+		 * @since 1.1.0
+		 * @example
+		 * scene = new ScrollMagic.Scene({triggerElement: "#trigger"});
+		 * 
+		 * // change the position of the trigger
+		 * $("#trigger").css("top", 500);
+		 * // immediately let the scene know of this change
+		 * scene.refresh();
+		 *
+		 * @fires {@link Scene.shift}, if the trigger element position or the duration changed
+		 * @fires {@link Scene.change}, if the duration changed
+		 *
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.refresh = function () {
+			updateDuration();
+			updateTriggerElementPosition();
+			// update trigger element position
+			return Scene;
+		};
+
+		/**
+		 * **Get** or **Set** the scene's progress.  
+		 * Usually it shouldn't be necessary to use this as a setter, as it is set automatically by scene.update().  
+		 * The order in which the events are fired depends on the duration of the scene:
+		 *  1. Scenes with `duration == 0`:  
+		 *  Scenes that have no duration by definition have no ending. Thus the `end` event will never be fired.  
+		 *  When the trigger position of the scene is passed the events are always fired in this order:  
+		 *  `enter`, `start`, `progress` when scrolling forward  
+		 *  and  
+		 *  `progress`, `start`, `leave` when scrolling in reverse
+		 *  2. Scenes with `duration > 0`:  
+		 *  Scenes with a set duration have a defined start and end point.  
+		 *  When scrolling past the start position of the scene it will fire these events in this order:  
+		 *  `enter`, `start`, `progress`  
+		 *  When continuing to scroll and passing the end point it will fire these events:  
+		 *  `progress`, `end`, `leave`  
+		 *  When reversing through the end point these events are fired:  
+		 *  `enter`, `end`, `progress`  
+		 *  And when continuing to scroll past the start position in reverse it will fire:  
+		 *  `progress`, `start`, `leave`  
+		 *  In between start and end the `progress` event will be called constantly, whenever the progress changes.
+		 * 
+		 * In short:  
+		 * `enter` events will always trigger **before** the progress update and `leave` envents will trigger **after** the progress update.  
+		 * `start` and `end` will always trigger at their respective position.
+		 * 
+		 * Please review the event descriptions for details on the events and the event object that is passed to the callback.
+		 * 
+		 * @method ScrollMagic.Scene#progress
+		 * @example
+		 * // get the current scene progress
+		 * var progress = scene.progress();
+		 *
+		 * // set new scene progress
+		 * scene.progress(0.3);
+		 *
+		 * @fires {@link Scene.enter}, when used as setter
+		 * @fires {@link Scene.start}, when used as setter
+		 * @fires {@link Scene.progress}, when used as setter
+		 * @fires {@link Scene.end}, when used as setter
+		 * @fires {@link Scene.leave}, when used as setter
+		 *
+		 * @param {number} [progress] - The new progress value of the scene `[0-1]`.
+		 * @returns {number} `get` -  Current scene progress.
+		 * @returns {Scene} `set` -  Parent object for chaining.
+		 */
+		this.progress = function (progress) {
+			if (!arguments.length) { // get
+				return _progress;
+			} else { // set
+				var
+				doUpdate = false,
+					oldState = _state,
+					scrollDirection = _controller ? _controller.info("scrollDirection") : 'PAUSED',
+					reverseOrForward = _options.reverse || progress >= _progress;
+				if (_options.duration === 0) {
+					// zero duration scenes
+					doUpdate = _progress != progress;
+					_progress = progress < 1 && reverseOrForward ? 0 : 1;
+					_state = _progress === 0 ? SCENE_STATE_BEFORE : SCENE_STATE_DURING;
+				} else {
+					// scenes with start and end
+					if (progress < 0 && _state !== SCENE_STATE_BEFORE && reverseOrForward) {
+						// go back to initial state
+						_progress = 0;
+						_state = SCENE_STATE_BEFORE;
+						doUpdate = true;
+					} else if (progress >= 0 && progress < 1 && reverseOrForward) {
+						_progress = progress;
+						_state = SCENE_STATE_DURING;
+						doUpdate = true;
+					} else if (progress >= 1 && _state !== SCENE_STATE_AFTER) {
+						_progress = 1;
+						_state = SCENE_STATE_AFTER;
+						doUpdate = true;
+					} else if (_state === SCENE_STATE_DURING && !reverseOrForward) {
+						updatePinState(); // in case we scrolled backwards mid-scene and reverse is disabled => update the pin position, so it doesn't move back as well.
+					}
+				}
+				if (doUpdate) {
+					// fire events
+					var
+					eventVars = {
+						progress: _progress,
+						state: _state,
+						scrollDirection: scrollDirection
+					},
+						stateChanged = _state != oldState;
+
+					var trigger = function (eventName) { // tmp helper to simplify code
+						Scene.trigger(eventName, eventVars);
+					};
+
+					if (stateChanged) { // enter events
+						if (oldState !== SCENE_STATE_DURING) {
+							trigger("enter");
+							trigger(oldState === SCENE_STATE_BEFORE ? "start" : "end");
+						}
+					}
+					trigger("progress");
+					if (stateChanged) { // leave events
+						if (_state !== SCENE_STATE_DURING) {
+							trigger(_state === SCENE_STATE_BEFORE ? "start" : "end");
+							trigger("leave");
+						}
+					}
+				}
+
+				return Scene;
+			}
+		};
+
+
+		/**
+		 * Update the start and end scrollOffset of the container.
+		 * The positions reflect what the controller's scroll position will be at the start and end respectively.
+		 * Is called, when:
+		 *   - Scene event "change" is called with: offset, triggerHook, duration 
+		 *   - scroll container event "resize" is called
+		 *   - the position of the triggerElement changes
+		 *   - the controller changes -> addTo()
+		 * @private
+		 */
+		var updateScrollOffset = function () {
+			_scrollOffset = {
+				start: _triggerPos + _options.offset
+			};
+			if (_controller && _options.triggerElement) {
+				// take away triggerHook portion to get relative to top
+				_scrollOffset.start -= _controller.info("size") * _options.triggerHook;
+			}
+			_scrollOffset.end = _scrollOffset.start + _options.duration;
+		};
+
+		/**
+		 * Updates the duration if set to a dynamic function.
+		 * This method is called when the scene is added to a controller and in regular intervals from the controller through scene.refresh().
+		 * 
+		 * @fires {@link Scene.change}, if the duration changed
+		 * @fires {@link Scene.shift}, if the duration changed
+		 *
+		 * @param {boolean} [suppressEvents=false] - If true the shift event will be suppressed.
+		 * @private
+		 */
+		var updateDuration = function (suppressEvents) {
+			// update duration
+			if (_durationUpdateMethod) {
+				var varname = "duration";
+				if (changeOption(varname, _durationUpdateMethod.call(Scene)) && !suppressEvents) { // set
+					Scene.trigger("change", {
+						what: varname,
+						newval: _options[varname]
+					});
+					Scene.trigger("shift", {
+						reason: varname
+					});
+				}
+			}
+		};
+
+		/**
+		 * Updates the position of the triggerElement, if present.
+		 * This method is called ...
+		 *  - ... when the triggerElement is changed
+		 *  - ... when the scene is added to a (new) controller
+		 *  - ... in regular intervals from the controller through scene.refresh().
+		 * 
+		 * @fires {@link Scene.shift}, if the position changed
+		 *
+		 * @param {boolean} [suppressEvents=false] - If true the shift event will be suppressed.
+		 * @private
+		 */
+		var updateTriggerElementPosition = function (suppressEvents) {
+			var
+			elementPos = 0,
+				telem = _options.triggerElement;
+			if (_controller && (telem || _triggerPos > 0)) { // either an element exists or was removed and the triggerPos is still > 0
+				if (telem) { // there currently a triggerElement set
+					if (telem.parentNode) { // check if element is still attached to DOM
+						var
+						controllerInfo = _controller.info(),
+							containerOffset = _util.get.offset(controllerInfo.container),
+							// container position is needed because element offset is returned in relation to document, not in relation to container.
+							param = controllerInfo.vertical ? "top" : "left"; // which param is of interest ?
+						// if parent is spacer, use spacer position instead so correct start position is returned for pinned elements.
+						while (telem.parentNode.hasAttribute(PIN_SPACER_ATTRIBUTE)) {
+							telem = telem.parentNode;
+						}
+
+						var elementOffset = _util.get.offset(telem);
+
+						if (!controllerInfo.isDocument) { // container is not the document root, so substract scroll Position to get correct trigger element position relative to scrollcontent
+							containerOffset[param] -= _controller.scrollPos();
+						}
+
+						elementPos = elementOffset[param] - containerOffset[param];
+
+					} else { // there was an element, but it was removed from DOM
+						log(2, "WARNING: triggerElement was removed from DOM and will be reset to", undefined);
+						Scene.triggerElement(undefined); // unset, so a change event is triggered
+					}
+				}
+
+				var changed = elementPos != _triggerPos;
+				_triggerPos = elementPos;
+				if (changed && !suppressEvents) {
+					Scene.trigger("shift", {
+						reason: "triggerElementPosition"
+					});
+				}
+			}
+		};
+
+		/**
+		 * Trigger a shift event, when the container is resized and the triggerHook is > 1.
+		 * @private
+		 */
+		var onContainerResize = function (e) {
+			if (_options.triggerHook > 0) {
+				Scene.trigger("shift", {
+					reason: "containerResize"
+				});
+			}
+		};
+
+
+		var _validate = _util.extend(SCENE_OPTIONS.validate, {
+			// validation for duration handled internally for reference to private var _durationMethod
+			duration: function (val) {
+				if (_util.type.String(val) && val.match(/^(\.|\d)*\d+%$/)) {
+					// percentage value
+					var perc = parseFloat(val) / 100;
+					val = function () {
+						return _controller ? _controller.info("size") * perc : 0;
+					};
+				}
+				if (_util.type.Function(val)) {
+					// function
+					_durationUpdateMethod = val;
+					try {
+						val = parseFloat(_durationUpdateMethod());
+					} catch (e) {
+						val = -1; // will cause error below
+					}
+				}
+				// val has to be float
+				val = parseFloat(val);
+				if (!_util.type.Number(val) || val < 0) {
+					if (_durationUpdateMethod) {
+						_durationUpdateMethod = undefined;
+						throw ["Invalid return value of supplied function for option \"duration\":", val];
+					} else {
+						throw ["Invalid value for option \"duration\":", val];
+					}
+				}
+				return val;
+			}
+		});
+
+		/**
+		 * Checks the validity of a specific or all options and reset to default if neccessary.
+		 * @private
+		 */
+		var validateOption = function (check) {
+			check = arguments.length ? [check] : Object.keys(_validate);
+			check.forEach(function (optionName, key) {
+				var value;
+				if (_validate[optionName]) { // there is a validation method for this option
+					try { // validate value
+						value = _validate[optionName](_options[optionName]);
+					} catch (e) { // validation failed -> reset to default
+						value = DEFAULT_OPTIONS[optionName];
+						var logMSG = _util.type.String(e) ? [e] : e;
+						if (_util.type.Array(logMSG)) {
+							logMSG[0] = "ERROR: " + logMSG[0];
+							logMSG.unshift(1); // loglevel 1 for error msg
+							log.apply(this, logMSG);
+						} else {
+							log(1, "ERROR: Problem executing validation callback for option '" + optionName + "':", e.message);
+						}
+					} finally {
+						_options[optionName] = value;
+					}
+				}
+			});
+		};
+
+		/**
+		 * Helper used by the setter/getters for scene options
+		 * @private
+		 */
+		var changeOption = function (varname, newval) {
+			var
+			changed = false,
+				oldval = _options[varname];
+			if (_options[varname] != newval) {
+				_options[varname] = newval;
+				validateOption(varname); // resets to default if necessary
+				changed = oldval != _options[varname];
+			}
+			return changed;
+		};
+
+		// generate getters/setters for all options
+		var addSceneOption = function (optionName) {
+			if (!Scene[optionName]) {
+				Scene[optionName] = function (newVal) {
+					if (!arguments.length) { // get
+						return _options[optionName];
+					} else {
+						if (optionName === "duration") { // new duration is set, so any previously set function must be unset
+							_durationUpdateMethod = undefined;
+						}
+						if (changeOption(optionName, newVal)) { // set
+							Scene.trigger("change", {
+								what: optionName,
+								newval: _options[optionName]
+							});
+							if (SCENE_OPTIONS.shifts.indexOf(optionName) > -1) {
+								Scene.trigger("shift", {
+									reason: optionName
+								});
+							}
+						}
+					}
+					return Scene;
+				};
+			}
+		};
+
+		/**
+		 * **Get** or **Set** the duration option value.
+		 * As a setter it also accepts a function returning a numeric value.  
+		 * This is particularly useful for responsive setups.
+		 *
+		 * The duration is updated using the supplied function every time `Scene.refresh()` is called, which happens periodically from the controller (see ScrollMagic.Controller option `refreshInterval`).  
+		 * _**NOTE:** Be aware that it's an easy way to kill performance, if you supply a function that has high CPU demand.  
+		 * Even for size and position calculations it is recommended to use a variable to cache the value. (see example)  
+		 * This counts double if you use the same function for multiple scenes._
+		 *
+		 * @method ScrollMagic.Scene#duration
+		 * @example
+		 * // get the current duration value
+		 * var duration = scene.duration();
+		 *
+		 * // set a new duration
+		 * scene.duration(300);
+		 *
+		 * // use a function to automatically adjust the duration to the window height.
+		 * var durationValueCache;
+		 * function getDuration () {
+		 *   return durationValueCache;
+		 * }
+		 * function updateDuration (e) {
+		 *   durationValueCache = window.innerHeight;
+		 * }
+		 * $(window).on("resize", updateDuration); // update the duration when the window size changes
+		 * $(window).triggerHandler("resize"); // set to initial value
+		 * scene.duration(getDuration); // supply duration method
+		 *
+		 * @fires {@link Scene.change}, when used as setter
+		 * @fires {@link Scene.shift}, when used as setter
+		 * @param {(number|function)} [newDuration] - The new duration of the scene.
+		 * @returns {number} `get` -  Current scene duration.
+		 * @returns {Scene} `set` -  Parent object for chaining.
+		 */
+
+		/**
+		 * **Get** or **Set** the offset option value.
+		 * @method ScrollMagic.Scene#offset
+		 * @example
+		 * // get the current offset
+		 * var offset = scene.offset();
+		 *
+		 * // set a new offset
+		 * scene.offset(100);
+		 *
+		 * @fires {@link Scene.change}, when used as setter
+		 * @fires {@link Scene.shift}, when used as setter
+		 * @param {number} [newOffset] - The new offset of the scene.
+		 * @returns {number} `get` -  Current scene offset.
+		 * @returns {Scene} `set` -  Parent object for chaining.
+		 */
+
+		/**
+		 * **Get** or **Set** the triggerElement option value.
+		 * Does **not** fire `Scene.shift`, because changing the trigger Element doesn't necessarily mean the start position changes. This will be determined in `Scene.refresh()`, which is automatically triggered.
+		 * @method ScrollMagic.Scene#triggerElement
+		 * @example
+		 * // get the current triggerElement
+		 * var triggerElement = scene.triggerElement();
+		 *
+		 * // set a new triggerElement using a selector
+		 * scene.triggerElement("#trigger");
+		 * // set a new triggerElement using a DOM object
+		 * scene.triggerElement(document.getElementById("trigger"));
+		 *
+		 * @fires {@link Scene.change}, when used as setter
+		 * @param {(string|object)} [newTriggerElement] - The new trigger element for the scene.
+		 * @returns {(string|object)} `get` -  Current triggerElement.
+		 * @returns {Scene} `set` -  Parent object for chaining.
+		 */
+
+		/**
+		 * **Get** or **Set** the triggerHook option value.
+		 * @method ScrollMagic.Scene#triggerHook
+		 * @example
+		 * // get the current triggerHook value
+		 * var triggerHook = scene.triggerHook();
+		 *
+		 * // set a new triggerHook using a string
+		 * scene.triggerHook("onLeave");
+		 * // set a new triggerHook using a number
+		 * scene.triggerHook(0.7);
+		 *
+		 * @fires {@link Scene.change}, when used as setter
+		 * @fires {@link Scene.shift}, when used as setter
+		 * @param {(number|string)} [newTriggerHook] - The new triggerHook of the scene. See {@link Scene} parameter description for value options.
+		 * @returns {number} `get` -  Current triggerHook (ALWAYS numerical).
+		 * @returns {Scene} `set` -  Parent object for chaining.
+		 */
+
+		/**
+		 * **Get** or **Set** the reverse option value.
+		 * @method ScrollMagic.Scene#reverse
+		 * @example
+		 * // get the current reverse option
+		 * var reverse = scene.reverse();
+		 *
+		 * // set new reverse option
+		 * scene.reverse(false);
+		 *
+		 * @fires {@link Scene.change}, when used as setter
+		 * @param {boolean} [newReverse] - The new reverse setting of the scene.
+		 * @returns {boolean} `get` -  Current reverse option value.
+		 * @returns {Scene} `set` -  Parent object for chaining.
+		 */
+
+		/**
+		 * **Get** or **Set** the loglevel option value.
+		 * @method ScrollMagic.Scene#loglevel
+		 * @example
+		 * // get the current loglevel
+		 * var loglevel = scene.loglevel();
+		 *
+		 * // set new loglevel
+		 * scene.loglevel(3);
+		 *
+		 * @fires {@link Scene.change}, when used as setter
+		 * @param {number} [newLoglevel] - The new loglevel setting of the scene. `[0-3]`
+		 * @returns {number} `get` -  Current loglevel.
+		 * @returns {Scene} `set` -  Parent object for chaining.
+		 */
+
+		/**
+		 * **Get** the associated controller.
+		 * @method ScrollMagic.Scene#controller
+		 * @example
+		 * // get the controller of a scene
+		 * var controller = scene.controller();
+		 *
+		 * @returns {ScrollMagic.Controller} Parent controller or `undefined`
+		 */
+		this.controller = function () {
+			return _controller;
+		};
+
+		/**
+		 * **Get** the current state.
+		 * @method ScrollMagic.Scene#state
+		 * @example
+		 * // get the current state
+		 * var state = scene.state();
+		 *
+		 * @returns {string} `"BEFORE"`, `"DURING"` or `"AFTER"`
+		 */
+		this.state = function () {
+			return _state;
+		};
+
+		/**
+		 * **Get** the current scroll offset for the start of the scene.  
+		 * Mind, that the scrollOffset is related to the size of the container, if `triggerHook` is bigger than `0` (or `"onLeave"`).  
+		 * This means, that resizing the container or changing the `triggerHook` will influence the scene's start offset.
+		 * @method ScrollMagic.Scene#scrollOffset
+		 * @example
+		 * // get the current scroll offset for the start and end of the scene.
+		 * var start = scene.scrollOffset();
+		 * var end = scene.scrollOffset() + scene.duration();
+		 * console.log("the scene starts at", start, "and ends at", end);
+		 *
+		 * @returns {number} The scroll offset (of the container) at which the scene will trigger. Y value for vertical and X value for horizontal scrolls.
+		 */
+		this.scrollOffset = function () {
+			return _scrollOffset.start;
+		};
+
+		/**
+		 * **Get** the trigger position of the scene (including the value of the `offset` option).  
+		 * @method ScrollMagic.Scene#triggerPosition
+		 * @example
+		 * // get the scene's trigger position
+		 * var triggerPosition = scene.triggerPosition();
+		 *
+		 * @returns {number} Start position of the scene. Top position value for vertical and left position value for horizontal scrolls.
+		 */
+		this.triggerPosition = function () {
+			var pos = _options.offset; // the offset is the basis
+			if (_controller) {
+				// get the trigger position
+				if (_options.triggerElement) {
+					// Element as trigger
+					pos += _triggerPos;
+				} else {
+					// return the height of the triggerHook to start at the beginning
+					pos += _controller.info("size") * Scene.triggerHook();
+				}
+			}
+			return pos;
+		};
+
+		var
+		_pin, _pinOptions;
+
+		Scene.on("shift.internal", function (e) {
+			var durationChanged = e.reason === "duration";
+			if ((_state === SCENE_STATE_AFTER && durationChanged) || (_state === SCENE_STATE_DURING && _options.duration === 0)) {
+				// if [duration changed after a scene (inside scene progress updates pin position)] or [duration is 0, we are in pin phase and some other value changed].
+				updatePinState();
+			}
+			if (durationChanged) {
+				updatePinDimensions();
+			}
+		}).on("progress.internal", function (e) {
+			updatePinState();
+		}).on("add.internal", function (e) {
+			updatePinDimensions();
+		}).on("destroy.internal", function (e) {
+			Scene.removePin(e.reset);
+		});
+		/**
+		 * Update the pin state.
+		 * @private
+		 */
+		var updatePinState = function (forceUnpin) {
+			if (_pin && _controller) {
+				var
+				containerInfo = _controller.info(),
+					pinTarget = _pinOptions.spacer.firstChild; // may be pin element or another spacer, if cascading pins
+				if (!forceUnpin && _state === SCENE_STATE_DURING) { // during scene or if duration is 0 and we are past the trigger
+					// pinned state
+					if (_util.css(pinTarget, "position") != "fixed") {
+						// change state before updating pin spacer (position changes due to fixed collapsing might occur.)
+						_util.css(pinTarget, {
+							"position": "fixed"
+						});
+						// update pin spacer
+						updatePinDimensions();
+					}
+
+					var
+					fixedPos = _util.get.offset(_pinOptions.spacer, true),
+						// get viewport position of spacer
+						scrollDistance = _options.reverse || _options.duration === 0 ? containerInfo.scrollPos - _scrollOffset.start // quicker
+						: Math.round(_progress * _options.duration * 10) / 10; // if no reverse and during pin the position needs to be recalculated using the progress
+					// add scrollDistance
+					fixedPos[containerInfo.vertical ? "top" : "left"] += scrollDistance;
+
+					// set new values
+					_util.css(_pinOptions.spacer.firstChild, {
+						top: fixedPos.top,
+						left: fixedPos.left
+					});
+				} else {
+					// unpinned state
+					var
+					newCSS = {
+						position: _pinOptions.inFlow ? "relative" : "absolute",
+						top: 0,
+						left: 0
+					},
+						change = _util.css(pinTarget, "position") != newCSS.position;
+
+					if (!_pinOptions.pushFollowers) {
+						newCSS[containerInfo.vertical ? "top" : "left"] = _options.duration * _progress;
+					} else if (_options.duration > 0) { // only concerns scenes with duration
+						if (_state === SCENE_STATE_AFTER && parseFloat(_util.css(_pinOptions.spacer, "padding-top")) === 0) {
+							change = true; // if in after state but havent updated spacer yet (jumped past pin)
+						} else if (_state === SCENE_STATE_BEFORE && parseFloat(_util.css(_pinOptions.spacer, "padding-bottom")) === 0) { // before
+							change = true; // jumped past fixed state upward direction
+						}
+					}
+					// set new values
+					_util.css(pinTarget, newCSS);
+					if (change) {
+						// update pin spacer if state changed
+						updatePinDimensions();
+					}
+				}
+			}
+		};
+
+		/**
+		 * Update the pin spacer and/or element size.
+		 * The size of the spacer needs to be updated whenever the duration of the scene changes, if it is to push down following elements.
+		 * @private
+		 */
+		var updatePinDimensions = function () {
+			if (_pin && _controller && _pinOptions.inFlow) { // no spacerresize, if original position is absolute
+				var
+				after = (_state === SCENE_STATE_AFTER),
+					before = (_state === SCENE_STATE_BEFORE),
+					during = (_state === SCENE_STATE_DURING),
+					vertical = _controller.info("vertical"),
+					pinTarget = _pinOptions.spacer.firstChild,
+					// usually the pined element but can also be another spacer (cascaded pins)
+					marginCollapse = _util.isMarginCollapseType(_util.css(_pinOptions.spacer, "display")),
+					css = {};
+
+				// set new size
+				// if relsize: spacer -> pin | else: pin -> spacer
+				if (_pinOptions.relSize.width || _pinOptions.relSize.autoFullWidth) {
+					if (during) {
+						_util.css(_pin, {
+							"width": _util.get.width(_pinOptions.spacer)
+						});
+					} else {
+						_util.css(_pin, {
+							"width": "100%"
+						});
+					}
+				} else {
+					// minwidth is needed for cascaded pins.
+					css["min-width"] = _util.get.width(vertical ? _pin : pinTarget, true, true);
+					css.width = during ? css["min-width"] : "auto";
+				}
+				if (_pinOptions.relSize.height) {
+					if (during) {
+						// the only padding the spacer should ever include is the duration (if pushFollowers = true), so we need to substract that.
+						_util.css(_pin, {
+							"height": _util.get.height(_pinOptions.spacer) - (_pinOptions.pushFollowers ? _options.duration : 0)
+						});
+					} else {
+						_util.css(_pin, {
+							"height": "100%"
+						});
+					}
+				} else {
+					// margin is only included if it's a cascaded pin to resolve an IE9 bug
+					css["min-height"] = _util.get.height(vertical ? pinTarget : _pin, true, !marginCollapse); // needed for cascading pins
+					css.height = during ? css["min-height"] : "auto";
+				}
+
+				// add space for duration if pushFollowers is true
+				if (_pinOptions.pushFollowers) {
+					css["padding" + (vertical ? "Top" : "Left")] = _options.duration * _progress;
+					css["padding" + (vertical ? "Bottom" : "Right")] = _options.duration * (1 - _progress);
+				}
+				_util.css(_pinOptions.spacer, css);
+			}
+		};
+
+		/**
+		 * Updates the Pin state (in certain scenarios)
+		 * If the controller container is not the document and we are mid-pin-phase scrolling or resizing the main document can result to wrong pin positions.
+		 * So this function is called on resize and scroll of the document.
+		 * @private
+		 */
+		var updatePinInContainer = function () {
+			if (_controller && _pin && _state === SCENE_STATE_DURING && !_controller.info("isDocument")) {
+				updatePinState();
+			}
+		};
+
+		/**
+		 * Updates the Pin spacer size state (in certain scenarios)
+		 * If container is resized during pin and relatively sized the size of the pin might need to be updated...
+		 * So this function is called on resize of the container.
+		 * @private
+		 */
+		var updateRelativePinSpacer = function () {
+			if (_controller && _pin && // well, duh
+			_state === SCENE_STATE_DURING && // element in pinned state?
+			( // is width or height relatively sized, but not in relation to body? then we need to recalc.
+			((_pinOptions.relSize.width || _pinOptions.relSize.autoFullWidth) && _util.get.width(window) != _util.get.width(_pinOptions.spacer.parentNode)) || (_pinOptions.relSize.height && _util.get.height(window) != _util.get.height(_pinOptions.spacer.parentNode)))) {
+				updatePinDimensions();
+			}
+		};
+
+		/**
+		 * Is called, when the mousewhel is used while over a pinned element inside a div container.
+		 * If the scene is in fixed state scroll events would be counted towards the body. This forwards the event to the scroll container.
+		 * @private
+		 */
+		var onMousewheelOverPin = function (e) {
+			if (_controller && _pin && _state === SCENE_STATE_DURING && !_controller.info("isDocument")) { // in pin state
+				e.preventDefault();
+				_controller._setScrollPos(_controller.info("scrollPos") - ((e.wheelDelta || e[_controller.info("vertical") ? "wheelDeltaY" : "wheelDeltaX"]) / 3 || -e.detail * 30));
+			}
+		};
+
+		/**
+		 * Pin an element for the duration of the tween.  
+		 * If the scene duration is 0 the element will only be unpinned, if the user scrolls back past the start position.  
+		 * Make sure only one pin is applied to an element at the same time.
+		 * An element can be pinned multiple times, but only successively.
+		 * _**NOTE:** The option `pushFollowers` has no effect, when the scene duration is 0._
+		 * @method ScrollMagic.Scene#setPin
+		 * @example
+		 * // pin element and push all following elements down by the amount of the pin duration.
+		 * scene.setPin("#pin");
+		 *
+		 * // pin element and keeping all following elements in their place. The pinned element will move past them.
+		 * scene.setPin("#pin", {pushFollowers: false});
+		 *
+		 * @param {(string|object)} element - A Selector targeting an element or a DOM object that is supposed to be pinned.
+		 * @param {object} [settings] - settings for the pin
+		 * @param {boolean} [settings.pushFollowers=true] - If `true` following elements will be "pushed" down for the duration of the pin, if `false` the pinned element will just scroll past them.  
+		 Ignored, when duration is `0`.
+		 * @param {string} [settings.spacerClass="scrollmagic-pin-spacer"] - Classname of the pin spacer element, which is used to replace the element.
+		 *
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.setPin = function (element, settings) {
+			var
+			defaultSettings = {
+				pushFollowers: true,
+				spacerClass: "scrollmagic-pin-spacer"
+			};
+			settings = _util.extend({}, defaultSettings, settings);
+
+			// validate Element
+			element = _util.get.elements(element)[0];
+			if (!element) {
+				log(1, "ERROR calling method 'setPin()': Invalid pin element supplied.");
+				return Scene; // cancel
+			} else if (_util.css(element, "position") === "fixed") {
+				log(1, "ERROR calling method 'setPin()': Pin does not work with elements that are positioned 'fixed'.");
+				return Scene; // cancel
+			}
+
+			if (_pin) { // preexisting pin?
+				if (_pin === element) {
+					// same pin we already have -> do nothing
+					return Scene; // cancel
+				} else {
+					// kill old pin
+					Scene.removePin();
+				}
+
+			}
+			_pin = element;
+
+			var
+			parentDisplay = _pin.parentNode.style.display,
+				boundsParams = ["top", "left", "bottom", "right", "margin", "marginLeft", "marginRight", "marginTop", "marginBottom"];
+
+			_pin.parentNode.style.display = 'none'; // hack start to force css to return stylesheet values instead of calculated px values.
+			var
+			inFlow = _util.css(_pin, "position") != "absolute",
+				pinCSS = _util.css(_pin, boundsParams.concat(["display"])),
+				sizeCSS = _util.css(_pin, ["width", "height"]);
+			_pin.parentNode.style.display = parentDisplay; // hack end.
+			if (!inFlow && settings.pushFollowers) {
+				log(2, "WARNING: If the pinned element is positioned absolutely pushFollowers will be disabled.");
+				settings.pushFollowers = false;
+			}
+			window.setTimeout(function () { // wait until all finished, because with responsive duration it will only be set after scene is added to controller
+				if (_pin && _options.duration === 0 && settings.pushFollowers) {
+					log(2, "WARNING: pushFollowers =", true, "has no effect, when scene duration is 0.");
+				}
+			}, 0);
+
+			// create spacer and insert
+			var
+			spacer = _pin.parentNode.insertBefore(document.createElement('div'), _pin),
+				spacerCSS = _util.extend(pinCSS, {
+					position: inFlow ? "relative" : "absolute",
+					boxSizing: "content-box",
+					mozBoxSizing: "content-box",
+					webkitBoxSizing: "content-box"
+				});
+
+			if (!inFlow) { // copy size if positioned absolutely, to work for bottom/right positioned elements.
+				_util.extend(spacerCSS, _util.css(_pin, ["width", "height"]));
+			}
+
+			_util.css(spacer, spacerCSS);
+			spacer.setAttribute(PIN_SPACER_ATTRIBUTE, "");
+			_util.addClass(spacer, settings.spacerClass);
+
+			// set the pin Options
+			_pinOptions = {
+				spacer: spacer,
+				relSize: { // save if size is defined using % values. if so, handle spacer resize differently...
+					width: sizeCSS.width.slice(-1) === "%",
+					height: sizeCSS.height.slice(-1) === "%",
+					autoFullWidth: sizeCSS.width === "auto" && inFlow && _util.isMarginCollapseType(pinCSS.display)
+				},
+				pushFollowers: settings.pushFollowers,
+				inFlow: inFlow,
+				// stores if the element takes up space in the document flow
+			};
+
+			if (!_pin.___origStyle) {
+				_pin.___origStyle = {};
+				var
+				pinInlineCSS = _pin.style,
+					copyStyles = boundsParams.concat(["width", "height", "position", "boxSizing", "mozBoxSizing", "webkitBoxSizing"]);
+				copyStyles.forEach(function (val) {
+					_pin.___origStyle[val] = pinInlineCSS[val] || "";
+				});
+			}
+
+			// if relative size, transfer it to spacer and make pin calculate it...
+			if (_pinOptions.relSize.width) {
+				_util.css(spacer, {
+					width: sizeCSS.width
+				});
+			}
+			if (_pinOptions.relSize.height) {
+				_util.css(spacer, {
+					height: sizeCSS.height
+				});
+			}
+
+			// now place the pin element inside the spacer	
+			spacer.appendChild(_pin);
+			// and set new css
+			_util.css(_pin, {
+				position: inFlow ? "relative" : "absolute",
+				margin: "auto",
+				top: "auto",
+				left: "auto",
+				bottom: "auto",
+				right: "auto"
+			});
+
+			if (_pinOptions.relSize.width || _pinOptions.relSize.autoFullWidth) {
+				_util.css(_pin, {
+					boxSizing: "border-box",
+					mozBoxSizing: "border-box",
+					webkitBoxSizing: "border-box"
+				});
+			}
+
+			// add listener to document to update pin position in case controller is not the document.
+			window.addEventListener('scroll', updatePinInContainer);
+			window.addEventListener('resize', updatePinInContainer);
+			window.addEventListener('resize', updateRelativePinSpacer);
+			// add mousewheel listener to catch scrolls over fixed elements
+			_pin.addEventListener("mousewheel", onMousewheelOverPin);
+			_pin.addEventListener("DOMMouseScroll", onMousewheelOverPin);
+
+			log(3, "added pin");
+
+			// finally update the pin to init
+			updatePinState();
+
+			return Scene;
+		};
+
+		/**
+		 * Remove the pin from the scene.
+		 * @method ScrollMagic.Scene#removePin
+		 * @example
+		 * // remove the pin from the scene without resetting it (the spacer is not removed)
+		 * scene.removePin();
+		 *
+		 * // remove the pin from the scene and reset the pin element to its initial position (spacer is removed)
+		 * scene.removePin(true);
+		 *
+		 * @param {boolean} [reset=false] - If `false` the spacer will not be removed and the element's position will not be reset.
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.removePin = function (reset) {
+			if (_pin) {
+				if (_state === SCENE_STATE_DURING) {
+					updatePinState(true); // force unpin at position
+				}
+				if (reset || !_controller) { // if there's no controller no progress was made anyway...
+					var pinTarget = _pinOptions.spacer.firstChild; // usually the pin element, but may be another spacer (cascaded pins)...
+					if (pinTarget.hasAttribute(PIN_SPACER_ATTRIBUTE)) { // copy margins to child spacer
+						var
+						style = _pinOptions.spacer.style,
+							values = ["margin", "marginLeft", "marginRight", "marginTop", "marginBottom"],
+							margins = {};
+						values.forEach(function (val) {
+							margins[val] = style[val] || "";
+						});
+						_util.css(pinTarget, margins);
+					}
+					_pinOptions.spacer.parentNode.insertBefore(pinTarget, _pinOptions.spacer);
+					_pinOptions.spacer.parentNode.removeChild(_pinOptions.spacer);
+					if (!_pin.parentNode.hasAttribute(PIN_SPACER_ATTRIBUTE)) { // if it's the last pin for this element -> restore inline styles
+						// TODO: only correctly set for first pin (when cascading) - how to fix?
+						_util.css(_pin, _pin.___origStyle);
+						delete _pin.___origStyle;
+					}
+				}
+				window.removeEventListener('scroll', updatePinInContainer);
+				window.removeEventListener('resize', updatePinInContainer);
+				window.removeEventListener('resize', updateRelativePinSpacer);
+				_pin.removeEventListener("mousewheel", onMousewheelOverPin);
+				_pin.removeEventListener("DOMMouseScroll", onMousewheelOverPin);
+				_pin = undefined;
+				log(3, "removed pin (reset: " + (reset ? "true" : "false") + ")");
+			}
+			return Scene;
+		};
+
+
+		var
+		_cssClasses, _cssClassElems = [];
+
+		Scene.on("destroy.internal", function (e) {
+			Scene.removeClassToggle(e.reset);
+		});
+		/**
+		 * Define a css class modification while the scene is active.  
+		 * When the scene triggers the classes will be added to the supplied element and removed, when the scene is over.
+		 * If the scene duration is 0 the classes will only be removed if the user scrolls back past the start position.
+		 * @method ScrollMagic.Scene#setClassToggle
+		 * @example
+		 * // add the class 'myclass' to the element with the id 'my-elem' for the duration of the scene
+		 * scene.setClassToggle("#my-elem", "myclass");
+		 *
+		 * // add multiple classes to multiple elements defined by the selector '.classChange'
+		 * scene.setClassToggle(".classChange", "class1 class2 class3");
+		 *
+		 * @param {(string|object)} element - A Selector targeting one or more elements or a DOM object that is supposed to be modified.
+		 * @param {string} classes - One or more Classnames (separated by space) that should be added to the element during the scene.
+		 *
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.setClassToggle = function (element, classes) {
+			var elems = _util.get.elements(element);
+			if (elems.length === 0 || !_util.type.String(classes)) {
+				log(1, "ERROR calling method 'setClassToggle()': Invalid " + (elems.length === 0 ? "element" : "classes") + " supplied.");
+				return Scene;
+			}
+			if (_cssClassElems.length > 0) {
+				// remove old ones
+				Scene.removeClassToggle();
+			}
+			_cssClasses = classes;
+			_cssClassElems = elems;
+			Scene.on("enter.internal_class leave.internal_class", function (e) {
+				var toggle = e.type === "enter" ? _util.addClass : _util.removeClass;
+				_cssClassElems.forEach(function (elem, key) {
+					toggle(elem, _cssClasses);
+				});
+			});
+			return Scene;
+		};
+
+		/**
+		 * Remove the class binding from the scene.
+		 * @method ScrollMagic.Scene#removeClassToggle
+		 * @example
+		 * // remove class binding from the scene without reset
+		 * scene.removeClassToggle();
+		 *
+		 * // remove class binding and remove the changes it caused
+		 * scene.removeClassToggle(true);
+		 *
+		 * @param {boolean} [reset=false] - If `false` and the classes are currently active, they will remain on the element. If `true` they will be removed.
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		this.removeClassToggle = function (reset) {
+			if (reset) {
+				_cssClassElems.forEach(function (elem, key) {
+					_util.removeClass(elem, _cssClasses);
+				});
+			}
+			Scene.off("start.internal_class end.internal_class");
+			_cssClasses = undefined;
+			_cssClassElems = [];
+			return Scene;
+		};
+
+		// INIT
+		construct();
+		return Scene;
+	};
+
+	// store pagewide scene options
+	var SCENE_OPTIONS = {
+		defaults: {
+			duration: 0,
+			offset: 0,
+			triggerElement: undefined,
+			triggerHook: 0.5,
+			reverse: true,
+			loglevel: 2
+		},
+		validate: {
+			offset: function (val) {
+				val = parseFloat(val);
+				if (!_util.type.Number(val)) {
+					throw ["Invalid value for option \"offset\":", val];
+				}
+				return val;
+			},
+			triggerElement: function (val) {
+				val = val || undefined;
+				if (val) {
+					var elem = _util.get.elements(val)[0];
+					if (elem && elem.parentNode) {
+						val = elem;
+					} else {
+						throw ["Element defined in option \"triggerElement\" was not found:", val];
+					}
+				}
+				return val;
+			},
+			triggerHook: function (val) {
+				var translate = {
+					"onCenter": 0.5,
+					"onEnter": 1,
+					"onLeave": 0
+				};
+				if (_util.type.Number(val)) {
+					val = Math.max(0, Math.min(parseFloat(val), 1)); //  make sure its betweeen 0 and 1
+				} else if (val in translate) {
+					val = translate[val];
+				} else {
+					throw ["Invalid value for option \"triggerHook\": ", val];
+				}
+				return val;
+			},
+			reverse: function (val) {
+				return !!val; // force boolean
+			},
+			loglevel: function (val) {
+				val = parseInt(val);
+				if (!_util.type.Number(val) || val < 0 || val > 3) {
+					throw ["Invalid value for option \"loglevel\":", val];
+				}
+				return val;
+			}
+		},
+		// holder for  validation methods. duration validation is handled in 'getters-setters.js'
+		shifts: ["duration", "offset", "triggerHook"],
+		// list of options that trigger a `shift` event
+	};
+/*
+ * method used to add an option to ScrollMagic Scenes.
+ * TODO: DOC (private for dev)
+ */
+	ScrollMagic.Scene.addOption = function (name, defaultValue, validationCallback, shifts) {
+		if (!(name in SCENE_OPTIONS.defaults)) {
+			SCENE_OPTIONS.defaults[name] = defaultValue;
+			SCENE_OPTIONS.validate[name] = validationCallback;
+			if (shifts) {
+				SCENE_OPTIONS.shifts.push(name);
+			}
+		} else {
+			ScrollMagic._util.log(1, "[static] ScrollMagic.Scene -> Cannot add Scene option '" + name + "', because it already exists.");
+		}
+	};
+	// instance extension function for plugins
+	// TODO: DOC (private for dev)
+	ScrollMagic.Scene.extend = function (extension) {
+		var oldClass = this;
+		ScrollMagic.Scene = function () {
+			oldClass.apply(this, arguments);
+			this.$super = _util.extend({}, this); // copy parent state
+			return extension.apply(this, arguments) || this;
+		};
+		_util.extend(ScrollMagic.Scene, oldClass); // copy properties
+		ScrollMagic.Scene.prototype = oldClass.prototype; // copy prototype
+		ScrollMagic.Scene.prototype.constructor = ScrollMagic.Scene; // restore constructor
+	};
+
+
+
+	/**
+	 * TODO: DOCS (private for dev)
+	 * @class
+	 * @private
+	 */
+
+	ScrollMagic.Event = function (type, namespace, target, vars) {
+		vars = vars || {};
+		for (var key in vars) {
+			this[key] = vars[key];
+		}
+		this.type = type;
+		this.target = this.currentTarget = target;
+		this.namespace = namespace || '';
+		this.timeStamp = this.timestamp = Date.now();
+		return this;
+	};
+
+/*
+ * TODO: DOCS (private for dev)
+ */
+
+	var _util = ScrollMagic._util = (function (window) {
+		var U = {},
+			i;
+
+		/**
+		 * ------------------------------
+		 * internal helpers
+		 * ------------------------------
+		 */
+
+		// parse float and fall back to 0.
+		var floatval = function (number) {
+			return parseFloat(number) || 0;
+		};
+		// get current style IE safe (otherwise IE would return calculated values for 'auto')
+		var _getComputedStyle = function (elem) {
+			return elem.currentStyle ? elem.currentStyle : window.getComputedStyle(elem);
+		};
+
+		// get element dimension (width or height)
+		var _dimension = function (which, elem, outer, includeMargin) {
+			elem = (elem === document) ? window : elem;
+			if (elem === window) {
+				includeMargin = false;
+			} else if (!_type.DomElement(elem)) {
+				return 0;
+			}
+			which = which.charAt(0).toUpperCase() + which.substr(1).toLowerCase();
+			var dimension = (outer ? elem['offset' + which] || elem['outer' + which] : elem['client' + which] || elem['inner' + which]) || 0;
+			if (outer && includeMargin) {
+				var style = _getComputedStyle(elem);
+				dimension += which === 'Height' ? floatval(style.marginTop) + floatval(style.marginBottom) : floatval(style.marginLeft) + floatval(style.marginRight);
+			}
+			return dimension;
+		};
+		// converts 'margin-top' into 'marginTop'
+		var _camelCase = function (str) {
+			return str.replace(/^[^a-z]+([a-z])/g, '$1').replace(/-([a-z])/g, function (g) {
+				return g[1].toUpperCase();
+			});
+		};
+
+		/**
+		 * ------------------------------
+		 * external helpers
+		 * ------------------------------
+		 */
+
+		// extend obj – same as jQuery.extend({}, objA, objB)
+		U.extend = function (obj) {
+			obj = obj || {};
+			for (i = 1; i < arguments.length; i++) {
+				if (!arguments[i]) {
+					continue;
+				}
+				for (var key in arguments[i]) {
+					if (arguments[i].hasOwnProperty(key)) {
+						obj[key] = arguments[i][key];
+					}
+				}
+			}
+			return obj;
+		};
+
+		// check if a css display type results in margin-collapse or not
+		U.isMarginCollapseType = function (str) {
+			return ["block", "flex", "list-item", "table", "-webkit-box"].indexOf(str) > -1;
+		};
+
+		// implementation of requestAnimationFrame
+		// based on https://gist.github.com/paulirish/1579671
+		var
+		lastTime = 0,
+			vendors = ['ms', 'moz', 'webkit', 'o'];
+		var _requestAnimationFrame = window.requestAnimationFrame;
+		var _cancelAnimationFrame = window.cancelAnimationFrame;
+		// try vendor prefixes if the above doesn't work
+		for (i = 0; !_requestAnimationFrame && i < vendors.length; ++i) {
+			_requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
+			_cancelAnimationFrame = window[vendors[i] + 'CancelAnimationFrame'] || window[vendors[i] + 'CancelRequestAnimationFrame'];
+		}
+
+		// fallbacks
+		if (!_requestAnimationFrame) {
+			_requestAnimationFrame = function (callback) {
+				var
+				currTime = new Date().getTime(),
+					timeToCall = Math.max(0, 16 - (currTime - lastTime)),
+					id = window.setTimeout(function () {
+						callback(currTime + timeToCall);
+					}, timeToCall);
+				lastTime = currTime + timeToCall;
+				return id;
+			};
+		}
+		if (!_cancelAnimationFrame) {
+			_cancelAnimationFrame = function (id) {
+				window.clearTimeout(id);
+			};
+		}
+		U.rAF = _requestAnimationFrame.bind(window);
+		U.cAF = _cancelAnimationFrame.bind(window);
+
+		var
+		loglevels = ["error", "warn", "log"],
+			console = window.console || {};
+
+		console.log = console.log ||
+		function () {}; // no console log, well - do nothing then...
+		// make sure methods for all levels exist.
+		for (i = 0; i < loglevels.length; i++) {
+			var method = loglevels[i];
+			if (!console[method]) {
+				console[method] = console.log; // prefer .log over nothing
+			}
+		}
+		U.log = function (loglevel) {
+			if (loglevel > loglevels.length || loglevel <= 0) loglevel = loglevels.length;
+			var now = new Date(),
+				time = ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2) + ":" + ("0" + now.getSeconds()).slice(-2) + ":" + ("00" + now.getMilliseconds()).slice(-3),
+				method = loglevels[loglevel - 1],
+				args = Array.prototype.splice.call(arguments, 1),
+				func = Function.prototype.bind.call(console[method], console);
+			args.unshift(time);
+			func.apply(console, args);
+		};
+
+		/**
+		 * ------------------------------
+		 * type testing
+		 * ------------------------------
+		 */
+
+		var _type = U.type = function (v) {
+			return Object.prototype.toString.call(v).replace(/^\[object (.+)\]$/, "$1").toLowerCase();
+		};
+		_type.String = function (v) {
+			return _type(v) === 'string';
+		};
+		_type.Function = function (v) {
+			return _type(v) === 'function';
+		};
+		_type.Array = function (v) {
+			return Array.isArray(v);
+		};
+		_type.Number = function (v) {
+			return !_type.Array(v) && (v - parseFloat(v) + 1) >= 0;
+		};
+		_type.DomElement = function (o) {
+			return (
+			typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
+			o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName === "string");
+		};
+
+		/**
+		 * ------------------------------
+		 * DOM Element info
+		 * ------------------------------
+		 */
+		// always returns a list of matching DOM elements, from a selector, a DOM element or an list of elements or even an array of selectors
+		var _get = U.get = {};
+		_get.elements = function (selector) {
+			var arr = [];
+			if (_type.String(selector)) {
+				try {
+					selector = document.querySelectorAll(selector);
+				} catch (e) { // invalid selector
+					return arr;
+				}
+			}
+			if (_type(selector) === 'nodelist' || _type.Array(selector)) {
+				for (var i = 0, ref = arr.length = selector.length; i < ref; i++) { // list of elements
+					var elem = selector[i];
+					arr[i] = _type.DomElement(elem) ? elem : _get.elements(elem); // if not an element, try to resolve recursively
+				}
+			} else if (_type.DomElement(selector) || selector === document || selector === window) {
+				arr = [selector]; // only the element
+			}
+			return arr;
+		};
+		// get scroll top value
+		_get.scrollTop = function (elem) {
+			return (elem && typeof elem.scrollTop === 'number') ? elem.scrollTop : window.pageYOffset || 0;
+		};
+		// get scroll left value
+		_get.scrollLeft = function (elem) {
+			return (elem && typeof elem.scrollLeft === 'number') ? elem.scrollLeft : window.pageXOffset || 0;
+		};
+		// get element height
+		_get.width = function (elem, outer, includeMargin) {
+			return _dimension('width', elem, outer, includeMargin);
+		};
+		// get element width
+		_get.height = function (elem, outer, includeMargin) {
+			return _dimension('height', elem, outer, includeMargin);
+		};
+
+		// get element position (optionally relative to viewport)
+		_get.offset = function (elem, relativeToViewport) {
+			var offset = {
+				top: 0,
+				left: 0
+			};
+			if (elem && elem.getBoundingClientRect) { // check if available
+				var rect = elem.getBoundingClientRect();
+				offset.top = rect.top;
+				offset.left = rect.left;
+				if (!relativeToViewport) { // clientRect is by default relative to viewport...
+					offset.top += _get.scrollTop();
+					offset.left += _get.scrollLeft();
+				}
+			}
+			return offset;
+		};
+
+		/**
+		 * ------------------------------
+		 * DOM Element manipulation
+		 * ------------------------------
+		 */
+
+		U.addClass = function (elem, classname) {
+			if (classname) {
+				if (elem.classList) elem.classList.add(classname);
+				else elem.className += ' ' + classname;
+			}
+		};
+		U.removeClass = function (elem, classname) {
+			if (classname) {
+				if (elem.classList) elem.classList.remove(classname);
+				else elem.className = elem.className.replace(new RegExp('(^|\\b)' + classname.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+			}
+		};
+		// if options is string -> returns css value
+		// if options is array -> returns object with css value pairs
+		// if options is object -> set new css values
+		U.css = function (elem, options) {
+			if (_type.String(options)) {
+				return _getComputedStyle(elem)[_camelCase(options)];
+			} else if (_type.Array(options)) {
+				var
+				obj = {},
+					style = _getComputedStyle(elem);
+				options.forEach(function (option, key) {
+					obj[option] = style[_camelCase(option)];
+				});
+				return obj;
+			} else {
+				for (var option in options) {
+					var val = options[option];
+					if (val == parseFloat(val)) { // assume pixel for seemingly numerical values
+						val += 'px';
+					}
+					elem.style[_camelCase(option)] = val;
+				}
+			}
+		};
+
+		return U;
+	}(window || {}));
+
+	ScrollMagic.Scene.prototype.addIndicators = function () {
+		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling addIndicators() due to missing Plugin \'debug.addIndicators\'. Please make sure to include plugins/debug.addIndicators.js');
+		return this;
+	}
+	ScrollMagic.Scene.prototype.removeIndicators = function () {
+		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling removeIndicators() due to missing Plugin \'debug.addIndicators\'. Please make sure to include plugins/debug.addIndicators.js');
+		return this;
+	}
+	ScrollMagic.Scene.prototype.setTween = function () {
+		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling setTween() due to missing Plugin \'animation.gsap\'. Please make sure to include plugins/animation.gsap.js');
+		return this;
+	}
+	ScrollMagic.Scene.prototype.removeTween = function () {
+		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling removeTween() due to missing Plugin \'animation.gsap\'. Please make sure to include plugins/animation.gsap.js');
+		return this;
+	}
+	ScrollMagic.Scene.prototype.setVelocity = function () {
+		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling setVelocity() due to missing Plugin \'animation.velocity\'. Please make sure to include plugins/animation.velocity.js');
+		return this;
+	}
+	ScrollMagic.Scene.prototype.removeVelocity = function () {
+		ScrollMagic._util.log(1, '(ScrollMagic.Scene) -> ERROR calling removeVelocity() due to missing Plugin \'animation.velocity\'. Please make sure to include plugins/animation.velocity.js');
+		return this;
+	}
+
+	return ScrollMagic;
+}));
 /*
      _ _      _       _
  ___| (_) ___| | __  (_)___
@@ -18089,1056 +18089,2502 @@ if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); } //necessary in case Tween
 }));
 
 /*!
- * ScrollMagic v2.0.6 (2018-10-08)
- * The javascript library for magical scroll interactions.
- * (c) 2018 Jan Paepke (@janpaepke)
- * Project Website: http://scrollmagic.io
- * 
- * @version 2.0.6
- * @license Dual licensed under MIT license and GPL.
- * @author Jan Paepke - e-mail@janpaepke.de
+ * VERSION: 0.16.5
+ * DATE: 2018-08-27
+ * UPDATES AND DOCS AT: http://greensock.com
  *
- * @file ScrollMagic GSAP Animation Plugin.
+ * Requires TweenLite and CSSPlugin version 1.17.0 or later (TweenMax contains both TweenLite and CSSPlugin). ThrowPropsPlugin is required for momentum-based continuation of movement after the mouse/touch is released (ThrowPropsPlugin is a membership benefit of Club GreenSock - http://greensock.com/club/).
  *
- * requires: GSAP ~1.14
- * Powered by the Greensock Animation Platform (GSAP): http://www.greensock.com/js
- * Greensock License info at http://www.greensock.com/licensing/
+ * @license Copyright (c) 2008-2018, GreenSock. All rights reserved.
+ * This work is subject to the terms at http://greensock.com/standard-license or for
+ * Club GreenSock members, the software agreement that was issued with your membership.
+ *
+ * @author: Jack Doyle, jack@greensock.com
  */
-/**
- * This plugin is meant to be used in conjunction with the Greensock Animation Plattform.  
- * It offers an easy API to trigger Tweens or synchronize them to the scrollbar movement.
- *
- * Both the `lite` and the `max` versions of the GSAP library are supported.  
- * The most basic requirement is `TweenLite`.
- * 
- * To have access to this extension, please include `plugins/animation.gsap.js`.
- * @requires {@link http://greensock.com/gsap|GSAP ~1.14.x}
- * @mixin animation.GSAP
- */
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define(['ScrollMagic', 'TweenMax', 'TimelineMax'], factory);
-	} else if (typeof exports === 'object') {
-		// CommonJS
-		// Loads whole gsap package onto global scope.
-		require('gsap');
-		factory(require('scrollmagic'), TweenMax, TimelineMax);
-	} else {
-		// Browser globals
-		factory(root.ScrollMagic || (root.jQuery && root.jQuery.ScrollMagic), root.TweenMax || root.TweenLite, root.TimelineMax || root.TimelineLite);
-	}
-}(this, function (ScrollMagic, Tween, Timeline) {
+var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window; //helps ensure compatibility with AMD/RequireJS and CommonJS/Node
+(_gsScope._gsQueue || (_gsScope._gsQueue = [])).push( function() {
+
 	"use strict";
-	var NAMESPACE = "animation.gsap";
 
-	var
-	console = window.console || {},
-		err = Function.prototype.bind.call(console.error || console.log ||
-		function () {}, console);
-	if (!ScrollMagic) {
-		err("(" + NAMESPACE + ") -> ERROR: The ScrollMagic main module could not be found. Please make sure it's loaded before this plugin or use an asynchronous loader like requirejs.");
-	}
-	if (!Tween) {
-		err("(" + NAMESPACE + ") -> ERROR: TweenLite or TweenMax could not be found. Please make sure GSAP is loaded before ScrollMagic or use an asynchronous loader like requirejs.");
-	}
+	_gsScope._gsDefine("utils.Draggable", ["events.EventDispatcher","TweenLite","plugins.CSSPlugin"], function(EventDispatcher, TweenLite, CSSPlugin) {
 
-/*
-	 * ----------------------------------------------------------------
-	 * Extensions for Scene
-	 * ----------------------------------------------------------------
-	 */
-	/**
-	 * Every instance of ScrollMagic.Scene now accepts an additional option.  
-	 * See {@link ScrollMagic.Scene} for a complete list of the standard options.
-	 * @memberof! animation.GSAP#
-	 * @method new ScrollMagic.Scene(options)
-	 * @example
-	 * var scene = new ScrollMagic.Scene({tweenChanges: true});
-	 *
-	 * @param {object} [options] - Options for the Scene. The options can be updated at any time.
-	 * @param {boolean} [options.tweenChanges=false] - Tweens Animation to the progress target instead of setting it.  
-	 Does not affect animations where duration is `0`.
-	 */
-	/**
-	 * **Get** or **Set** the tweenChanges option value.  
-	 * This only affects scenes with a duration. If `tweenChanges` is `true`, the progress update when scrolling will not be immediate, but instead the animation will smoothly animate to the target state.  
-	 * For a better understanding, try enabling and disabling this option in the [Scene Manipulation Example](../examples/basic/scene_manipulation.html).
-	 * @memberof! animation.GSAP#
-	 * @method Scene.tweenChanges
-	 * 
-	 * @example
-	 * // get the current tweenChanges option
-	 * var tweenChanges = scene.tweenChanges();
-	 *
-	 * // set new tweenChanges option
-	 * scene.tweenChanges(true);
-	 *
-	 * @fires {@link Scene.change}, when used as setter
-	 * @param {boolean} [newTweenChanges] - The new tweenChanges setting of the scene.
-	 * @returns {boolean} `get` -  Current tweenChanges option value.
-	 * @returns {Scene} `set` -  Parent object for chaining.
-	 */
-	// add option (TODO: DOC (private for dev))
-	ScrollMagic.Scene.addOption("tweenChanges", // name
-	false, // default
-
-
-	function (val) { // validation callback
-		return !!val;
-	});
-	// extend scene
-	ScrollMagic.Scene.extend(function () {
-		var Scene = this,
-			_tween;
-
-		var log = function () {
-			if (Scene._log) { // not available, when main source minified
-				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
-				Scene._log.apply(this, arguments);
-			}
-		};
-
-		// set listeners
-		Scene.on("progress.plugin_gsap", function () {
-			updateTweenProgress();
-		});
-		Scene.on("destroy.plugin_gsap", function (e) {
-			Scene.removeTween(e.reset);
-		});
-
-		/**
-		 * Update the tween progress to current position.
-		 * @private
-		 */
-		var updateTweenProgress = function () {
-			if (_tween) {
-				var
-				progress = Scene.progress(),
-					state = Scene.state();
-				if (_tween.repeat && _tween.repeat() === -1) {
-					// infinite loop, so not in relation to progress
-					if (state === 'DURING' && _tween.paused()) {
-						_tween.play();
-					} else if (state !== 'DURING' && !_tween.paused()) {
-						_tween.pause();
-					}
-				} else if (progress != _tween.progress()) { // do we even need to update the progress?
-					// no infinite loop - so should we just play or go to a specific point in time?
-					if (Scene.duration() === 0) {
-						// play the animation
-						if (progress > 0) { // play from 0 to 1
-							_tween.play();
-						} else { // play from 1 to 0
-							_tween.reverse();
-						}
-					} else {
-						// go to a specific point in time
-						if (Scene.tweenChanges() && _tween.tweenTo) {
-							// go smooth
-							_tween.tweenTo(progress * _tween.duration());
-						} else {
-							// just hard set it
-							_tween.progress(progress).pause();
-						}
-					}
+		var _tempVarsXY = {css:{}, data:"_draggable"}, //speed optimization - we reuse the same vars object for x/y TweenLite.set() calls to minimize garbage collection tasks and improve performance.
+			_tempVarsX = {css:{}, data:"_draggable"},
+			_tempVarsY = {css:{}, data:"_draggable"},
+			_tempVarsRotation = {css:{}},
+			_globals = _gsScope._gsDefine.globals,
+			_tempEvent = {}, //for populating with pageX/pageY in old versions of IE
+			_emptyFunc = function() { return false; },
+			_dummyElement = {style:{}, appendChild:_emptyFunc, removeChild:_emptyFunc},
+			_doc = _gsScope.document || {createElement: function() {return _dummyElement;}},
+			_docElement = _doc.documentElement || {},
+			_createElement = function(type) {
+				return _doc.createElementNS ? _doc.createElementNS("http://www.w3.org/1999/xhtml", type) : _doc.createElement(type);
+			},
+			_tempDiv = _createElement("div"),
+			_emptyArray = [],
+			_RAD2DEG = 180 / Math.PI,
+			_max = 999999999999999,
+			_getTime = Date.now || function() {return new Date().getTime();},
+			_isOldIE = !!(!_doc.addEventListener && _doc.all),
+			_placeholderDiv = _doc.createElement("div"),
+			_renderQueue = [],
+			_lookup = {}, //when a Draggable is created, the target gets a unique _gsDragID property that allows gets associated with the Draggable instance for quick lookups in Draggable.get(). This avoids circular references that could cause gc problems.
+			_lookupCount = 0,
+			_clickableTagExp = /^(?:a|input|textarea|button|select)$/i,
+			_dragCount = 0, //total number of elements currently being dragged
+			_prefix,
+			_isMultiTouching,
+			_isAndroid = (_gsScope.navigator && _gsScope.navigator.userAgent.toLowerCase().indexOf("android") !== -1), //Android handles touch events in an odd way and it's virtually impossible to "feature test" so we resort to UA sniffing
+			_lastDragTime = 0,
+			_temp1 = {}, // a simple object we reuse and populate (usually x/y properties) to conserve memory and improve performance.
+			_windowProxy = {}, //memory/performance optimization - we reuse this object during autoScroll to store window-related bounds/offsets.
+			_slice = function(a) { //don't use Array.prototype.slice.call(target, 0) because that doesn't work in IE8 with a NodeList that's returned by querySelectorAll()
+				if (typeof(a) === "string") {
+					a = TweenLite.selector(a);
 				}
-			}
-		};
-
-		/**
-		 * Add a tween to the scene.  
-		 * If you want to add multiple tweens, add them into a GSAP Timeline object and supply it instead (see example below).  
-		 * 
-		 * If the scene has a duration, the tween's duration will be projected to the scroll distance of the scene, meaning its progress will be synced to scrollbar movement.  
-		 * For a scene with a duration of `0`, the tween will be triggered when scrolling forward past the scene's trigger position and reversed, when scrolling back.  
-		 * To gain better understanding, check out the [Simple Tweening example](../examples/basic/simple_tweening.html).
-		 *
-		 * Instead of supplying a tween this method can also be used as a shorthand for `TweenMax.to()` (see example below).
-		 * @memberof! animation.GSAP#
-		 *
-		 * @example
-		 * // add a single tween directly
-		 * scene.setTween(TweenMax.to("obj"), 1, {x: 100});
-		 *
-		 * // add a single tween via variable
-		 * var tween = TweenMax.to("obj"), 1, {x: 100};
-		 * scene.setTween(tween);
-		 *
-		 * // add multiple tweens, wrapped in a timeline.
-		 * var timeline = new TimelineMax();
-		 * var tween1 = TweenMax.from("obj1", 1, {x: 100});
-		 * var tween2 = TweenMax.to("obj2", 1, {y: 100});
-		 * timeline
-		 *		.add(tween1)
-		 *		.add(tween2);
-		 * scene.addTween(timeline);
-		 *
-		 * // short hand to add a TweenMax.to() tween
-		 * scene.setTween("obj3", 0.5, {y: 100});
-		 *
-		 * // short hand to add a TweenMax.to() tween for 1 second
-		 * // this is useful, when the scene has a duration and the tween duration isn't important anyway
-		 * scene.setTween("obj3", {y: 100});
-		 *
-		 * @param {(object|string)} TweenObject - A TweenMax, TweenLite, TimelineMax or TimelineLite object that should be animated in the scene. Can also be a Dom Element or Selector, when using direct tween definition (see examples).
-		 * @param {(number|object)} duration - A duration for the tween, or tween parameters. If an object containing parameters are supplied, a default duration of 1 will be used.
-		 * @param {object} params - The parameters for the tween
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		Scene.setTween = function (TweenObject, duration, params) {
-			var newTween;
-			if (arguments.length > 1) {
-				if (arguments.length < 3) {
-					params = duration;
-					duration = 1;
+				if (!a || a.nodeType) { //if it's not an array, wrap it in one.
+					return [a];
 				}
-				TweenObject = Tween.to(TweenObject, duration, params);
-			}
-			try {
-				// wrap Tween into a Timeline Object if available to include delay and repeats in the duration and standardize methods.
-				if (Timeline) {
-					newTween = new Timeline({
-						smoothChildTiming: true
-					}).add(TweenObject);
+				var b = [],
+					l = a.length,
+					i;
+				for (i = 0; i !== l; b.push(a[i++]));
+				return b;
+			},
+			_copy = function(obj, factor) {
+				var copy = {}, p;
+				if (factor) {
+					for (p in obj) {
+						copy[p] = obj[p] * factor;
+					}
 				} else {
-					newTween = TweenObject;
-				}
-				newTween.pause();
-			} catch (e) {
-				log(1, "ERROR calling method 'setTween()': Supplied argument is not a valid TweenObject");
-				return Scene;
-			}
-			if (_tween) { // kill old tween?
-				Scene.removeTween();
-			}
-			_tween = newTween;
-
-			// some properties need to be transferred it to the wrapper, otherwise they would get lost.
-			if (TweenObject.repeat && TweenObject.repeat() === -1) { // TweenMax or TimelineMax Object?
-				_tween.repeat(-1);
-				_tween.yoyo(TweenObject.yoyo());
-			}
-			// Some tween validations and debugging helpers
-			if (Scene.tweenChanges() && !_tween.tweenTo) {
-				log(2, "WARNING: tweenChanges will only work if the TimelineMax object is available for ScrollMagic.");
-			}
-
-			// check if there are position tweens defined for the trigger and warn about it :)
-			if (_tween && Scene.controller() && Scene.triggerElement() && Scene.loglevel() >= 2) { // controller is needed to know scroll direction.
-				var
-				triggerTweens = Tween.getTweensOf(Scene.triggerElement()),
-					vertical = Scene.controller().info("vertical");
-				triggerTweens.forEach(function (value, index) {
-					var
-					tweenvars = value.vars.css || value.vars,
-						condition = vertical ? (tweenvars.top !== undefined || tweenvars.bottom !== undefined) : (tweenvars.left !== undefined || tweenvars.right !== undefined);
-					if (condition) {
-						log(2, "WARNING: Tweening the position of the trigger element affects the scene timing and should be avoided!");
-						return false;
+					for (p in obj) {
+						copy[p] = obj[p];
 					}
-				});
-			}
+				}
+				return copy;
+			},
+			ThrowPropsPlugin,
 
-			// warn about tween overwrites, when an element is tweened multiple times
-			if (parseFloat(TweenLite.version) >= 1.14) { // onOverwrite only present since GSAP v1.14.0
-				var
-				list = _tween.getChildren ? _tween.getChildren(true, true, false) : [_tween],
-					// get all nested tween objects
-					newCallback = function () {
-						log(2, "WARNING: tween was overwritten by another. To learn how to avoid this issue see here: https://github.com/janpaepke/ScrollMagic/wiki/WARNING:-tween-was-overwritten-by-another");
-					};
-				for (var i = 0, thisTween, oldCallback; i < list.length; i++) { /*jshint loopfunc: true */
-					thisTween = list[i];
-					if (oldCallback !== newCallback) { // if tweens is added more than once
-						oldCallback = thisTween.vars.onOverwrite;
-						thisTween.vars.onOverwrite = function () {
-							if (oldCallback) {
-								oldCallback.apply(this, arguments);
+			_renderQueueTick = function() {
+				var i = _renderQueue.length;
+				while (--i > -1) {
+					_renderQueue[i]();
+				}
+			},
+			_addToRenderQueue = function(func) {
+				_renderQueue.push(func);
+				if (_renderQueue.length === 1) {
+					TweenLite.ticker.addEventListener("tick", _renderQueueTick, this, false, 1);
+				}
+			},
+			_removeFromRenderQueue = function(func) {
+				var i = _renderQueue.length;
+				while (--i > -1) {
+					if (_renderQueue[i] === func) {
+						_renderQueue.splice(i, 1);
+					}
+				}
+				TweenLite.to(_renderQueueTimeout, 0, {overwrite:"all", delay:15, onComplete:_renderQueueTimeout, data:"_draggable"}); //remove the "tick" listener only after the render queue is empty for 15 seconds (to improve performance). Adding/removing it constantly for every click/touch wouldn't deliver optimal speed, and we also don't want the ticker to keep calling the render method when things are idle for long periods of time (we want to improve battery life on mobile devices).
+			},
+			_renderQueueTimeout = function() {
+				if (!_renderQueue.length) {
+					TweenLite.ticker.removeEventListener("tick", _renderQueueTick);
+				}
+			},
+
+			_extend = function(obj, defaults) {
+				var p;
+				for (p in defaults) {
+					if (obj[p] === undefined) {
+						obj[p] = defaults[p];
+					}
+				}
+				return obj;
+			},
+			_getDocScrollTop = function() {
+				return (window.pageYOffset != null) ? window.pageYOffset : (_doc.scrollTop != null) ? _doc.scrollTop : _docElement.scrollTop || _doc.body.scrollTop || 0;
+			},
+			_getDocScrollLeft = function() {
+				return (window.pageXOffset != null) ? window.pageXOffset : (_doc.scrollLeft != null) ? _doc.scrollLeft : _docElement.scrollLeft || _doc.body.scrollLeft || 0;
+			},
+			_addScrollListener = function(e, callback) {
+				_addListener(e, "scroll", callback);
+				if (!_isRoot(e.parentNode)) {
+					_addScrollListener(e.parentNode, callback);
+				}
+			},
+			_removeScrollListener = function(e, callback) {
+				_removeListener(e, "scroll", callback);
+				if (!_isRoot(e.parentNode)) {
+					_removeScrollListener(e.parentNode, callback);
+				}
+			},
+			_isRoot = function (e) {
+				return !!(!e || e === _docElement || e === _doc || e === _doc.body || e === window || !e.nodeType || !e.parentNode);
+			},
+			_getMaxScroll = function(element, axis) {
+				var dim = (axis === "x") ? "Width" : "Height",
+					scroll = "scroll" + dim,
+					client = "client" + dim,
+					body = _doc.body;
+				return Math.max(0, _isRoot(element) ? Math.max(_docElement[scroll], body[scroll]) - (window["inner" + dim] || _docElement[client] || body[client]) : element[scroll] - element[client]);
+			},
+			_recordMaxScrolls = function(e) { //records _gsMaxScrollX and _gsMaxScrollY properties for the element and all ancestors up the chain so that we can cap it, otherwise dragging beyond the edges with autoScroll on can endlessly scroll.
+				var isRoot = _isRoot(e),
+					x = _getMaxScroll(e, "x"),
+					y = _getMaxScroll(e, "y");
+				if (isRoot) {
+					e = _windowProxy;
+				} else {
+					_recordMaxScrolls(e.parentNode);
+				}
+				e._gsMaxScrollX = x;
+				e._gsMaxScrollY = y;
+				e._gsScrollX = e.scrollLeft || 0;
+				e._gsScrollY = e.scrollTop || 0;
+			},
+
+			//just used for IE8 and earlier to normalize events and populate pageX/pageY
+			_populateIEEvent = function(e, preventDefault) {
+				e = e || window.event;
+				_tempEvent.pageX = e.clientX + _doc.body.scrollLeft + _docElement.scrollLeft;
+				_tempEvent.pageY = e.clientY + _doc.body.scrollTop + _docElement.scrollTop;
+				if (preventDefault) {
+					e.returnValue = false;
+				}
+				return _tempEvent;
+			},
+
+			//grabs the first element it finds (and we include the window as an element), so if it's selector text, it'll feed that value to TweenLite.selector, if it's a jQuery object or some other selector engine's result, it'll grab the first one, and same for an array. If the value doesn't contain a DOM element, it'll just return null.
+			_unwrapElement = function(value) {
+				if (!value) {
+					return value;
+				}
+				if (typeof(value) === "string") {
+					value = TweenLite.selector(value);
+				}
+				if (value.length && value !== window && value[0] && value[0].style && !value.nodeType) {
+					value = value[0];
+				}
+				return (value === window || (value.nodeType && value.style)) ? value : null;
+			},
+
+			_checkPrefix = function(e, p) {
+				var s = e.style,
+					capped, i, a;
+				if (s[p] === undefined) {
+					a = ["O","Moz","ms","Ms","Webkit"];
+					i = 5;
+					capped = p.charAt(0).toUpperCase() + p.substr(1);
+					while (--i > -1 && s[a[i]+capped] === undefined) { }
+					if (i < 0) {
+						return "";
+					}
+					_prefix = (i === 3) ? "ms" : a[i];
+					p = _prefix + capped;
+				}
+				return p;
+			},
+
+			_setStyle = function(e, p, value) {
+				var s = e.style;
+				if (!s) {
+					return;
+				}
+				if (s[p] === undefined) {
+					p = _checkPrefix(e, p);
+				}
+				if (value == null) {
+					if (s.removeProperty) {
+						s.removeProperty(p.replace(/([A-Z])/g, "-$1").toLowerCase());
+					} else { //note: old versions of IE use "removeAttribute()" instead of "removeProperty()"
+						s.removeAttribute(p);
+					}
+				} else if (s[p] !== undefined) {
+					s[p] = value;
+				}
+			},
+
+			_getCSFunc = (typeof(window) !== "undefined" ? window : _doc.defaultView || {getComputedStyle:function() {}}).getComputedStyle,
+			_getComputedStyle = function(e, s) {
+				return _getCSFunc((e instanceof Element) ? e : e.host || (e.parentNode || {}).host || e, s); //the "host" stuff helps to accommodate ShadowDom objects.
+			},
+			_horizExp = /(?:Left|Right|Width)/i,
+			_suffixExp = /(?:\d|\-|\+|=|#|\.)*/g,
+			_convertToPixels = function(t, p, v, sfx, recurse) {
+				if (sfx === "px" || !sfx) { return v; }
+				if (sfx === "auto" || !v) { return 0; }
+				var horiz = _horizExp.test(p),
+					node = t,
+					style = _tempDiv.style,
+					neg = (v < 0),
+					pix;
+				if (neg) {
+					v = -v;
+				}
+				if (sfx === "%" && p.indexOf("border") !== -1) {
+					pix = (v / 100) * (horiz ? t.clientWidth : t.clientHeight);
+				} else {
+					style.cssText = "border:0 solid red;position:" + _getStyle(t, "position", true) + ";line-height:0;";
+					if (sfx === "%" || !node.appendChild) {
+						node = t.parentNode || _doc.body;
+						style[(horiz ? "width" : "height")] = v + sfx;
+					} else {
+						style[(horiz ? "borderLeftWidth" : "borderTopWidth")] = v + sfx;
+					}
+					node.appendChild(_tempDiv);
+					pix = parseFloat(_tempDiv[(horiz ? "offsetWidth" : "offsetHeight")]);
+					node.removeChild(_tempDiv);
+					if (pix === 0 && !recurse) {
+						pix = _convertToPixels(t, p, v, sfx, true);
+					}
+				}
+				return neg ? -pix : pix;
+			},
+			_calculateOffset = function(t, p) { //for figuring out "top" or "left" in px when it's "auto". We need to factor in margin with the offsetLeft/offsetTop
+				if (_getStyle(t, "position", true) !== "absolute") { return 0; }
+				var dim = ((p === "left") ? "Left" : "Top"),
+					v = _getStyle(t, "margin" + dim, true);
+				return t["offset" + dim] - (_convertToPixels(t, p, parseFloat(v), (v + "").replace(_suffixExp, "")) || 0);
+			},
+
+			_getStyle = function(element, prop, keepUnits) {
+				var rv = (element._gsTransform || {})[prop],
+					cs;
+				if (rv || rv === 0) {
+					return rv;
+				} else if (element.style && element.style[prop]) { //shadow dom elements don't have "style".
+					rv = element.style[prop];
+				} else if ((cs = _getComputedStyle(element))) {
+					rv = cs.getPropertyValue(prop.replace(/([A-Z])/g, "-$1").toLowerCase());
+					rv = (rv || cs.length) ? rv : cs[prop]; //Opera behaves VERY strangely - length is usually 0 and cs[prop] is the only way to get accurate results EXCEPT when checking for -o-transform which only works with cs.getPropertyValue()!
+				} else if (element.currentStyle) {
+					rv = element.currentStyle[prop];
+				}
+				if (rv === "auto" && (prop === "top" || prop === "left")) {
+					rv = _calculateOffset(element, prop);
+				}
+				return keepUnits ? rv : parseFloat(rv) || 0;
+			},
+
+			_dispatchEvent = function(instance, type, callbackName) {
+				var vars = instance.vars,
+					callback = vars[callbackName],
+					listeners = instance._listeners[type];
+				if (typeof(callback) === "function") {
+					callback.apply(vars[callbackName + "Scope"] || vars.callbackScope || instance, vars[callbackName + "Params"] || [instance.pointerEvent]);
+				}
+				if (listeners) {
+					instance.dispatchEvent(type);
+				}
+			},
+			_getBounds = function(obj, context) { //accepts any of the following: a DOM element, jQuery object, selector text, or an object defining bounds as {top, left, width, height} or {minX, maxX, minY, maxY}. Returns an object with left, top, width, and height properties.
+				var e = _unwrapElement(obj),
+					top, left, offset;
+				if (!e) {
+					if (obj.left !== undefined) {
+						offset = _getOffsetTransformOrigin(context); //the bounds should be relative to the origin
+						return {left: obj.left - offset.x, top: obj.top - offset.y, width: obj.width, height: obj.height};
+					}
+					left = obj.min || obj.minX || obj.minRotation || 0;
+					top = obj.min || obj.minY || 0;
+					return {left:left, top:top, width:(obj.max || obj.maxX || obj.maxRotation || 0) - left, height:(obj.max || obj.maxY || 0) - top};
+				}
+				return _getElementBounds(e, context);
+			},
+
+			_svgBorderFactor,
+			_svgBorderScales,
+			_svgScrollOffset,
+			_hasBorderBug,
+			_hasReparentBug,//some browsers, like Chrome 49, alter the offsetTop/offsetLeft/offsetParent of elements when a non-identity transform is applied.
+			_setEnvironmentVariables = function() { //some browsers factor the border into the SVG coordinate space, some don't (like Firefox). Some apply transforms to them, some don't. We feature-detect here so we know how to handle the border(s). We can't do this immediately - we must wait for the document.body to exist.
+				if (!_doc.createElementNS) {
+					_svgBorderFactor = 0;
+					_svgBorderScales = false;
+					return;
+				}
+				var div = _createElement("div"),
+					svg = _doc.createElementNS("http://www.w3.org/2000/svg", "svg"),
+					wrapper = _createElement("div"),
+					style = div.style,
+					parent = _doc.body || _docElement,
+					isFlex = (_getStyle(parent, "display", true) === "flex"), //Firefox bug causes getScreenCTM() to return null when parent is display:flex and the element isn't rendered inside the window (like if it's below the scroll position)
+					matrix, e1, point, oldValue;
+				if (_doc.body && _transformProp) {
+					style.position = "absolute";
+					parent.appendChild(wrapper);
+					wrapper.appendChild(div);
+					oldValue = div.offsetParent;
+					wrapper.style[_transformProp] = "rotate(1deg)";
+					_hasReparentBug = (div.offsetParent === oldValue);
+					wrapper.style.position = "absolute";
+					style.height = "10px";
+					oldValue = div.offsetTop;
+					wrapper.style.border = "5px solid red";
+					_hasBorderBug = (oldValue !== div.offsetTop); //some browsers, like Firefox 38, cause the offsetTop/Left to be affected by a parent's border.
+					parent.removeChild(wrapper);
+				}
+				style = svg.style;
+				svg.setAttributeNS(null, "width", "400px");
+				svg.setAttributeNS(null, "height", "400px");
+				svg.setAttributeNS(null, "viewBox", "0 0 400 400");
+				style.display = "block";
+				style.boxSizing = "border-box";
+				style.border = "0px solid red";
+				style.transform = "none";
+				// in some browsers (like certain flavors of Android), the getScreenCTM() matrix is contaminated by the scroll position. We can run some logic here to detect that condition, but we ended up not needing this because we found another workaround using getBoundingClientRect().
+				div.style.cssText = "width:100px;height:100px;overflow:scroll;-ms-overflow-style:none;";
+				parent.appendChild(div);
+				div.appendChild(svg);
+				point = svg.createSVGPoint().matrixTransform(svg.getScreenCTM());
+				e1 = point.y;
+				div.scrollTop = 100;
+				point.x = point.y = 0;
+				point = point.matrixTransform(svg.getScreenCTM());
+				_svgScrollOffset = (e1 - point.y < 100.1) ? 0 : e1 - point.y - 150;
+				div.removeChild(svg);
+				parent.removeChild(div);
+				// -- end _svgScrollOffset calculation.
+				parent.appendChild(svg);
+				if (isFlex) {
+					parent.style.display = "block"; //Firefox bug causes getScreenCTM() to return null when parent is display:flex and the element isn't rendered inside the window (like if it's below the scroll position)
+				}
+				matrix = svg.getScreenCTM();
+				e1 = matrix.e;
+				style.border = "50px solid red";
+				matrix = svg.getScreenCTM();
+				if (e1 === 0 && matrix.e === 0 && matrix.f === 0 && matrix.a === 1) { //Opera has a bunch of bugs - it doesn't adjust the x/y of the matrix, nor does it scale when box-sizing is border-box but it does so elsewhere; to get the correct behavior we set _svgBorderScales to true.
+					_svgBorderFactor = 1;
+					_svgBorderScales = true;
+				} else {
+					_svgBorderFactor = (e1 !== matrix.e) ? 1 : 0;
+					_svgBorderScales = (matrix.a !== 1);
+				}
+				if (isFlex) {
+					parent.style.display = "flex";
+				}
+				parent.removeChild(svg);
+			},
+
+			_supports3D = (_checkPrefix(_tempDiv, "perspective") !== ""),
+
+			// start matrix and point conversion methods...
+			_transformOriginProp = _checkPrefix(_tempDiv, "transformOrigin").replace(/^ms/g, "Ms").replace(/([A-Z])/g, "-$1").toLowerCase(),
+			_transformProp = _checkPrefix(_tempDiv, "transform"),
+			_transformPropCSS = _transformProp.replace(/^ms/g, "Ms").replace(/([A-Z])/g, "-$1").toLowerCase(),
+			_point1 = {}, //we reuse _point1 and _point2 objects inside matrix and point conversion methods to conserve memory and minimize garbage collection tasks.
+			_point2 = {},
+			_SVGElement = _gsScope.SVGElement,
+			_isSVG = function(e) {
+				return !!(_SVGElement && typeof(e.getBBox) === "function" && e.getCTM && (!e.parentNode || (e.parentNode.getBBox && e.parentNode.getCTM)));
+			},
+			_isIE10orBelow = (_gsScope.navigator && (((/MSIE ([0-9]{1,}[\.0-9]{0,})/).exec(_gsScope.navigator.userAgent) || (/Trident\/.*rv:([0-9]{1,}[\.0-9]{0,})/).exec(_gsScope.navigator.userAgent)) && parseFloat( RegExp.$1 ) < 11)), //Ideally we'd avoid user agent sniffing, but there doesn't seem to be a way to feature-detect and sense a border-related bug that only affects IE10 and IE9.
+			_tempTransforms = [],
+			_tempElements = [],
+			_getSVGOffsets = function(e) { //SVG elements don't always report offsetTop/offsetLeft/offsetParent at all (I'm looking at you, Firefox 29 and Android), so we have to do some work to manufacture those values. You can pass any SVG element and it'll spit back an object with offsetTop, offsetLeft, offsetParent, scaleX, and scaleY properties. We need the scaleX and scaleY to handle the way SVG can resize itself based on the container.
+				if (!e.getBoundingClientRect || !e.parentNode || !_transformProp) {
+					return {offsetTop:0, offsetLeft:0, scaleX:1, scaleY:1, offsetParent:_docElement};
+				}
+				if (Draggable.cacheSVGData !== false && e._dCache && e._dCache.lastUpdate === TweenLite.ticker.frame) { //performance optimization. Assume that if the offsets are requested again on the same tick, we can just feed back the values we already calculated (no need to keep recalculating until another tick elapses).
+					return e._dCache;
+				}
+				var curElement = e,
+					cache = _cache(e),
+					eRect, parentRect, offsetParent, cs, m, i, point1, point2, borderWidth, borderHeight, width, height;
+				cache.lastUpdate = TweenLite.ticker.frame;
+				if (e.getBBox && !cache.isSVGRoot) { //if it's a nested/child SVG element, we must find the parent SVG canvas and measure the offset from there.
+					curElement = e.parentNode;
+					eRect = e.getBBox();
+					while (curElement && (curElement.nodeName + "").toLowerCase() !== "svg") {
+						curElement = curElement.parentNode;
+					}
+					cs = _getSVGOffsets(curElement);
+					cache.offsetTop = eRect.y * cs.scaleY;
+					cache.offsetLeft = eRect.x * cs.scaleX;
+					cache.scaleX = cs.scaleX;
+					cache.scaleY = cs.scaleY;
+					cache.offsetParent = curElement || _docElement;
+					return cache;
+				}
+				//only root SVG elements continue here...
+				offsetParent = cache.offsetParent;
+				if (offsetParent === _doc.body) {
+					offsetParent = _docElement; //avoids problems with margins/padding on the body
+				}
+				//walk up the ancestors and record any non-identity transforms (and reset them to "none") until we reach the offsetParent. We must do this so that the getBoundingClientRect() is accurate for measuring the offsetTop/offsetLeft. We'll revert the values later...
+				_tempElements.length = _tempTransforms.length = 0;
+				while (curElement) {
+					m = _getStyle(curElement, _transformProp, true);
+					if (m !== "matrix(1, 0, 0, 1, 0, 0)" && m !== "none" && m !== "translate3d(0px, 0px, 0px)") {
+						_tempElements.push(curElement);
+						_tempTransforms.push(curElement.style[_transformProp]);
+						curElement.style[_transformProp] = "none";
+					}
+					if (curElement === offsetParent) {
+						break;
+					}
+					curElement = curElement.parentNode;
+				}
+				parentRect = offsetParent.getBoundingClientRect();
+				m = e.getScreenCTM();
+
+				point2 = e.createSVGPoint();
+				point1 = point2.matrixTransform(m);
+				cache.scaleX = Math.sqrt(m.a * m.a + m.b * m.b);
+				cache.scaleY = Math.sqrt(m.d * m.d + m.c * m.c);
+				if (_svgBorderFactor === undefined) {
+					_setEnvironmentVariables();
+				}
+				if (cache.borderBox && !_svgBorderScales && e.getAttribute("width")) { //some browsers (like Safari) don't properly scale the matrix to accommodate the border when box-sizing is border-box, so we must calculate it here...
+					cs = _getComputedStyle(e) || {};
+					borderWidth = (parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth)) || 0;
+					borderHeight = (parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth)) || 0;
+					width = parseFloat(cs.width) || 0;
+					height = parseFloat(cs.height) || 0;
+					cache.scaleX *= (width - borderWidth) / width;
+					cache.scaleY *= (height - borderHeight) / height;
+				}
+				if (_svgScrollOffset) { //some browsers (like Chrome for Android) have bugs in the way getScreenCTM() is reported (it doesn't factor in scroll position), so we must revert to a more expensive technique for calculating offsetTop/Left.
+					eRect = e.getBoundingClientRect();
+					cache.offsetLeft = eRect.left - parentRect.left;
+					cache.offsetTop = eRect.top - parentRect.top;
+				} else {
+					cache.offsetLeft = point1.x - parentRect.left;
+					cache.offsetTop = point1.y - parentRect.top;
+				}
+				cache.offsetParent = offsetParent;
+				i = _tempElements.length;
+				while (--i > -1) {
+					_tempElements[i].style[_transformProp] = _tempTransforms[i];
+				}
+				return cache;
+			},
+			_getOffsetTransformOrigin = function(e, decoratee) { //returns the x/y position of the transformOrigin of the element, in its own local coordinate system (pixels), offset from the top left corner.
+				decoratee = decoratee || {};
+				if (!e || e === _docElement || !e.parentNode || e === window) {
+					return {x:0, y:0};
+				}
+				var cs = _getComputedStyle(e),
+					v = (_transformOriginProp && cs) ? cs.getPropertyValue(_transformOriginProp) : "50% 50%",
+					a = v.split(" "),
+					x = (v.indexOf("left") !== -1) ? "0%" : (v.indexOf("right") !== -1) ? "100%" : a[0],
+					y = (v.indexOf("top") !== -1) ? "0%" : (v.indexOf("bottom") !== -1) ? "100%" : a[1];
+				if (y === "center" || y == null) {
+					y = "50%";
+				}
+				if (x === "center" || isNaN(parseFloat(x))) { //remember, the user could flip-flop the values and say "bottom center" or "center bottom", etc. "center" is ambiguous because it could be used to describe horizontal or vertical, hence the isNaN(). If there's an "=" sign in the value, it's relative.
+					x = "50%";
+				}
+				if (e.getBBox && _isSVG(e)) { //SVG elements must be handled in a special way because their origins are calculated from the top left.
+					if (!e._gsTransform) {
+						TweenLite.set(e, {x:"+=0", overwrite:false}); //forces creation of the _gsTransform where we store all the transform components including xOrigin and yOrigin for SVG elements, as of GSAP 1.15.0 which also takes care of calculating the origin from the upper left corner of the SVG canvas.
+						if (e._gsTransform.xOrigin === undefined) {
+							console.log("Draggable requires at least GSAP 1.17.0");
+						}
+					}
+					v = e.getBBox();
+					decoratee.x = (e._gsTransform.xOrigin - v.x);
+					decoratee.y = (e._gsTransform.yOrigin - v.y);
+				} else {
+					if (e.getBBox && (x + y).indexOf("%") !== -1) { //Firefox doesn't report offsetWidth/height on <svg> elements.
+						e = e.getBBox();
+						e = {offsetWidth: e.width, offsetHeight: e.height};
+					}
+					decoratee.x = ((x.indexOf("%") !== -1) ? e.offsetWidth * parseFloat(x) / 100 : parseFloat(x));
+					decoratee.y = ((y.indexOf("%") !== -1) ? e.offsetHeight * parseFloat(y) / 100 : parseFloat(y));
+				}
+				return decoratee;
+			},
+			_cache = function(e) { //computes some important values and stores them in a _dCache object attached to the element itself so that we can optimize performance
+				if (Draggable.cacheSVGData !== false && e._dCache && e._dCache.lastUpdate === TweenLite.ticker.frame) { //performance optimization. Assume that if the offsets are requested again on the same tick, we can just feed back the values we already calculated (no need to keep recalculating until another tick elapses).
+					return e._dCache;
+				}
+				var cache = e._dCache = e._dCache || {},
+					cs = _getComputedStyle(e),
+					isSVG = (e.getBBox && _isSVG(e)),
+					isSVGRoot = ((e.nodeName + "").toLowerCase() === "svg"),
+					curSVG;
+				cache.isSVG = isSVG;
+				cache.isSVGRoot = isSVGRoot;
+				cache.borderBox = (cs.boxSizing === "border-box");
+				cache.computedStyle = cs;
+				if (isSVGRoot) { //some browsers don't report parentNode on SVG elements.
+					curSVG = e.parentNode || _docElement;
+					curSVG.insertBefore(_tempDiv, e);
+					cache.offsetParent = _tempDiv.offsetParent || _docElement; //in some cases, Firefox still reports offsetParent as null.
+					curSVG.removeChild(_tempDiv);
+				} else if (isSVG) {
+					curSVG = e.parentNode;
+					while (curSVG && (curSVG.nodeName + "").toLowerCase() !== "svg") { //offsetParent is always the SVG canvas for SVG elements.
+						curSVG = curSVG.parentNode;
+					}
+					cache.offsetParent = curSVG;
+				} else {
+					cache.offsetParent = e.offsetParent;
+				}
+				return cache;
+			},
+			_getOffset2DMatrix = function(e, offsetOrigin, parentOffsetOrigin, zeroOrigin, isBase) {  //"isBase" helps us discern context - it should only be true when the element is the base one (the one at which we're starting to walk up the chain). It only matters in cases when it's an <svg> element itself because that's a case when we don't apply scaling.
+				if (e === window || !e || !e.style || !e.parentNode) {
+					return [1,0,0,1,0,0];
+				}
+				var cache = e._dCache || _cache(e),
+					parent = e.parentNode,
+					parentCache = parent._dCache || _cache(parent),
+					cs = cache.computedStyle,
+					parentOffsetParent = cache.isSVG ? parentCache.offsetParent : parent.offsetParent,
+					m, isRoot, offsets, rect, t, sx, sy, offsetX, offsetY, parentRect, borderTop, borderLeft, borderTranslateX, borderTranslateY;
+				m = (cache.isSVG && (e.style[_transformProp] + "").indexOf("matrix") !== -1) ? e.style[_transformProp] : cs ? cs.getPropertyValue(_transformPropCSS) : e.currentStyle ? e.currentStyle[_transformProp] : "1,0,0,1,0,0"; //some browsers (like Chrome 40) don't correctly report transforms that are applied inline on an SVG element (they don't get included in the computed style), so we double-check here and accept matrix values
+				if (e.getBBox && (e.getAttribute("transform") + "").indexOf("matrix") !== -1) { //SVG can store transform data in its "transform" attribute instead of the CSS, so look for that here (only accept matrix()).
+					m = e.getAttribute("transform");
+				}
+				m = (m + "").match(/(?:\-|\.|\b)(\d|\.|e\-)+/g) || [1,0,0,1,0,0];
+				if (m.length > 6) {
+					m = [m[0], m[1], m[4], m[5], m[12], m[13]];
+				}
+				if (zeroOrigin) {
+					m[4] = m[5] = 0;
+				} else if (cache.isSVG && (t = e._gsTransform) && (t.xOrigin || t.yOrigin)) {
+					//SVGs handle origin very differently. Factor in GSAP's handling of origin values here:
+					m[0] = parseFloat(m[0]);
+					m[1] = parseFloat(m[1]);
+					m[2] = parseFloat(m[2]);
+					m[3] = parseFloat(m[3]);
+					m[4] = parseFloat(m[4]) - (t.xOrigin - (t.xOrigin * m[0] + t.yOrigin * m[2]));
+					m[5] = parseFloat(m[5]) - (t.yOrigin - (t.xOrigin * m[1] + t.yOrigin * m[3]));
+				}
+				if (offsetOrigin) {
+					if (_svgBorderFactor === undefined) {
+						_setEnvironmentVariables();
+					}
+					offsets = (cache.isSVG || cache.isSVGRoot) ? _getSVGOffsets(e) : e;
+					if (cache.isSVG) { //don't just rely on "instanceof _SVGElement" because if the SVG is embedded via an object tag, it won't work (SVGElement is mapped to a different object))
+						rect = e.getBBox();
+						parentRect = (parentCache.isSVGRoot) ? {x:0, y:0} : parent.getBBox();
+						offsets = {offsetLeft:rect.x - parentRect.x, offsetTop:rect.y - parentRect.y, offsetParent:cache.offsetParent};
+					} else if (cache.isSVGRoot) {
+						borderTop = parseInt(cs.borderTopWidth, 10) || 0;
+						borderLeft = parseInt(cs.borderLeftWidth, 10) || 0;
+						borderTranslateX = ((m[0] - _svgBorderFactor) * borderLeft + m[2] * borderTop);
+						borderTranslateY = (m[1] * borderLeft + (m[3] - _svgBorderFactor) * borderTop);
+
+						sx = offsetOrigin.x;
+						sy = offsetOrigin.y;
+						offsetX = (sx - (sx * m[0] + sy * m[2])); //accommodate the SVG root's transforms when the origin isn't in the top left.
+						offsetY = (sy - (sx * m[1] + sy * m[3]));
+
+						m[4] = parseFloat(m[4]) + offsetX;
+						m[5] = parseFloat(m[5]) + offsetY;
+						offsetOrigin.x -= offsetX;
+						offsetOrigin.y -= offsetY;
+						sx = offsets.scaleX;
+						sy = offsets.scaleY;
+						if (!isBase) { //when getting the matrix for a root <svg> element itself (NOT in the context of an SVG element that's nested inside of it like a <path>), we do NOT apply the scaling!
+							offsetOrigin.x *= sx;
+							offsetOrigin.y *= sy;
+						}
+						m[0] *= sx;
+						m[1] *= sy;
+						m[2] *= sx;
+						m[3] *= sy;
+						if (!_isIE10orBelow) {
+							offsetOrigin.x += borderTranslateX;
+							offsetOrigin.y += borderTranslateY;
+						}
+						if (parentOffsetParent === _doc.body && offsets.offsetParent === _docElement) { //to avoid issues with margin/padding on the <body>, we always set the offsetParent to _docElement in the _getSVGOffsets() function but there's a condition we check later in this function for (parentOffsetParent === offsets.offsetParent) which would fail if we don't run this logic. In other words, parentOffsetParent may be <body> and the <svg>'s offsetParent is also <body> but artificially set to _docElement to avoid margin/padding issues.
+							parentOffsetParent = _docElement;
+						}
+					} else if (!_hasBorderBug && e.offsetParent) {
+						offsetOrigin.x += parseInt(_getStyle(e.offsetParent, "borderLeftWidth"), 10) || 0;
+						offsetOrigin.y += parseInt(_getStyle(e.offsetParent, "borderTopWidth"), 10) || 0;
+					}
+					isRoot = (parent === _docElement || parent === _doc.body);
+					m[4] = Number(m[4]) + offsetOrigin.x + (offsets.offsetLeft || 0) - parentOffsetOrigin.x - (isRoot ? 0 : parent.scrollLeft || 0);
+					m[5] = Number(m[5]) + offsetOrigin.y + (offsets.offsetTop || 0) - parentOffsetOrigin.y - (isRoot ? 0 : parent.scrollTop || 0);
+					if (parent && _getStyle(e, "position", cs) === "fixed") { //fixed position elements should factor in the scroll position of the document.
+						m[4] += _getDocScrollLeft();
+						m[5] += _getDocScrollTop();
+					}
+					if (parent && parent !== _docElement && parentOffsetParent === offsets.offsetParent && !parentCache.isSVG && (!_hasReparentBug || _getOffset2DMatrix(parent).join("") === "100100")) {
+						offsets = (parentCache.isSVGRoot) ? _getSVGOffsets(parent) : parent;
+						m[4] -= offsets.offsetLeft || 0;
+						m[5] -= offsets.offsetTop || 0;
+						if (!_hasBorderBug && parentCache.offsetParent && !cache.isSVG && !cache.isSVGRoot) {
+							m[4] -= parseInt(_getStyle(parentCache.offsetParent, "borderLeftWidth"), 10) || 0;
+							m[5] -= parseInt(_getStyle(parentCache.offsetParent, "borderTopWidth"), 10) || 0;
+						}
+					}
+				}
+				return m;
+			},
+			_getConcatenatedMatrix = function(e, invert) {
+				if (!e || e === window || !e.parentNode) {
+					return [1,0,0,1,0,0];
+				}
+				//note: we keep reusing _point1 and _point2 in order to minimize memory usage and garbage collection chores.
+				var originOffset = _getOffsetTransformOrigin(e, _point1),
+					parentOriginOffset = _getOffsetTransformOrigin(e.parentNode, _point2),
+					m = _getOffset2DMatrix(e, originOffset, parentOriginOffset, false, !invert),
+					a, b, c, d, tx, ty, m2, determinant;
+				while ((e = e.parentNode) && e.parentNode && e !== _docElement) {
+					originOffset = parentOriginOffset;
+					parentOriginOffset = _getOffsetTransformOrigin(e.parentNode, (originOffset === _point1) ? _point2 : _point1);
+					m2 = _getOffset2DMatrix(e, originOffset, parentOriginOffset);
+					a = m[0];
+					b = m[1];
+					c = m[2];
+					d = m[3];
+					tx = m[4];
+					ty = m[5];
+					m[0] = a * m2[0] + b * m2[2];
+					m[1] = a * m2[1] + b * m2[3];
+					m[2] = c * m2[0] + d * m2[2];
+					m[3] = c * m2[1] + d * m2[3];
+					m[4] = tx * m2[0] + ty * m2[2] + m2[4];
+					m[5] = tx * m2[1] + ty * m2[3] + m2[5];
+				}
+				if (invert) {
+					a = m[0];
+					b = m[1];
+					c = m[2];
+					d = m[3];
+					tx = m[4];
+					ty = m[5];
+					determinant = (a * d - b * c);
+					m[0] = d / determinant;
+					m[1] = -b / determinant;
+					m[2] = -c / determinant;
+					m[3] = a / determinant;
+					m[4] = (c * ty - d * tx) / determinant;
+					m[5] = -(a * ty - b * tx) / determinant;
+				}
+				return m;
+			},
+			_localToGlobal = function(e, p, fromTopLeft, decoratee, zeroOrigin) {
+				e = _unwrapElement(e);
+				var m = _getConcatenatedMatrix(e, false, zeroOrigin),
+					x = p.x,
+					y = p.y;
+				if (fromTopLeft) {
+					_getOffsetTransformOrigin(e, p);
+					x -= p.x;
+					y -= p.y;
+				}
+				decoratee = (decoratee === true) ? p : decoratee || {};
+				decoratee.x = x * m[0] + y * m[2] + m[4];
+				decoratee.y = x * m[1] + y * m[3] + m[5];
+				return decoratee;
+			},
+			_localizePoint = function(p, localToGlobal, globalToLocal) {
+				var x = p.x * localToGlobal[0] + p.y * localToGlobal[2] + localToGlobal[4],
+					y = p.x * localToGlobal[1] + p.y * localToGlobal[3] + localToGlobal[5];
+				p.x = x * globalToLocal[0] + y * globalToLocal[2] + globalToLocal[4];
+				p.y = x * globalToLocal[1] + y * globalToLocal[3] + globalToLocal[5];
+				return p;
+			},
+
+			_getElementBounds = function(e, context, fromTopLeft) {
+				if (!(e = _unwrapElement(e))) {
+					return null;
+				}
+				context = _unwrapElement(context);
+				var isSVG = (e.getBBox && _isSVG(e)),
+					origin, left, right, top, bottom, mLocalToGlobal, mGlobalToLocal, p1, p2, p3, p4, bbox, width, height, cache, borderLeft, borderTop, viewBox, viewBoxX, viewBoxY, computedDimensions, cs;
+				if (e === window) {
+					top = _getDocScrollTop();
+					left = _getDocScrollLeft();
+					right = left + (_docElement.clientWidth || e.innerWidth || _doc.body.clientWidth || 0);
+					bottom = top + (((e.innerHeight || 0) - 20 < _docElement.clientHeight) ? _docElement.clientHeight : e.innerHeight || _doc.body.clientHeight || 0); //some browsers (like Firefox) ignore absolutely positioned elements, and collapse the height of the documentElement, so it could be 8px, for example, if you have just an absolutely positioned div. In that case, we use the innerHeight to resolve this.
+				} else if (context === undefined || context === window) {
+					return e.getBoundingClientRect();
+				} else {
+					origin = _getOffsetTransformOrigin(e);
+					left = -origin.x;
+					top = -origin.y;
+					if (isSVG) {
+						bbox = e.getBBox();
+						width = bbox.width;
+						height = bbox.height;
+					} else if ((e.nodeName + "").toLowerCase() !== "svg" && e.offsetWidth) { //Chrome dropped support for "offsetWidth" on SVG elements
+						width = e.offsetWidth;
+						height = e.offsetHeight;
+					} else {
+						computedDimensions = _getComputedStyle(e);
+						width = parseFloat(computedDimensions.width);
+						height = parseFloat(computedDimensions.height);
+					}
+					right = left + width;
+					bottom = top + height;
+					if (e.nodeName.toLowerCase() === "svg" && !_isOldIE) { //root SVG elements are a special beast because they have 2 types of scaling - transforms on themselves as well as the stretching of the SVG canvas itself based on the outer size and the viewBox. If, for example, the SVG's viewbox is "0 0 100 100" but the CSS is set to width:200px; height:200px, that'd make it appear at 2x scale even though the element itself has no CSS transforms but the offsetWidth/offsetHeight are based on that css, not the viewBox so we need to adjust them accordingly.
+						cache = _getSVGOffsets(e);
+						cs = cache.computedStyle || {};
+						viewBox = (e.getAttribute("viewBox") || "0 0").split(" ");
+						viewBoxX = parseFloat(viewBox[0]);
+						viewBoxY = parseFloat(viewBox[1]);
+						borderLeft = parseFloat(cs.borderLeftWidth) || 0;
+						borderTop = parseFloat(cs.borderTopWidth) || 0;
+						right -= width - ((width - borderLeft) / cache.scaleX) - viewBoxX;
+						bottom -= height - ((height - borderTop) / cache.scaleY) - viewBoxY;
+						left -= borderLeft / cache.scaleX - viewBoxX;
+						top -= borderTop / cache.scaleY - viewBoxY;
+						if (computedDimensions) { //when we had to use computed styles, factor in the border now.
+							right += (parseFloat(cs.borderRightWidth) + borderLeft) / cache.scaleX;
+							bottom += (borderTop + parseFloat(cs.borderBottomWidth)) / cache.scaleY;
+						}
+					}
+				}
+				if (e === context) {
+					return {left:left, top:top, width: right - left, height: bottom - top};
+				}
+				mLocalToGlobal = _getConcatenatedMatrix(e);
+				mGlobalToLocal = _getConcatenatedMatrix(context, true);
+				p1 = _localizePoint({x:left, y:top}, mLocalToGlobal, mGlobalToLocal);
+				p2 = _localizePoint({x:right, y:top}, mLocalToGlobal, mGlobalToLocal);
+				p3 = _localizePoint({x:right, y:bottom}, mLocalToGlobal, mGlobalToLocal);
+				p4 = _localizePoint({x:left, y:bottom}, mLocalToGlobal, mGlobalToLocal);
+				left = Math.min(p1.x, p2.x, p3.x, p4.x);
+				top = Math.min(p1.y, p2.y, p3.y, p4.y);
+				_temp1.x = _temp1.y = 0;
+				if (fromTopLeft) {
+					_getOffsetTransformOrigin(context, _temp1);
+				}
+				return {left:left + _temp1.x, top:top + _temp1.y, width:Math.max(p1.x, p2.x, p3.x, p4.x) - left, height:Math.max(p1.y, p2.y, p3.y, p4.y) - top};
+			},
+			// end matrix and point conversion methods
+
+
+
+			_isArrayLike = function(e) {
+				return (e && e.length && e[0] && ((e[0].nodeType && e[0].style && !e.nodeType) || (e[0].length && e[0][0]))) ? true : false; //could be an array of jQuery objects too, so accommodate that.
+			},
+
+			_flattenArray = function(a) {
+				var result = [],
+					l = a.length,
+					i, e, j;
+				for (i = 0; i < l; i++) {
+					e = a[i];
+					if (_isArrayLike(e)) {
+						j = e.length;
+						for (j = 0; j < e.length; j++) {
+							result.push(e[j]);
+						}
+					} else if (e && e.length !== 0) {
+						result.push(e);
+					}
+				}
+				return result;
+			},
+
+			_isTouchDevice = (typeof(window) !== "undefined" && ("ontouchstart" in _docElement) && ("orientation" in window)),
+			_touchEventLookup = (function(types) { //we create an object that makes it easy to translate touch event types into their "pointer" counterparts if we're in a browser that uses those instead. Like IE10 uses "MSPointerDown" instead of "touchstart", for example.
+				var standard = types.split(","),
+					converted = ((_tempDiv.onpointerdown !== undefined) ? "pointerdown,pointermove,pointerup,pointercancel" : (_tempDiv.onmspointerdown !== undefined) ? "MSPointerDown,MSPointerMove,MSPointerUp,MSPointerCancel" : types).split(","),
+					obj = {},
+					i = 4;
+				while (--i > -1) {
+					obj[standard[i]] = converted[i];
+					obj[converted[i]] = standard[i];
+				}
+				return obj;
+			}("touchstart,touchmove,touchend,touchcancel")),
+
+			_addListener = function(element, type, func, capture) {
+				if (element.addEventListener) {
+					var touchType = _touchEventLookup[type];
+					capture = capture || {passive:false};
+					element.addEventListener(touchType || type, func, capture);
+					if (touchType && type !== touchType) { //some browsers actually support both, so must we.
+						element.addEventListener(type, func, capture);
+					}
+				} else if (element.attachEvent) {
+					element.attachEvent("on" + type, func);
+				}
+			},
+
+			_removeListener = function(element, type, func) {
+				if (element.removeEventListener) {
+					var touchType = _touchEventLookup[type];
+					element.removeEventListener(touchType || type, func);
+					if (touchType && type !== touchType) {
+						element.removeEventListener(type, func);
+					}
+				} else if (element.detachEvent) {
+					element.detachEvent("on" + type, func);
+				}
+			},
+
+			_hasTouchID = function(list, ID) {
+				var i = list.length;
+				while (--i > -1) {
+					if (list[i].identifier === ID) {
+						return true;
+					}
+				}
+				return false;
+			},
+
+			_onMultiTouchDocumentEnd = function(e) {
+				_isMultiTouching = (e.touches && _dragCount < e.touches.length);
+				_removeListener(e.target, "touchend", _onMultiTouchDocumentEnd);
+			},
+
+			_onMultiTouchDocument = function(e) {
+				_isMultiTouching = (e.touches && _dragCount < e.touches.length);
+				_addListener(e.target, "touchend", _onMultiTouchDocumentEnd);
+			},
+
+			_parseThrowProps = function(draggable, snap, max, min, factor, forceZeroVelocity) {
+				var vars = {},
+					a, i, l;
+				if (snap) {
+					if (factor !== 1 && snap instanceof Array) { //some data must be altered to make sense, like if the user passes in an array of rotational values in degrees, we must convert it to radians. Or for scrollLeft and scrollTop, we invert the values.
+						vars.end = a = [];
+						l = snap.length;
+						if (typeof(snap[0]) === "object") { //if the array is populated with objects, like points ({x:100, y:200}), make copies before multiplying by the factor, otherwise we'll mess up the originals and the user may reuse it elsewhere.
+							for (i = 0; i < l; i++) {
+								a[i] = _copy(snap[i], factor);
 							}
-							newCallback.apply(this, arguments);
+						} else {
+							for (i = 0; i < l; i++) {
+								a[i] = snap[i] * factor;
+							}
+						}
+						max += 1.1; //allow 1.1 pixels of wiggle room when snapping in order to work around some browser inconsistencies in the way bounds are reported which can make them roughly a pixel off. For example, if "snap:[-$('#menu').width(), 0]" was defined and #menu had a wrapper that was used as the bounds, some browsers would be one pixel off, making the minimum -752 for example when snap was [-753,0], thus instead of snapping to -753, it would snap to 0 since -753 was below the minimum.
+						min -= 1.1;
+					} else if (typeof(snap) === "function") {
+						vars.end = function(value) {
+							var result = snap.call(draggable, value),
+								copy, p;
+							if (factor !== 1) {
+								if (typeof(result) === "object") {
+									copy = {};
+									for (p in result) {
+										copy[p] = result[p] * factor;
+									}
+									result = copy;
+								} else {
+									result *= factor;
+								}
+							}
+							return result; //we need to ensure that we can scope the function call to the Draggable instance itself so that users can access important values like maxX, minX, maxY, minY, x, and y from within that function.
 						};
+					} else {
+						vars.end = snap;
 					}
 				}
-			}
-			log(3, "added tween");
-
-			updateTweenProgress();
-			return Scene;
-		};
-
-		/**
-		 * Remove the tween from the scene.  
-		 * This will terminate the control of the Scene over the tween.
-		 *
-		 * Using the reset option you can decide if the tween should remain in the current state or be rewound to set the target elements back to the state they were in before the tween was added to the scene.
-		 * @memberof! animation.GSAP#
-		 *
-		 * @example
-		 * // remove the tween from the scene without resetting it
-		 * scene.removeTween();
-		 *
-		 * // remove the tween from the scene and reset it to initial position
-		 * scene.removeTween(true);
-		 *
-		 * @param {boolean} [reset=false] - If `true` the tween will be reset to its initial values.
-		 * @returns {Scene} Parent object for chaining.
-		 */
-		Scene.removeTween = function (reset) {
-			if (_tween) {
-				if (reset) {
-					_tween.progress(0).pause();
+				if (max || max === 0) {
+					vars.max = max;
 				}
-				_tween.kill();
-				_tween = undefined;
-				log(3, "removed tween (reset: " + (reset ? "true" : "false") + ")");
-			}
-			return Scene;
-		};
+				if (min || min === 0) {
+					vars.min = min;
+				}
+				if (forceZeroVelocity) {
+					vars.velocity = 0;
+				}
+				return vars;
+			},
 
-	});
-}));
-/*!
- * ScrollMagic v2.0.6 (2018-10-08)
- * The javascript library for magical scroll interactions.
- * (c) 2018 Jan Paepke (@janpaepke)
- * Project Website: http://scrollmagic.io
- * 
- * @version 2.0.6
- * @license Dual licensed under MIT license and GPL.
- * @author Jan Paepke - e-mail@janpaepke.de
- *
- * @file Debug Extension for ScrollMagic.
- */
-/**
- * This plugin was formerly known as the ScrollMagic debug extension.
- *
- * It enables you to add visual indicators to your page, to be able to see exactly when a scene is triggered.
- *
- * To have access to this extension, please include `plugins/debug.addIndicators.js`.
- * @mixin debug.addIndicators
- */
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define(['ScrollMagic'], factory);
-	} else if (typeof exports === 'object') {
-		// CommonJS
-		factory(require('scrollmagic'));
-	} else {
-		// no browser global export needed, just execute
-		factory(root.ScrollMagic || (root.jQuery && root.jQuery.ScrollMagic));
-	}
-}(this, function (ScrollMagic) {
-	"use strict";
-	var NAMESPACE = "debug.addIndicators";
+			_isClickable = function(e) { //sometimes it's convenient to mark an element as clickable by adding a data-clickable="true" attribute (in which case we won't preventDefault() the mouse/touch event). This method checks if the element is an <a>, <input>, or <button> or has an onclick or has the data-clickable or contentEditable attribute set to true (or any of its parent elements).
+				var data;
+				return (!e || !e.getAttribute || e.nodeName === "BODY") ? false : ((data = e.getAttribute("data-clickable")) === "true" || (data !== "false" && (e.onclick || _clickableTagExp.test(e.nodeName + "") || e.getAttribute("contentEditable") === "true"))) ? true : _isClickable(e.parentNode);
+			},
 
-	var
-	console = window.console || {},
-		err = Function.prototype.bind.call(console.error || console.log ||
-		function () {}, console);
-	if (!ScrollMagic) {
-		err("(" + NAMESPACE + ") -> ERROR: The ScrollMagic main module could not be found. Please make sure it's loaded before this plugin or use an asynchronous loader like requirejs.");
-	}
+			_setSelectable = function(elements, selectable) {
+				var i = elements.length,
+					e;
+				while (--i > -1) {
+					e = elements[i];
+					e.ondragstart = e.onselectstart = selectable ? null : _emptyFunc;
+					_setStyle(e, "userSelect", (selectable ? "text" : "none"));
+				}
+			},
 
-	// plugin settings
-	var
-	FONT_SIZE = "0.85em",
-		ZINDEX = "9999",
-		EDGE_OFFSET = 15; // minimum edge distance, added to indentation
-
-	// overall vars
-	var
-	_util = ScrollMagic._util,
-		_autoindex = 0;
+			_addPaddingBR = (function() { //this function is in charge of analyzing browser behavior related to padding. It sets the _addPaddingBR to true if the browser doesn't normally factor in the bottom or right padding on the element inside the scrolling area, and it sets _addPaddingLeft to true if it's a browser that requires the extra offset (offsetLeft) to be added to the paddingRight (like Opera).
+				var div = _doc.createElement("div"),
+					child = _doc.createElement("div"),
+					childStyle = child.style,
+					parent = _doc.body || _tempDiv,
+					val;
+				childStyle.display = "inline-block";
+				childStyle.position = "relative";
+				div.style.cssText = child.innerHTML = "width:90px; height:40px; padding:10px; overflow:auto; visibility: hidden";
+				div.appendChild(child);
+				parent.appendChild(div);
+				val = (child.offsetHeight + 18 > div.scrollHeight); //div.scrollHeight should be child.offsetHeight + 20 because of the 10px of padding on each side, but some browsers ignore one side. We allow a 2px margin of error.
+				parent.removeChild(div);
+				return val;
+			}()),
 
 
 
-	ScrollMagic.Scene.extend(function () {
-		var
-		Scene = this,
-			_indicator;
 
-		var log = function () {
-			if (Scene._log) { // not available, when main source minified
-				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
-				Scene._log.apply(this, arguments);
-			}
-		};
+			//The ScrollProxy class wraps an element's contents into another div (we call it "content") that we either add padding when necessary or apply a translate3d() transform in order to overscroll (scroll past the boundaries). This allows us to simply set the scrollTop/scrollLeft (or top/left for easier reverse-axis orientation, which is what we do in Draggable) and it'll do all the work for us. For example, if we tried setting scrollTop to -100 on a normal DOM element, it wouldn't work - it'd look the same as setting it to 0, but if we set scrollTop of a ScrollProxy to -100, it'll give the correct appearance by either setting paddingTop of the wrapper to 100 or applying a 100-pixel translateY.
+			ScrollProxy = function(element, vars) {
+				element = _unwrapElement(element);
+				vars = vars || {};
+				var content = _doc.createElement("div"),
+					style = content.style,
+					node = element.firstChild,
+					offsetTop = 0,
+					offsetLeft = 0,
+					prevTop = element.scrollTop,
+					prevLeft = element.scrollLeft,
+					scrollWidth = element.scrollWidth,
+					scrollHeight = element.scrollHeight,
+					extraPadRight = 0,
+					maxLeft = 0,
+					maxTop = 0,
+					elementWidth, elementHeight, contentHeight, nextNode, transformStart, transformEnd;
 
-		/**
-		 * Add visual indicators for a ScrollMagic.Scene.  
-		 * @memberof! debug.addIndicators#
-		 *
-		 * @example
-		 * // add basic indicators
-		 * scene.addIndicators()
-		 *
-		 * // passing options
-		 * scene.addIndicators({name: "pin scene", colorEnd: "#FFFFFF"});
-		 *
-		 * @param {object} [options] - An object containing one or more options for the indicators.
-		 * @param {(string|object)} [options.parent=undefined] - A selector, DOM Object or a jQuery object that the indicators should be added to.  
-		 If undefined, the controller's container will be used.
-		 * @param {number} [options.name=""] - This string will be displayed at the start and end indicators of the scene for identification purposes. If no name is supplied an automatic index will be used.
-		 * @param {number} [options.indent=0] - Additional position offset for the indicators (useful, when having multiple scenes starting at the same position).
-		 * @param {string} [options.colorStart=green] - CSS color definition for the start indicator.
-		 * @param {string} [options.colorEnd=red] - CSS color definition for the end indicator.
-		 * @param {string} [options.colorTrigger=blue] - CSS color definition for the trigger indicator.
-		 */
-		Scene.addIndicators = function (options) {
-			if (!_indicator) {
-				var
-				DEFAULT_OPTIONS = {
-					name: "",
-					indent: 0,
-					parent: undefined,
-					colorStart: "green",
-					colorEnd: "red",
-					colorTrigger: "blue",
+				if (_supports3D && vars.force3D !== false) {
+					transformStart = "translate3d(";
+					transformEnd = "px,0px)";
+				} else if (_transformProp) {
+					transformStart = "translate(";
+					transformEnd = "px)";
+				}
+
+				this.scrollTop = function(value, force) {
+					if (!arguments.length) {
+						return -this.top();
+					}
+					this.top(-value, force);
 				};
 
-				options = _util.extend({}, DEFAULT_OPTIONS, options);
+				this.scrollLeft = function(value, force) {
+					if (!arguments.length) {
+						return -this.left();
+					}
+					this.left(-value, force);
+				};
 
-				_autoindex++;
-				_indicator = new Indicator(Scene, options);
-
-				Scene.on("add.plugin_addIndicators", _indicator.add);
-				Scene.on("remove.plugin_addIndicators", _indicator.remove);
-				Scene.on("destroy.plugin_addIndicators", Scene.removeIndicators);
-
-				// it the scene already has a controller we can start right away.
-				if (Scene.controller()) {
-					_indicator.add();
-				}
-			}
-			return Scene;
-		};
-
-		/**
-		 * Removes visual indicators from a ScrollMagic.Scene.
-		 * @memberof! debug.addIndicators#
-		 *
-		 * @example
-		 * // remove previously added indicators
-		 * scene.removeIndicators()
-		 *
-		 */
-		Scene.removeIndicators = function () {
-			if (_indicator) {
-				_indicator.remove();
-				this.off("*.plugin_addIndicators");
-				_indicator = undefined;
-			}
-			return Scene;
-		};
-
-	});
-
-
-/*
-	 * ----------------------------------------------------------------
-	 * Extension for controller to store and update related indicators
-	 * ----------------------------------------------------------------
-	 */
-	// add option to globally auto-add indicators to scenes
-	/**
-	 * Every ScrollMagic.Controller instance now accepts an additional option.  
-	 * See {@link ScrollMagic.Controller} for a complete list of the standard options.
-	 * @memberof! debug.addIndicators#
-	 * @method new ScrollMagic.Controller(options)
-	 * @example
-	 * // make a controller and add indicators to all scenes attached
-	 * var controller = new ScrollMagic.Controller({addIndicators: true});
-	 * // this scene will automatically have indicators added to it
-	 * new ScrollMagic.Scene()
-	 *                .addTo(controller);
-	 *
-	 * @param {object} [options] - Options for the Controller.
-	 * @param {boolean} [options.addIndicators=false] - If set to `true` every scene that is added to the controller will automatically get indicators added to it.
-	 */
-	ScrollMagic.Controller.addOption("addIndicators", false);
-	// extend Controller
-	ScrollMagic.Controller.extend(function () {
-		var
-		Controller = this,
-			_info = Controller.info(),
-			_container = _info.container,
-			_isDocument = _info.isDocument,
-			_vertical = _info.vertical,
-			_indicators = { // container for all indicators and methods
-				groups: []
-			};
-
-		var log = function () {
-			if (Controller._log) { // not available, when main source minified
-				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
-				Controller._log.apply(this, arguments);
-			}
-		};
-		if (Controller._indicators) {
-			log(2, "WARNING: Scene already has a property '_indicators', which will be overwritten by plugin.");
-		}
-
-		// add indicators container
-		this._indicators = _indicators;
-/*
-			needed updates:
-			+++++++++++++++
-			start/end position on scene shift (handled in Indicator class)
-			trigger parameters on triggerHook value change (handled in Indicator class)
-			bounds position on container scroll or resize (to keep alignment to bottom/right)
-			trigger position on container resize, window resize (if container isn't document) and window scroll (if container isn't document)
-		*/
-
-		// event handler for when associated bounds markers need to be repositioned
-		var handleBoundsPositionChange = function () {
-			_indicators.updateBoundsPositions();
-		};
-
-		// event handler for when associated trigger groups need to be repositioned
-		var handleTriggerPositionChange = function () {
-			_indicators.updateTriggerGroupPositions();
-		};
-
-		_container.addEventListener("resize", handleTriggerPositionChange);
-		if (!_isDocument) {
-			window.addEventListener("resize", handleTriggerPositionChange);
-			window.addEventListener("scroll", handleTriggerPositionChange);
-		}
-		// update all related bounds containers
-		_container.addEventListener("resize", handleBoundsPositionChange);
-		_container.addEventListener("scroll", handleBoundsPositionChange);
-
-
-		// updates the position of the bounds container to aligned to the right for vertical containers and to the bottom for horizontal
-		this._indicators.updateBoundsPositions = function (specificIndicator) {
-			var // constant for all bounds
-			groups = specificIndicator ? [_util.extend({}, specificIndicator.triggerGroup, {
-				members: [specificIndicator]
-			})] : // create a group with only one element
-			_indicators.groups,
-				// use all
-				g = groups.length,
-				css = {},
-				paramPos = _vertical ? "left" : "top",
-				paramDimension = _vertical ? "width" : "height",
-				edge = _vertical ? _util.get.scrollLeft(_container) + _util.get.width(_container) - EDGE_OFFSET : _util.get.scrollTop(_container) + _util.get.height(_container) - EDGE_OFFSET,
-				b, triggerSize, group;
-			while (g--) { // group loop
-				group = groups[g];
-				b = group.members.length;
-				triggerSize = _util.get[paramDimension](group.element.firstChild);
-				while (b--) { // indicators loop
-					css[paramPos] = edge - triggerSize;
-					_util.css(group.members[b].bounds, css);
-				}
-			}
-		};
-
-		// updates the positions of all trigger groups attached to a controller or a specific one, if provided
-		this._indicators.updateTriggerGroupPositions = function (specificGroup) {
-			var // constant vars
-			groups = specificGroup ? [specificGroup] : _indicators.groups,
-				i = groups.length,
-				container = _isDocument ? document.body : _container,
-				containerOffset = _isDocument ? {
-					top: 0,
-					left: 0
-				} : _util.get.offset(container, true),
-				edge = _vertical ? _util.get.width(_container) - EDGE_OFFSET : _util.get.height(_container) - EDGE_OFFSET,
-				paramDimension = _vertical ? "width" : "height",
-				paramTransform = _vertical ? "Y" : "X";
-			var // changing vars
-			group, elem, pos, elemSize, transform;
-			while (i--) {
-				group = groups[i];
-				elem = group.element;
-				pos = group.triggerHook * Controller.info("size");
-				elemSize = _util.get[paramDimension](elem.firstChild.firstChild);
-				transform = pos > elemSize ? "translate" + paramTransform + "(-100%)" : "";
-
-				_util.css(elem, {
-					top: containerOffset.top + (_vertical ? pos : edge - group.members[0].options.indent),
-					left: containerOffset.left + (_vertical ? edge - group.members[0].options.indent : pos)
-				});
-				_util.css(elem.firstChild.firstChild, {
-					"-ms-transform": transform,
-					"-webkit-transform": transform,
-					"transform": transform
-				});
-			}
-		};
-
-		// updates the label for the group to contain the name, if it only has one member
-		this._indicators.updateTriggerGroupLabel = function (group) {
-			var
-			text = "trigger" + (group.members.length > 1 ? "" : " " + group.members[0].options.name),
-				elem = group.element.firstChild.firstChild,
-				doUpdate = elem.textContent !== text;
-			if (doUpdate) {
-				elem.textContent = text;
-				if (_vertical) { // bounds position is dependent on text length, so update
-					_indicators.updateBoundsPositions();
-				}
-			}
-		};
-
-		// add indicators if global option is set
-		this.addScene = function (newScene) {
-
-			if (this._options.addIndicators && newScene instanceof ScrollMagic.Scene && newScene.controller() === Controller) {
-				newScene.addIndicators();
-			}
-			// call original destroy method
-			this.$super.addScene.apply(this, arguments);
-		};
-
-		// remove all previously set listeners on destroy
-		this.destroy = function () {
-			_container.removeEventListener("resize", handleTriggerPositionChange);
-			if (!_isDocument) {
-				window.removeEventListener("resize", handleTriggerPositionChange);
-				window.removeEventListener("scroll", handleTriggerPositionChange);
-			}
-			_container.removeEventListener("resize", handleBoundsPositionChange);
-			_container.removeEventListener("scroll", handleBoundsPositionChange);
-			// call original destroy method
-			this.$super.destroy.apply(this, arguments);
-		};
-		return Controller;
-
-	});
-
-/*
-	 * ----------------------------------------------------------------
-	 * Internal class for the construction of Indicators
-	 * ----------------------------------------------------------------
-	 */
-	var Indicator = function (Scene, options) {
-		var
-		Indicator = this,
-			_elemBounds = TPL.bounds(),
-			_elemStart = TPL.start(options.colorStart),
-			_elemEnd = TPL.end(options.colorEnd),
-			_boundsContainer = options.parent && _util.get.elements(options.parent)[0],
-			_vertical, _ctrl;
-
-		var log = function () {
-			if (Scene._log) { // not available, when main source minified
-				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
-				Scene._log.apply(this, arguments);
-			}
-		};
-
-		options.name = options.name || _autoindex;
-
-		// prepare bounds elements
-		_elemStart.firstChild.textContent += " " + options.name;
-		_elemEnd.textContent += " " + options.name;
-		_elemBounds.appendChild(_elemStart);
-		_elemBounds.appendChild(_elemEnd);
-
-		// set public variables
-		Indicator.options = options;
-		Indicator.bounds = _elemBounds;
-		// will be set later
-		Indicator.triggerGroup = undefined;
-
-		// add indicators to DOM
-		this.add = function () {
-			_ctrl = Scene.controller();
-			_vertical = _ctrl.info("vertical");
-
-			var isDocument = _ctrl.info("isDocument");
-
-			if (!_boundsContainer) {
-				// no parent supplied or doesnt exist
-				_boundsContainer = isDocument ? document.body : _ctrl.info("container"); // check if window/document (then use body)
-			}
-			if (!isDocument && _util.css(_boundsContainer, "position") === 'static') {
-				// position mode needed for correct positioning of indicators
-				_util.css(_boundsContainer, {
-					position: "relative"
-				});
-			}
-
-			// add listeners for updates
-			Scene.on("change.plugin_addIndicators", handleTriggerParamsChange);
-			Scene.on("shift.plugin_addIndicators", handleBoundsParamsChange);
-
-			// updates trigger & bounds (will add elements if needed)
-			updateTriggerGroup();
-			updateBounds();
-
-			setTimeout(function () { // do after all execution is finished otherwise sometimes size calculations are off
-				_ctrl._indicators.updateBoundsPositions(Indicator);
-			}, 0);
-
-			log(3, "added indicators");
-		};
-
-		// remove indicators from DOM
-		this.remove = function () {
-			if (Indicator.triggerGroup) { // if not set there's nothing to remove
-				Scene.off("change.plugin_addIndicators", handleTriggerParamsChange);
-				Scene.off("shift.plugin_addIndicators", handleBoundsParamsChange);
-
-				if (Indicator.triggerGroup.members.length > 1) {
-					// just remove from memberlist of old group
-					var group = Indicator.triggerGroup;
-					group.members.splice(group.members.indexOf(Indicator), 1);
-					_ctrl._indicators.updateTriggerGroupLabel(group);
-					_ctrl._indicators.updateTriggerGroupPositions(group);
-					Indicator.triggerGroup = undefined;
-				} else {
-					// remove complete group
-					removeTriggerGroup();
-				}
-				removeBounds();
-
-				log(3, "removed indicators");
-			}
-		};
-
-/*
-		 * ----------------------------------------------------------------
-		 * internal Event Handlers
-		 * ----------------------------------------------------------------
-		 */
-
-		// event handler for when bounds params change
-		var handleBoundsParamsChange = function () {
-			updateBounds();
-		};
-
-		// event handler for when trigger params change
-		var handleTriggerParamsChange = function (e) {
-			if (e.what === "triggerHook") {
-				updateTriggerGroup();
-			}
-		};
-
-/*
-		 * ----------------------------------------------------------------
-		 * Bounds (start / stop) management
-		 * ----------------------------------------------------------------
-		 */
-
-		// adds an new bounds elements to the array and to the DOM
-		var addBounds = function () {
-			var v = _ctrl.info("vertical");
-			// apply stuff we didn't know before...
-			_util.css(_elemStart.firstChild, {
-				"border-bottom-width": v ? 1 : 0,
-				"border-right-width": v ? 0 : 1,
-				"bottom": v ? -1 : options.indent,
-				"right": v ? options.indent : -1,
-				"padding": v ? "0 8px" : "2px 4px",
-			});
-			_util.css(_elemEnd, {
-				"border-top-width": v ? 1 : 0,
-				"border-left-width": v ? 0 : 1,
-				"top": v ? "100%" : "",
-				"right": v ? options.indent : "",
-				"bottom": v ? "" : options.indent,
-				"left": v ? "" : "100%",
-				"padding": v ? "0 8px" : "2px 4px"
-			});
-			// append
-			_boundsContainer.appendChild(_elemBounds);
-		};
-
-		// remove bounds from list and DOM
-		var removeBounds = function () {
-			_elemBounds.parentNode.removeChild(_elemBounds);
-		};
-
-		// update the start and end positions of the scene
-		var updateBounds = function () {
-			if (_elemBounds.parentNode !== _boundsContainer) {
-				addBounds(); // Add Bounds elements (start/end)
-			}
-			var css = {};
-			css[_vertical ? "top" : "left"] = Scene.triggerPosition();
-			css[_vertical ? "height" : "width"] = Scene.duration();
-			_util.css(_elemBounds, css);
-			_util.css(_elemEnd, {
-				display: Scene.duration() > 0 ? "" : "none"
-			});
-		};
-
-/*
-		 * ----------------------------------------------------------------
-		 * trigger and trigger group management
-		 * ----------------------------------------------------------------
-		 */
-
-		// adds an new trigger group to the array and to the DOM
-		var addTriggerGroup = function () {
-			var triggerElem = TPL.trigger(options.colorTrigger); // new trigger element
-			var css = {};
-			css[_vertical ? "right" : "bottom"] = 0;
-			css[_vertical ? "border-top-width" : "border-left-width"] = 1;
-			_util.css(triggerElem.firstChild, css);
-			_util.css(triggerElem.firstChild.firstChild, {
-				padding: _vertical ? "0 8px 3px 8px" : "3px 4px"
-			});
-			document.body.appendChild(triggerElem); // directly add to body
-			var newGroup = {
-				triggerHook: Scene.triggerHook(),
-				element: triggerElem,
-				members: [Indicator]
-			};
-			_ctrl._indicators.groups.push(newGroup);
-			Indicator.triggerGroup = newGroup;
-			// update right away
-			_ctrl._indicators.updateTriggerGroupLabel(newGroup);
-			_ctrl._indicators.updateTriggerGroupPositions(newGroup);
-		};
-
-		var removeTriggerGroup = function () {
-			_ctrl._indicators.groups.splice(_ctrl._indicators.groups.indexOf(Indicator.triggerGroup), 1);
-			Indicator.triggerGroup.element.parentNode.removeChild(Indicator.triggerGroup.element);
-			Indicator.triggerGroup = undefined;
-		};
-
-		// updates the trigger group -> either join existing or add new one
-/*	
-		 * Logic:
-		 * 1 if a trigger group exist, check if it's in sync with Scene settings – if so, nothing else needs to happen
-		 * 2 try to find an existing one that matches Scene parameters
-		 * 	 2.1 If a match is found check if already assigned to an existing group
-		 *			 If so:
-		 *       A: it was the last member of existing group -> kill whole group
-		 *       B: the existing group has other members -> just remove from member list
-		 *	 2.2 Assign to matching group
-		 * 3 if no new match could be found, check if assigned to existing group
-		 *   A: yes, and it's the only member -> just update parameters and positions and keep using this group
-		 *   B: yes but there are other members -> remove from member list and create a new one
-		 *   C: no, so create a new one
-		 */
-		var updateTriggerGroup = function () {
-			var
-			triggerHook = Scene.triggerHook(),
-				closeEnough = 0.0001;
-
-			// Have a group, check if it still matches
-			if (Indicator.triggerGroup) {
-				if (Math.abs(Indicator.triggerGroup.triggerHook - triggerHook) < closeEnough) {
-					// _util.log(0, "trigger", options.name, "->", "no need to change, still in sync");
-					return; // all good
-				}
-			}
-			// Don't have a group, check if a matching one exists
-			// _util.log(0, "trigger", options.name, "->", "out of sync!");
-			var
-			groups = _ctrl._indicators.groups,
-				group, i = groups.length;
-			while (i--) {
-				group = groups[i];
-				if (Math.abs(group.triggerHook - triggerHook) < closeEnough) {
-					// found a match!
-					// _util.log(0, "trigger", options.name, "->", "found match");
-					if (Indicator.triggerGroup) { // do I have an old group that is out of sync?
-						if (Indicator.triggerGroup.members.length === 1) { // is it the only remaining group?
-							// _util.log(0, "trigger", options.name, "->", "kill");
-							// was the last member, remove the whole group
-							removeTriggerGroup();
+				this.left = function(value, force) {
+					if (!arguments.length) {
+						return -(element.scrollLeft + offsetLeft);
+					}
+					var dif = element.scrollLeft - prevLeft,
+						oldOffset = offsetLeft;
+					if ((dif > 2 || dif < -2) && !force) { //if the user interacts with the scrollbar (or something else scrolls it, like the mouse wheel), we should kill any tweens of the ScrollProxy.
+						prevLeft = element.scrollLeft;
+						TweenLite.killTweensOf(this, true, {left:1, scrollLeft:1});
+						this.left(-prevLeft);
+						if (vars.onKill) {
+							vars.onKill();
+						}
+						return;
+					}
+					value = -value; //invert because scrolling works in the opposite direction
+					if (value < 0) {
+						offsetLeft = (value - 0.5) | 0;
+						value = 0;
+					} else if (value > maxLeft) {
+						offsetLeft = (value - maxLeft) | 0;
+						value = maxLeft;
+					} else {
+						offsetLeft = 0;
+					}
+					if (offsetLeft || oldOffset) {
+						if (transformStart) {
+							if (!this._suspendTransforms) {
+								style[_transformProp] = transformStart + -offsetLeft + "px," + -offsetTop + transformEnd;
+							}
 						} else {
-							Indicator.triggerGroup.members.splice(Indicator.triggerGroup.members.indexOf(Indicator), 1); // just remove from memberlist of old group
-							_ctrl._indicators.updateTriggerGroupLabel(Indicator.triggerGroup);
-							_ctrl._indicators.updateTriggerGroupPositions(Indicator.triggerGroup);
-							// _util.log(0, "trigger", options.name, "->", "removing from previous member list");
+							style.left = -offsetLeft + "px";
+						}
+						if (offsetLeft + extraPadRight >= 0) {
+							style.paddingRight = offsetLeft + extraPadRight + "px";
 						}
 					}
-					// join new group
-					group.members.push(Indicator);
-					Indicator.triggerGroup = group;
-					_ctrl._indicators.updateTriggerGroupLabel(group);
-					return;
-				}
-			}
+					element.scrollLeft = value | 0;
+					prevLeft = element.scrollLeft; //don't merge this with the line above because some browsers adjsut the scrollLeft after it's set, so in order to be 100% accurate in tracking it, we need to ask the browser to report it.
+				};
 
-			// at this point I am obviously out of sync and don't match any other group
-			if (Indicator.triggerGroup) {
-				if (Indicator.triggerGroup.members.length === 1) {
-					// _util.log(0, "trigger", options.name, "->", "updating existing");
-					// out of sync but i'm the only member => just change and update
-					Indicator.triggerGroup.triggerHook = triggerHook;
-					_ctrl._indicators.updateTriggerGroupPositions(Indicator.triggerGroup);
-					return;
+				this.top = function(value, force) {
+					if (!arguments.length) {
+						return -(element.scrollTop + offsetTop);
+					}
+					var dif = element.scrollTop - prevTop,
+						oldOffset = offsetTop;
+					if ((dif > 2 || dif < -2) && !force) { //if the user interacts with the scrollbar (or something else scrolls it, like the mouse wheel), we should kill any tweens of the ScrollProxy.
+						prevTop = element.scrollTop;
+						TweenLite.killTweensOf(this, true, {top:1, scrollTop:1});
+						this.top(-prevTop);
+						if (vars.onKill) {
+							vars.onKill();
+						}
+						return;
+					}
+					value = -value; //invert because scrolling works in the opposite direction
+					if (value < 0) {
+						offsetTop = (value - 0.5) | 0;
+						value = 0;
+					} else if (value > maxTop) {
+						offsetTop = (value - maxTop) | 0;
+						value = maxTop;
+					} else {
+						offsetTop = 0;
+					}
+					if (offsetTop || oldOffset) {
+						if (transformStart) {
+							if (!this._suspendTransforms) {
+								style[_transformProp] = transformStart + -offsetLeft + "px," + -offsetTop + transformEnd;
+							}
+						} else {
+							style.top = -offsetTop + "px";
+						}
+					}
+					element.scrollTop = value | 0;
+					prevTop = element.scrollTop;
+				};
+
+				this.maxScrollTop = function() {
+					return maxTop;
+				};
+
+				this.maxScrollLeft = function() {
+					return maxLeft;
+				};
+
+				this.disable = function() {
+					node = content.firstChild;
+					while (node) {
+						nextNode = node.nextSibling;
+						element.appendChild(node);
+						node = nextNode;
+					}
+					if (element === content.parentNode) { //in case disable() is called when it's already disabled.
+						element.removeChild(content);
+					}
+				};
+
+				this.enable = function() {
+					node = element.firstChild;
+					if (node === content) {
+						return;
+					}
+					while (node) {
+						nextNode = node.nextSibling;
+						content.appendChild(node);
+						node = nextNode;
+					}
+					element.appendChild(content);
+					this.calibrate();
+				};
+
+				this.calibrate = function(force) {
+					var widthMatches = (element.clientWidth === elementWidth),
+						x, y;
+					prevTop = element.scrollTop;
+					prevLeft = element.scrollLeft;
+					if (widthMatches && element.clientHeight === elementHeight && content.offsetHeight === contentHeight && scrollWidth === element.scrollWidth && scrollHeight === element.scrollHeight && !force) {
+						return; //no need to recalculate things if the width and height haven't changed.
+					}
+					if (offsetTop || offsetLeft) {
+						x = this.left();
+						y = this.top();
+						this.left(-element.scrollLeft);
+						this.top(-element.scrollTop);
+					}
+					//first, we need to remove any width constraints to see how the content naturally flows so that we can see if it's wider than the containing element. If so, we've got to record the amount of overage so that we can apply that as padding in order for browsers to correctly handle things. Then we switch back to a width of 100% (without that, some browsers don't flow the content correctly)
+					if (!widthMatches || force) {
+						style.display = "block";
+						style.width = "auto";
+						style.paddingRight = "0px";
+						extraPadRight = Math.max(0, element.scrollWidth - element.clientWidth);
+						//if the content is wider than the container, we need to add the paddingLeft and paddingRight in order for things to behave correctly.
+						if (extraPadRight) {
+							extraPadRight += _getStyle(element, "paddingLeft") + (_addPaddingBR ? _getStyle(element, "paddingRight") : 0);
+						}
+					}
+					style.display = "inline-block";
+					style.position = "relative";
+					style.overflow = "visible";
+					style.verticalAlign = "top";
+					style.width = "100%";
+					style.paddingRight = extraPadRight + "px";
+					//some browsers neglect to factor in the bottom padding when calculating the scrollHeight, so we need to add that padding to the content when that happens. Allow a 2px margin for error
+					if (_addPaddingBR) {
+						style.paddingBottom = _getStyle(element, "paddingBottom", true);
+					}
+					if (_isOldIE) {
+						style.zoom = "1";
+					}
+					elementWidth = element.clientWidth;
+					elementHeight = element.clientHeight;
+					scrollWidth = element.scrollWidth;
+					scrollHeight = element.scrollHeight;
+					maxLeft = element.scrollWidth - elementWidth;
+					maxTop = element.scrollHeight - elementHeight;
+					contentHeight = content.offsetHeight;
+					style.display = "block";
+					if (x || y) {
+						this.left(x);
+						this.top(y);
+					}
+				};
+
+				this.content = content;
+				this.element = element;
+				this._suspendTransforms = false;
+				this.enable();
+			},
+
+
+
+
+
+			Draggable = function(target, vars) {
+				EventDispatcher.call(this, target);
+				target = _unwrapElement(target); //in case the target is a selector object or selector text
+				if (!ThrowPropsPlugin) {
+					ThrowPropsPlugin = _globals.com.greensock.plugins.ThrowPropsPlugin;
+				}
+				this.vars = vars = _copy(vars || {});
+				this.target = target;
+				this.x = this.y = this.rotation = 0;
+				this.dragResistance = parseFloat(vars.dragResistance) || 0;
+				this.edgeResistance = isNaN(vars.edgeResistance) ? 1 : parseFloat(vars.edgeResistance) || 0;
+				this.lockAxis = vars.lockAxis;
+				this.autoScroll = vars.autoScroll || 0;
+				this.lockedAxis = null;
+				this.allowEventDefault = !!vars.allowEventDefault;
+				var type = (vars.type || (_isOldIE ? "top,left" : "x,y")).toLowerCase(),
+					xyMode = (type.indexOf("x") !== -1 || type.indexOf("y") !== -1),
+					rotationMode = (type.indexOf("rotation") !== -1),
+					xProp = rotationMode ? "rotation" : xyMode ? "x" : "left",
+					yProp = xyMode ? "y" : "top",
+					allowX = (type.indexOf("x") !== -1 || type.indexOf("left") !== -1 || type === "scroll"),
+					allowY = (type.indexOf("y") !== -1 || type.indexOf("top") !== -1 || type === "scroll"),
+					minimumMovement = vars.minimumMovement || 2,
+					self = this,
+					triggers = _slice(vars.trigger || vars.handle || target),
+					killProps = {},
+					dragEndTime = 0,
+					checkAutoScrollBounds = false,
+					autoScrollMarginTop = vars.autoScrollMarginTop || 40,
+					autoScrollMarginRight = vars.autoScrollMarginRight || 40,
+					autoScrollMarginBottom = vars.autoScrollMarginBottom || 40,
+					autoScrollMarginLeft = vars.autoScrollMarginLeft || 40,
+					isClickable = vars.clickableTest || _isClickable,
+					clickTime = 0,
+					enabled, scrollProxy, startPointerX, startPointerY, startElementX, startElementY, hasBounds, hasDragCallback, maxX, minX, maxY, minY, tempVars, cssVars, touch, touchID, rotationOrigin, dirty, old, snapX, snapY, snapXY, isClicking, touchEventTarget, matrix, interrupted, startScrollTop, startScrollLeft, applyObj, allowNativeTouchScrolling, touchDragAxis, isDispatching, clickDispatch, trustedClickDispatch,
+
+					onContextMenu = function(e) { //used to prevent long-touch from triggering a context menu.
+						if (self.isPressed && e.which < 2) {
+							self.endDrag();
+						} else {
+							e.preventDefault();
+							e.stopPropagation();
+							return false;
+						}
+					},
+
+					//this method gets called on every tick of TweenLite.ticker which allows us to synchronize the renders to the core engine (which is typically synchronized with the display refresh via requestAnimationFrame). This is an optimization - it's better than applying the values inside the "mousemove" or "touchmove" event handler which may get called many times inbetween refreshes.
+					render = function(suppressEvents) {
+						if (self.autoScroll && self.isDragging && (checkAutoScrollBounds || dirty)) {
+							var e = target,
+								autoScrollFactor = self.autoScroll * 15, //multiplying by 15 just gives us a better "feel" speed-wise.
+								parent, isRoot, rect, pointerX, pointerY, changeX, changeY, gap;
+							checkAutoScrollBounds = false;
+							_windowProxy.scrollTop = ((window.pageYOffset != null) ? window.pageYOffset : (_docElement.scrollTop != null) ? _docElement.scrollTop : _doc.body.scrollTop);
+							_windowProxy.scrollLeft = ((window.pageXOffset != null) ? window.pageXOffset : (_docElement.scrollLeft != null) ? _docElement.scrollLeft : _doc.body.scrollLeft);
+							pointerX = self.pointerX - _windowProxy.scrollLeft;
+							pointerY = self.pointerY - _windowProxy.scrollTop;
+							while (e && !isRoot) { //walk up the chain and sense wherever the pointer is within 40px of an edge that's scrollable.
+								isRoot = _isRoot(e.parentNode);
+								parent = isRoot ? _windowProxy : e.parentNode;
+								rect = isRoot ? {bottom:Math.max(_docElement.clientHeight, window.innerHeight || 0), right: Math.max(_docElement.clientWidth, window.innerWidth || 0), left:0, top:0} : parent.getBoundingClientRect();
+								changeX = changeY = 0;
+								if (allowY) {
+									gap = parent._gsMaxScrollY - parent.scrollTop;
+									if (gap < 0) {
+										changeY = gap;
+									} else if (pointerY > rect.bottom - autoScrollMarginBottom && gap) {
+										checkAutoScrollBounds = true;
+										changeY = Math.min(gap, (autoScrollFactor * (1 - Math.max(0, (rect.bottom - pointerY)) / autoScrollMarginBottom)) | 0);
+									} else if (pointerY < rect.top + autoScrollMarginTop && parent.scrollTop) {
+										checkAutoScrollBounds = true;
+										changeY = -Math.min(parent.scrollTop, (autoScrollFactor * (1 - Math.max(0, (pointerY - rect.top)) / autoScrollMarginTop)) | 0);
+									}
+									if (changeY) {
+										parent.scrollTop += changeY;
+									}
+								}
+								if (allowX) {
+									gap = parent._gsMaxScrollX - parent.scrollLeft;
+									if (gap < 0) {
+										changeX = gap;
+									} else if (pointerX > rect.right - autoScrollMarginRight && gap) {
+										checkAutoScrollBounds = true;
+										changeX = Math.min(gap, (autoScrollFactor * (1 - Math.max(0, (rect.right - pointerX)) / autoScrollMarginRight)) | 0);
+									} else if (pointerX < rect.left + autoScrollMarginLeft && parent.scrollLeft) {
+										checkAutoScrollBounds = true;
+										changeX = -Math.min(parent.scrollLeft, (autoScrollFactor * (1 - Math.max(0, (pointerX - rect.left)) / autoScrollMarginLeft)) | 0);
+									}
+									if (changeX) {
+										parent.scrollLeft += changeX;
+									}
+								}
+
+								if (isRoot && (changeX || changeY)) {
+									window.scrollTo(parent.scrollLeft, parent.scrollTop);
+									setPointerPosition(self.pointerX + changeX, self.pointerY + changeY);
+								}
+								e = parent;
+							}
+						}
+						if (dirty) {
+							var x = self.x,
+								y = self.y,
+								min = 0.000001;
+							if (x < min && x > -min) { //browsers don't handle super small decimals well.
+								x = 0;
+							}
+							if (y < min && y > -min) {
+								y = 0;
+							}
+							if (rotationMode) {
+								self.deltaX = x - applyObj.data.rotation;
+								applyObj.data.rotation = self.rotation = x;
+								applyObj.setRatio(1); //note: instead of doing TweenLite.set(), as a performance optimization we skip right to the method that renders the transforms inside CSSPlugin. For old versions of IE, though, we do a normal TweenLite.set() to leverage its ability to re-reroute to an IE-specific 2D renderer.
+							} else {
+								if (scrollProxy) {
+									if (allowY) {
+										self.deltaY = y - scrollProxy.top();
+										scrollProxy.top(y);
+									}
+									if (allowX) {
+										self.deltaX = x - scrollProxy.left();
+										scrollProxy.left(x);
+									}
+								} else if (xyMode) {
+									if (allowY) {
+										self.deltaY = y - applyObj.data.y;
+										applyObj.data.y = y;
+									}
+									if (allowX) {
+										self.deltaX = x - applyObj.data.x;
+										applyObj.data.x = x;
+									}
+									applyObj.setRatio(1); //note: instead of doing TweenLite.set(), as a performance optimization we skip right to the method that renders the transforms inside CSSPlugin. For old versions of IE, though, we do a normal TweenLite.set() to leverage its ability to re-reroute to an IE-specific 2D renderer.
+								} else {
+									if (allowY) {
+										self.deltaY = y - parseFloat(target.style.top || 0);
+										target.style.top = y + "px";
+									}
+									if (allowX) {
+										self.deltaY = x - parseFloat(target.style.left || 0);
+										target.style.left = x + "px";
+									}
+								}
+							}
+							if (hasDragCallback && !suppressEvents && !isDispatching) {
+								isDispatching = true; //in case onDrag has an update() call (avoid endless loop)
+								_dispatchEvent(self, "drag", "onDrag");
+								isDispatching = false;
+							}
+						}
+						dirty = false;
+					},
+
+					//copies the x/y from the element (whether that be transforms, top/left, or ScrollProxy's top/left) to the Draggable's x and y (and rotation if necessary) properties so that they reflect reality and it also (optionally) applies any snapping necessary. This is used by the ThrowPropsPlugin tween in an onUpdate to ensure things are synced and snapped.
+					syncXY = function(skipOnUpdate, skipSnap) {
+						var x = self.x,
+							y = self.y,
+							snappedValue;
+						if (!target._gsTransform && (xyMode || rotationMode)) { //just in case the _gsTransform got wiped, like if the user called clearProps on the transform or something (very rare), doing an x tween forces a re-parsing of the transforms and population of the _gsTransform.
+							TweenLite.set(target, {x:"+=0", overwrite:false, data:"_draggable"});
+						}
+						if (xyMode) {
+							self.y = target._gsTransform.y;
+							self.x = target._gsTransform.x;
+						} else if (rotationMode) {
+							self.x = self.rotation = target._gsTransform.rotation;
+						} else if (scrollProxy) {
+							self.y = scrollProxy.top();
+							self.x = scrollProxy.left();
+						} else {
+							self.y = parseInt(target.style.top, 10) || 0;
+							self.x = parseInt(target.style.left, 10) || 0;
+						}
+						if ((snapX || snapY || snapXY) && !skipSnap && (self.isDragging || self.isThrowing)) {
+							if (snapXY) {
+								_temp1.x = self.x;
+								_temp1.y = self.y;
+								snappedValue = snapXY(_temp1);
+								if (snappedValue.x !== self.x) {
+									self.x = snappedValue.x;
+									dirty = true;
+								}
+								if (snappedValue.y !== self.y) {
+									self.y = snappedValue.y;
+									dirty = true;
+								}
+							}
+							if (snapX) {
+								snappedValue = snapX(self.x);
+								if (snappedValue !== self.x) {
+									self.x = snappedValue;
+									if (rotationMode) {
+										self.rotation = snappedValue;
+									}
+									dirty = true;
+								}
+							}
+							if (snapY) {
+								snappedValue = snapY(self.y);
+								if (snappedValue !== self.y) {
+									self.y = snappedValue;
+								}
+								dirty = true;
+							}
+						}
+						if (dirty) {
+							render(true);
+						}
+						if (!skipOnUpdate) {
+							self.deltaX = self.x - x;
+							self.deltaY = self.y - y;
+							_dispatchEvent(self, "throwupdate", "onThrowUpdate");
+						}
+					},
+
+					calculateBounds = function() {
+						var bounds, targetBounds, snap, snapIsRaw;
+						hasBounds = false;
+						if (scrollProxy) {
+							scrollProxy.calibrate();
+							self.minX = minX = -scrollProxy.maxScrollLeft();
+							self.minY = minY = -scrollProxy.maxScrollTop();
+							self.maxX = maxX = self.maxY = maxY = 0;
+							hasBounds = true;
+						} else if (!!vars.bounds) {
+							bounds = _getBounds(vars.bounds, target.parentNode); //could be a selector/jQuery object or a DOM element or a generic object like {top:0, left:100, width:1000, height:800} or {minX:100, maxX:1100, minY:0, maxY:800}
+							if (rotationMode) {
+								self.minX = minX = bounds.left;
+								self.maxX = maxX = bounds.left + bounds.width;
+								self.minY = minY = self.maxY = maxY = 0;
+							} else if (vars.bounds.maxX !== undefined || vars.bounds.maxY !== undefined) {
+								bounds = vars.bounds;
+								self.minX = minX = bounds.minX;
+								self.minY = minY = bounds.minY;
+								self.maxX = maxX = bounds.maxX;
+								self.maxY = maxY = bounds.maxY;
+							} else {
+								targetBounds = _getBounds(target, target.parentNode);
+								self.minX = minX = _getStyle(target, xProp) + bounds.left - targetBounds.left;
+								self.minY = minY = _getStyle(target, yProp) + bounds.top - targetBounds.top;
+								self.maxX = maxX = minX + (bounds.width - targetBounds.width);
+								self.maxY = maxY = minY + (bounds.height - targetBounds.height);
+							}
+							if (minX > maxX) {
+								self.minX = maxX;
+								self.maxX = maxX = minX;
+								minX = self.minX;
+							}
+							if (minY > maxY) {
+								self.minY = maxY;
+								self.maxY = maxY = minY;
+								minY = self.minY;
+							}
+							if (rotationMode) {
+								self.minRotation = minX;
+								self.maxRotation = maxX;
+							}
+							hasBounds = true;
+						}
+						if (vars.liveSnap) {
+							snap = (vars.liveSnap === true) ? (vars.snap || {}) : vars.liveSnap;
+							snapIsRaw = (snap instanceof Array || typeof(snap) === "function");
+							if (rotationMode) {
+								snapX = buildSnapFunc((snapIsRaw ? snap : snap.rotation), minX, maxX, 1);
+								snapY = null;
+							} else {
+								if (snap.points) {
+									snapXY = buildPointSnapFunc((snapIsRaw ? snap : snap.points), minX, maxX, minY, maxY, snap.radius, scrollProxy ? -1 : 1);
+								} else {
+									if (allowX) {
+										snapX = buildSnapFunc((snapIsRaw ? snap : snap.x || snap.left || snap.scrollLeft), minX, maxX, scrollProxy ? -1 : 1);
+									}
+									if (allowY) {
+										snapY = buildSnapFunc((snapIsRaw ? snap : snap.y || snap.top || snap.scrollTop), minY, maxY, scrollProxy ? -1 : 1);
+									}
+								}
+							}
+						}
+
+					},
+
+					onThrowComplete = function() {
+						self.isThrowing = false;
+						_dispatchEvent(self, "throwcomplete", "onThrowComplete");
+					},
+					onThrowOverwrite = function() {
+						self.isThrowing = false;
+					},
+
+					animate = function(throwProps, forceZeroVelocity) {
+						var snap, snapIsRaw, tween, overshootTolerance;
+						if (throwProps && ThrowPropsPlugin) {
+							if (throwProps === true) {
+								snap = vars.snap || vars.liveSnap || {};
+								snapIsRaw = (snap instanceof Array || typeof(snap) === "function");
+								throwProps = {resistance:(vars.throwResistance || vars.resistance || 1000) / (rotationMode ? 10 : 1)};
+								if (rotationMode) {
+									throwProps.rotation = _parseThrowProps(self, snapIsRaw ? snap : snap.rotation, maxX, minX, 1, forceZeroVelocity);
+								} else {
+									if (allowX) {
+										throwProps[xProp] = _parseThrowProps(self, snapIsRaw ? snap : snap.points || snap.x || snap.left || snap.scrollLeft, maxX, minX, scrollProxy ? -1 : 1, forceZeroVelocity || (self.lockedAxis === "x"));
+									}
+									if (allowY) {
+										throwProps[yProp] = _parseThrowProps(self, snapIsRaw ? snap : snap.points || snap.y || snap.top || snap.scrollTop, maxY, minY, scrollProxy ? -1 : 1, forceZeroVelocity || (self.lockedAxis === "y"));
+									}
+									if (snap.points || (snap instanceof Array && typeof(snap[0]) === "object")) {
+										throwProps.linkedProps = xProp + "," + yProp;
+										throwProps.radius = snap.radius; //note: we also disable liveSnapping while throwing if there's a "radius" defined, otherwise it looks weird to have the item thrown past a snapping point but live-snapping mid-tween. We do this by altering the onUpdateParams so that "skipSnap" parameter is true for syncXY.
+									}
+								}
+							}
+							self.isThrowing = true;
+							overshootTolerance = (!isNaN(vars.overshootTolerance)) ? vars.overshootTolerance : (vars.edgeResistance === 1) ? 0 : (1 - self.edgeResistance) + 0.2;
+							self.tween = tween = ThrowPropsPlugin.to(scrollProxy || target, {throwProps:throwProps, data:"_draggable", ease:(vars.ease || _globals.Power3.easeOut), onComplete:onThrowComplete, onOverwrite:onThrowOverwrite, onUpdate:(vars.fastMode ? _dispatchEvent : syncXY), onUpdateParams:(vars.fastMode ? [self, "onthrowupdate", "onThrowUpdate"] : (snap && snap.radius) ? [false, true] : _emptyArray)}, Math.max(vars.minDuration || 0, vars.maxDuration || 0) || 2, (!isNaN(vars.minDuration) ? vars.minDuration : (overshootTolerance === 0 || (typeof(throwProps) === "object" && throwProps.resistance > 1000)) ? 0 : 0.5), overshootTolerance);
+							if (!vars.fastMode) {
+								//to populate the end values, we just scrub the tween to the end, record the values, and then jump back to the beginning.
+								if (scrollProxy) {
+									scrollProxy._suspendTransforms = true; //Microsoft browsers have a bug that causes them to briefly render the position incorrectly (it flashes to the end state when we seek() the tween even though we jump right back to the current position, and this only seems to happen when we're affecting both top and left), so we set a _suspendTransforms flag to prevent it from actually applying the values in the ScrollProxy.
+								}
+								tween.render(tween.duration(), true, true);
+								syncXY(true, true);
+								self.endX = self.x;
+								self.endY = self.y;
+								if (rotationMode) {
+									self.endRotation = self.x;
+								}
+								tween.play(0);
+								syncXY(true, true);
+								if (scrollProxy) {
+									scrollProxy._suspendTransforms = false;
+								}
+							}
+						} else if (hasBounds) {
+							self.applyBounds();
+						}
+					},
+
+					updateMatrix = function(shiftStart) {
+						var start = matrix || [1,0,0,1,0,0],
+							a, b, c, d, tx, ty, determinant, pointerX, pointerY;
+						matrix = _getConcatenatedMatrix(target.parentNode, true);
+						if (shiftStart && self.isPressed && start.join(",") !== matrix.join(",")) { //if the matrix changes WHILE the element is pressed, we must adjust the startPointerX and startPointerY accordingly, so we invert the original matrix and figure out where the pointerX and pointerY were in the global space, then apply the new matrix to get the updated coordinates.
+							a = start[0];
+							b = start[1];
+							c = start[2];
+							d = start[3];
+							tx = start[4];
+							ty = start[5];
+							determinant = (a * d - b * c);
+							pointerX = startPointerX * (d / determinant) + startPointerY * (-c / determinant) + ((c * ty - d * tx) / determinant);
+							pointerY = startPointerX * (-b / determinant) + startPointerY * (a / determinant) + (-(a * ty - b * tx) / determinant);
+							startPointerY = pointerX * matrix[1] + pointerY * matrix[3] + matrix[5];
+							startPointerX = pointerX * matrix[0] + pointerY * matrix[2] + matrix[4];
+						}
+						if (!matrix[1] && !matrix[2] && matrix[0] == 1 && matrix[3] == 1 && matrix[4] == 0 && matrix[5] == 0) { //if there are no transforms, we can optimize performance by not factoring in the matrix
+							matrix = null;
+						}
+
+					},
+
+					recordStartPositions = function() {
+						var edgeTolerance = 1 - self.edgeResistance;
+						updateMatrix(false);
+						if (matrix) {
+							startPointerX = self.pointerX * matrix[0] + self.pointerY * matrix[2] + matrix[4]; //translate to local coordinate system
+							startPointerY = self.pointerX * matrix[1] + self.pointerY * matrix[3] + matrix[5];
+						}
+						if (dirty) {
+							setPointerPosition(self.pointerX, self.pointerY);
+							render(true);
+						}
+						if (scrollProxy) {
+							calculateBounds();
+							startElementY = scrollProxy.top();
+							startElementX = scrollProxy.left();
+						} else {
+							//if the element is in the process of tweening, don't force snapping to occur because it could make it jump. Imagine the user throwing, then before it's done, clicking on the element in its inbetween state.
+							if (isTweening()) {
+								syncXY(true, true);
+								calculateBounds();
+							} else {
+								self.applyBounds();
+							}
+							if (rotationMode) {
+								rotationOrigin = self.rotationOrigin = _localToGlobal(target, {x:0, y:0});
+								syncXY(true, true);
+								startElementX = self.x; //starting rotation (x always refers to rotation in type:"rotation", measured in degrees)
+								startElementY = self.y = Math.atan2(rotationOrigin.y - self.pointerY, self.pointerX - rotationOrigin.x) * _RAD2DEG;
+							} else {
+								startScrollTop = target.parentNode ? target.parentNode.scrollTop || 0 : 0;
+								startScrollLeft = target.parentNode ? target.parentNode.scrollLeft || 0 : 0;
+								startElementY = _getStyle(target, yProp); //record the starting top and left values so that we can just add the mouse's movement to them later.
+								startElementX = _getStyle(target, xProp);
+							}
+						}
+						if (hasBounds && edgeTolerance) {
+							if (startElementX > maxX) {
+								startElementX = maxX + (startElementX - maxX) / edgeTolerance;
+							} else if (startElementX < minX) {
+								startElementX = minX - (minX - startElementX) / edgeTolerance;
+							}
+							if (!rotationMode) {
+								if (startElementY > maxY) {
+									startElementY = maxY + (startElementY - maxY) / edgeTolerance;
+								} else if (startElementY < minY) {
+									startElementY = minY - (minY - startElementY) / edgeTolerance;
+								}
+							}
+						}
+						self.startX = startElementX;
+						self.startY = startElementY;
+					},
+
+					isTweening = function() {
+						return (self.tween && self.tween.isActive());
+					},
+
+					removePlaceholder = function() {
+						if (_placeholderDiv.parentNode && !isTweening() && !self.isDragging) { //_placeholderDiv just props open auto-scrolling containers so they don't collapse as the user drags left/up. We remove it after dragging (and throwing, if necessary) finishes.
+							_placeholderDiv.parentNode.removeChild(_placeholderDiv);
+						}
+					},
+
+					buildSnapFunc = function(snap, min, max, factor) {
+						if (typeof(snap) === "function") {
+							return function(n) {
+								var edgeTolerance = !self.isPressed ? 1 : 1 - self.edgeResistance; //if we're tweening, disable the edgeTolerance because it's already factored into the tweening values (we don't want to apply it multiple times)
+								return snap.call(self, (n > max ? max + (n - max) * edgeTolerance : (n < min) ? min + (n - min) * edgeTolerance : n)) * factor;
+							};
+						}
+						if (snap instanceof Array) {
+							return function(n) {
+								var i = snap.length,
+									closest = 0,
+									absDif = _max,
+									val, dif;
+								while (--i > -1) {
+									val = snap[i];
+									dif = val - n;
+									if (dif < 0) {
+										dif = -dif;
+									}
+									if (dif < absDif && val >= min && val <= max) {
+										closest = i;
+										absDif = dif;
+									}
+								}
+								return snap[closest];
+							};
+						}
+						return isNaN(snap) ? function(n) { return n; } : function() { return snap * factor; };
+					},
+
+					buildPointSnapFunc = function(snap, minX, maxX, minY, maxY, radius, factor) {
+						radius = (radius && radius < _max) ? radius * radius : _max; //so we don't have to Math.sqrt() in the functions. Performance optimization.
+						if (typeof(snap) === "function") {
+							return function(point) {
+								var edgeTolerance = !self.isPressed ? 1 : 1 - self.edgeResistance,
+									x = point.x,
+									y = point.y,
+									result, dx, dy; //if we're tweening, disable the edgeTolerance because it's already factored into the tweening values (we don't want to apply it multiple times)
+								point.x = x = (x > maxX ? maxX + (x - maxX) * edgeTolerance : (x < minX) ? minX + (x - minX) * edgeTolerance : x);
+								point.y = y = (y > maxY ? maxY + (y - maxY) * edgeTolerance : (y < minY) ? minY + (y - minY) * edgeTolerance : y);
+								result = snap.call(self, point);
+								if (result !== point) {
+									point.x = result.x;
+									point.y = result.y;
+								}
+								if (factor !== 1) {
+									point.x *= factor;
+									point.y *= factor;
+								}
+								if (radius < _max) {
+									dx = point.x - x;
+									dy = point.y - y;
+									if (dx * dx + dy * dy > radius) {
+										point.x = x;
+										point.y = y;
+									}
+								}
+								return point;
+							};
+						}
+						if (snap instanceof Array) {
+							return function(p) {
+								var i = snap.length,
+									closest = 0,
+									minDist = _max,
+									x, y, point, dist;
+								while (--i > -1) {
+									point = snap[i];
+									x = point.x - p.x;
+									y = point.y - p.y;
+									dist = x * x + y * y;
+									if (dist < minDist) {
+										closest = i;
+										minDist = dist;
+									}
+								}
+								return (minDist <= radius) ? snap[closest] : p;
+							};
+						}
+						return function(n) { return n; };
+					},
+
+					//called when the mouse is pressed (or touch starts)
+					onPress = function(e, force) {
+						var i;
+						if (!enabled || self.isPressed || !e || ((e.type === "mousedown" || e.type === "pointerdown") && !force && _getTime() - clickTime < 30 && _touchEventLookup[self.pointerEvent.type])) { //when we DON'T preventDefault() in order to accommodate touch-scrolling and the user just taps, many browsers also fire a mousedown/mouseup sequence AFTER the touchstart/touchend sequence, thus it'd result in two quick "click" events being dispatched. This line senses that condition and halts it on the subsequent mousedown.
+							return;
+						}
+						interrupted = isTweening();
+						self.pointerEvent = e;
+						if (_touchEventLookup[e.type]) { //note: on iOS, BOTH touchmove and mousemove are dispatched, but the mousemove has pageY and pageX of 0 which would mess up the calculations and needlessly hurt performance.
+							touchEventTarget = (e.type.indexOf("touch") !== -1) ? (e.currentTarget || e.target) : _doc; //pointer-based touches (for Microsoft browsers) don't remain locked to the original target like other browsers, so we must use the document instead. The event type would be "MSPointerDown" or "pointerdown".
+							_addListener(touchEventTarget, "touchend", onRelease);
+							_addListener(touchEventTarget, "touchmove", onMove);
+							_addListener(touchEventTarget, "touchcancel", onRelease);
+							_addListener(_doc, "touchstart", _onMultiTouchDocument);
+						} else {
+							touchEventTarget = null;
+							_addListener(_doc, "mousemove", onMove); //attach these to the document instead of the box itself so that if the user's mouse moves too quickly (and off of the box), things still work.
+						}
+						touchDragAxis = null;
+						_addListener(_doc, "mouseup", onRelease);
+						if (e && e.target) {
+							_addListener(e.target, "mouseup", onRelease); //we also have to listen directly on the element because some browsers don't bubble up the event to the _doc on elements with contentEditable="true"
+						}
+						isClicking = (isClickable.call(self, e.target) && !vars.dragClickables && !force);
+						if (isClicking) {
+							_addListener(e.target, "change", onRelease); //in some browsers, when you mousedown on a <select> element, no mouseup gets dispatched! So we listen for a "change" event instead.
+							_dispatchEvent(self, "pressInit", "onPressInit");
+							_dispatchEvent(self, "press", "onPress");
+							_setSelectable(triggers, true); //accommodates things like inputs and elements with contentEditable="true" (otherwise user couldn't drag to select text)
+							return;
+						}
+						allowNativeTouchScrolling = (!touchEventTarget || allowX === allowY || self.vars.allowNativeTouchScrolling === false || (self.vars.allowContextMenu && e && (e.ctrlKey || e.which > 2))) ? false : allowX ? "y" : "x"; //note: in Chrome, right-clicking (for a context menu) fires onPress and it doesn't have the event.which set properly, so we must look for event.ctrlKey. If the user wants to allow context menus we should of course sense it here and not allow native touch scrolling.
+						if (_isOldIE) {
+							e = _populateIEEvent(e, true);
+						} else if (!allowNativeTouchScrolling && !self.allowEventDefault) {
+							e.preventDefault();
+							if (e.preventManipulation) {
+								e.preventManipulation();  //for some Microsoft browsers
+							}
+						}
+						if (e.changedTouches) { //touch events store the data slightly differently
+							e = touch = e.changedTouches[0];
+							touchID = e.identifier;
+						} else if (e.pointerId) {
+							touchID = e.pointerId; //for some Microsoft browsers
+						} else {
+							touch = touchID = null;
+						}
+						_dragCount++;
+						_addToRenderQueue(render); //causes the Draggable to render on each "tick" of TweenLite.ticker (performance optimization - updating values in a mousemove can cause them to happen too frequently, like multiple times between frame redraws which is wasteful, and it also prevents values from updating properly in IE8)
+						startPointerY = self.pointerY = e.pageY; //record the starting x and y so that we can calculate the movement from the original in _onMouseMove
+						startPointerX = self.pointerX = e.pageX;
+						_dispatchEvent(self, "pressInit", "onPressInit");
+						if (allowNativeTouchScrolling || self.autoScroll) {
+							_recordMaxScrolls(target.parentNode);
+						}
+						if (target.parentNode && self.autoScroll && !scrollProxy && !rotationMode && target.parentNode._gsMaxScrollX && !_placeholderDiv.parentNode && !target.getBBox) { //add a placeholder div to prevent the parent container from collapsing when the user drags the element left.
+							_placeholderDiv.style.width = target.parentNode.scrollWidth + "px";
+							target.parentNode.appendChild(_placeholderDiv);
+						}
+						recordStartPositions();
+						if (self.tween) {
+							self.tween.kill();
+						}
+						self.isThrowing = false;
+						TweenLite.killTweensOf(scrollProxy || target, true, killProps); //in case the user tries to drag it before the last tween is done.
+						if (scrollProxy) {
+							TweenLite.killTweensOf(target, true, {scrollTo:1}); //just in case the original target's scroll position is being tweened somewhere else.
+						}
+						self.tween = self.lockedAxis = null;
+						if (vars.zIndexBoost || (!rotationMode && !scrollProxy && vars.zIndexBoost !== false)) {
+							target.style.zIndex = Draggable.zIndex++;
+						}
+						self.isPressed = true;
+						hasDragCallback = !!(vars.onDrag || self._listeners.drag);
+						if (!rotationMode) {
+							i = triggers.length;
+							while (--i > -1) {
+								_setStyle(triggers[i], "cursor", vars.cursor || "move");
+							}
+						}
+						_dispatchEvent(self, "press", "onPress");
+					},
+
+					//called every time the mouse/touch moves
+					onMove = function(e) {
+						var originalEvent = e,
+							touches, pointerX, pointerY, i, dx, dy;
+						if (!enabled || _isMultiTouching || !self.isPressed || !e) {
+							return;
+						}
+						self.pointerEvent = e;
+						touches = e.changedTouches;
+						if (touches) { //touch events store the data slightly differently
+							e = touches[0];
+							if (e !== touch && e.identifier !== touchID) { //Usually changedTouches[0] will be what we're looking for, but in case it's not, look through the rest of the array...(and Android browsers don't reuse the event like iOS)
+								i = touches.length;
+								while (--i > -1 && (e = touches[i]).identifier !== touchID) {}
+								if (i < 0) {
+									return;
+								}
+							}
+						} else if (e.pointerId && touchID && e.pointerId !== touchID) { //for some Microsoft browsers, we must attach the listener to the doc rather than the trigger so that when the finger moves outside the bounds of the trigger, things still work. So if the event we're receiving has a pointerId that doesn't match the touchID, ignore it (for multi-touch)
+							return;
+						}
+						if (_isOldIE) {
+							e = _populateIEEvent(e, true);
+						} else {
+							if (touchEventTarget && allowNativeTouchScrolling && !touchDragAxis) { //Android browsers force us to decide on the first "touchmove" event if we should allow the default (scrolling) behavior or preventDefault(). Otherwise, a "touchcancel" will be fired and then no "touchmove" or "touchend" will fire during the scrolling (no good).
+								pointerX = e.pageX;
+								pointerY = e.pageY;
+								if (matrix) {
+									i = pointerX * matrix[0] + pointerY * matrix[2] + matrix[4];
+									pointerY = pointerX * matrix[1] + pointerY * matrix[3] + matrix[5];
+									pointerX = i;
+								}
+								dx = Math.abs(pointerX - startPointerX);
+								dy = Math.abs(pointerY - startPointerY);
+								if ((dx !== dy && (dx > minimumMovement || dy > minimumMovement)) || (_isAndroid && allowNativeTouchScrolling === touchDragAxis)) {
+									touchDragAxis = (dx > dy && allowX) ? "x" : "y";
+									if (self.vars.lockAxisOnTouchScroll !== false) {
+										self.lockedAxis = (touchDragAxis === "x") ? "y" : "x";
+										if (typeof(self.vars.onLockAxis) === "function") {
+											self.vars.onLockAxis.call(self, originalEvent);
+										}
+									}
+									if (_isAndroid && allowNativeTouchScrolling === touchDragAxis) {
+										onRelease(originalEvent);
+										return;
+									}
+								}
+							}
+							if (!self.allowEventDefault && (!allowNativeTouchScrolling || (touchDragAxis && allowNativeTouchScrolling !== touchDragAxis)) && originalEvent.cancelable !== false) {
+								originalEvent.preventDefault();
+								if (originalEvent.preventManipulation) { //for some Microsoft browsers
+									originalEvent.preventManipulation();
+								}
+							}
+						}
+						if (self.autoScroll) {
+							checkAutoScrollBounds = true;
+						}
+						setPointerPosition(e.pageX, e.pageY);
+					},
+
+					setPointerPosition = function(pointerX, pointerY) {
+						var dragTolerance = 1 - self.dragResistance,
+							edgeTolerance = 1 - self.edgeResistance,
+							xChange, yChange, x, y, dif, temp;
+
+						self.pointerX = pointerX;
+						self.pointerY = pointerY;
+						if (rotationMode) {
+							y = Math.atan2(rotationOrigin.y - pointerY, pointerX - rotationOrigin.x) * _RAD2DEG;
+							dif = self.y - y;
+							if (dif > 180) {
+								startElementY -= 360;
+								self.y = y;
+							} else if (dif < -180) {
+								startElementY += 360;
+								self.y = y;
+							}
+							if (self.x !== startElementX || Math.abs(startElementY - y) > minimumMovement) {
+								self.y = y;
+								x = startElementX + (startElementY - y) * dragTolerance;
+							} else {
+								x = startElementX;
+							}
+
+						} else {
+							if (matrix) {
+								temp = pointerX * matrix[0] + pointerY * matrix[2] + matrix[4];
+								pointerY = pointerX * matrix[1] + pointerY * matrix[3] + matrix[5];
+								pointerX = temp;
+							}
+							yChange = (pointerY - startPointerY);
+							xChange = (pointerX - startPointerX);
+							if (yChange < minimumMovement && yChange > -minimumMovement) {
+								yChange = 0;
+							}
+							if (xChange < minimumMovement && xChange > -minimumMovement) {
+								xChange = 0;
+							}
+							if ((self.lockAxis || self.lockedAxis) && (xChange || yChange)) {
+								temp = self.lockedAxis;
+								if (!temp) {
+									self.lockedAxis = temp = (allowX && Math.abs(xChange) > Math.abs(yChange)) ? "y" : allowY ? "x" : null;
+									if (temp && typeof(self.vars.onLockAxis) === "function") {
+										self.vars.onLockAxis.call(self, self.pointerEvent);
+									}
+								}
+								if (temp === "y") {
+									yChange = 0;
+								} else if (temp === "x") {
+									xChange = 0;
+								}
+							}
+							x = startElementX + xChange * dragTolerance;
+							y = startElementY + yChange * dragTolerance;
+						}
+
+						if ((snapX || snapY || snapXY) && (self.x !== x || (self.y !== y && !rotationMode))) {
+							if (snapXY) {
+								_temp1.x = x;
+								_temp1.y = y;
+								temp = snapXY(_temp1);
+								x = temp.x;
+								y = temp.y;
+							}
+							if (snapX) {
+								x = snapX(x);
+							}
+							if (snapY) {
+								y = snapY(y);
+							}
+						} else if (hasBounds) {
+							if (x > maxX) {
+								x = maxX + (x - maxX) * edgeTolerance;
+							} else if (x < minX) {
+								x = minX + (x - minX) * edgeTolerance;
+							}
+							if (!rotationMode) {
+								if (y > maxY) {
+									y = maxY + (y - maxY) * edgeTolerance;
+								} else if (y < minY) {
+									y = minY + (y - minY) * edgeTolerance;
+								}
+							}
+						}
+						if (!rotationMode && !matrix) {
+							x = Math.round(x); //helps work around an issue with some Win Touch devices
+							y = Math.round(y);
+						}
+						if (self.x !== x || (self.y !== y && !rotationMode)) {
+							if (rotationMode) {
+								self.endRotation = self.x = self.endX = x;
+								dirty = true;
+							} else {
+								if (allowY) {
+									self.y = self.endY = y;
+									dirty = true; //a flag that indicates we need to render the target next time the TweenLite.ticker dispatches a "tick" event (typically on a requestAnimationFrame) - this is a performance optimization (we shouldn't render on every move because sometimes many move events can get dispatched between screen refreshes, and that'd be wasteful to render every time)
+								}
+								if (allowX) {
+									self.x = self.endX = x;
+									dirty = true;
+								}
+							}
+							if (!self.isDragging && self.isPressed) {
+								self.isDragging = true;
+								_dispatchEvent(self, "dragstart", "onDragStart");
+							}
+						}
+					},
+
+					//called when the mouse/touch is released
+					onRelease = function(e, force) {
+						if (!enabled || !self.isPressed || (e && touchID != null && !force && ((e.pointerId && e.pointerId !== touchID) || (e.changedTouches && !_hasTouchID(e.changedTouches, touchID))))) {  //for some Microsoft browsers, we must attach the listener to the doc rather than the trigger so that when the finger moves outside the bounds of the trigger, things still work. So if the event we're receiving has a pointerId that doesn't match the touchID, ignore it (for multi-touch)
+							return;
+						}
+						self.isPressed = false;
+						var originalEvent = e,
+							wasDragging = self.isDragging,
+							isContextMenuRelease = (self.vars.allowContextMenu && e && (e.ctrlKey || e.which > 2)),
+							placeholderDelayedCall = TweenLite.delayedCall(0.001, removePlaceholder),
+							touches, i, syntheticEvent, eventTarget, syntheticClick;
+						if (touchEventTarget) {
+							_removeListener(touchEventTarget, "touchend", onRelease);
+							_removeListener(touchEventTarget, "touchmove", onMove);
+							_removeListener(touchEventTarget, "touchcancel", onRelease);
+							_removeListener(_doc, "touchstart", _onMultiTouchDocument);
+						} else {
+							_removeListener(_doc, "mousemove", onMove);
+						}
+						_removeListener(_doc, "mouseup", onRelease);
+						if (e && e.target) {
+							_removeListener(e.target, "mouseup", onRelease);
+						}
+						dirty = false;
+						if (isClicking && !isContextMenuRelease) {
+							if (e) {
+								_removeListener(e.target, "change", onRelease);
+								self.pointerEvent = originalEvent;
+							}
+							_setSelectable(triggers, false);
+							_dispatchEvent(self, "release", "onRelease");
+							_dispatchEvent(self, "click", "onClick");
+							isClicking = false;
+							return;
+						}
+						_removeFromRenderQueue(render);
+						if (!rotationMode) {
+							i = triggers.length;
+							while (--i > -1) {
+								_setStyle(triggers[i], "cursor", vars.cursor || "move");
+							}
+						}
+						if (wasDragging) {
+							dragEndTime = _lastDragTime = _getTime();
+							self.isDragging = false;
+						}
+						_dragCount--;
+						if (e) {
+							if (_isOldIE) {
+								e = _populateIEEvent(e, false);
+							}
+							touches = e.changedTouches;
+							if (touches) { //touch events store the data slightly differently
+								e = touches[0];
+								if (e !== touch && e.identifier !== touchID) { //Usually changedTouches[0] will be what we're looking for, but in case it's not, look through the rest of the array...(and Android browsers don't reuse the event like iOS)
+									i = touches.length;
+									while (--i > -1 && (e = touches[i]).identifier !== touchID) {}
+									if (i < 0) {
+										return;
+									}
+								}
+							}
+							self.pointerEvent = originalEvent;
+							self.pointerX = e.pageX;
+							self.pointerY = e.pageY;
+						}
+						if (isContextMenuRelease && originalEvent) {
+							originalEvent.preventDefault();
+							if (originalEvent.preventManipulation) {
+								originalEvent.preventManipulation();  //for some Microsoft browsers
+							}
+							_dispatchEvent(self, "release", "onRelease");
+						} else if (originalEvent && !wasDragging) {
+							if (interrupted && (vars.snap || vars.bounds)) { //otherwise, if the user clicks on the object while it's animating to a snapped position, and then releases without moving 3 pixels, it will just stay there (it should animate/snap)
+								animate(vars.throwProps);
+							}
+							_dispatchEvent(self, "release", "onRelease");
+							if ((!_isAndroid || originalEvent.type !== "touchmove") && originalEvent.type.indexOf("cancel") === -1) { //to accommodate native scrolling on Android devices, we have to immediately call onRelease() on the first touchmove event, but that shouldn't trigger a "click".
+								_dispatchEvent(self, "click", "onClick");
+								if (_getTime() - clickTime < 300) {
+									_dispatchEvent(self, "doubleclick", "onDoubleClick");
+								}
+								eventTarget = originalEvent.target || originalEvent.srcElement || target; //old IE uses srcElement
+								clickTime = _getTime();
+								syntheticClick = function () { // some browsers (like Firefox) won't trust script-generated clicks, so if the user tries to click on a video to play it, for example, it simply won't work. Since a regular "click" event will most likely be generated anyway (one that has its isTrusted flag set to true), we must slightly delay our script-generated click so that the "real"/trusted one is prioritized. Remember, when there are duplicate events in quick succession, we suppress all but the first one. Some browsers don't even trigger the "real" one at all, so our synthetic one is a safety valve that ensures that no matter what, a click event does get dispatched.
+									if (clickTime !== clickDispatch && self.enabled() && !self.isPressed) {
+										if (eventTarget.click) { //some browsers (like mobile Safari) don't properly trigger the click event
+											eventTarget.click();
+										} else if (_doc.createEvent) {
+											syntheticEvent = _doc.createEvent("MouseEvents");
+											syntheticEvent.initMouseEvent("click", true, true, window, 1, self.pointerEvent.screenX, self.pointerEvent.screenY, self.pointerX, self.pointerY, false, false, false, false, 0, null);
+											eventTarget.dispatchEvent(syntheticEvent);
+										}
+									}
+								};
+								if (!_isAndroid && !originalEvent.defaultPrevented) { //iOS Safari requires the synthetic click to happen immediately or else it simply won't work, but Android doesn't play nice.
+									TweenLite.delayedCall(0.00001, syntheticClick); //in addition to the iOS bug workaround, there's a Firefox issue with clicking on things like a video to play, so we must fake a click event in a slightly delayed fashion. Previously, we listened for the "click" event with "capture" false which solved the video-click-to-play issue, but it would allow the "click" event to be dispatched twice like if you were using a jQuery.click() because that was handled in the capture phase, thus we had to switch to the capture phase to avoid the double-dispatching, but do the delayed synthetic click.
+								}
+							}
+						} else {
+							animate(vars.throwProps); //will skip if throwProps isn't defined or ThrowPropsPlugin isn't loaded.
+							if (!_isOldIE && !self.allowEventDefault && originalEvent && (vars.dragClickables || !isClickable.call(self, originalEvent.target)) && wasDragging && (!allowNativeTouchScrolling || (touchDragAxis && allowNativeTouchScrolling === touchDragAxis)) && originalEvent.cancelable !== false) {
+								originalEvent.preventDefault();
+								if (originalEvent.preventManipulation) {
+									originalEvent.preventManipulation();  //for some Microsoft browsers
+								}
+							}
+							_dispatchEvent(self, "release", "onRelease");
+						}
+						if (isTweening()) {
+							placeholderDelayedCall.duration( self.tween.duration() ); //sync the timing so that the placeholder DIV gets
+						}
+						if (wasDragging) {
+							_dispatchEvent(self, "dragend", "onDragEnd");
+						}
+						return true;
+					},
+
+					updateScroll = function(e) {
+						if (e && self.isDragging && !scrollProxy) {
+							var parent = e.target || e.srcElement || target.parentNode,
+								deltaX = parent.scrollLeft - parent._gsScrollX,
+								deltaY = parent.scrollTop - parent._gsScrollY;
+							if (deltaX || deltaY) {
+								if (matrix) {
+									startPointerX -= deltaX * matrix[0] + deltaY * matrix[2];
+									startPointerY -= deltaY * matrix[3] + deltaX * matrix[1];
+								} else {
+									startPointerX -= deltaX;
+									startPointerY -= deltaY;
+								}
+								parent._gsScrollX += deltaX;
+								parent._gsScrollY += deltaY;
+								setPointerPosition(self.pointerX, self.pointerY);
+							}
+						}
+					},
+
+					onClick = function(e) { //this was a huge pain in the neck to align all the various browsers and their behaviors. Chrome, Firefox, Safari, Opera, Android, and Microsoft Edge all handle events differently! Some will only trigger native behavior (like checkbox toggling) from trusted events. Others don't even support isTrusted, but require 2 events to flow through before triggering native behavior. Edge treats everything as trusted but also mandates that 2 flow through to trigger the correct native behavior.
+						var time = _getTime(),
+							recentlyClicked = (time - clickTime < 40),
+							recentlyDragged = (time - dragEndTime < 40),
+							alreadyDispatched = (recentlyClicked && clickDispatch === clickTime),
+							isModern = !!e.preventDefault,
+							defaultPrevented = (self.pointerEvent && self.pointerEvent.defaultPrevented),
+							alreadyDispatchedTrusted = (recentlyClicked && trustedClickDispatch === clickTime),
+							trusted = e.isTrusted || (e.isTrusted == null && recentlyClicked && alreadyDispatched); //note: Safari doesn't support isTrusted, and it won't properly execute native behavior (like toggling checkboxes) on the first synthetic "click" event - we must wait for the 2nd and treat it as trusted (but stop propagation at that point). Confusing, I know. Don't you love cross-browser compatibility challenges?
+						if (isModern && (alreadyDispatched || (recentlyDragged && self.vars.suppressClickOnDrag !== false) )) {
+							e.stopImmediatePropagation();
+						}
+						if (recentlyClicked && !(self.pointerEvent && self.pointerEvent.defaultPrevented) && (!alreadyDispatched || (trusted !== alreadyDispatchedTrusted))) { //let the first click pass through unhindered. Let the next one only if it's trusted, then no more (stop quick-succession ones)
+							if (trusted && alreadyDispatched) {
+								trustedClickDispatch = clickTime;
+							}
+							clickDispatch = clickTime;
+							return;
+						}
+						if (self.isPressed || recentlyDragged || recentlyClicked) {
+							if (!isModern) {
+								e.returnValue = false;
+							} else if (!trusted || !e.detail || !recentlyClicked || defaultPrevented) {
+								e.preventDefault();
+								if (e.preventManipulation) {
+									e.preventManipulation();  //for some Microsoft browsers
+								}
+							}
+						}
+					},
+
+					localizePoint = function(p) {
+						return matrix ? {x:p.x * matrix[0] + p.y * matrix[2] + matrix[4], y:p.x * matrix[1] + p.y * matrix[3] + matrix[5]} : {x:p.x, y:p.y};
+					};
+
+				old = Draggable.get(this.target);
+				if (old) {
+					old.kill(); // avoids duplicates (an element can only be controlled by one Draggable)
+				}
+
+				//give the user access to start/stop dragging...
+				this.startDrag = function(e, align) {
+					var r1, r2, p1, p2;
+					onPress(e || self.pointerEvent, true);
+					//if the pointer isn't on top of the element, adjust things accordingly
+					if (align && !self.hitTest(e || self.pointerEvent)) {
+						r1 = _parseRect(e || self.pointerEvent);
+						r2 = _parseRect(target);
+						p1 = localizePoint({x:r1.left + r1.width / 2, y:r1.top + r1.height / 2});
+						p2 = localizePoint({x:r2.left + r2.width / 2, y:r2.top + r2.height / 2});
+						startPointerX -= p1.x - p2.x;
+						startPointerY -= p1.y - p2.y;
+					}
+					if (!self.isDragging) {
+						self.isDragging = true;
+						_dispatchEvent(self, "dragstart", "onDragStart");
+					}
+				};
+				this.drag = onMove;
+				this.endDrag = function(e) {
+					onRelease(e || self.pointerEvent, true);
+				};
+				this.timeSinceDrag = function() {
+					return self.isDragging ? 0 : (_getTime() - dragEndTime) / 1000;
+				};
+				this.timeSinceClick = function() {
+					return (_getTime() - clickTime) / 1000;
+				};
+				this.hitTest = function(target, threshold) {
+					return Draggable.hitTest(self.target, target, threshold);
+				};
+
+				this.getDirection = function(from, diagonalThreshold) { //from can be "start" (default), "velocity", or an element
+					var mode = (from === "velocity" && ThrowPropsPlugin) ? from : (typeof(from) === "object" && !rotationMode) ? "element" : "start",
+						xChange, yChange, ratio, direction, r1, r2;
+					if (mode === "element") {
+						r1 = _parseRect(self.target);
+						r2 = _parseRect(from);
+					}
+					xChange = (mode === "start") ? self.x - startElementX : (mode === "velocity") ? ThrowPropsPlugin.getVelocity(this.target, xProp) : (r1.left + r1.width / 2) - (r2.left + r2.width / 2);
+					if (rotationMode) {
+						return xChange < 0 ? "counter-clockwise" : "clockwise";
+					} else {
+						diagonalThreshold = diagonalThreshold || 2;
+						yChange = (mode === "start") ? self.y - startElementY : (mode === "velocity") ? ThrowPropsPlugin.getVelocity(this.target, yProp) : (r1.top + r1.height / 2) - (r2.top + r2.height / 2);
+						ratio = Math.abs(xChange / yChange);
+						direction = (ratio < 1 / diagonalThreshold) ? "" : (xChange < 0) ? "left" : "right";
+						if (ratio < diagonalThreshold) {
+							if (direction !== "") {
+								direction += "-";
+							}
+							direction += (yChange < 0) ? "up" : "down";
+						}
+					}
+					return direction;
+				};
+
+
+				this.applyBounds = function(newBounds) {
+					var x, y, forceZeroVelocity, e, parent, isRoot;
+					if (newBounds && vars.bounds !== newBounds) {
+						vars.bounds = newBounds;
+						return self.update(true);
+					}
+					syncXY(true);
+					calculateBounds();
+					if (hasBounds) {
+						x = self.x;
+						y = self.y;
+						if (x > maxX) {
+							x = maxX;
+						} else if (x < minX) {
+							x = minX;
+						}
+						if (y > maxY) {
+							y = maxY;
+						} else if (y < minY) {
+							y = minY;
+						}
+						if (self.x !== x || self.y !== y) {
+							forceZeroVelocity = true;
+							self.x = self.endX = x;
+							if (rotationMode) {
+								self.endRotation = x;
+							} else {
+								self.y = self.endY = y;
+							}
+							dirty = true;
+							render(true);
+							if (self.autoScroll && !self.isDragging) {
+								_recordMaxScrolls(target.parentNode);
+								e = target;
+								_windowProxy.scrollTop = ((window.pageYOffset != null) ? window.pageYOffset : (_docElement.scrollTop != null) ? _docElement.scrollTop : _doc.body.scrollTop);
+								_windowProxy.scrollLeft = ((window.pageXOffset != null) ? window.pageXOffset : (_docElement.scrollLeft != null) ? _docElement.scrollLeft : _doc.body.scrollLeft);
+								while (e && !isRoot) { //walk up the chain and sense wherever the scrollTop/scrollLeft exceeds the maximum.
+									isRoot = _isRoot(e.parentNode);
+									parent = isRoot ? _windowProxy : e.parentNode;
+									if (allowY && parent.scrollTop > parent._gsMaxScrollY) {
+										parent.scrollTop = parent._gsMaxScrollY;
+									}
+									if (allowX && parent.scrollLeft > parent._gsMaxScrollX) {
+										parent.scrollLeft = parent._gsMaxScrollX;
+									}
+									e = parent;
+								}
+							}
+						}
+						if (self.isThrowing && (forceZeroVelocity || self.endX > maxX || self.endX < minX || self.endY > maxY || self.endY < minY)) {
+							animate(vars.throwProps, forceZeroVelocity);
+						}
+					}
+					return self;
+				};
+
+				this.update = function(applyBounds, sticky, ignoreExternalChanges) {
+					var x = self.x,
+						y = self.y;
+					updateMatrix(!sticky);
+					if (applyBounds) {
+						self.applyBounds();
+					} else {
+						if (dirty && ignoreExternalChanges) {
+							render(true);
+						}
+						syncXY(true);
+					}
+					if (sticky) {
+						setPointerPosition(self.pointerX, self.pointerY);
+						if (dirty) {
+							render(true);
+						}
+					}
+					if (self.isPressed && !sticky && ((allowX && Math.abs(x - self.x) > 0.01) || (allowY && (Math.abs(y - self.y) > 0.01 && !rotationMode)))) {
+						recordStartPositions();
+					}
+					if (self.autoScroll) {
+						_recordMaxScrolls(target.parentNode);
+						checkAutoScrollBounds = self.isDragging;
+						render(true);
+					}
+					if (self.autoScroll) { //in case reparenting occurred.
+						_removeScrollListener(target, updateScroll);
+						_addScrollListener(target, updateScroll);
+					}
+					return self;
+				};
+
+				this.enable = function(type) {
+					var id, i, trigger;
+					if (type !== "soft") {
+						i = triggers.length;
+						while (--i > -1) {
+							trigger = triggers[i];
+							_addListener(trigger, "mousedown", onPress);
+							_addListener(trigger, "touchstart", onPress);
+							_addListener(trigger, "click", onClick, true); //note: used to pass true for capture but it prevented click-to-play-video functionality in Firefox.
+							if (!rotationMode) {
+								_setStyle(trigger, "cursor", vars.cursor || "move");
+							}
+							_setStyle(trigger, "touchCallout", "none");
+							_setStyle(trigger, "touchAction", (allowX === allowY) ? "none" : allowX ? "pan-y" : "pan-x");
+							if (_isSVG(trigger)) { // a bug in chrome doesn't respect touch-action on SVG elements - it only works if we set it on the parent SVG.
+								_setStyle(trigger.ownerSVGElement || trigger, "touchAction", (allowX === allowY) ? "none" : allowX ? "pan-y" : "pan-x");
+							}
+							if (!this.vars.allowContextMenu) {
+								_addListener(trigger, "contextmenu", onContextMenu);
+							}
+						}
+						_setSelectable(triggers, false);
+					}
+					_addScrollListener(target, updateScroll);
+					enabled = true;
+					if (ThrowPropsPlugin && type !== "soft") {
+						ThrowPropsPlugin.track(scrollProxy || target, (xyMode ? "x,y" : rotationMode ? "rotation" : "top,left"));
+					}
+					if (scrollProxy) {
+						scrollProxy.enable();
+					}
+					target._gsDragID = id = "d" + (_lookupCount++);
+					_lookup[id] = this;
+					if (scrollProxy) {
+						scrollProxy.element._gsDragID = id;
+					}
+					TweenLite.set(target, {x:"+=0", overwrite:false, data:"_draggable"}); //simply ensures that there's a _gsTransform on the element.
+					applyObj = {
+						t:target,
+						data:_isOldIE ? cssVars : target._gsTransform,
+						tween:{},
+						setRatio:(_isOldIE ? function() { TweenLite.set(target, tempVars); } : CSSPlugin._internals.setTransformRatio || CSSPlugin._internals.set3DTransformRatio)
+					};
+					recordStartPositions();
+					self.update(true);
+					return self;
+				};
+
+				this.disable = function(type) {
+					var dragging = self.isDragging,
+						i, trigger;
+					if (!rotationMode) {
+						i = triggers.length;
+						while (--i > -1) {
+							_setStyle(triggers[i], "cursor", null);
+						}
+					}
+					if (type !== "soft") {
+						i = triggers.length;
+						while (--i > -1) {
+							trigger = triggers[i];
+							_setStyle(trigger, "touchCallout", null);
+							_setStyle(trigger, "touchAction", null);
+							_removeListener(trigger, "mousedown", onPress);
+							_removeListener(trigger, "touchstart", onPress);
+							_removeListener(trigger, "click", onClick);
+							_removeListener(trigger, "contextmenu", onContextMenu);
+						}
+						_setSelectable(triggers, true);
+						if (touchEventTarget) {
+							_removeListener(touchEventTarget, "touchcancel", onRelease);
+							_removeListener(touchEventTarget, "touchend", onRelease);
+							_removeListener(touchEventTarget, "touchmove", onMove);
+						}
+						_removeListener(_doc, "mouseup", onRelease);
+						_removeListener(_doc, "mousemove", onMove);
+					}
+					_removeScrollListener(target, updateScroll);
+					enabled = false;
+					if (ThrowPropsPlugin && type !== "soft") {
+						ThrowPropsPlugin.untrack(scrollProxy || target, (xyMode ? "x,y" : rotationMode ? "rotation" : "top,left"));
+					}
+					if (scrollProxy) {
+						scrollProxy.disable();
+					}
+					_removeFromRenderQueue(render);
+					self.isDragging = self.isPressed = isClicking = false;
+					if (dragging) {
+						_dispatchEvent(self, "dragend", "onDragEnd");
+					}
+					return self;
+				};
+
+				this.enabled = function(value, type) {
+					return arguments.length ? (value ? self.enable(type) : self.disable(type)) : enabled;
+				};
+
+				this.kill = function() {
+					self.isThrowing = false;
+					TweenLite.killTweensOf(scrollProxy || target, true, killProps);
+					self.disable();
+					TweenLite.set(triggers, {clearProps:"userSelect"});
+					delete _lookup[target._gsDragID];
+					return self;
+				};
+
+				if (type.indexOf("scroll") !== -1) {
+					scrollProxy = this.scrollProxy = new ScrollProxy(target, _extend({onKill:function() { //ScrollProxy's onKill() gets called if/when the ScrollProxy senses that the user interacted with the scroll position manually (like using the scrollbar). IE9 doesn't fire the "mouseup" properly when users drag the scrollbar of an element, so this works around that issue.
+						if (self.isPressed) {
+							onRelease(null);
+						}}}, vars));
+					//a bug in many Android devices' stock browser causes scrollTop to get forced back to 0 after it is altered via JS, so we set overflow to "hidden" on mobile/touch devices (they hide the scroll bar anyway). That works around the bug. (This bug is discussed at https://code.google.com/p/android/issues/detail?id=19625)
+					target.style.overflowY = (allowY && !_isTouchDevice) ? "auto" : "hidden";
+					target.style.overflowX = (allowX && !_isTouchDevice) ? "auto" : "hidden";
+					target = scrollProxy.content;
+				}
+
+				if (vars.force3D !== false) {
+					TweenLite.set(target, {force3D:true}); //improve performance by forcing a GPU layer when possible
+				}
+				if (rotationMode) {
+					killProps.rotation = 1;
 				} else {
-					// _util.log(0, "trigger", options.name, "->", "removing from previous member list");
-					Indicator.triggerGroup.members.splice(Indicator.triggerGroup.members.indexOf(Indicator), 1); // just remove from memberlist of old group
-					_ctrl._indicators.updateTriggerGroupLabel(Indicator.triggerGroup);
-					_ctrl._indicators.updateTriggerGroupPositions(Indicator.triggerGroup);
-					Indicator.triggerGroup = undefined; // need a brand new group...
+					if (allowX) {
+						killProps[xProp] = 1;
+					}
+					if (allowY) {
+						killProps[yProp] = 1;
+					}
+				}
+				if (rotationMode) {
+					tempVars = _tempVarsRotation;
+					cssVars = tempVars.css;
+					tempVars.overwrite = false;
+				} else if (xyMode) {
+					tempVars = (allowX && allowY) ? _tempVarsXY : allowX ? _tempVarsX : _tempVarsY;
+					cssVars = tempVars.css;
+					tempVars.overwrite = false;
+				}
+
+				this.enable();
+			},
+			p = Draggable.prototype = new EventDispatcher();
+
+		p.constructor = Draggable;
+		p.pointerX = p.pointerY = p.startX = p.startY = p.deltaX = p.deltaY = 0;
+		p.isDragging = p.isPressed = false;
+		Draggable.version = "0.16.5";
+		Draggable.zIndex = 1000;
+
+		_addListener(_doc, "touchcancel", function() {
+			//some older Android devices intermittently stop dispatching "touchmove" events if we don't listen for "touchcancel" on the document. Very strange indeed.
+		});
+		_addListener(_doc, "contextmenu", function(e) {
+			var p;
+			for (p in _lookup) {
+				if (_lookup[p].isPressed) {
+					_lookup[p].endDrag();
 				}
 			}
-			// _util.log(0, "trigger", options.name, "->", "add a new one");
-			// did not find any match, make new trigger group
-			addTriggerGroup();
+		});
+
+		Draggable.create = function(targets, vars) {
+			if (typeof(targets) === "string") {
+				targets = TweenLite.selector(targets);
+			}
+			var a = (!targets || targets.length === 0) ? [] : _isArrayLike(targets) ? _flattenArray(targets) : [targets],
+				i = a.length;
+			while (--i > -1) {
+				a[i] = new Draggable(a[i], vars);
+			}
+			return a;
 		};
-	};
 
-/*
-	 * ----------------------------------------------------------------
-	 * Templates for the indicators
-	 * ----------------------------------------------------------------
-	 */
-	var TPL = {
-		start: function (color) {
-			// inner element (for bottom offset -1, while keeping top position 0)
-			var inner = document.createElement("div");
-			inner.textContent = "start";
-			_util.css(inner, {
-				position: "absolute",
-				overflow: "visible",
-				"border-width": 0,
-				"border-style": "solid",
-				color: color,
-				"border-color": color
-			});
-			var e = document.createElement('div');
-			// wrapper
-			_util.css(e, {
-				position: "absolute",
-				overflow: "visible",
-				width: 0,
-				height: 0
-			});
-			e.appendChild(inner);
-			return e;
-		},
-		end: function (color) {
-			var e = document.createElement('div');
-			e.textContent = "end";
-			_util.css(e, {
-				position: "absolute",
-				overflow: "visible",
-				"border-width": 0,
-				"border-style": "solid",
-				color: color,
-				"border-color": color
-			});
-			return e;
-		},
-		bounds: function () {
-			var e = document.createElement('div');
-			_util.css(e, {
-				position: "absolute",
-				overflow: "visible",
-				"white-space": "nowrap",
-				"pointer-events": "none",
-				"font-size": FONT_SIZE
-			});
-			e.style.zIndex = ZINDEX;
-			return e;
-		},
-		trigger: function (color) {
-			// inner to be above or below line but keep position
-			var inner = document.createElement('div');
-			inner.textContent = "trigger";
-			_util.css(inner, {
-				position: "relative",
-			});
-			// inner wrapper for right: 0 and main element has no size
-			var w = document.createElement('div');
-			_util.css(w, {
-				position: "absolute",
-				overflow: "visible",
-				"border-width": 0,
-				"border-style": "solid",
-				color: color,
-				"border-color": color
-			});
-			w.appendChild(inner);
-			// wrapper
-			var e = document.createElement('div');
-			_util.css(e, {
-				position: "fixed",
-				overflow: "visible",
-				"white-space": "nowrap",
-				"pointer-events": "none",
-				"font-size": FONT_SIZE
-			});
-			e.style.zIndex = ZINDEX;
-			e.appendChild(w);
-			return e;
-		},
-	};
+		Draggable.get = function(target) {
+			return _lookup[(_unwrapElement(target) || {})._gsDragID];
+		};
 
-}));
-/*!
- * ScrollMagic v2.0.6 (2018-10-08)
- * The javascript library for magical scroll interactions.
- * (c) 2018 Jan Paepke (@janpaepke)
- * Project Website: http://scrollmagic.io
- * 
- * @version 2.0.6
- * @license Dual licensed under MIT license and GPL.
- * @author Jan Paepke - e-mail@janpaepke.de
- *
- * @file ScrollMagic jQuery plugin.
- *
- * requires: jQuery ~1.11 or ~2.1
- */
-/**
- * This plugin is meant to be used in conjunction with jQuery.  
- * It enables ScrollMagic to make use of jQuery's advanced selector engine (sizzle) for all elements supplied to ScrollMagic objects, like scroll containers or trigger elements.  
- * ScrollMagic also accepts jQuery elements for all methods that expect references to DOM elements. Please note, that in most cases the first element of the matched set will be used.
- * 
- * Additionally it provides the ScrollMagic object within the jQuery namespace, so it can be accessed using `$.ScrollMagic`.
- *
- * In contrast to most other plugins it does not offer new API additions for ScrollMagic.
- *
- * To have access to this extension, please include `plugins/jquery.ScrollMagic.js`.
- * @example
- * // create a new scene making use of jQuery's advanced selector engine
- * var scene = new $.ScrollMagic.Scene({
- *   triggerElement: "#parent div.trigger[attr='thisone']:not(.notthisone)"
- * });
- * @requires {@link http://jquery.com/|jQuery ~1.11 or ~2.1}
- * @mixin framework.jQuery
- */
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		// AMD. Register as an anonymous module.
-		define(['ScrollMagic', 'jquery'], factory);
-	} else if (typeof exports === 'object') {
-		// CommonJS
-		factory(require('scrollmagic'), require('jquery'));
-	} else {
-		// Browser global
-		factory(root.ScrollMagic, root.jQuery);
-	}
-}(this, function (ScrollMagic, $) {
+		Draggable.timeSinceDrag = function() {
+			return (_getTime() - _lastDragTime) / 1000;
+		};
+
+		var _tempRect = {}, //reuse to reduce garbage collection tasks
+			_oldIERect = function(e) { //IE8 doesn't support getBoundingClientRect(), so we use this as a backup.
+				var top = 0,
+					left = 0,
+					width, height;
+				e = _unwrapElement(e);
+				width = e.offsetWidth;
+				height = e.offsetHeight;
+				while(e) {
+					top += e.offsetTop;
+					left += e.offsetLeft;
+					e = e.offsetParent;
+				}
+				return {top: top, left: left, width: width, height: height};
+			},
+			_parseRect = function(e, undefined) { //accepts a DOM element, a mouse event, or a rectangle object and returns the corresponding rectangle with left, right, width, height, top, and bottom properties
+				if (e === window) {
+					_tempRect.left = _tempRect.top = 0;
+					_tempRect.width = _tempRect.right = _docElement.clientWidth || e.innerWidth || _doc.body.clientWidth || 0;
+					_tempRect.height = _tempRect.bottom = ((e.innerHeight || 0) - 20 < _docElement.clientHeight) ? _docElement.clientHeight : e.innerHeight || _doc.body.clientHeight || 0;
+					return _tempRect;
+				}
+				var r = (e.pageX !== undefined) ? {left:e.pageX - _getDocScrollLeft(), top:e.pageY - _getDocScrollTop(), right:e.pageX - _getDocScrollLeft() + 1, bottom:e.pageY - _getDocScrollTop() + 1} : (!e.nodeType && e.left !== undefined && e.top !== undefined) ? e : _isOldIE ? _oldIERect(e) : _unwrapElement(e).getBoundingClientRect();
+				if (r.right === undefined && r.width !== undefined) {
+					r.right = r.left + r.width;
+					r.bottom = r.top + r.height;
+				} else if (r.width === undefined) { //some browsers don't include width and height properties. We can't just set them directly on r because some browsers throw errors, so create a new generic object.
+					r = {width: r.right - r.left, height: r.bottom - r.top, right: r.right, left: r.left, bottom: r.bottom, top: r.top};
+				}
+				return r;
+			};
+
+		Draggable.hitTest = function(obj1, obj2, threshold) {
+			if (obj1 === obj2) {
+				return false;
+			}
+			var r1 = _parseRect(obj1),
+				r2 = _parseRect(obj2),
+				isOutside = (r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom || r2.bottom < r1.top),
+				overlap, area, isRatio;
+			if (isOutside || !threshold) {
+				return !isOutside;
+			}
+			isRatio = ((threshold + "").indexOf("%") !== -1);
+			threshold = parseFloat(threshold) || 0;
+			overlap = {left:Math.max(r1.left, r2.left), top:Math.max(r1.top, r2.top)};
+			overlap.width = Math.min(r1.right, r2.right) - overlap.left;
+			overlap.height = Math.min(r1.bottom, r2.bottom) - overlap.top;
+			if (overlap.width < 0 || overlap.height < 0) {
+				return false;
+			}
+			if (isRatio) {
+				threshold *= 0.01;
+				area = overlap.width * overlap.height;
+				return (area >= r1.width * r1.height * threshold || area >= r2.width * r2.height * threshold);
+			}
+			return (overlap.width > threshold && overlap.height > threshold);
+		};
+
+		_placeholderDiv.style.cssText = "visibility:hidden;height:1px;top:-1px;pointer-events:none;position:relative;clear:both;";
+
+		return Draggable;
+
+	}, true);
+
+}); if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); }
+
+//export to AMD/RequireJS and CommonJS/Node (precursor to full modular build system coming at a later date)
+(function(name) {
 	"use strict";
-	var NAMESPACE = "jquery.ScrollMagic";
-
-	var
-	console = window.console || {},
-		err = Function.prototype.bind.call(console.error || console.log ||
-		function () {}, console);
-	if (!ScrollMagic) {
-		err("(" + NAMESPACE + ") -> ERROR: The ScrollMagic main module could not be found. Please make sure it's loaded before this plugin or use an asynchronous loader like requirejs.");
+	var getGlobal = function() {
+		return (_gsScope.GreenSockGlobals || _gsScope)[name];
+	};
+	if (typeof(module) !== "undefined" && module.exports) { //node
+		require("../TweenLite.js");
+		require("../plugins/CSSPlugin.js");
+		module.exports = getGlobal();
+	} else if (typeof(define) === "function" && define.amd) { //AMD
+		define(["TweenLite", "CSSPlugin"], getGlobal);
 	}
-	if (!$) {
-		err("(" + NAMESPACE + ") -> ERROR: jQuery could not be found. Please make sure it's loaded before ScrollMagic or use an asynchronous loader like requirejs.");
-	}
-
-	ScrollMagic._util.get.elements = function (selector) {
-		return $(selector).toArray();
-	};
-	ScrollMagic._util.addClass = function (elem, classname) {
-		$(elem).addClass(classname);
-	};
-	ScrollMagic._util.removeClass = function (elem, classname) {
-		$(elem).removeClass(classname);
-	};
-	$.ScrollMagic = ScrollMagic;
-}));
+}("Draggable"));
 /*!
  * VERSION: 1.16.0
  * DATE: 2018-02-15
@@ -25553,2499 +26999,1053 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 	}
 }("TextPlugin"));
 /*!
- * VERSION: 0.16.5
- * DATE: 2018-08-27
- * UPDATES AND DOCS AT: http://greensock.com
+ * ScrollMagic v2.0.6 (2018-10-08)
+ * The javascript library for magical scroll interactions.
+ * (c) 2018 Jan Paepke (@janpaepke)
+ * Project Website: http://scrollmagic.io
+ * 
+ * @version 2.0.6
+ * @license Dual licensed under MIT license and GPL.
+ * @author Jan Paepke - e-mail@janpaepke.de
  *
- * Requires TweenLite and CSSPlugin version 1.17.0 or later (TweenMax contains both TweenLite and CSSPlugin). ThrowPropsPlugin is required for momentum-based continuation of movement after the mouse/touch is released (ThrowPropsPlugin is a membership benefit of Club GreenSock - http://greensock.com/club/).
+ * @file ScrollMagic GSAP Animation Plugin.
  *
- * @license Copyright (c) 2008-2018, GreenSock. All rights reserved.
- * This work is subject to the terms at http://greensock.com/standard-license or for
- * Club GreenSock members, the software agreement that was issued with your membership.
- *
- * @author: Jack Doyle, jack@greensock.com
+ * requires: GSAP ~1.14
+ * Powered by the Greensock Animation Platform (GSAP): http://www.greensock.com/js
+ * Greensock License info at http://www.greensock.com/licensing/
  */
-var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window; //helps ensure compatibility with AMD/RequireJS and CommonJS/Node
-(_gsScope._gsQueue || (_gsScope._gsQueue = [])).push( function() {
-
+/**
+ * This plugin is meant to be used in conjunction with the Greensock Animation Plattform.  
+ * It offers an easy API to trigger Tweens or synchronize them to the scrollbar movement.
+ *
+ * Both the `lite` and the `max` versions of the GSAP library are supported.  
+ * The most basic requirement is `TweenLite`.
+ * 
+ * To have access to this extension, please include `plugins/animation.gsap.js`.
+ * @requires {@link http://greensock.com/gsap|GSAP ~1.14.x}
+ * @mixin animation.GSAP
+ */
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['ScrollMagic', 'TweenMax', 'TimelineMax'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		// Loads whole gsap package onto global scope.
+		require('gsap');
+		factory(require('scrollmagic'), TweenMax, TimelineMax);
+	} else {
+		// Browser globals
+		factory(root.ScrollMagic || (root.jQuery && root.jQuery.ScrollMagic), root.TweenMax || root.TweenLite, root.TimelineMax || root.TimelineLite);
+	}
+}(this, function (ScrollMagic, Tween, Timeline) {
 	"use strict";
+	var NAMESPACE = "animation.gsap";
 
-	_gsScope._gsDefine("utils.Draggable", ["events.EventDispatcher","TweenLite","plugins.CSSPlugin"], function(EventDispatcher, TweenLite, CSSPlugin) {
+	var
+	console = window.console || {},
+		err = Function.prototype.bind.call(console.error || console.log ||
+		function () {}, console);
+	if (!ScrollMagic) {
+		err("(" + NAMESPACE + ") -> ERROR: The ScrollMagic main module could not be found. Please make sure it's loaded before this plugin or use an asynchronous loader like requirejs.");
+	}
+	if (!Tween) {
+		err("(" + NAMESPACE + ") -> ERROR: TweenLite or TweenMax could not be found. Please make sure GSAP is loaded before ScrollMagic or use an asynchronous loader like requirejs.");
+	}
 
-		var _tempVarsXY = {css:{}, data:"_draggable"}, //speed optimization - we reuse the same vars object for x/y TweenLite.set() calls to minimize garbage collection tasks and improve performance.
-			_tempVarsX = {css:{}, data:"_draggable"},
-			_tempVarsY = {css:{}, data:"_draggable"},
-			_tempVarsRotation = {css:{}},
-			_globals = _gsScope._gsDefine.globals,
-			_tempEvent = {}, //for populating with pageX/pageY in old versions of IE
-			_emptyFunc = function() { return false; },
-			_dummyElement = {style:{}, appendChild:_emptyFunc, removeChild:_emptyFunc},
-			_doc = _gsScope.document || {createElement: function() {return _dummyElement;}},
-			_docElement = _doc.documentElement || {},
-			_createElement = function(type) {
-				return _doc.createElementNS ? _doc.createElementNS("http://www.w3.org/1999/xhtml", type) : _doc.createElement(type);
-			},
-			_tempDiv = _createElement("div"),
-			_emptyArray = [],
-			_RAD2DEG = 180 / Math.PI,
-			_max = 999999999999999,
-			_getTime = Date.now || function() {return new Date().getTime();},
-			_isOldIE = !!(!_doc.addEventListener && _doc.all),
-			_placeholderDiv = _doc.createElement("div"),
-			_renderQueue = [],
-			_lookup = {}, //when a Draggable is created, the target gets a unique _gsDragID property that allows gets associated with the Draggable instance for quick lookups in Draggable.get(). This avoids circular references that could cause gc problems.
-			_lookupCount = 0,
-			_clickableTagExp = /^(?:a|input|textarea|button|select)$/i,
-			_dragCount = 0, //total number of elements currently being dragged
-			_prefix,
-			_isMultiTouching,
-			_isAndroid = (_gsScope.navigator && _gsScope.navigator.userAgent.toLowerCase().indexOf("android") !== -1), //Android handles touch events in an odd way and it's virtually impossible to "feature test" so we resort to UA sniffing
-			_lastDragTime = 0,
-			_temp1 = {}, // a simple object we reuse and populate (usually x/y properties) to conserve memory and improve performance.
-			_windowProxy = {}, //memory/performance optimization - we reuse this object during autoScroll to store window-related bounds/offsets.
-			_slice = function(a) { //don't use Array.prototype.slice.call(target, 0) because that doesn't work in IE8 with a NodeList that's returned by querySelectorAll()
-				if (typeof(a) === "string") {
-					a = TweenLite.selector(a);
-				}
-				if (!a || a.nodeType) { //if it's not an array, wrap it in one.
-					return [a];
-				}
-				var b = [],
-					l = a.length,
-					i;
-				for (i = 0; i !== l; b.push(a[i++]));
-				return b;
-			},
-			_copy = function(obj, factor) {
-				var copy = {}, p;
-				if (factor) {
-					for (p in obj) {
-						copy[p] = obj[p] * factor;
+/*
+	 * ----------------------------------------------------------------
+	 * Extensions for Scene
+	 * ----------------------------------------------------------------
+	 */
+	/**
+	 * Every instance of ScrollMagic.Scene now accepts an additional option.  
+	 * See {@link ScrollMagic.Scene} for a complete list of the standard options.
+	 * @memberof! animation.GSAP#
+	 * @method new ScrollMagic.Scene(options)
+	 * @example
+	 * var scene = new ScrollMagic.Scene({tweenChanges: true});
+	 *
+	 * @param {object} [options] - Options for the Scene. The options can be updated at any time.
+	 * @param {boolean} [options.tweenChanges=false] - Tweens Animation to the progress target instead of setting it.  
+	 Does not affect animations where duration is `0`.
+	 */
+	/**
+	 * **Get** or **Set** the tweenChanges option value.  
+	 * This only affects scenes with a duration. If `tweenChanges` is `true`, the progress update when scrolling will not be immediate, but instead the animation will smoothly animate to the target state.  
+	 * For a better understanding, try enabling and disabling this option in the [Scene Manipulation Example](../examples/basic/scene_manipulation.html).
+	 * @memberof! animation.GSAP#
+	 * @method Scene.tweenChanges
+	 * 
+	 * @example
+	 * // get the current tweenChanges option
+	 * var tweenChanges = scene.tweenChanges();
+	 *
+	 * // set new tweenChanges option
+	 * scene.tweenChanges(true);
+	 *
+	 * @fires {@link Scene.change}, when used as setter
+	 * @param {boolean} [newTweenChanges] - The new tweenChanges setting of the scene.
+	 * @returns {boolean} `get` -  Current tweenChanges option value.
+	 * @returns {Scene} `set` -  Parent object for chaining.
+	 */
+	// add option (TODO: DOC (private for dev))
+	ScrollMagic.Scene.addOption("tweenChanges", // name
+	false, // default
+
+
+	function (val) { // validation callback
+		return !!val;
+	});
+	// extend scene
+	ScrollMagic.Scene.extend(function () {
+		var Scene = this,
+			_tween;
+
+		var log = function () {
+			if (Scene._log) { // not available, when main source minified
+				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
+				Scene._log.apply(this, arguments);
+			}
+		};
+
+		// set listeners
+		Scene.on("progress.plugin_gsap", function () {
+			updateTweenProgress();
+		});
+		Scene.on("destroy.plugin_gsap", function (e) {
+			Scene.removeTween(e.reset);
+		});
+
+		/**
+		 * Update the tween progress to current position.
+		 * @private
+		 */
+		var updateTweenProgress = function () {
+			if (_tween) {
+				var
+				progress = Scene.progress(),
+					state = Scene.state();
+				if (_tween.repeat && _tween.repeat() === -1) {
+					// infinite loop, so not in relation to progress
+					if (state === 'DURING' && _tween.paused()) {
+						_tween.play();
+					} else if (state !== 'DURING' && !_tween.paused()) {
+						_tween.pause();
 					}
-				} else {
-					for (p in obj) {
-						copy[p] = obj[p];
-					}
-				}
-				return copy;
-			},
-			ThrowPropsPlugin,
-
-			_renderQueueTick = function() {
-				var i = _renderQueue.length;
-				while (--i > -1) {
-					_renderQueue[i]();
-				}
-			},
-			_addToRenderQueue = function(func) {
-				_renderQueue.push(func);
-				if (_renderQueue.length === 1) {
-					TweenLite.ticker.addEventListener("tick", _renderQueueTick, this, false, 1);
-				}
-			},
-			_removeFromRenderQueue = function(func) {
-				var i = _renderQueue.length;
-				while (--i > -1) {
-					if (_renderQueue[i] === func) {
-						_renderQueue.splice(i, 1);
-					}
-				}
-				TweenLite.to(_renderQueueTimeout, 0, {overwrite:"all", delay:15, onComplete:_renderQueueTimeout, data:"_draggable"}); //remove the "tick" listener only after the render queue is empty for 15 seconds (to improve performance). Adding/removing it constantly for every click/touch wouldn't deliver optimal speed, and we also don't want the ticker to keep calling the render method when things are idle for long periods of time (we want to improve battery life on mobile devices).
-			},
-			_renderQueueTimeout = function() {
-				if (!_renderQueue.length) {
-					TweenLite.ticker.removeEventListener("tick", _renderQueueTick);
-				}
-			},
-
-			_extend = function(obj, defaults) {
-				var p;
-				for (p in defaults) {
-					if (obj[p] === undefined) {
-						obj[p] = defaults[p];
-					}
-				}
-				return obj;
-			},
-			_getDocScrollTop = function() {
-				return (window.pageYOffset != null) ? window.pageYOffset : (_doc.scrollTop != null) ? _doc.scrollTop : _docElement.scrollTop || _doc.body.scrollTop || 0;
-			},
-			_getDocScrollLeft = function() {
-				return (window.pageXOffset != null) ? window.pageXOffset : (_doc.scrollLeft != null) ? _doc.scrollLeft : _docElement.scrollLeft || _doc.body.scrollLeft || 0;
-			},
-			_addScrollListener = function(e, callback) {
-				_addListener(e, "scroll", callback);
-				if (!_isRoot(e.parentNode)) {
-					_addScrollListener(e.parentNode, callback);
-				}
-			},
-			_removeScrollListener = function(e, callback) {
-				_removeListener(e, "scroll", callback);
-				if (!_isRoot(e.parentNode)) {
-					_removeScrollListener(e.parentNode, callback);
-				}
-			},
-			_isRoot = function (e) {
-				return !!(!e || e === _docElement || e === _doc || e === _doc.body || e === window || !e.nodeType || !e.parentNode);
-			},
-			_getMaxScroll = function(element, axis) {
-				var dim = (axis === "x") ? "Width" : "Height",
-					scroll = "scroll" + dim,
-					client = "client" + dim,
-					body = _doc.body;
-				return Math.max(0, _isRoot(element) ? Math.max(_docElement[scroll], body[scroll]) - (window["inner" + dim] || _docElement[client] || body[client]) : element[scroll] - element[client]);
-			},
-			_recordMaxScrolls = function(e) { //records _gsMaxScrollX and _gsMaxScrollY properties for the element and all ancestors up the chain so that we can cap it, otherwise dragging beyond the edges with autoScroll on can endlessly scroll.
-				var isRoot = _isRoot(e),
-					x = _getMaxScroll(e, "x"),
-					y = _getMaxScroll(e, "y");
-				if (isRoot) {
-					e = _windowProxy;
-				} else {
-					_recordMaxScrolls(e.parentNode);
-				}
-				e._gsMaxScrollX = x;
-				e._gsMaxScrollY = y;
-				e._gsScrollX = e.scrollLeft || 0;
-				e._gsScrollY = e.scrollTop || 0;
-			},
-
-			//just used for IE8 and earlier to normalize events and populate pageX/pageY
-			_populateIEEvent = function(e, preventDefault) {
-				e = e || window.event;
-				_tempEvent.pageX = e.clientX + _doc.body.scrollLeft + _docElement.scrollLeft;
-				_tempEvent.pageY = e.clientY + _doc.body.scrollTop + _docElement.scrollTop;
-				if (preventDefault) {
-					e.returnValue = false;
-				}
-				return _tempEvent;
-			},
-
-			//grabs the first element it finds (and we include the window as an element), so if it's selector text, it'll feed that value to TweenLite.selector, if it's a jQuery object or some other selector engine's result, it'll grab the first one, and same for an array. If the value doesn't contain a DOM element, it'll just return null.
-			_unwrapElement = function(value) {
-				if (!value) {
-					return value;
-				}
-				if (typeof(value) === "string") {
-					value = TweenLite.selector(value);
-				}
-				if (value.length && value !== window && value[0] && value[0].style && !value.nodeType) {
-					value = value[0];
-				}
-				return (value === window || (value.nodeType && value.style)) ? value : null;
-			},
-
-			_checkPrefix = function(e, p) {
-				var s = e.style,
-					capped, i, a;
-				if (s[p] === undefined) {
-					a = ["O","Moz","ms","Ms","Webkit"];
-					i = 5;
-					capped = p.charAt(0).toUpperCase() + p.substr(1);
-					while (--i > -1 && s[a[i]+capped] === undefined) { }
-					if (i < 0) {
-						return "";
-					}
-					_prefix = (i === 3) ? "ms" : a[i];
-					p = _prefix + capped;
-				}
-				return p;
-			},
-
-			_setStyle = function(e, p, value) {
-				var s = e.style;
-				if (!s) {
-					return;
-				}
-				if (s[p] === undefined) {
-					p = _checkPrefix(e, p);
-				}
-				if (value == null) {
-					if (s.removeProperty) {
-						s.removeProperty(p.replace(/([A-Z])/g, "-$1").toLowerCase());
-					} else { //note: old versions of IE use "removeAttribute()" instead of "removeProperty()"
-						s.removeAttribute(p);
-					}
-				} else if (s[p] !== undefined) {
-					s[p] = value;
-				}
-			},
-
-			_getCSFunc = (typeof(window) !== "undefined" ? window : _doc.defaultView || {getComputedStyle:function() {}}).getComputedStyle,
-			_getComputedStyle = function(e, s) {
-				return _getCSFunc((e instanceof Element) ? e : e.host || (e.parentNode || {}).host || e, s); //the "host" stuff helps to accommodate ShadowDom objects.
-			},
-			_horizExp = /(?:Left|Right|Width)/i,
-			_suffixExp = /(?:\d|\-|\+|=|#|\.)*/g,
-			_convertToPixels = function(t, p, v, sfx, recurse) {
-				if (sfx === "px" || !sfx) { return v; }
-				if (sfx === "auto" || !v) { return 0; }
-				var horiz = _horizExp.test(p),
-					node = t,
-					style = _tempDiv.style,
-					neg = (v < 0),
-					pix;
-				if (neg) {
-					v = -v;
-				}
-				if (sfx === "%" && p.indexOf("border") !== -1) {
-					pix = (v / 100) * (horiz ? t.clientWidth : t.clientHeight);
-				} else {
-					style.cssText = "border:0 solid red;position:" + _getStyle(t, "position", true) + ";line-height:0;";
-					if (sfx === "%" || !node.appendChild) {
-						node = t.parentNode || _doc.body;
-						style[(horiz ? "width" : "height")] = v + sfx;
+				} else if (progress != _tween.progress()) { // do we even need to update the progress?
+					// no infinite loop - so should we just play or go to a specific point in time?
+					if (Scene.duration() === 0) {
+						// play the animation
+						if (progress > 0) { // play from 0 to 1
+							_tween.play();
+						} else { // play from 1 to 0
+							_tween.reverse();
+						}
 					} else {
-						style[(horiz ? "borderLeftWidth" : "borderTopWidth")] = v + sfx;
-					}
-					node.appendChild(_tempDiv);
-					pix = parseFloat(_tempDiv[(horiz ? "offsetWidth" : "offsetHeight")]);
-					node.removeChild(_tempDiv);
-					if (pix === 0 && !recurse) {
-						pix = _convertToPixels(t, p, v, sfx, true);
-					}
-				}
-				return neg ? -pix : pix;
-			},
-			_calculateOffset = function(t, p) { //for figuring out "top" or "left" in px when it's "auto". We need to factor in margin with the offsetLeft/offsetTop
-				if (_getStyle(t, "position", true) !== "absolute") { return 0; }
-				var dim = ((p === "left") ? "Left" : "Top"),
-					v = _getStyle(t, "margin" + dim, true);
-				return t["offset" + dim] - (_convertToPixels(t, p, parseFloat(v), (v + "").replace(_suffixExp, "")) || 0);
-			},
-
-			_getStyle = function(element, prop, keepUnits) {
-				var rv = (element._gsTransform || {})[prop],
-					cs;
-				if (rv || rv === 0) {
-					return rv;
-				} else if (element.style && element.style[prop]) { //shadow dom elements don't have "style".
-					rv = element.style[prop];
-				} else if ((cs = _getComputedStyle(element))) {
-					rv = cs.getPropertyValue(prop.replace(/([A-Z])/g, "-$1").toLowerCase());
-					rv = (rv || cs.length) ? rv : cs[prop]; //Opera behaves VERY strangely - length is usually 0 and cs[prop] is the only way to get accurate results EXCEPT when checking for -o-transform which only works with cs.getPropertyValue()!
-				} else if (element.currentStyle) {
-					rv = element.currentStyle[prop];
-				}
-				if (rv === "auto" && (prop === "top" || prop === "left")) {
-					rv = _calculateOffset(element, prop);
-				}
-				return keepUnits ? rv : parseFloat(rv) || 0;
-			},
-
-			_dispatchEvent = function(instance, type, callbackName) {
-				var vars = instance.vars,
-					callback = vars[callbackName],
-					listeners = instance._listeners[type];
-				if (typeof(callback) === "function") {
-					callback.apply(vars[callbackName + "Scope"] || vars.callbackScope || instance, vars[callbackName + "Params"] || [instance.pointerEvent]);
-				}
-				if (listeners) {
-					instance.dispatchEvent(type);
-				}
-			},
-			_getBounds = function(obj, context) { //accepts any of the following: a DOM element, jQuery object, selector text, or an object defining bounds as {top, left, width, height} or {minX, maxX, minY, maxY}. Returns an object with left, top, width, and height properties.
-				var e = _unwrapElement(obj),
-					top, left, offset;
-				if (!e) {
-					if (obj.left !== undefined) {
-						offset = _getOffsetTransformOrigin(context); //the bounds should be relative to the origin
-						return {left: obj.left - offset.x, top: obj.top - offset.y, width: obj.width, height: obj.height};
-					}
-					left = obj.min || obj.minX || obj.minRotation || 0;
-					top = obj.min || obj.minY || 0;
-					return {left:left, top:top, width:(obj.max || obj.maxX || obj.maxRotation || 0) - left, height:(obj.max || obj.maxY || 0) - top};
-				}
-				return _getElementBounds(e, context);
-			},
-
-			_svgBorderFactor,
-			_svgBorderScales,
-			_svgScrollOffset,
-			_hasBorderBug,
-			_hasReparentBug,//some browsers, like Chrome 49, alter the offsetTop/offsetLeft/offsetParent of elements when a non-identity transform is applied.
-			_setEnvironmentVariables = function() { //some browsers factor the border into the SVG coordinate space, some don't (like Firefox). Some apply transforms to them, some don't. We feature-detect here so we know how to handle the border(s). We can't do this immediately - we must wait for the document.body to exist.
-				if (!_doc.createElementNS) {
-					_svgBorderFactor = 0;
-					_svgBorderScales = false;
-					return;
-				}
-				var div = _createElement("div"),
-					svg = _doc.createElementNS("http://www.w3.org/2000/svg", "svg"),
-					wrapper = _createElement("div"),
-					style = div.style,
-					parent = _doc.body || _docElement,
-					isFlex = (_getStyle(parent, "display", true) === "flex"), //Firefox bug causes getScreenCTM() to return null when parent is display:flex and the element isn't rendered inside the window (like if it's below the scroll position)
-					matrix, e1, point, oldValue;
-				if (_doc.body && _transformProp) {
-					style.position = "absolute";
-					parent.appendChild(wrapper);
-					wrapper.appendChild(div);
-					oldValue = div.offsetParent;
-					wrapper.style[_transformProp] = "rotate(1deg)";
-					_hasReparentBug = (div.offsetParent === oldValue);
-					wrapper.style.position = "absolute";
-					style.height = "10px";
-					oldValue = div.offsetTop;
-					wrapper.style.border = "5px solid red";
-					_hasBorderBug = (oldValue !== div.offsetTop); //some browsers, like Firefox 38, cause the offsetTop/Left to be affected by a parent's border.
-					parent.removeChild(wrapper);
-				}
-				style = svg.style;
-				svg.setAttributeNS(null, "width", "400px");
-				svg.setAttributeNS(null, "height", "400px");
-				svg.setAttributeNS(null, "viewBox", "0 0 400 400");
-				style.display = "block";
-				style.boxSizing = "border-box";
-				style.border = "0px solid red";
-				style.transform = "none";
-				// in some browsers (like certain flavors of Android), the getScreenCTM() matrix is contaminated by the scroll position. We can run some logic here to detect that condition, but we ended up not needing this because we found another workaround using getBoundingClientRect().
-				div.style.cssText = "width:100px;height:100px;overflow:scroll;-ms-overflow-style:none;";
-				parent.appendChild(div);
-				div.appendChild(svg);
-				point = svg.createSVGPoint().matrixTransform(svg.getScreenCTM());
-				e1 = point.y;
-				div.scrollTop = 100;
-				point.x = point.y = 0;
-				point = point.matrixTransform(svg.getScreenCTM());
-				_svgScrollOffset = (e1 - point.y < 100.1) ? 0 : e1 - point.y - 150;
-				div.removeChild(svg);
-				parent.removeChild(div);
-				// -- end _svgScrollOffset calculation.
-				parent.appendChild(svg);
-				if (isFlex) {
-					parent.style.display = "block"; //Firefox bug causes getScreenCTM() to return null when parent is display:flex and the element isn't rendered inside the window (like if it's below the scroll position)
-				}
-				matrix = svg.getScreenCTM();
-				e1 = matrix.e;
-				style.border = "50px solid red";
-				matrix = svg.getScreenCTM();
-				if (e1 === 0 && matrix.e === 0 && matrix.f === 0 && matrix.a === 1) { //Opera has a bunch of bugs - it doesn't adjust the x/y of the matrix, nor does it scale when box-sizing is border-box but it does so elsewhere; to get the correct behavior we set _svgBorderScales to true.
-					_svgBorderFactor = 1;
-					_svgBorderScales = true;
-				} else {
-					_svgBorderFactor = (e1 !== matrix.e) ? 1 : 0;
-					_svgBorderScales = (matrix.a !== 1);
-				}
-				if (isFlex) {
-					parent.style.display = "flex";
-				}
-				parent.removeChild(svg);
-			},
-
-			_supports3D = (_checkPrefix(_tempDiv, "perspective") !== ""),
-
-			// start matrix and point conversion methods...
-			_transformOriginProp = _checkPrefix(_tempDiv, "transformOrigin").replace(/^ms/g, "Ms").replace(/([A-Z])/g, "-$1").toLowerCase(),
-			_transformProp = _checkPrefix(_tempDiv, "transform"),
-			_transformPropCSS = _transformProp.replace(/^ms/g, "Ms").replace(/([A-Z])/g, "-$1").toLowerCase(),
-			_point1 = {}, //we reuse _point1 and _point2 objects inside matrix and point conversion methods to conserve memory and minimize garbage collection tasks.
-			_point2 = {},
-			_SVGElement = _gsScope.SVGElement,
-			_isSVG = function(e) {
-				return !!(_SVGElement && typeof(e.getBBox) === "function" && e.getCTM && (!e.parentNode || (e.parentNode.getBBox && e.parentNode.getCTM)));
-			},
-			_isIE10orBelow = (_gsScope.navigator && (((/MSIE ([0-9]{1,}[\.0-9]{0,})/).exec(_gsScope.navigator.userAgent) || (/Trident\/.*rv:([0-9]{1,}[\.0-9]{0,})/).exec(_gsScope.navigator.userAgent)) && parseFloat( RegExp.$1 ) < 11)), //Ideally we'd avoid user agent sniffing, but there doesn't seem to be a way to feature-detect and sense a border-related bug that only affects IE10 and IE9.
-			_tempTransforms = [],
-			_tempElements = [],
-			_getSVGOffsets = function(e) { //SVG elements don't always report offsetTop/offsetLeft/offsetParent at all (I'm looking at you, Firefox 29 and Android), so we have to do some work to manufacture those values. You can pass any SVG element and it'll spit back an object with offsetTop, offsetLeft, offsetParent, scaleX, and scaleY properties. We need the scaleX and scaleY to handle the way SVG can resize itself based on the container.
-				if (!e.getBoundingClientRect || !e.parentNode || !_transformProp) {
-					return {offsetTop:0, offsetLeft:0, scaleX:1, scaleY:1, offsetParent:_docElement};
-				}
-				if (Draggable.cacheSVGData !== false && e._dCache && e._dCache.lastUpdate === TweenLite.ticker.frame) { //performance optimization. Assume that if the offsets are requested again on the same tick, we can just feed back the values we already calculated (no need to keep recalculating until another tick elapses).
-					return e._dCache;
-				}
-				var curElement = e,
-					cache = _cache(e),
-					eRect, parentRect, offsetParent, cs, m, i, point1, point2, borderWidth, borderHeight, width, height;
-				cache.lastUpdate = TweenLite.ticker.frame;
-				if (e.getBBox && !cache.isSVGRoot) { //if it's a nested/child SVG element, we must find the parent SVG canvas and measure the offset from there.
-					curElement = e.parentNode;
-					eRect = e.getBBox();
-					while (curElement && (curElement.nodeName + "").toLowerCase() !== "svg") {
-						curElement = curElement.parentNode;
-					}
-					cs = _getSVGOffsets(curElement);
-					cache.offsetTop = eRect.y * cs.scaleY;
-					cache.offsetLeft = eRect.x * cs.scaleX;
-					cache.scaleX = cs.scaleX;
-					cache.scaleY = cs.scaleY;
-					cache.offsetParent = curElement || _docElement;
-					return cache;
-				}
-				//only root SVG elements continue here...
-				offsetParent = cache.offsetParent;
-				if (offsetParent === _doc.body) {
-					offsetParent = _docElement; //avoids problems with margins/padding on the body
-				}
-				//walk up the ancestors and record any non-identity transforms (and reset them to "none") until we reach the offsetParent. We must do this so that the getBoundingClientRect() is accurate for measuring the offsetTop/offsetLeft. We'll revert the values later...
-				_tempElements.length = _tempTransforms.length = 0;
-				while (curElement) {
-					m = _getStyle(curElement, _transformProp, true);
-					if (m !== "matrix(1, 0, 0, 1, 0, 0)" && m !== "none" && m !== "translate3d(0px, 0px, 0px)") {
-						_tempElements.push(curElement);
-						_tempTransforms.push(curElement.style[_transformProp]);
-						curElement.style[_transformProp] = "none";
-					}
-					if (curElement === offsetParent) {
-						break;
-					}
-					curElement = curElement.parentNode;
-				}
-				parentRect = offsetParent.getBoundingClientRect();
-				m = e.getScreenCTM();
-
-				point2 = e.createSVGPoint();
-				point1 = point2.matrixTransform(m);
-				cache.scaleX = Math.sqrt(m.a * m.a + m.b * m.b);
-				cache.scaleY = Math.sqrt(m.d * m.d + m.c * m.c);
-				if (_svgBorderFactor === undefined) {
-					_setEnvironmentVariables();
-				}
-				if (cache.borderBox && !_svgBorderScales && e.getAttribute("width")) { //some browsers (like Safari) don't properly scale the matrix to accommodate the border when box-sizing is border-box, so we must calculate it here...
-					cs = _getComputedStyle(e) || {};
-					borderWidth = (parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth)) || 0;
-					borderHeight = (parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth)) || 0;
-					width = parseFloat(cs.width) || 0;
-					height = parseFloat(cs.height) || 0;
-					cache.scaleX *= (width - borderWidth) / width;
-					cache.scaleY *= (height - borderHeight) / height;
-				}
-				if (_svgScrollOffset) { //some browsers (like Chrome for Android) have bugs in the way getScreenCTM() is reported (it doesn't factor in scroll position), so we must revert to a more expensive technique for calculating offsetTop/Left.
-					eRect = e.getBoundingClientRect();
-					cache.offsetLeft = eRect.left - parentRect.left;
-					cache.offsetTop = eRect.top - parentRect.top;
-				} else {
-					cache.offsetLeft = point1.x - parentRect.left;
-					cache.offsetTop = point1.y - parentRect.top;
-				}
-				cache.offsetParent = offsetParent;
-				i = _tempElements.length;
-				while (--i > -1) {
-					_tempElements[i].style[_transformProp] = _tempTransforms[i];
-				}
-				return cache;
-			},
-			_getOffsetTransformOrigin = function(e, decoratee) { //returns the x/y position of the transformOrigin of the element, in its own local coordinate system (pixels), offset from the top left corner.
-				decoratee = decoratee || {};
-				if (!e || e === _docElement || !e.parentNode || e === window) {
-					return {x:0, y:0};
-				}
-				var cs = _getComputedStyle(e),
-					v = (_transformOriginProp && cs) ? cs.getPropertyValue(_transformOriginProp) : "50% 50%",
-					a = v.split(" "),
-					x = (v.indexOf("left") !== -1) ? "0%" : (v.indexOf("right") !== -1) ? "100%" : a[0],
-					y = (v.indexOf("top") !== -1) ? "0%" : (v.indexOf("bottom") !== -1) ? "100%" : a[1];
-				if (y === "center" || y == null) {
-					y = "50%";
-				}
-				if (x === "center" || isNaN(parseFloat(x))) { //remember, the user could flip-flop the values and say "bottom center" or "center bottom", etc. "center" is ambiguous because it could be used to describe horizontal or vertical, hence the isNaN(). If there's an "=" sign in the value, it's relative.
-					x = "50%";
-				}
-				if (e.getBBox && _isSVG(e)) { //SVG elements must be handled in a special way because their origins are calculated from the top left.
-					if (!e._gsTransform) {
-						TweenLite.set(e, {x:"+=0", overwrite:false}); //forces creation of the _gsTransform where we store all the transform components including xOrigin and yOrigin for SVG elements, as of GSAP 1.15.0 which also takes care of calculating the origin from the upper left corner of the SVG canvas.
-						if (e._gsTransform.xOrigin === undefined) {
-							console.log("Draggable requires at least GSAP 1.17.0");
-						}
-					}
-					v = e.getBBox();
-					decoratee.x = (e._gsTransform.xOrigin - v.x);
-					decoratee.y = (e._gsTransform.yOrigin - v.y);
-				} else {
-					if (e.getBBox && (x + y).indexOf("%") !== -1) { //Firefox doesn't report offsetWidth/height on <svg> elements.
-						e = e.getBBox();
-						e = {offsetWidth: e.width, offsetHeight: e.height};
-					}
-					decoratee.x = ((x.indexOf("%") !== -1) ? e.offsetWidth * parseFloat(x) / 100 : parseFloat(x));
-					decoratee.y = ((y.indexOf("%") !== -1) ? e.offsetHeight * parseFloat(y) / 100 : parseFloat(y));
-				}
-				return decoratee;
-			},
-			_cache = function(e) { //computes some important values and stores them in a _dCache object attached to the element itself so that we can optimize performance
-				if (Draggable.cacheSVGData !== false && e._dCache && e._dCache.lastUpdate === TweenLite.ticker.frame) { //performance optimization. Assume that if the offsets are requested again on the same tick, we can just feed back the values we already calculated (no need to keep recalculating until another tick elapses).
-					return e._dCache;
-				}
-				var cache = e._dCache = e._dCache || {},
-					cs = _getComputedStyle(e),
-					isSVG = (e.getBBox && _isSVG(e)),
-					isSVGRoot = ((e.nodeName + "").toLowerCase() === "svg"),
-					curSVG;
-				cache.isSVG = isSVG;
-				cache.isSVGRoot = isSVGRoot;
-				cache.borderBox = (cs.boxSizing === "border-box");
-				cache.computedStyle = cs;
-				if (isSVGRoot) { //some browsers don't report parentNode on SVG elements.
-					curSVG = e.parentNode || _docElement;
-					curSVG.insertBefore(_tempDiv, e);
-					cache.offsetParent = _tempDiv.offsetParent || _docElement; //in some cases, Firefox still reports offsetParent as null.
-					curSVG.removeChild(_tempDiv);
-				} else if (isSVG) {
-					curSVG = e.parentNode;
-					while (curSVG && (curSVG.nodeName + "").toLowerCase() !== "svg") { //offsetParent is always the SVG canvas for SVG elements.
-						curSVG = curSVG.parentNode;
-					}
-					cache.offsetParent = curSVG;
-				} else {
-					cache.offsetParent = e.offsetParent;
-				}
-				return cache;
-			},
-			_getOffset2DMatrix = function(e, offsetOrigin, parentOffsetOrigin, zeroOrigin, isBase) {  //"isBase" helps us discern context - it should only be true when the element is the base one (the one at which we're starting to walk up the chain). It only matters in cases when it's an <svg> element itself because that's a case when we don't apply scaling.
-				if (e === window || !e || !e.style || !e.parentNode) {
-					return [1,0,0,1,0,0];
-				}
-				var cache = e._dCache || _cache(e),
-					parent = e.parentNode,
-					parentCache = parent._dCache || _cache(parent),
-					cs = cache.computedStyle,
-					parentOffsetParent = cache.isSVG ? parentCache.offsetParent : parent.offsetParent,
-					m, isRoot, offsets, rect, t, sx, sy, offsetX, offsetY, parentRect, borderTop, borderLeft, borderTranslateX, borderTranslateY;
-				m = (cache.isSVG && (e.style[_transformProp] + "").indexOf("matrix") !== -1) ? e.style[_transformProp] : cs ? cs.getPropertyValue(_transformPropCSS) : e.currentStyle ? e.currentStyle[_transformProp] : "1,0,0,1,0,0"; //some browsers (like Chrome 40) don't correctly report transforms that are applied inline on an SVG element (they don't get included in the computed style), so we double-check here and accept matrix values
-				if (e.getBBox && (e.getAttribute("transform") + "").indexOf("matrix") !== -1) { //SVG can store transform data in its "transform" attribute instead of the CSS, so look for that here (only accept matrix()).
-					m = e.getAttribute("transform");
-				}
-				m = (m + "").match(/(?:\-|\.|\b)(\d|\.|e\-)+/g) || [1,0,0,1,0,0];
-				if (m.length > 6) {
-					m = [m[0], m[1], m[4], m[5], m[12], m[13]];
-				}
-				if (zeroOrigin) {
-					m[4] = m[5] = 0;
-				} else if (cache.isSVG && (t = e._gsTransform) && (t.xOrigin || t.yOrigin)) {
-					//SVGs handle origin very differently. Factor in GSAP's handling of origin values here:
-					m[0] = parseFloat(m[0]);
-					m[1] = parseFloat(m[1]);
-					m[2] = parseFloat(m[2]);
-					m[3] = parseFloat(m[3]);
-					m[4] = parseFloat(m[4]) - (t.xOrigin - (t.xOrigin * m[0] + t.yOrigin * m[2]));
-					m[5] = parseFloat(m[5]) - (t.yOrigin - (t.xOrigin * m[1] + t.yOrigin * m[3]));
-				}
-				if (offsetOrigin) {
-					if (_svgBorderFactor === undefined) {
-						_setEnvironmentVariables();
-					}
-					offsets = (cache.isSVG || cache.isSVGRoot) ? _getSVGOffsets(e) : e;
-					if (cache.isSVG) { //don't just rely on "instanceof _SVGElement" because if the SVG is embedded via an object tag, it won't work (SVGElement is mapped to a different object))
-						rect = e.getBBox();
-						parentRect = (parentCache.isSVGRoot) ? {x:0, y:0} : parent.getBBox();
-						offsets = {offsetLeft:rect.x - parentRect.x, offsetTop:rect.y - parentRect.y, offsetParent:cache.offsetParent};
-					} else if (cache.isSVGRoot) {
-						borderTop = parseInt(cs.borderTopWidth, 10) || 0;
-						borderLeft = parseInt(cs.borderLeftWidth, 10) || 0;
-						borderTranslateX = ((m[0] - _svgBorderFactor) * borderLeft + m[2] * borderTop);
-						borderTranslateY = (m[1] * borderLeft + (m[3] - _svgBorderFactor) * borderTop);
-
-						sx = offsetOrigin.x;
-						sy = offsetOrigin.y;
-						offsetX = (sx - (sx * m[0] + sy * m[2])); //accommodate the SVG root's transforms when the origin isn't in the top left.
-						offsetY = (sy - (sx * m[1] + sy * m[3]));
-
-						m[4] = parseFloat(m[4]) + offsetX;
-						m[5] = parseFloat(m[5]) + offsetY;
-						offsetOrigin.x -= offsetX;
-						offsetOrigin.y -= offsetY;
-						sx = offsets.scaleX;
-						sy = offsets.scaleY;
-						if (!isBase) { //when getting the matrix for a root <svg> element itself (NOT in the context of an SVG element that's nested inside of it like a <path>), we do NOT apply the scaling!
-							offsetOrigin.x *= sx;
-							offsetOrigin.y *= sy;
-						}
-						m[0] *= sx;
-						m[1] *= sy;
-						m[2] *= sx;
-						m[3] *= sy;
-						if (!_isIE10orBelow) {
-							offsetOrigin.x += borderTranslateX;
-							offsetOrigin.y += borderTranslateY;
-						}
-						if (parentOffsetParent === _doc.body && offsets.offsetParent === _docElement) { //to avoid issues with margin/padding on the <body>, we always set the offsetParent to _docElement in the _getSVGOffsets() function but there's a condition we check later in this function for (parentOffsetParent === offsets.offsetParent) which would fail if we don't run this logic. In other words, parentOffsetParent may be <body> and the <svg>'s offsetParent is also <body> but artificially set to _docElement to avoid margin/padding issues.
-							parentOffsetParent = _docElement;
-						}
-					} else if (!_hasBorderBug && e.offsetParent) {
-						offsetOrigin.x += parseInt(_getStyle(e.offsetParent, "borderLeftWidth"), 10) || 0;
-						offsetOrigin.y += parseInt(_getStyle(e.offsetParent, "borderTopWidth"), 10) || 0;
-					}
-					isRoot = (parent === _docElement || parent === _doc.body);
-					m[4] = Number(m[4]) + offsetOrigin.x + (offsets.offsetLeft || 0) - parentOffsetOrigin.x - (isRoot ? 0 : parent.scrollLeft || 0);
-					m[5] = Number(m[5]) + offsetOrigin.y + (offsets.offsetTop || 0) - parentOffsetOrigin.y - (isRoot ? 0 : parent.scrollTop || 0);
-					if (parent && _getStyle(e, "position", cs) === "fixed") { //fixed position elements should factor in the scroll position of the document.
-						m[4] += _getDocScrollLeft();
-						m[5] += _getDocScrollTop();
-					}
-					if (parent && parent !== _docElement && parentOffsetParent === offsets.offsetParent && !parentCache.isSVG && (!_hasReparentBug || _getOffset2DMatrix(parent).join("") === "100100")) {
-						offsets = (parentCache.isSVGRoot) ? _getSVGOffsets(parent) : parent;
-						m[4] -= offsets.offsetLeft || 0;
-						m[5] -= offsets.offsetTop || 0;
-						if (!_hasBorderBug && parentCache.offsetParent && !cache.isSVG && !cache.isSVGRoot) {
-							m[4] -= parseInt(_getStyle(parentCache.offsetParent, "borderLeftWidth"), 10) || 0;
-							m[5] -= parseInt(_getStyle(parentCache.offsetParent, "borderTopWidth"), 10) || 0;
-						}
-					}
-				}
-				return m;
-			},
-			_getConcatenatedMatrix = function(e, invert) {
-				if (!e || e === window || !e.parentNode) {
-					return [1,0,0,1,0,0];
-				}
-				//note: we keep reusing _point1 and _point2 in order to minimize memory usage and garbage collection chores.
-				var originOffset = _getOffsetTransformOrigin(e, _point1),
-					parentOriginOffset = _getOffsetTransformOrigin(e.parentNode, _point2),
-					m = _getOffset2DMatrix(e, originOffset, parentOriginOffset, false, !invert),
-					a, b, c, d, tx, ty, m2, determinant;
-				while ((e = e.parentNode) && e.parentNode && e !== _docElement) {
-					originOffset = parentOriginOffset;
-					parentOriginOffset = _getOffsetTransformOrigin(e.parentNode, (originOffset === _point1) ? _point2 : _point1);
-					m2 = _getOffset2DMatrix(e, originOffset, parentOriginOffset);
-					a = m[0];
-					b = m[1];
-					c = m[2];
-					d = m[3];
-					tx = m[4];
-					ty = m[5];
-					m[0] = a * m2[0] + b * m2[2];
-					m[1] = a * m2[1] + b * m2[3];
-					m[2] = c * m2[0] + d * m2[2];
-					m[3] = c * m2[1] + d * m2[3];
-					m[4] = tx * m2[0] + ty * m2[2] + m2[4];
-					m[5] = tx * m2[1] + ty * m2[3] + m2[5];
-				}
-				if (invert) {
-					a = m[0];
-					b = m[1];
-					c = m[2];
-					d = m[3];
-					tx = m[4];
-					ty = m[5];
-					determinant = (a * d - b * c);
-					m[0] = d / determinant;
-					m[1] = -b / determinant;
-					m[2] = -c / determinant;
-					m[3] = a / determinant;
-					m[4] = (c * ty - d * tx) / determinant;
-					m[5] = -(a * ty - b * tx) / determinant;
-				}
-				return m;
-			},
-			_localToGlobal = function(e, p, fromTopLeft, decoratee, zeroOrigin) {
-				e = _unwrapElement(e);
-				var m = _getConcatenatedMatrix(e, false, zeroOrigin),
-					x = p.x,
-					y = p.y;
-				if (fromTopLeft) {
-					_getOffsetTransformOrigin(e, p);
-					x -= p.x;
-					y -= p.y;
-				}
-				decoratee = (decoratee === true) ? p : decoratee || {};
-				decoratee.x = x * m[0] + y * m[2] + m[4];
-				decoratee.y = x * m[1] + y * m[3] + m[5];
-				return decoratee;
-			},
-			_localizePoint = function(p, localToGlobal, globalToLocal) {
-				var x = p.x * localToGlobal[0] + p.y * localToGlobal[2] + localToGlobal[4],
-					y = p.x * localToGlobal[1] + p.y * localToGlobal[3] + localToGlobal[5];
-				p.x = x * globalToLocal[0] + y * globalToLocal[2] + globalToLocal[4];
-				p.y = x * globalToLocal[1] + y * globalToLocal[3] + globalToLocal[5];
-				return p;
-			},
-
-			_getElementBounds = function(e, context, fromTopLeft) {
-				if (!(e = _unwrapElement(e))) {
-					return null;
-				}
-				context = _unwrapElement(context);
-				var isSVG = (e.getBBox && _isSVG(e)),
-					origin, left, right, top, bottom, mLocalToGlobal, mGlobalToLocal, p1, p2, p3, p4, bbox, width, height, cache, borderLeft, borderTop, viewBox, viewBoxX, viewBoxY, computedDimensions, cs;
-				if (e === window) {
-					top = _getDocScrollTop();
-					left = _getDocScrollLeft();
-					right = left + (_docElement.clientWidth || e.innerWidth || _doc.body.clientWidth || 0);
-					bottom = top + (((e.innerHeight || 0) - 20 < _docElement.clientHeight) ? _docElement.clientHeight : e.innerHeight || _doc.body.clientHeight || 0); //some browsers (like Firefox) ignore absolutely positioned elements, and collapse the height of the documentElement, so it could be 8px, for example, if you have just an absolutely positioned div. In that case, we use the innerHeight to resolve this.
-				} else if (context === undefined || context === window) {
-					return e.getBoundingClientRect();
-				} else {
-					origin = _getOffsetTransformOrigin(e);
-					left = -origin.x;
-					top = -origin.y;
-					if (isSVG) {
-						bbox = e.getBBox();
-						width = bbox.width;
-						height = bbox.height;
-					} else if ((e.nodeName + "").toLowerCase() !== "svg" && e.offsetWidth) { //Chrome dropped support for "offsetWidth" on SVG elements
-						width = e.offsetWidth;
-						height = e.offsetHeight;
-					} else {
-						computedDimensions = _getComputedStyle(e);
-						width = parseFloat(computedDimensions.width);
-						height = parseFloat(computedDimensions.height);
-					}
-					right = left + width;
-					bottom = top + height;
-					if (e.nodeName.toLowerCase() === "svg" && !_isOldIE) { //root SVG elements are a special beast because they have 2 types of scaling - transforms on themselves as well as the stretching of the SVG canvas itself based on the outer size and the viewBox. If, for example, the SVG's viewbox is "0 0 100 100" but the CSS is set to width:200px; height:200px, that'd make it appear at 2x scale even though the element itself has no CSS transforms but the offsetWidth/offsetHeight are based on that css, not the viewBox so we need to adjust them accordingly.
-						cache = _getSVGOffsets(e);
-						cs = cache.computedStyle || {};
-						viewBox = (e.getAttribute("viewBox") || "0 0").split(" ");
-						viewBoxX = parseFloat(viewBox[0]);
-						viewBoxY = parseFloat(viewBox[1]);
-						borderLeft = parseFloat(cs.borderLeftWidth) || 0;
-						borderTop = parseFloat(cs.borderTopWidth) || 0;
-						right -= width - ((width - borderLeft) / cache.scaleX) - viewBoxX;
-						bottom -= height - ((height - borderTop) / cache.scaleY) - viewBoxY;
-						left -= borderLeft / cache.scaleX - viewBoxX;
-						top -= borderTop / cache.scaleY - viewBoxY;
-						if (computedDimensions) { //when we had to use computed styles, factor in the border now.
-							right += (parseFloat(cs.borderRightWidth) + borderLeft) / cache.scaleX;
-							bottom += (borderTop + parseFloat(cs.borderBottomWidth)) / cache.scaleY;
-						}
-					}
-				}
-				if (e === context) {
-					return {left:left, top:top, width: right - left, height: bottom - top};
-				}
-				mLocalToGlobal = _getConcatenatedMatrix(e);
-				mGlobalToLocal = _getConcatenatedMatrix(context, true);
-				p1 = _localizePoint({x:left, y:top}, mLocalToGlobal, mGlobalToLocal);
-				p2 = _localizePoint({x:right, y:top}, mLocalToGlobal, mGlobalToLocal);
-				p3 = _localizePoint({x:right, y:bottom}, mLocalToGlobal, mGlobalToLocal);
-				p4 = _localizePoint({x:left, y:bottom}, mLocalToGlobal, mGlobalToLocal);
-				left = Math.min(p1.x, p2.x, p3.x, p4.x);
-				top = Math.min(p1.y, p2.y, p3.y, p4.y);
-				_temp1.x = _temp1.y = 0;
-				if (fromTopLeft) {
-					_getOffsetTransformOrigin(context, _temp1);
-				}
-				return {left:left + _temp1.x, top:top + _temp1.y, width:Math.max(p1.x, p2.x, p3.x, p4.x) - left, height:Math.max(p1.y, p2.y, p3.y, p4.y) - top};
-			},
-			// end matrix and point conversion methods
-
-
-
-			_isArrayLike = function(e) {
-				return (e && e.length && e[0] && ((e[0].nodeType && e[0].style && !e.nodeType) || (e[0].length && e[0][0]))) ? true : false; //could be an array of jQuery objects too, so accommodate that.
-			},
-
-			_flattenArray = function(a) {
-				var result = [],
-					l = a.length,
-					i, e, j;
-				for (i = 0; i < l; i++) {
-					e = a[i];
-					if (_isArrayLike(e)) {
-						j = e.length;
-						for (j = 0; j < e.length; j++) {
-							result.push(e[j]);
-						}
-					} else if (e && e.length !== 0) {
-						result.push(e);
-					}
-				}
-				return result;
-			},
-
-			_isTouchDevice = (typeof(window) !== "undefined" && ("ontouchstart" in _docElement) && ("orientation" in window)),
-			_touchEventLookup = (function(types) { //we create an object that makes it easy to translate touch event types into their "pointer" counterparts if we're in a browser that uses those instead. Like IE10 uses "MSPointerDown" instead of "touchstart", for example.
-				var standard = types.split(","),
-					converted = ((_tempDiv.onpointerdown !== undefined) ? "pointerdown,pointermove,pointerup,pointercancel" : (_tempDiv.onmspointerdown !== undefined) ? "MSPointerDown,MSPointerMove,MSPointerUp,MSPointerCancel" : types).split(","),
-					obj = {},
-					i = 4;
-				while (--i > -1) {
-					obj[standard[i]] = converted[i];
-					obj[converted[i]] = standard[i];
-				}
-				return obj;
-			}("touchstart,touchmove,touchend,touchcancel")),
-
-			_addListener = function(element, type, func, capture) {
-				if (element.addEventListener) {
-					var touchType = _touchEventLookup[type];
-					capture = capture || {passive:false};
-					element.addEventListener(touchType || type, func, capture);
-					if (touchType && type !== touchType) { //some browsers actually support both, so must we.
-						element.addEventListener(type, func, capture);
-					}
-				} else if (element.attachEvent) {
-					element.attachEvent("on" + type, func);
-				}
-			},
-
-			_removeListener = function(element, type, func) {
-				if (element.removeEventListener) {
-					var touchType = _touchEventLookup[type];
-					element.removeEventListener(touchType || type, func);
-					if (touchType && type !== touchType) {
-						element.removeEventListener(type, func);
-					}
-				} else if (element.detachEvent) {
-					element.detachEvent("on" + type, func);
-				}
-			},
-
-			_hasTouchID = function(list, ID) {
-				var i = list.length;
-				while (--i > -1) {
-					if (list[i].identifier === ID) {
-						return true;
-					}
-				}
-				return false;
-			},
-
-			_onMultiTouchDocumentEnd = function(e) {
-				_isMultiTouching = (e.touches && _dragCount < e.touches.length);
-				_removeListener(e.target, "touchend", _onMultiTouchDocumentEnd);
-			},
-
-			_onMultiTouchDocument = function(e) {
-				_isMultiTouching = (e.touches && _dragCount < e.touches.length);
-				_addListener(e.target, "touchend", _onMultiTouchDocumentEnd);
-			},
-
-			_parseThrowProps = function(draggable, snap, max, min, factor, forceZeroVelocity) {
-				var vars = {},
-					a, i, l;
-				if (snap) {
-					if (factor !== 1 && snap instanceof Array) { //some data must be altered to make sense, like if the user passes in an array of rotational values in degrees, we must convert it to radians. Or for scrollLeft and scrollTop, we invert the values.
-						vars.end = a = [];
-						l = snap.length;
-						if (typeof(snap[0]) === "object") { //if the array is populated with objects, like points ({x:100, y:200}), make copies before multiplying by the factor, otherwise we'll mess up the originals and the user may reuse it elsewhere.
-							for (i = 0; i < l; i++) {
-								a[i] = _copy(snap[i], factor);
-							}
+						// go to a specific point in time
+						if (Scene.tweenChanges() && _tween.tweenTo) {
+							// go smooth
+							_tween.tweenTo(progress * _tween.duration());
 						} else {
-							for (i = 0; i < l; i++) {
-								a[i] = snap[i] * factor;
-							}
+							// just hard set it
+							_tween.progress(progress).pause();
 						}
-						max += 1.1; //allow 1.1 pixels of wiggle room when snapping in order to work around some browser inconsistencies in the way bounds are reported which can make them roughly a pixel off. For example, if "snap:[-$('#menu').width(), 0]" was defined and #menu had a wrapper that was used as the bounds, some browsers would be one pixel off, making the minimum -752 for example when snap was [-753,0], thus instead of snapping to -753, it would snap to 0 since -753 was below the minimum.
-						min -= 1.1;
-					} else if (typeof(snap) === "function") {
-						vars.end = function(value) {
-							var result = snap.call(draggable, value),
-								copy, p;
-							if (factor !== 1) {
-								if (typeof(result) === "object") {
-									copy = {};
-									for (p in result) {
-										copy[p] = result[p] * factor;
-									}
-									result = copy;
-								} else {
-									result *= factor;
-								}
+					}
+				}
+			}
+		};
+
+		/**
+		 * Add a tween to the scene.  
+		 * If you want to add multiple tweens, add them into a GSAP Timeline object and supply it instead (see example below).  
+		 * 
+		 * If the scene has a duration, the tween's duration will be projected to the scroll distance of the scene, meaning its progress will be synced to scrollbar movement.  
+		 * For a scene with a duration of `0`, the tween will be triggered when scrolling forward past the scene's trigger position and reversed, when scrolling back.  
+		 * To gain better understanding, check out the [Simple Tweening example](../examples/basic/simple_tweening.html).
+		 *
+		 * Instead of supplying a tween this method can also be used as a shorthand for `TweenMax.to()` (see example below).
+		 * @memberof! animation.GSAP#
+		 *
+		 * @example
+		 * // add a single tween directly
+		 * scene.setTween(TweenMax.to("obj"), 1, {x: 100});
+		 *
+		 * // add a single tween via variable
+		 * var tween = TweenMax.to("obj"), 1, {x: 100};
+		 * scene.setTween(tween);
+		 *
+		 * // add multiple tweens, wrapped in a timeline.
+		 * var timeline = new TimelineMax();
+		 * var tween1 = TweenMax.from("obj1", 1, {x: 100});
+		 * var tween2 = TweenMax.to("obj2", 1, {y: 100});
+		 * timeline
+		 *		.add(tween1)
+		 *		.add(tween2);
+		 * scene.addTween(timeline);
+		 *
+		 * // short hand to add a TweenMax.to() tween
+		 * scene.setTween("obj3", 0.5, {y: 100});
+		 *
+		 * // short hand to add a TweenMax.to() tween for 1 second
+		 * // this is useful, when the scene has a duration and the tween duration isn't important anyway
+		 * scene.setTween("obj3", {y: 100});
+		 *
+		 * @param {(object|string)} TweenObject - A TweenMax, TweenLite, TimelineMax or TimelineLite object that should be animated in the scene. Can also be a Dom Element or Selector, when using direct tween definition (see examples).
+		 * @param {(number|object)} duration - A duration for the tween, or tween parameters. If an object containing parameters are supplied, a default duration of 1 will be used.
+		 * @param {object} params - The parameters for the tween
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		Scene.setTween = function (TweenObject, duration, params) {
+			var newTween;
+			if (arguments.length > 1) {
+				if (arguments.length < 3) {
+					params = duration;
+					duration = 1;
+				}
+				TweenObject = Tween.to(TweenObject, duration, params);
+			}
+			try {
+				// wrap Tween into a Timeline Object if available to include delay and repeats in the duration and standardize methods.
+				if (Timeline) {
+					newTween = new Timeline({
+						smoothChildTiming: true
+					}).add(TweenObject);
+				} else {
+					newTween = TweenObject;
+				}
+				newTween.pause();
+			} catch (e) {
+				log(1, "ERROR calling method 'setTween()': Supplied argument is not a valid TweenObject");
+				return Scene;
+			}
+			if (_tween) { // kill old tween?
+				Scene.removeTween();
+			}
+			_tween = newTween;
+
+			// some properties need to be transferred it to the wrapper, otherwise they would get lost.
+			if (TweenObject.repeat && TweenObject.repeat() === -1) { // TweenMax or TimelineMax Object?
+				_tween.repeat(-1);
+				_tween.yoyo(TweenObject.yoyo());
+			}
+			// Some tween validations and debugging helpers
+			if (Scene.tweenChanges() && !_tween.tweenTo) {
+				log(2, "WARNING: tweenChanges will only work if the TimelineMax object is available for ScrollMagic.");
+			}
+
+			// check if there are position tweens defined for the trigger and warn about it :)
+			if (_tween && Scene.controller() && Scene.triggerElement() && Scene.loglevel() >= 2) { // controller is needed to know scroll direction.
+				var
+				triggerTweens = Tween.getTweensOf(Scene.triggerElement()),
+					vertical = Scene.controller().info("vertical");
+				triggerTweens.forEach(function (value, index) {
+					var
+					tweenvars = value.vars.css || value.vars,
+						condition = vertical ? (tweenvars.top !== undefined || tweenvars.bottom !== undefined) : (tweenvars.left !== undefined || tweenvars.right !== undefined);
+					if (condition) {
+						log(2, "WARNING: Tweening the position of the trigger element affects the scene timing and should be avoided!");
+						return false;
+					}
+				});
+			}
+
+			// warn about tween overwrites, when an element is tweened multiple times
+			if (parseFloat(TweenLite.version) >= 1.14) { // onOverwrite only present since GSAP v1.14.0
+				var
+				list = _tween.getChildren ? _tween.getChildren(true, true, false) : [_tween],
+					// get all nested tween objects
+					newCallback = function () {
+						log(2, "WARNING: tween was overwritten by another. To learn how to avoid this issue see here: https://github.com/janpaepke/ScrollMagic/wiki/WARNING:-tween-was-overwritten-by-another");
+					};
+				for (var i = 0, thisTween, oldCallback; i < list.length; i++) { /*jshint loopfunc: true */
+					thisTween = list[i];
+					if (oldCallback !== newCallback) { // if tweens is added more than once
+						oldCallback = thisTween.vars.onOverwrite;
+						thisTween.vars.onOverwrite = function () {
+							if (oldCallback) {
+								oldCallback.apply(this, arguments);
 							}
-							return result; //we need to ensure that we can scope the function call to the Draggable instance itself so that users can access important values like maxX, minX, maxY, minY, x, and y from within that function.
+							newCallback.apply(this, arguments);
 						};
-					} else {
-						vars.end = snap;
 					}
-				}
-				if (max || max === 0) {
-					vars.max = max;
-				}
-				if (min || min === 0) {
-					vars.min = min;
-				}
-				if (forceZeroVelocity) {
-					vars.velocity = 0;
-				}
-				return vars;
-			},
-
-			_isClickable = function(e) { //sometimes it's convenient to mark an element as clickable by adding a data-clickable="true" attribute (in which case we won't preventDefault() the mouse/touch event). This method checks if the element is an <a>, <input>, or <button> or has an onclick or has the data-clickable or contentEditable attribute set to true (or any of its parent elements).
-				var data;
-				return (!e || !e.getAttribute || e.nodeName === "BODY") ? false : ((data = e.getAttribute("data-clickable")) === "true" || (data !== "false" && (e.onclick || _clickableTagExp.test(e.nodeName + "") || e.getAttribute("contentEditable") === "true"))) ? true : _isClickable(e.parentNode);
-			},
-
-			_setSelectable = function(elements, selectable) {
-				var i = elements.length,
-					e;
-				while (--i > -1) {
-					e = elements[i];
-					e.ondragstart = e.onselectstart = selectable ? null : _emptyFunc;
-					_setStyle(e, "userSelect", (selectable ? "text" : "none"));
-				}
-			},
-
-			_addPaddingBR = (function() { //this function is in charge of analyzing browser behavior related to padding. It sets the _addPaddingBR to true if the browser doesn't normally factor in the bottom or right padding on the element inside the scrolling area, and it sets _addPaddingLeft to true if it's a browser that requires the extra offset (offsetLeft) to be added to the paddingRight (like Opera).
-				var div = _doc.createElement("div"),
-					child = _doc.createElement("div"),
-					childStyle = child.style,
-					parent = _doc.body || _tempDiv,
-					val;
-				childStyle.display = "inline-block";
-				childStyle.position = "relative";
-				div.style.cssText = child.innerHTML = "width:90px; height:40px; padding:10px; overflow:auto; visibility: hidden";
-				div.appendChild(child);
-				parent.appendChild(div);
-				val = (child.offsetHeight + 18 > div.scrollHeight); //div.scrollHeight should be child.offsetHeight + 20 because of the 10px of padding on each side, but some browsers ignore one side. We allow a 2px margin of error.
-				parent.removeChild(div);
-				return val;
-			}()),
-
-
-
-
-			//The ScrollProxy class wraps an element's contents into another div (we call it "content") that we either add padding when necessary or apply a translate3d() transform in order to overscroll (scroll past the boundaries). This allows us to simply set the scrollTop/scrollLeft (or top/left for easier reverse-axis orientation, which is what we do in Draggable) and it'll do all the work for us. For example, if we tried setting scrollTop to -100 on a normal DOM element, it wouldn't work - it'd look the same as setting it to 0, but if we set scrollTop of a ScrollProxy to -100, it'll give the correct appearance by either setting paddingTop of the wrapper to 100 or applying a 100-pixel translateY.
-			ScrollProxy = function(element, vars) {
-				element = _unwrapElement(element);
-				vars = vars || {};
-				var content = _doc.createElement("div"),
-					style = content.style,
-					node = element.firstChild,
-					offsetTop = 0,
-					offsetLeft = 0,
-					prevTop = element.scrollTop,
-					prevLeft = element.scrollLeft,
-					scrollWidth = element.scrollWidth,
-					scrollHeight = element.scrollHeight,
-					extraPadRight = 0,
-					maxLeft = 0,
-					maxTop = 0,
-					elementWidth, elementHeight, contentHeight, nextNode, transformStart, transformEnd;
-
-				if (_supports3D && vars.force3D !== false) {
-					transformStart = "translate3d(";
-					transformEnd = "px,0px)";
-				} else if (_transformProp) {
-					transformStart = "translate(";
-					transformEnd = "px)";
-				}
-
-				this.scrollTop = function(value, force) {
-					if (!arguments.length) {
-						return -this.top();
-					}
-					this.top(-value, force);
-				};
-
-				this.scrollLeft = function(value, force) {
-					if (!arguments.length) {
-						return -this.left();
-					}
-					this.left(-value, force);
-				};
-
-				this.left = function(value, force) {
-					if (!arguments.length) {
-						return -(element.scrollLeft + offsetLeft);
-					}
-					var dif = element.scrollLeft - prevLeft,
-						oldOffset = offsetLeft;
-					if ((dif > 2 || dif < -2) && !force) { //if the user interacts with the scrollbar (or something else scrolls it, like the mouse wheel), we should kill any tweens of the ScrollProxy.
-						prevLeft = element.scrollLeft;
-						TweenLite.killTweensOf(this, true, {left:1, scrollLeft:1});
-						this.left(-prevLeft);
-						if (vars.onKill) {
-							vars.onKill();
-						}
-						return;
-					}
-					value = -value; //invert because scrolling works in the opposite direction
-					if (value < 0) {
-						offsetLeft = (value - 0.5) | 0;
-						value = 0;
-					} else if (value > maxLeft) {
-						offsetLeft = (value - maxLeft) | 0;
-						value = maxLeft;
-					} else {
-						offsetLeft = 0;
-					}
-					if (offsetLeft || oldOffset) {
-						if (transformStart) {
-							if (!this._suspendTransforms) {
-								style[_transformProp] = transformStart + -offsetLeft + "px," + -offsetTop + transformEnd;
-							}
-						} else {
-							style.left = -offsetLeft + "px";
-						}
-						if (offsetLeft + extraPadRight >= 0) {
-							style.paddingRight = offsetLeft + extraPadRight + "px";
-						}
-					}
-					element.scrollLeft = value | 0;
-					prevLeft = element.scrollLeft; //don't merge this with the line above because some browsers adjsut the scrollLeft after it's set, so in order to be 100% accurate in tracking it, we need to ask the browser to report it.
-				};
-
-				this.top = function(value, force) {
-					if (!arguments.length) {
-						return -(element.scrollTop + offsetTop);
-					}
-					var dif = element.scrollTop - prevTop,
-						oldOffset = offsetTop;
-					if ((dif > 2 || dif < -2) && !force) { //if the user interacts with the scrollbar (or something else scrolls it, like the mouse wheel), we should kill any tweens of the ScrollProxy.
-						prevTop = element.scrollTop;
-						TweenLite.killTweensOf(this, true, {top:1, scrollTop:1});
-						this.top(-prevTop);
-						if (vars.onKill) {
-							vars.onKill();
-						}
-						return;
-					}
-					value = -value; //invert because scrolling works in the opposite direction
-					if (value < 0) {
-						offsetTop = (value - 0.5) | 0;
-						value = 0;
-					} else if (value > maxTop) {
-						offsetTop = (value - maxTop) | 0;
-						value = maxTop;
-					} else {
-						offsetTop = 0;
-					}
-					if (offsetTop || oldOffset) {
-						if (transformStart) {
-							if (!this._suspendTransforms) {
-								style[_transformProp] = transformStart + -offsetLeft + "px," + -offsetTop + transformEnd;
-							}
-						} else {
-							style.top = -offsetTop + "px";
-						}
-					}
-					element.scrollTop = value | 0;
-					prevTop = element.scrollTop;
-				};
-
-				this.maxScrollTop = function() {
-					return maxTop;
-				};
-
-				this.maxScrollLeft = function() {
-					return maxLeft;
-				};
-
-				this.disable = function() {
-					node = content.firstChild;
-					while (node) {
-						nextNode = node.nextSibling;
-						element.appendChild(node);
-						node = nextNode;
-					}
-					if (element === content.parentNode) { //in case disable() is called when it's already disabled.
-						element.removeChild(content);
-					}
-				};
-
-				this.enable = function() {
-					node = element.firstChild;
-					if (node === content) {
-						return;
-					}
-					while (node) {
-						nextNode = node.nextSibling;
-						content.appendChild(node);
-						node = nextNode;
-					}
-					element.appendChild(content);
-					this.calibrate();
-				};
-
-				this.calibrate = function(force) {
-					var widthMatches = (element.clientWidth === elementWidth),
-						x, y;
-					prevTop = element.scrollTop;
-					prevLeft = element.scrollLeft;
-					if (widthMatches && element.clientHeight === elementHeight && content.offsetHeight === contentHeight && scrollWidth === element.scrollWidth && scrollHeight === element.scrollHeight && !force) {
-						return; //no need to recalculate things if the width and height haven't changed.
-					}
-					if (offsetTop || offsetLeft) {
-						x = this.left();
-						y = this.top();
-						this.left(-element.scrollLeft);
-						this.top(-element.scrollTop);
-					}
-					//first, we need to remove any width constraints to see how the content naturally flows so that we can see if it's wider than the containing element. If so, we've got to record the amount of overage so that we can apply that as padding in order for browsers to correctly handle things. Then we switch back to a width of 100% (without that, some browsers don't flow the content correctly)
-					if (!widthMatches || force) {
-						style.display = "block";
-						style.width = "auto";
-						style.paddingRight = "0px";
-						extraPadRight = Math.max(0, element.scrollWidth - element.clientWidth);
-						//if the content is wider than the container, we need to add the paddingLeft and paddingRight in order for things to behave correctly.
-						if (extraPadRight) {
-							extraPadRight += _getStyle(element, "paddingLeft") + (_addPaddingBR ? _getStyle(element, "paddingRight") : 0);
-						}
-					}
-					style.display = "inline-block";
-					style.position = "relative";
-					style.overflow = "visible";
-					style.verticalAlign = "top";
-					style.width = "100%";
-					style.paddingRight = extraPadRight + "px";
-					//some browsers neglect to factor in the bottom padding when calculating the scrollHeight, so we need to add that padding to the content when that happens. Allow a 2px margin for error
-					if (_addPaddingBR) {
-						style.paddingBottom = _getStyle(element, "paddingBottom", true);
-					}
-					if (_isOldIE) {
-						style.zoom = "1";
-					}
-					elementWidth = element.clientWidth;
-					elementHeight = element.clientHeight;
-					scrollWidth = element.scrollWidth;
-					scrollHeight = element.scrollHeight;
-					maxLeft = element.scrollWidth - elementWidth;
-					maxTop = element.scrollHeight - elementHeight;
-					contentHeight = content.offsetHeight;
-					style.display = "block";
-					if (x || y) {
-						this.left(x);
-						this.top(y);
-					}
-				};
-
-				this.content = content;
-				this.element = element;
-				this._suspendTransforms = false;
-				this.enable();
-			},
-
-
-
-
-
-			Draggable = function(target, vars) {
-				EventDispatcher.call(this, target);
-				target = _unwrapElement(target); //in case the target is a selector object or selector text
-				if (!ThrowPropsPlugin) {
-					ThrowPropsPlugin = _globals.com.greensock.plugins.ThrowPropsPlugin;
-				}
-				this.vars = vars = _copy(vars || {});
-				this.target = target;
-				this.x = this.y = this.rotation = 0;
-				this.dragResistance = parseFloat(vars.dragResistance) || 0;
-				this.edgeResistance = isNaN(vars.edgeResistance) ? 1 : parseFloat(vars.edgeResistance) || 0;
-				this.lockAxis = vars.lockAxis;
-				this.autoScroll = vars.autoScroll || 0;
-				this.lockedAxis = null;
-				this.allowEventDefault = !!vars.allowEventDefault;
-				var type = (vars.type || (_isOldIE ? "top,left" : "x,y")).toLowerCase(),
-					xyMode = (type.indexOf("x") !== -1 || type.indexOf("y") !== -1),
-					rotationMode = (type.indexOf("rotation") !== -1),
-					xProp = rotationMode ? "rotation" : xyMode ? "x" : "left",
-					yProp = xyMode ? "y" : "top",
-					allowX = (type.indexOf("x") !== -1 || type.indexOf("left") !== -1 || type === "scroll"),
-					allowY = (type.indexOf("y") !== -1 || type.indexOf("top") !== -1 || type === "scroll"),
-					minimumMovement = vars.minimumMovement || 2,
-					self = this,
-					triggers = _slice(vars.trigger || vars.handle || target),
-					killProps = {},
-					dragEndTime = 0,
-					checkAutoScrollBounds = false,
-					autoScrollMarginTop = vars.autoScrollMarginTop || 40,
-					autoScrollMarginRight = vars.autoScrollMarginRight || 40,
-					autoScrollMarginBottom = vars.autoScrollMarginBottom || 40,
-					autoScrollMarginLeft = vars.autoScrollMarginLeft || 40,
-					isClickable = vars.clickableTest || _isClickable,
-					clickTime = 0,
-					enabled, scrollProxy, startPointerX, startPointerY, startElementX, startElementY, hasBounds, hasDragCallback, maxX, minX, maxY, minY, tempVars, cssVars, touch, touchID, rotationOrigin, dirty, old, snapX, snapY, snapXY, isClicking, touchEventTarget, matrix, interrupted, startScrollTop, startScrollLeft, applyObj, allowNativeTouchScrolling, touchDragAxis, isDispatching, clickDispatch, trustedClickDispatch,
-
-					onContextMenu = function(e) { //used to prevent long-touch from triggering a context menu.
-						if (self.isPressed && e.which < 2) {
-							self.endDrag();
-						} else {
-							e.preventDefault();
-							e.stopPropagation();
-							return false;
-						}
-					},
-
-					//this method gets called on every tick of TweenLite.ticker which allows us to synchronize the renders to the core engine (which is typically synchronized with the display refresh via requestAnimationFrame). This is an optimization - it's better than applying the values inside the "mousemove" or "touchmove" event handler which may get called many times inbetween refreshes.
-					render = function(suppressEvents) {
-						if (self.autoScroll && self.isDragging && (checkAutoScrollBounds || dirty)) {
-							var e = target,
-								autoScrollFactor = self.autoScroll * 15, //multiplying by 15 just gives us a better "feel" speed-wise.
-								parent, isRoot, rect, pointerX, pointerY, changeX, changeY, gap;
-							checkAutoScrollBounds = false;
-							_windowProxy.scrollTop = ((window.pageYOffset != null) ? window.pageYOffset : (_docElement.scrollTop != null) ? _docElement.scrollTop : _doc.body.scrollTop);
-							_windowProxy.scrollLeft = ((window.pageXOffset != null) ? window.pageXOffset : (_docElement.scrollLeft != null) ? _docElement.scrollLeft : _doc.body.scrollLeft);
-							pointerX = self.pointerX - _windowProxy.scrollLeft;
-							pointerY = self.pointerY - _windowProxy.scrollTop;
-							while (e && !isRoot) { //walk up the chain and sense wherever the pointer is within 40px of an edge that's scrollable.
-								isRoot = _isRoot(e.parentNode);
-								parent = isRoot ? _windowProxy : e.parentNode;
-								rect = isRoot ? {bottom:Math.max(_docElement.clientHeight, window.innerHeight || 0), right: Math.max(_docElement.clientWidth, window.innerWidth || 0), left:0, top:0} : parent.getBoundingClientRect();
-								changeX = changeY = 0;
-								if (allowY) {
-									gap = parent._gsMaxScrollY - parent.scrollTop;
-									if (gap < 0) {
-										changeY = gap;
-									} else if (pointerY > rect.bottom - autoScrollMarginBottom && gap) {
-										checkAutoScrollBounds = true;
-										changeY = Math.min(gap, (autoScrollFactor * (1 - Math.max(0, (rect.bottom - pointerY)) / autoScrollMarginBottom)) | 0);
-									} else if (pointerY < rect.top + autoScrollMarginTop && parent.scrollTop) {
-										checkAutoScrollBounds = true;
-										changeY = -Math.min(parent.scrollTop, (autoScrollFactor * (1 - Math.max(0, (pointerY - rect.top)) / autoScrollMarginTop)) | 0);
-									}
-									if (changeY) {
-										parent.scrollTop += changeY;
-									}
-								}
-								if (allowX) {
-									gap = parent._gsMaxScrollX - parent.scrollLeft;
-									if (gap < 0) {
-										changeX = gap;
-									} else if (pointerX > rect.right - autoScrollMarginRight && gap) {
-										checkAutoScrollBounds = true;
-										changeX = Math.min(gap, (autoScrollFactor * (1 - Math.max(0, (rect.right - pointerX)) / autoScrollMarginRight)) | 0);
-									} else if (pointerX < rect.left + autoScrollMarginLeft && parent.scrollLeft) {
-										checkAutoScrollBounds = true;
-										changeX = -Math.min(parent.scrollLeft, (autoScrollFactor * (1 - Math.max(0, (pointerX - rect.left)) / autoScrollMarginLeft)) | 0);
-									}
-									if (changeX) {
-										parent.scrollLeft += changeX;
-									}
-								}
-
-								if (isRoot && (changeX || changeY)) {
-									window.scrollTo(parent.scrollLeft, parent.scrollTop);
-									setPointerPosition(self.pointerX + changeX, self.pointerY + changeY);
-								}
-								e = parent;
-							}
-						}
-						if (dirty) {
-							var x = self.x,
-								y = self.y,
-								min = 0.000001;
-							if (x < min && x > -min) { //browsers don't handle super small decimals well.
-								x = 0;
-							}
-							if (y < min && y > -min) {
-								y = 0;
-							}
-							if (rotationMode) {
-								self.deltaX = x - applyObj.data.rotation;
-								applyObj.data.rotation = self.rotation = x;
-								applyObj.setRatio(1); //note: instead of doing TweenLite.set(), as a performance optimization we skip right to the method that renders the transforms inside CSSPlugin. For old versions of IE, though, we do a normal TweenLite.set() to leverage its ability to re-reroute to an IE-specific 2D renderer.
-							} else {
-								if (scrollProxy) {
-									if (allowY) {
-										self.deltaY = y - scrollProxy.top();
-										scrollProxy.top(y);
-									}
-									if (allowX) {
-										self.deltaX = x - scrollProxy.left();
-										scrollProxy.left(x);
-									}
-								} else if (xyMode) {
-									if (allowY) {
-										self.deltaY = y - applyObj.data.y;
-										applyObj.data.y = y;
-									}
-									if (allowX) {
-										self.deltaX = x - applyObj.data.x;
-										applyObj.data.x = x;
-									}
-									applyObj.setRatio(1); //note: instead of doing TweenLite.set(), as a performance optimization we skip right to the method that renders the transforms inside CSSPlugin. For old versions of IE, though, we do a normal TweenLite.set() to leverage its ability to re-reroute to an IE-specific 2D renderer.
-								} else {
-									if (allowY) {
-										self.deltaY = y - parseFloat(target.style.top || 0);
-										target.style.top = y + "px";
-									}
-									if (allowX) {
-										self.deltaY = x - parseFloat(target.style.left || 0);
-										target.style.left = x + "px";
-									}
-								}
-							}
-							if (hasDragCallback && !suppressEvents && !isDispatching) {
-								isDispatching = true; //in case onDrag has an update() call (avoid endless loop)
-								_dispatchEvent(self, "drag", "onDrag");
-								isDispatching = false;
-							}
-						}
-						dirty = false;
-					},
-
-					//copies the x/y from the element (whether that be transforms, top/left, or ScrollProxy's top/left) to the Draggable's x and y (and rotation if necessary) properties so that they reflect reality and it also (optionally) applies any snapping necessary. This is used by the ThrowPropsPlugin tween in an onUpdate to ensure things are synced and snapped.
-					syncXY = function(skipOnUpdate, skipSnap) {
-						var x = self.x,
-							y = self.y,
-							snappedValue;
-						if (!target._gsTransform && (xyMode || rotationMode)) { //just in case the _gsTransform got wiped, like if the user called clearProps on the transform or something (very rare), doing an x tween forces a re-parsing of the transforms and population of the _gsTransform.
-							TweenLite.set(target, {x:"+=0", overwrite:false, data:"_draggable"});
-						}
-						if (xyMode) {
-							self.y = target._gsTransform.y;
-							self.x = target._gsTransform.x;
-						} else if (rotationMode) {
-							self.x = self.rotation = target._gsTransform.rotation;
-						} else if (scrollProxy) {
-							self.y = scrollProxy.top();
-							self.x = scrollProxy.left();
-						} else {
-							self.y = parseInt(target.style.top, 10) || 0;
-							self.x = parseInt(target.style.left, 10) || 0;
-						}
-						if ((snapX || snapY || snapXY) && !skipSnap && (self.isDragging || self.isThrowing)) {
-							if (snapXY) {
-								_temp1.x = self.x;
-								_temp1.y = self.y;
-								snappedValue = snapXY(_temp1);
-								if (snappedValue.x !== self.x) {
-									self.x = snappedValue.x;
-									dirty = true;
-								}
-								if (snappedValue.y !== self.y) {
-									self.y = snappedValue.y;
-									dirty = true;
-								}
-							}
-							if (snapX) {
-								snappedValue = snapX(self.x);
-								if (snappedValue !== self.x) {
-									self.x = snappedValue;
-									if (rotationMode) {
-										self.rotation = snappedValue;
-									}
-									dirty = true;
-								}
-							}
-							if (snapY) {
-								snappedValue = snapY(self.y);
-								if (snappedValue !== self.y) {
-									self.y = snappedValue;
-								}
-								dirty = true;
-							}
-						}
-						if (dirty) {
-							render(true);
-						}
-						if (!skipOnUpdate) {
-							self.deltaX = self.x - x;
-							self.deltaY = self.y - y;
-							_dispatchEvent(self, "throwupdate", "onThrowUpdate");
-						}
-					},
-
-					calculateBounds = function() {
-						var bounds, targetBounds, snap, snapIsRaw;
-						hasBounds = false;
-						if (scrollProxy) {
-							scrollProxy.calibrate();
-							self.minX = minX = -scrollProxy.maxScrollLeft();
-							self.minY = minY = -scrollProxy.maxScrollTop();
-							self.maxX = maxX = self.maxY = maxY = 0;
-							hasBounds = true;
-						} else if (!!vars.bounds) {
-							bounds = _getBounds(vars.bounds, target.parentNode); //could be a selector/jQuery object or a DOM element or a generic object like {top:0, left:100, width:1000, height:800} or {minX:100, maxX:1100, minY:0, maxY:800}
-							if (rotationMode) {
-								self.minX = minX = bounds.left;
-								self.maxX = maxX = bounds.left + bounds.width;
-								self.minY = minY = self.maxY = maxY = 0;
-							} else if (vars.bounds.maxX !== undefined || vars.bounds.maxY !== undefined) {
-								bounds = vars.bounds;
-								self.minX = minX = bounds.minX;
-								self.minY = minY = bounds.minY;
-								self.maxX = maxX = bounds.maxX;
-								self.maxY = maxY = bounds.maxY;
-							} else {
-								targetBounds = _getBounds(target, target.parentNode);
-								self.minX = minX = _getStyle(target, xProp) + bounds.left - targetBounds.left;
-								self.minY = minY = _getStyle(target, yProp) + bounds.top - targetBounds.top;
-								self.maxX = maxX = minX + (bounds.width - targetBounds.width);
-								self.maxY = maxY = minY + (bounds.height - targetBounds.height);
-							}
-							if (minX > maxX) {
-								self.minX = maxX;
-								self.maxX = maxX = minX;
-								minX = self.minX;
-							}
-							if (minY > maxY) {
-								self.minY = maxY;
-								self.maxY = maxY = minY;
-								minY = self.minY;
-							}
-							if (rotationMode) {
-								self.minRotation = minX;
-								self.maxRotation = maxX;
-							}
-							hasBounds = true;
-						}
-						if (vars.liveSnap) {
-							snap = (vars.liveSnap === true) ? (vars.snap || {}) : vars.liveSnap;
-							snapIsRaw = (snap instanceof Array || typeof(snap) === "function");
-							if (rotationMode) {
-								snapX = buildSnapFunc((snapIsRaw ? snap : snap.rotation), minX, maxX, 1);
-								snapY = null;
-							} else {
-								if (snap.points) {
-									snapXY = buildPointSnapFunc((snapIsRaw ? snap : snap.points), minX, maxX, minY, maxY, snap.radius, scrollProxy ? -1 : 1);
-								} else {
-									if (allowX) {
-										snapX = buildSnapFunc((snapIsRaw ? snap : snap.x || snap.left || snap.scrollLeft), minX, maxX, scrollProxy ? -1 : 1);
-									}
-									if (allowY) {
-										snapY = buildSnapFunc((snapIsRaw ? snap : snap.y || snap.top || snap.scrollTop), minY, maxY, scrollProxy ? -1 : 1);
-									}
-								}
-							}
-						}
-
-					},
-
-					onThrowComplete = function() {
-						self.isThrowing = false;
-						_dispatchEvent(self, "throwcomplete", "onThrowComplete");
-					},
-					onThrowOverwrite = function() {
-						self.isThrowing = false;
-					},
-
-					animate = function(throwProps, forceZeroVelocity) {
-						var snap, snapIsRaw, tween, overshootTolerance;
-						if (throwProps && ThrowPropsPlugin) {
-							if (throwProps === true) {
-								snap = vars.snap || vars.liveSnap || {};
-								snapIsRaw = (snap instanceof Array || typeof(snap) === "function");
-								throwProps = {resistance:(vars.throwResistance || vars.resistance || 1000) / (rotationMode ? 10 : 1)};
-								if (rotationMode) {
-									throwProps.rotation = _parseThrowProps(self, snapIsRaw ? snap : snap.rotation, maxX, minX, 1, forceZeroVelocity);
-								} else {
-									if (allowX) {
-										throwProps[xProp] = _parseThrowProps(self, snapIsRaw ? snap : snap.points || snap.x || snap.left || snap.scrollLeft, maxX, minX, scrollProxy ? -1 : 1, forceZeroVelocity || (self.lockedAxis === "x"));
-									}
-									if (allowY) {
-										throwProps[yProp] = _parseThrowProps(self, snapIsRaw ? snap : snap.points || snap.y || snap.top || snap.scrollTop, maxY, minY, scrollProxy ? -1 : 1, forceZeroVelocity || (self.lockedAxis === "y"));
-									}
-									if (snap.points || (snap instanceof Array && typeof(snap[0]) === "object")) {
-										throwProps.linkedProps = xProp + "," + yProp;
-										throwProps.radius = snap.radius; //note: we also disable liveSnapping while throwing if there's a "radius" defined, otherwise it looks weird to have the item thrown past a snapping point but live-snapping mid-tween. We do this by altering the onUpdateParams so that "skipSnap" parameter is true for syncXY.
-									}
-								}
-							}
-							self.isThrowing = true;
-							overshootTolerance = (!isNaN(vars.overshootTolerance)) ? vars.overshootTolerance : (vars.edgeResistance === 1) ? 0 : (1 - self.edgeResistance) + 0.2;
-							self.tween = tween = ThrowPropsPlugin.to(scrollProxy || target, {throwProps:throwProps, data:"_draggable", ease:(vars.ease || _globals.Power3.easeOut), onComplete:onThrowComplete, onOverwrite:onThrowOverwrite, onUpdate:(vars.fastMode ? _dispatchEvent : syncXY), onUpdateParams:(vars.fastMode ? [self, "onthrowupdate", "onThrowUpdate"] : (snap && snap.radius) ? [false, true] : _emptyArray)}, Math.max(vars.minDuration || 0, vars.maxDuration || 0) || 2, (!isNaN(vars.minDuration) ? vars.minDuration : (overshootTolerance === 0 || (typeof(throwProps) === "object" && throwProps.resistance > 1000)) ? 0 : 0.5), overshootTolerance);
-							if (!vars.fastMode) {
-								//to populate the end values, we just scrub the tween to the end, record the values, and then jump back to the beginning.
-								if (scrollProxy) {
-									scrollProxy._suspendTransforms = true; //Microsoft browsers have a bug that causes them to briefly render the position incorrectly (it flashes to the end state when we seek() the tween even though we jump right back to the current position, and this only seems to happen when we're affecting both top and left), so we set a _suspendTransforms flag to prevent it from actually applying the values in the ScrollProxy.
-								}
-								tween.render(tween.duration(), true, true);
-								syncXY(true, true);
-								self.endX = self.x;
-								self.endY = self.y;
-								if (rotationMode) {
-									self.endRotation = self.x;
-								}
-								tween.play(0);
-								syncXY(true, true);
-								if (scrollProxy) {
-									scrollProxy._suspendTransforms = false;
-								}
-							}
-						} else if (hasBounds) {
-							self.applyBounds();
-						}
-					},
-
-					updateMatrix = function(shiftStart) {
-						var start = matrix || [1,0,0,1,0,0],
-							a, b, c, d, tx, ty, determinant, pointerX, pointerY;
-						matrix = _getConcatenatedMatrix(target.parentNode, true);
-						if (shiftStart && self.isPressed && start.join(",") !== matrix.join(",")) { //if the matrix changes WHILE the element is pressed, we must adjust the startPointerX and startPointerY accordingly, so we invert the original matrix and figure out where the pointerX and pointerY were in the global space, then apply the new matrix to get the updated coordinates.
-							a = start[0];
-							b = start[1];
-							c = start[2];
-							d = start[3];
-							tx = start[4];
-							ty = start[5];
-							determinant = (a * d - b * c);
-							pointerX = startPointerX * (d / determinant) + startPointerY * (-c / determinant) + ((c * ty - d * tx) / determinant);
-							pointerY = startPointerX * (-b / determinant) + startPointerY * (a / determinant) + (-(a * ty - b * tx) / determinant);
-							startPointerY = pointerX * matrix[1] + pointerY * matrix[3] + matrix[5];
-							startPointerX = pointerX * matrix[0] + pointerY * matrix[2] + matrix[4];
-						}
-						if (!matrix[1] && !matrix[2] && matrix[0] == 1 && matrix[3] == 1 && matrix[4] == 0 && matrix[5] == 0) { //if there are no transforms, we can optimize performance by not factoring in the matrix
-							matrix = null;
-						}
-
-					},
-
-					recordStartPositions = function() {
-						var edgeTolerance = 1 - self.edgeResistance;
-						updateMatrix(false);
-						if (matrix) {
-							startPointerX = self.pointerX * matrix[0] + self.pointerY * matrix[2] + matrix[4]; //translate to local coordinate system
-							startPointerY = self.pointerX * matrix[1] + self.pointerY * matrix[3] + matrix[5];
-						}
-						if (dirty) {
-							setPointerPosition(self.pointerX, self.pointerY);
-							render(true);
-						}
-						if (scrollProxy) {
-							calculateBounds();
-							startElementY = scrollProxy.top();
-							startElementX = scrollProxy.left();
-						} else {
-							//if the element is in the process of tweening, don't force snapping to occur because it could make it jump. Imagine the user throwing, then before it's done, clicking on the element in its inbetween state.
-							if (isTweening()) {
-								syncXY(true, true);
-								calculateBounds();
-							} else {
-								self.applyBounds();
-							}
-							if (rotationMode) {
-								rotationOrigin = self.rotationOrigin = _localToGlobal(target, {x:0, y:0});
-								syncXY(true, true);
-								startElementX = self.x; //starting rotation (x always refers to rotation in type:"rotation", measured in degrees)
-								startElementY = self.y = Math.atan2(rotationOrigin.y - self.pointerY, self.pointerX - rotationOrigin.x) * _RAD2DEG;
-							} else {
-								startScrollTop = target.parentNode ? target.parentNode.scrollTop || 0 : 0;
-								startScrollLeft = target.parentNode ? target.parentNode.scrollLeft || 0 : 0;
-								startElementY = _getStyle(target, yProp); //record the starting top and left values so that we can just add the mouse's movement to them later.
-								startElementX = _getStyle(target, xProp);
-							}
-						}
-						if (hasBounds && edgeTolerance) {
-							if (startElementX > maxX) {
-								startElementX = maxX + (startElementX - maxX) / edgeTolerance;
-							} else if (startElementX < minX) {
-								startElementX = minX - (minX - startElementX) / edgeTolerance;
-							}
-							if (!rotationMode) {
-								if (startElementY > maxY) {
-									startElementY = maxY + (startElementY - maxY) / edgeTolerance;
-								} else if (startElementY < minY) {
-									startElementY = minY - (minY - startElementY) / edgeTolerance;
-								}
-							}
-						}
-						self.startX = startElementX;
-						self.startY = startElementY;
-					},
-
-					isTweening = function() {
-						return (self.tween && self.tween.isActive());
-					},
-
-					removePlaceholder = function() {
-						if (_placeholderDiv.parentNode && !isTweening() && !self.isDragging) { //_placeholderDiv just props open auto-scrolling containers so they don't collapse as the user drags left/up. We remove it after dragging (and throwing, if necessary) finishes.
-							_placeholderDiv.parentNode.removeChild(_placeholderDiv);
-						}
-					},
-
-					buildSnapFunc = function(snap, min, max, factor) {
-						if (typeof(snap) === "function") {
-							return function(n) {
-								var edgeTolerance = !self.isPressed ? 1 : 1 - self.edgeResistance; //if we're tweening, disable the edgeTolerance because it's already factored into the tweening values (we don't want to apply it multiple times)
-								return snap.call(self, (n > max ? max + (n - max) * edgeTolerance : (n < min) ? min + (n - min) * edgeTolerance : n)) * factor;
-							};
-						}
-						if (snap instanceof Array) {
-							return function(n) {
-								var i = snap.length,
-									closest = 0,
-									absDif = _max,
-									val, dif;
-								while (--i > -1) {
-									val = snap[i];
-									dif = val - n;
-									if (dif < 0) {
-										dif = -dif;
-									}
-									if (dif < absDif && val >= min && val <= max) {
-										closest = i;
-										absDif = dif;
-									}
-								}
-								return snap[closest];
-							};
-						}
-						return isNaN(snap) ? function(n) { return n; } : function() { return snap * factor; };
-					},
-
-					buildPointSnapFunc = function(snap, minX, maxX, minY, maxY, radius, factor) {
-						radius = (radius && radius < _max) ? radius * radius : _max; //so we don't have to Math.sqrt() in the functions. Performance optimization.
-						if (typeof(snap) === "function") {
-							return function(point) {
-								var edgeTolerance = !self.isPressed ? 1 : 1 - self.edgeResistance,
-									x = point.x,
-									y = point.y,
-									result, dx, dy; //if we're tweening, disable the edgeTolerance because it's already factored into the tweening values (we don't want to apply it multiple times)
-								point.x = x = (x > maxX ? maxX + (x - maxX) * edgeTolerance : (x < minX) ? minX + (x - minX) * edgeTolerance : x);
-								point.y = y = (y > maxY ? maxY + (y - maxY) * edgeTolerance : (y < minY) ? minY + (y - minY) * edgeTolerance : y);
-								result = snap.call(self, point);
-								if (result !== point) {
-									point.x = result.x;
-									point.y = result.y;
-								}
-								if (factor !== 1) {
-									point.x *= factor;
-									point.y *= factor;
-								}
-								if (radius < _max) {
-									dx = point.x - x;
-									dy = point.y - y;
-									if (dx * dx + dy * dy > radius) {
-										point.x = x;
-										point.y = y;
-									}
-								}
-								return point;
-							};
-						}
-						if (snap instanceof Array) {
-							return function(p) {
-								var i = snap.length,
-									closest = 0,
-									minDist = _max,
-									x, y, point, dist;
-								while (--i > -1) {
-									point = snap[i];
-									x = point.x - p.x;
-									y = point.y - p.y;
-									dist = x * x + y * y;
-									if (dist < minDist) {
-										closest = i;
-										minDist = dist;
-									}
-								}
-								return (minDist <= radius) ? snap[closest] : p;
-							};
-						}
-						return function(n) { return n; };
-					},
-
-					//called when the mouse is pressed (or touch starts)
-					onPress = function(e, force) {
-						var i;
-						if (!enabled || self.isPressed || !e || ((e.type === "mousedown" || e.type === "pointerdown") && !force && _getTime() - clickTime < 30 && _touchEventLookup[self.pointerEvent.type])) { //when we DON'T preventDefault() in order to accommodate touch-scrolling and the user just taps, many browsers also fire a mousedown/mouseup sequence AFTER the touchstart/touchend sequence, thus it'd result in two quick "click" events being dispatched. This line senses that condition and halts it on the subsequent mousedown.
-							return;
-						}
-						interrupted = isTweening();
-						self.pointerEvent = e;
-						if (_touchEventLookup[e.type]) { //note: on iOS, BOTH touchmove and mousemove are dispatched, but the mousemove has pageY and pageX of 0 which would mess up the calculations and needlessly hurt performance.
-							touchEventTarget = (e.type.indexOf("touch") !== -1) ? (e.currentTarget || e.target) : _doc; //pointer-based touches (for Microsoft browsers) don't remain locked to the original target like other browsers, so we must use the document instead. The event type would be "MSPointerDown" or "pointerdown".
-							_addListener(touchEventTarget, "touchend", onRelease);
-							_addListener(touchEventTarget, "touchmove", onMove);
-							_addListener(touchEventTarget, "touchcancel", onRelease);
-							_addListener(_doc, "touchstart", _onMultiTouchDocument);
-						} else {
-							touchEventTarget = null;
-							_addListener(_doc, "mousemove", onMove); //attach these to the document instead of the box itself so that if the user's mouse moves too quickly (and off of the box), things still work.
-						}
-						touchDragAxis = null;
-						_addListener(_doc, "mouseup", onRelease);
-						if (e && e.target) {
-							_addListener(e.target, "mouseup", onRelease); //we also have to listen directly on the element because some browsers don't bubble up the event to the _doc on elements with contentEditable="true"
-						}
-						isClicking = (isClickable.call(self, e.target) && !vars.dragClickables && !force);
-						if (isClicking) {
-							_addListener(e.target, "change", onRelease); //in some browsers, when you mousedown on a <select> element, no mouseup gets dispatched! So we listen for a "change" event instead.
-							_dispatchEvent(self, "pressInit", "onPressInit");
-							_dispatchEvent(self, "press", "onPress");
-							_setSelectable(triggers, true); //accommodates things like inputs and elements with contentEditable="true" (otherwise user couldn't drag to select text)
-							return;
-						}
-						allowNativeTouchScrolling = (!touchEventTarget || allowX === allowY || self.vars.allowNativeTouchScrolling === false || (self.vars.allowContextMenu && e && (e.ctrlKey || e.which > 2))) ? false : allowX ? "y" : "x"; //note: in Chrome, right-clicking (for a context menu) fires onPress and it doesn't have the event.which set properly, so we must look for event.ctrlKey. If the user wants to allow context menus we should of course sense it here and not allow native touch scrolling.
-						if (_isOldIE) {
-							e = _populateIEEvent(e, true);
-						} else if (!allowNativeTouchScrolling && !self.allowEventDefault) {
-							e.preventDefault();
-							if (e.preventManipulation) {
-								e.preventManipulation();  //for some Microsoft browsers
-							}
-						}
-						if (e.changedTouches) { //touch events store the data slightly differently
-							e = touch = e.changedTouches[0];
-							touchID = e.identifier;
-						} else if (e.pointerId) {
-							touchID = e.pointerId; //for some Microsoft browsers
-						} else {
-							touch = touchID = null;
-						}
-						_dragCount++;
-						_addToRenderQueue(render); //causes the Draggable to render on each "tick" of TweenLite.ticker (performance optimization - updating values in a mousemove can cause them to happen too frequently, like multiple times between frame redraws which is wasteful, and it also prevents values from updating properly in IE8)
-						startPointerY = self.pointerY = e.pageY; //record the starting x and y so that we can calculate the movement from the original in _onMouseMove
-						startPointerX = self.pointerX = e.pageX;
-						_dispatchEvent(self, "pressInit", "onPressInit");
-						if (allowNativeTouchScrolling || self.autoScroll) {
-							_recordMaxScrolls(target.parentNode);
-						}
-						if (target.parentNode && self.autoScroll && !scrollProxy && !rotationMode && target.parentNode._gsMaxScrollX && !_placeholderDiv.parentNode && !target.getBBox) { //add a placeholder div to prevent the parent container from collapsing when the user drags the element left.
-							_placeholderDiv.style.width = target.parentNode.scrollWidth + "px";
-							target.parentNode.appendChild(_placeholderDiv);
-						}
-						recordStartPositions();
-						if (self.tween) {
-							self.tween.kill();
-						}
-						self.isThrowing = false;
-						TweenLite.killTweensOf(scrollProxy || target, true, killProps); //in case the user tries to drag it before the last tween is done.
-						if (scrollProxy) {
-							TweenLite.killTweensOf(target, true, {scrollTo:1}); //just in case the original target's scroll position is being tweened somewhere else.
-						}
-						self.tween = self.lockedAxis = null;
-						if (vars.zIndexBoost || (!rotationMode && !scrollProxy && vars.zIndexBoost !== false)) {
-							target.style.zIndex = Draggable.zIndex++;
-						}
-						self.isPressed = true;
-						hasDragCallback = !!(vars.onDrag || self._listeners.drag);
-						if (!rotationMode) {
-							i = triggers.length;
-							while (--i > -1) {
-								_setStyle(triggers[i], "cursor", vars.cursor || "move");
-							}
-						}
-						_dispatchEvent(self, "press", "onPress");
-					},
-
-					//called every time the mouse/touch moves
-					onMove = function(e) {
-						var originalEvent = e,
-							touches, pointerX, pointerY, i, dx, dy;
-						if (!enabled || _isMultiTouching || !self.isPressed || !e) {
-							return;
-						}
-						self.pointerEvent = e;
-						touches = e.changedTouches;
-						if (touches) { //touch events store the data slightly differently
-							e = touches[0];
-							if (e !== touch && e.identifier !== touchID) { //Usually changedTouches[0] will be what we're looking for, but in case it's not, look through the rest of the array...(and Android browsers don't reuse the event like iOS)
-								i = touches.length;
-								while (--i > -1 && (e = touches[i]).identifier !== touchID) {}
-								if (i < 0) {
-									return;
-								}
-							}
-						} else if (e.pointerId && touchID && e.pointerId !== touchID) { //for some Microsoft browsers, we must attach the listener to the doc rather than the trigger so that when the finger moves outside the bounds of the trigger, things still work. So if the event we're receiving has a pointerId that doesn't match the touchID, ignore it (for multi-touch)
-							return;
-						}
-						if (_isOldIE) {
-							e = _populateIEEvent(e, true);
-						} else {
-							if (touchEventTarget && allowNativeTouchScrolling && !touchDragAxis) { //Android browsers force us to decide on the first "touchmove" event if we should allow the default (scrolling) behavior or preventDefault(). Otherwise, a "touchcancel" will be fired and then no "touchmove" or "touchend" will fire during the scrolling (no good).
-								pointerX = e.pageX;
-								pointerY = e.pageY;
-								if (matrix) {
-									i = pointerX * matrix[0] + pointerY * matrix[2] + matrix[4];
-									pointerY = pointerX * matrix[1] + pointerY * matrix[3] + matrix[5];
-									pointerX = i;
-								}
-								dx = Math.abs(pointerX - startPointerX);
-								dy = Math.abs(pointerY - startPointerY);
-								if ((dx !== dy && (dx > minimumMovement || dy > minimumMovement)) || (_isAndroid && allowNativeTouchScrolling === touchDragAxis)) {
-									touchDragAxis = (dx > dy && allowX) ? "x" : "y";
-									if (self.vars.lockAxisOnTouchScroll !== false) {
-										self.lockedAxis = (touchDragAxis === "x") ? "y" : "x";
-										if (typeof(self.vars.onLockAxis) === "function") {
-											self.vars.onLockAxis.call(self, originalEvent);
-										}
-									}
-									if (_isAndroid && allowNativeTouchScrolling === touchDragAxis) {
-										onRelease(originalEvent);
-										return;
-									}
-								}
-							}
-							if (!self.allowEventDefault && (!allowNativeTouchScrolling || (touchDragAxis && allowNativeTouchScrolling !== touchDragAxis)) && originalEvent.cancelable !== false) {
-								originalEvent.preventDefault();
-								if (originalEvent.preventManipulation) { //for some Microsoft browsers
-									originalEvent.preventManipulation();
-								}
-							}
-						}
-						if (self.autoScroll) {
-							checkAutoScrollBounds = true;
-						}
-						setPointerPosition(e.pageX, e.pageY);
-					},
-
-					setPointerPosition = function(pointerX, pointerY) {
-						var dragTolerance = 1 - self.dragResistance,
-							edgeTolerance = 1 - self.edgeResistance,
-							xChange, yChange, x, y, dif, temp;
-
-						self.pointerX = pointerX;
-						self.pointerY = pointerY;
-						if (rotationMode) {
-							y = Math.atan2(rotationOrigin.y - pointerY, pointerX - rotationOrigin.x) * _RAD2DEG;
-							dif = self.y - y;
-							if (dif > 180) {
-								startElementY -= 360;
-								self.y = y;
-							} else if (dif < -180) {
-								startElementY += 360;
-								self.y = y;
-							}
-							if (self.x !== startElementX || Math.abs(startElementY - y) > minimumMovement) {
-								self.y = y;
-								x = startElementX + (startElementY - y) * dragTolerance;
-							} else {
-								x = startElementX;
-							}
-
-						} else {
-							if (matrix) {
-								temp = pointerX * matrix[0] + pointerY * matrix[2] + matrix[4];
-								pointerY = pointerX * matrix[1] + pointerY * matrix[3] + matrix[5];
-								pointerX = temp;
-							}
-							yChange = (pointerY - startPointerY);
-							xChange = (pointerX - startPointerX);
-							if (yChange < minimumMovement && yChange > -minimumMovement) {
-								yChange = 0;
-							}
-							if (xChange < minimumMovement && xChange > -minimumMovement) {
-								xChange = 0;
-							}
-							if ((self.lockAxis || self.lockedAxis) && (xChange || yChange)) {
-								temp = self.lockedAxis;
-								if (!temp) {
-									self.lockedAxis = temp = (allowX && Math.abs(xChange) > Math.abs(yChange)) ? "y" : allowY ? "x" : null;
-									if (temp && typeof(self.vars.onLockAxis) === "function") {
-										self.vars.onLockAxis.call(self, self.pointerEvent);
-									}
-								}
-								if (temp === "y") {
-									yChange = 0;
-								} else if (temp === "x") {
-									xChange = 0;
-								}
-							}
-							x = startElementX + xChange * dragTolerance;
-							y = startElementY + yChange * dragTolerance;
-						}
-
-						if ((snapX || snapY || snapXY) && (self.x !== x || (self.y !== y && !rotationMode))) {
-							if (snapXY) {
-								_temp1.x = x;
-								_temp1.y = y;
-								temp = snapXY(_temp1);
-								x = temp.x;
-								y = temp.y;
-							}
-							if (snapX) {
-								x = snapX(x);
-							}
-							if (snapY) {
-								y = snapY(y);
-							}
-						} else if (hasBounds) {
-							if (x > maxX) {
-								x = maxX + (x - maxX) * edgeTolerance;
-							} else if (x < minX) {
-								x = minX + (x - minX) * edgeTolerance;
-							}
-							if (!rotationMode) {
-								if (y > maxY) {
-									y = maxY + (y - maxY) * edgeTolerance;
-								} else if (y < minY) {
-									y = minY + (y - minY) * edgeTolerance;
-								}
-							}
-						}
-						if (!rotationMode && !matrix) {
-							x = Math.round(x); //helps work around an issue with some Win Touch devices
-							y = Math.round(y);
-						}
-						if (self.x !== x || (self.y !== y && !rotationMode)) {
-							if (rotationMode) {
-								self.endRotation = self.x = self.endX = x;
-								dirty = true;
-							} else {
-								if (allowY) {
-									self.y = self.endY = y;
-									dirty = true; //a flag that indicates we need to render the target next time the TweenLite.ticker dispatches a "tick" event (typically on a requestAnimationFrame) - this is a performance optimization (we shouldn't render on every move because sometimes many move events can get dispatched between screen refreshes, and that'd be wasteful to render every time)
-								}
-								if (allowX) {
-									self.x = self.endX = x;
-									dirty = true;
-								}
-							}
-							if (!self.isDragging && self.isPressed) {
-								self.isDragging = true;
-								_dispatchEvent(self, "dragstart", "onDragStart");
-							}
-						}
-					},
-
-					//called when the mouse/touch is released
-					onRelease = function(e, force) {
-						if (!enabled || !self.isPressed || (e && touchID != null && !force && ((e.pointerId && e.pointerId !== touchID) || (e.changedTouches && !_hasTouchID(e.changedTouches, touchID))))) {  //for some Microsoft browsers, we must attach the listener to the doc rather than the trigger so that when the finger moves outside the bounds of the trigger, things still work. So if the event we're receiving has a pointerId that doesn't match the touchID, ignore it (for multi-touch)
-							return;
-						}
-						self.isPressed = false;
-						var originalEvent = e,
-							wasDragging = self.isDragging,
-							isContextMenuRelease = (self.vars.allowContextMenu && e && (e.ctrlKey || e.which > 2)),
-							placeholderDelayedCall = TweenLite.delayedCall(0.001, removePlaceholder),
-							touches, i, syntheticEvent, eventTarget, syntheticClick;
-						if (touchEventTarget) {
-							_removeListener(touchEventTarget, "touchend", onRelease);
-							_removeListener(touchEventTarget, "touchmove", onMove);
-							_removeListener(touchEventTarget, "touchcancel", onRelease);
-							_removeListener(_doc, "touchstart", _onMultiTouchDocument);
-						} else {
-							_removeListener(_doc, "mousemove", onMove);
-						}
-						_removeListener(_doc, "mouseup", onRelease);
-						if (e && e.target) {
-							_removeListener(e.target, "mouseup", onRelease);
-						}
-						dirty = false;
-						if (isClicking && !isContextMenuRelease) {
-							if (e) {
-								_removeListener(e.target, "change", onRelease);
-								self.pointerEvent = originalEvent;
-							}
-							_setSelectable(triggers, false);
-							_dispatchEvent(self, "release", "onRelease");
-							_dispatchEvent(self, "click", "onClick");
-							isClicking = false;
-							return;
-						}
-						_removeFromRenderQueue(render);
-						if (!rotationMode) {
-							i = triggers.length;
-							while (--i > -1) {
-								_setStyle(triggers[i], "cursor", vars.cursor || "move");
-							}
-						}
-						if (wasDragging) {
-							dragEndTime = _lastDragTime = _getTime();
-							self.isDragging = false;
-						}
-						_dragCount--;
-						if (e) {
-							if (_isOldIE) {
-								e = _populateIEEvent(e, false);
-							}
-							touches = e.changedTouches;
-							if (touches) { //touch events store the data slightly differently
-								e = touches[0];
-								if (e !== touch && e.identifier !== touchID) { //Usually changedTouches[0] will be what we're looking for, but in case it's not, look through the rest of the array...(and Android browsers don't reuse the event like iOS)
-									i = touches.length;
-									while (--i > -1 && (e = touches[i]).identifier !== touchID) {}
-									if (i < 0) {
-										return;
-									}
-								}
-							}
-							self.pointerEvent = originalEvent;
-							self.pointerX = e.pageX;
-							self.pointerY = e.pageY;
-						}
-						if (isContextMenuRelease && originalEvent) {
-							originalEvent.preventDefault();
-							if (originalEvent.preventManipulation) {
-								originalEvent.preventManipulation();  //for some Microsoft browsers
-							}
-							_dispatchEvent(self, "release", "onRelease");
-						} else if (originalEvent && !wasDragging) {
-							if (interrupted && (vars.snap || vars.bounds)) { //otherwise, if the user clicks on the object while it's animating to a snapped position, and then releases without moving 3 pixels, it will just stay there (it should animate/snap)
-								animate(vars.throwProps);
-							}
-							_dispatchEvent(self, "release", "onRelease");
-							if ((!_isAndroid || originalEvent.type !== "touchmove") && originalEvent.type.indexOf("cancel") === -1) { //to accommodate native scrolling on Android devices, we have to immediately call onRelease() on the first touchmove event, but that shouldn't trigger a "click".
-								_dispatchEvent(self, "click", "onClick");
-								if (_getTime() - clickTime < 300) {
-									_dispatchEvent(self, "doubleclick", "onDoubleClick");
-								}
-								eventTarget = originalEvent.target || originalEvent.srcElement || target; //old IE uses srcElement
-								clickTime = _getTime();
-								syntheticClick = function () { // some browsers (like Firefox) won't trust script-generated clicks, so if the user tries to click on a video to play it, for example, it simply won't work. Since a regular "click" event will most likely be generated anyway (one that has its isTrusted flag set to true), we must slightly delay our script-generated click so that the "real"/trusted one is prioritized. Remember, when there are duplicate events in quick succession, we suppress all but the first one. Some browsers don't even trigger the "real" one at all, so our synthetic one is a safety valve that ensures that no matter what, a click event does get dispatched.
-									if (clickTime !== clickDispatch && self.enabled() && !self.isPressed) {
-										if (eventTarget.click) { //some browsers (like mobile Safari) don't properly trigger the click event
-											eventTarget.click();
-										} else if (_doc.createEvent) {
-											syntheticEvent = _doc.createEvent("MouseEvents");
-											syntheticEvent.initMouseEvent("click", true, true, window, 1, self.pointerEvent.screenX, self.pointerEvent.screenY, self.pointerX, self.pointerY, false, false, false, false, 0, null);
-											eventTarget.dispatchEvent(syntheticEvent);
-										}
-									}
-								};
-								if (!_isAndroid && !originalEvent.defaultPrevented) { //iOS Safari requires the synthetic click to happen immediately or else it simply won't work, but Android doesn't play nice.
-									TweenLite.delayedCall(0.00001, syntheticClick); //in addition to the iOS bug workaround, there's a Firefox issue with clicking on things like a video to play, so we must fake a click event in a slightly delayed fashion. Previously, we listened for the "click" event with "capture" false which solved the video-click-to-play issue, but it would allow the "click" event to be dispatched twice like if you were using a jQuery.click() because that was handled in the capture phase, thus we had to switch to the capture phase to avoid the double-dispatching, but do the delayed synthetic click.
-								}
-							}
-						} else {
-							animate(vars.throwProps); //will skip if throwProps isn't defined or ThrowPropsPlugin isn't loaded.
-							if (!_isOldIE && !self.allowEventDefault && originalEvent && (vars.dragClickables || !isClickable.call(self, originalEvent.target)) && wasDragging && (!allowNativeTouchScrolling || (touchDragAxis && allowNativeTouchScrolling === touchDragAxis)) && originalEvent.cancelable !== false) {
-								originalEvent.preventDefault();
-								if (originalEvent.preventManipulation) {
-									originalEvent.preventManipulation();  //for some Microsoft browsers
-								}
-							}
-							_dispatchEvent(self, "release", "onRelease");
-						}
-						if (isTweening()) {
-							placeholderDelayedCall.duration( self.tween.duration() ); //sync the timing so that the placeholder DIV gets
-						}
-						if (wasDragging) {
-							_dispatchEvent(self, "dragend", "onDragEnd");
-						}
-						return true;
-					},
-
-					updateScroll = function(e) {
-						if (e && self.isDragging && !scrollProxy) {
-							var parent = e.target || e.srcElement || target.parentNode,
-								deltaX = parent.scrollLeft - parent._gsScrollX,
-								deltaY = parent.scrollTop - parent._gsScrollY;
-							if (deltaX || deltaY) {
-								if (matrix) {
-									startPointerX -= deltaX * matrix[0] + deltaY * matrix[2];
-									startPointerY -= deltaY * matrix[3] + deltaX * matrix[1];
-								} else {
-									startPointerX -= deltaX;
-									startPointerY -= deltaY;
-								}
-								parent._gsScrollX += deltaX;
-								parent._gsScrollY += deltaY;
-								setPointerPosition(self.pointerX, self.pointerY);
-							}
-						}
-					},
-
-					onClick = function(e) { //this was a huge pain in the neck to align all the various browsers and their behaviors. Chrome, Firefox, Safari, Opera, Android, and Microsoft Edge all handle events differently! Some will only trigger native behavior (like checkbox toggling) from trusted events. Others don't even support isTrusted, but require 2 events to flow through before triggering native behavior. Edge treats everything as trusted but also mandates that 2 flow through to trigger the correct native behavior.
-						var time = _getTime(),
-							recentlyClicked = (time - clickTime < 40),
-							recentlyDragged = (time - dragEndTime < 40),
-							alreadyDispatched = (recentlyClicked && clickDispatch === clickTime),
-							isModern = !!e.preventDefault,
-							defaultPrevented = (self.pointerEvent && self.pointerEvent.defaultPrevented),
-							alreadyDispatchedTrusted = (recentlyClicked && trustedClickDispatch === clickTime),
-							trusted = e.isTrusted || (e.isTrusted == null && recentlyClicked && alreadyDispatched); //note: Safari doesn't support isTrusted, and it won't properly execute native behavior (like toggling checkboxes) on the first synthetic "click" event - we must wait for the 2nd and treat it as trusted (but stop propagation at that point). Confusing, I know. Don't you love cross-browser compatibility challenges?
-						if (isModern && (alreadyDispatched || (recentlyDragged && self.vars.suppressClickOnDrag !== false) )) {
-							e.stopImmediatePropagation();
-						}
-						if (recentlyClicked && !(self.pointerEvent && self.pointerEvent.defaultPrevented) && (!alreadyDispatched || (trusted !== alreadyDispatchedTrusted))) { //let the first click pass through unhindered. Let the next one only if it's trusted, then no more (stop quick-succession ones)
-							if (trusted && alreadyDispatched) {
-								trustedClickDispatch = clickTime;
-							}
-							clickDispatch = clickTime;
-							return;
-						}
-						if (self.isPressed || recentlyDragged || recentlyClicked) {
-							if (!isModern) {
-								e.returnValue = false;
-							} else if (!trusted || !e.detail || !recentlyClicked || defaultPrevented) {
-								e.preventDefault();
-								if (e.preventManipulation) {
-									e.preventManipulation();  //for some Microsoft browsers
-								}
-							}
-						}
-					},
-
-					localizePoint = function(p) {
-						return matrix ? {x:p.x * matrix[0] + p.y * matrix[2] + matrix[4], y:p.x * matrix[1] + p.y * matrix[3] + matrix[5]} : {x:p.x, y:p.y};
-					};
-
-				old = Draggable.get(this.target);
-				if (old) {
-					old.kill(); // avoids duplicates (an element can only be controlled by one Draggable)
-				}
-
-				//give the user access to start/stop dragging...
-				this.startDrag = function(e, align) {
-					var r1, r2, p1, p2;
-					onPress(e || self.pointerEvent, true);
-					//if the pointer isn't on top of the element, adjust things accordingly
-					if (align && !self.hitTest(e || self.pointerEvent)) {
-						r1 = _parseRect(e || self.pointerEvent);
-						r2 = _parseRect(target);
-						p1 = localizePoint({x:r1.left + r1.width / 2, y:r1.top + r1.height / 2});
-						p2 = localizePoint({x:r2.left + r2.width / 2, y:r2.top + r2.height / 2});
-						startPointerX -= p1.x - p2.x;
-						startPointerY -= p1.y - p2.y;
-					}
-					if (!self.isDragging) {
-						self.isDragging = true;
-						_dispatchEvent(self, "dragstart", "onDragStart");
-					}
-				};
-				this.drag = onMove;
-				this.endDrag = function(e) {
-					onRelease(e || self.pointerEvent, true);
-				};
-				this.timeSinceDrag = function() {
-					return self.isDragging ? 0 : (_getTime() - dragEndTime) / 1000;
-				};
-				this.timeSinceClick = function() {
-					return (_getTime() - clickTime) / 1000;
-				};
-				this.hitTest = function(target, threshold) {
-					return Draggable.hitTest(self.target, target, threshold);
-				};
-
-				this.getDirection = function(from, diagonalThreshold) { //from can be "start" (default), "velocity", or an element
-					var mode = (from === "velocity" && ThrowPropsPlugin) ? from : (typeof(from) === "object" && !rotationMode) ? "element" : "start",
-						xChange, yChange, ratio, direction, r1, r2;
-					if (mode === "element") {
-						r1 = _parseRect(self.target);
-						r2 = _parseRect(from);
-					}
-					xChange = (mode === "start") ? self.x - startElementX : (mode === "velocity") ? ThrowPropsPlugin.getVelocity(this.target, xProp) : (r1.left + r1.width / 2) - (r2.left + r2.width / 2);
-					if (rotationMode) {
-						return xChange < 0 ? "counter-clockwise" : "clockwise";
-					} else {
-						diagonalThreshold = diagonalThreshold || 2;
-						yChange = (mode === "start") ? self.y - startElementY : (mode === "velocity") ? ThrowPropsPlugin.getVelocity(this.target, yProp) : (r1.top + r1.height / 2) - (r2.top + r2.height / 2);
-						ratio = Math.abs(xChange / yChange);
-						direction = (ratio < 1 / diagonalThreshold) ? "" : (xChange < 0) ? "left" : "right";
-						if (ratio < diagonalThreshold) {
-							if (direction !== "") {
-								direction += "-";
-							}
-							direction += (yChange < 0) ? "up" : "down";
-						}
-					}
-					return direction;
-				};
-
-
-				this.applyBounds = function(newBounds) {
-					var x, y, forceZeroVelocity, e, parent, isRoot;
-					if (newBounds && vars.bounds !== newBounds) {
-						vars.bounds = newBounds;
-						return self.update(true);
-					}
-					syncXY(true);
-					calculateBounds();
-					if (hasBounds) {
-						x = self.x;
-						y = self.y;
-						if (x > maxX) {
-							x = maxX;
-						} else if (x < minX) {
-							x = minX;
-						}
-						if (y > maxY) {
-							y = maxY;
-						} else if (y < minY) {
-							y = minY;
-						}
-						if (self.x !== x || self.y !== y) {
-							forceZeroVelocity = true;
-							self.x = self.endX = x;
-							if (rotationMode) {
-								self.endRotation = x;
-							} else {
-								self.y = self.endY = y;
-							}
-							dirty = true;
-							render(true);
-							if (self.autoScroll && !self.isDragging) {
-								_recordMaxScrolls(target.parentNode);
-								e = target;
-								_windowProxy.scrollTop = ((window.pageYOffset != null) ? window.pageYOffset : (_docElement.scrollTop != null) ? _docElement.scrollTop : _doc.body.scrollTop);
-								_windowProxy.scrollLeft = ((window.pageXOffset != null) ? window.pageXOffset : (_docElement.scrollLeft != null) ? _docElement.scrollLeft : _doc.body.scrollLeft);
-								while (e && !isRoot) { //walk up the chain and sense wherever the scrollTop/scrollLeft exceeds the maximum.
-									isRoot = _isRoot(e.parentNode);
-									parent = isRoot ? _windowProxy : e.parentNode;
-									if (allowY && parent.scrollTop > parent._gsMaxScrollY) {
-										parent.scrollTop = parent._gsMaxScrollY;
-									}
-									if (allowX && parent.scrollLeft > parent._gsMaxScrollX) {
-										parent.scrollLeft = parent._gsMaxScrollX;
-									}
-									e = parent;
-								}
-							}
-						}
-						if (self.isThrowing && (forceZeroVelocity || self.endX > maxX || self.endX < minX || self.endY > maxY || self.endY < minY)) {
-							animate(vars.throwProps, forceZeroVelocity);
-						}
-					}
-					return self;
-				};
-
-				this.update = function(applyBounds, sticky, ignoreExternalChanges) {
-					var x = self.x,
-						y = self.y;
-					updateMatrix(!sticky);
-					if (applyBounds) {
-						self.applyBounds();
-					} else {
-						if (dirty && ignoreExternalChanges) {
-							render(true);
-						}
-						syncXY(true);
-					}
-					if (sticky) {
-						setPointerPosition(self.pointerX, self.pointerY);
-						if (dirty) {
-							render(true);
-						}
-					}
-					if (self.isPressed && !sticky && ((allowX && Math.abs(x - self.x) > 0.01) || (allowY && (Math.abs(y - self.y) > 0.01 && !rotationMode)))) {
-						recordStartPositions();
-					}
-					if (self.autoScroll) {
-						_recordMaxScrolls(target.parentNode);
-						checkAutoScrollBounds = self.isDragging;
-						render(true);
-					}
-					if (self.autoScroll) { //in case reparenting occurred.
-						_removeScrollListener(target, updateScroll);
-						_addScrollListener(target, updateScroll);
-					}
-					return self;
-				};
-
-				this.enable = function(type) {
-					var id, i, trigger;
-					if (type !== "soft") {
-						i = triggers.length;
-						while (--i > -1) {
-							trigger = triggers[i];
-							_addListener(trigger, "mousedown", onPress);
-							_addListener(trigger, "touchstart", onPress);
-							_addListener(trigger, "click", onClick, true); //note: used to pass true for capture but it prevented click-to-play-video functionality in Firefox.
-							if (!rotationMode) {
-								_setStyle(trigger, "cursor", vars.cursor || "move");
-							}
-							_setStyle(trigger, "touchCallout", "none");
-							_setStyle(trigger, "touchAction", (allowX === allowY) ? "none" : allowX ? "pan-y" : "pan-x");
-							if (_isSVG(trigger)) { // a bug in chrome doesn't respect touch-action on SVG elements - it only works if we set it on the parent SVG.
-								_setStyle(trigger.ownerSVGElement || trigger, "touchAction", (allowX === allowY) ? "none" : allowX ? "pan-y" : "pan-x");
-							}
-							if (!this.vars.allowContextMenu) {
-								_addListener(trigger, "contextmenu", onContextMenu);
-							}
-						}
-						_setSelectable(triggers, false);
-					}
-					_addScrollListener(target, updateScroll);
-					enabled = true;
-					if (ThrowPropsPlugin && type !== "soft") {
-						ThrowPropsPlugin.track(scrollProxy || target, (xyMode ? "x,y" : rotationMode ? "rotation" : "top,left"));
-					}
-					if (scrollProxy) {
-						scrollProxy.enable();
-					}
-					target._gsDragID = id = "d" + (_lookupCount++);
-					_lookup[id] = this;
-					if (scrollProxy) {
-						scrollProxy.element._gsDragID = id;
-					}
-					TweenLite.set(target, {x:"+=0", overwrite:false, data:"_draggable"}); //simply ensures that there's a _gsTransform on the element.
-					applyObj = {
-						t:target,
-						data:_isOldIE ? cssVars : target._gsTransform,
-						tween:{},
-						setRatio:(_isOldIE ? function() { TweenLite.set(target, tempVars); } : CSSPlugin._internals.setTransformRatio || CSSPlugin._internals.set3DTransformRatio)
-					};
-					recordStartPositions();
-					self.update(true);
-					return self;
-				};
-
-				this.disable = function(type) {
-					var dragging = self.isDragging,
-						i, trigger;
-					if (!rotationMode) {
-						i = triggers.length;
-						while (--i > -1) {
-							_setStyle(triggers[i], "cursor", null);
-						}
-					}
-					if (type !== "soft") {
-						i = triggers.length;
-						while (--i > -1) {
-							trigger = triggers[i];
-							_setStyle(trigger, "touchCallout", null);
-							_setStyle(trigger, "touchAction", null);
-							_removeListener(trigger, "mousedown", onPress);
-							_removeListener(trigger, "touchstart", onPress);
-							_removeListener(trigger, "click", onClick);
-							_removeListener(trigger, "contextmenu", onContextMenu);
-						}
-						_setSelectable(triggers, true);
-						if (touchEventTarget) {
-							_removeListener(touchEventTarget, "touchcancel", onRelease);
-							_removeListener(touchEventTarget, "touchend", onRelease);
-							_removeListener(touchEventTarget, "touchmove", onMove);
-						}
-						_removeListener(_doc, "mouseup", onRelease);
-						_removeListener(_doc, "mousemove", onMove);
-					}
-					_removeScrollListener(target, updateScroll);
-					enabled = false;
-					if (ThrowPropsPlugin && type !== "soft") {
-						ThrowPropsPlugin.untrack(scrollProxy || target, (xyMode ? "x,y" : rotationMode ? "rotation" : "top,left"));
-					}
-					if (scrollProxy) {
-						scrollProxy.disable();
-					}
-					_removeFromRenderQueue(render);
-					self.isDragging = self.isPressed = isClicking = false;
-					if (dragging) {
-						_dispatchEvent(self, "dragend", "onDragEnd");
-					}
-					return self;
-				};
-
-				this.enabled = function(value, type) {
-					return arguments.length ? (value ? self.enable(type) : self.disable(type)) : enabled;
-				};
-
-				this.kill = function() {
-					self.isThrowing = false;
-					TweenLite.killTweensOf(scrollProxy || target, true, killProps);
-					self.disable();
-					TweenLite.set(triggers, {clearProps:"userSelect"});
-					delete _lookup[target._gsDragID];
-					return self;
-				};
-
-				if (type.indexOf("scroll") !== -1) {
-					scrollProxy = this.scrollProxy = new ScrollProxy(target, _extend({onKill:function() { //ScrollProxy's onKill() gets called if/when the ScrollProxy senses that the user interacted with the scroll position manually (like using the scrollbar). IE9 doesn't fire the "mouseup" properly when users drag the scrollbar of an element, so this works around that issue.
-						if (self.isPressed) {
-							onRelease(null);
-						}}}, vars));
-					//a bug in many Android devices' stock browser causes scrollTop to get forced back to 0 after it is altered via JS, so we set overflow to "hidden" on mobile/touch devices (they hide the scroll bar anyway). That works around the bug. (This bug is discussed at https://code.google.com/p/android/issues/detail?id=19625)
-					target.style.overflowY = (allowY && !_isTouchDevice) ? "auto" : "hidden";
-					target.style.overflowX = (allowX && !_isTouchDevice) ? "auto" : "hidden";
-					target = scrollProxy.content;
-				}
-
-				if (vars.force3D !== false) {
-					TweenLite.set(target, {force3D:true}); //improve performance by forcing a GPU layer when possible
-				}
-				if (rotationMode) {
-					killProps.rotation = 1;
-				} else {
-					if (allowX) {
-						killProps[xProp] = 1;
-					}
-					if (allowY) {
-						killProps[yProp] = 1;
-					}
-				}
-				if (rotationMode) {
-					tempVars = _tempVarsRotation;
-					cssVars = tempVars.css;
-					tempVars.overwrite = false;
-				} else if (xyMode) {
-					tempVars = (allowX && allowY) ? _tempVarsXY : allowX ? _tempVarsX : _tempVarsY;
-					cssVars = tempVars.css;
-					tempVars.overwrite = false;
-				}
-
-				this.enable();
-			},
-			p = Draggable.prototype = new EventDispatcher();
-
-		p.constructor = Draggable;
-		p.pointerX = p.pointerY = p.startX = p.startY = p.deltaX = p.deltaY = 0;
-		p.isDragging = p.isPressed = false;
-		Draggable.version = "0.16.5";
-		Draggable.zIndex = 1000;
-
-		_addListener(_doc, "touchcancel", function() {
-			//some older Android devices intermittently stop dispatching "touchmove" events if we don't listen for "touchcancel" on the document. Very strange indeed.
-		});
-		_addListener(_doc, "contextmenu", function(e) {
-			var p;
-			for (p in _lookup) {
-				if (_lookup[p].isPressed) {
-					_lookup[p].endDrag();
 				}
 			}
-		});
+			log(3, "added tween");
 
-		Draggable.create = function(targets, vars) {
-			if (typeof(targets) === "string") {
-				targets = TweenLite.selector(targets);
+			updateTweenProgress();
+			return Scene;
+		};
+
+		/**
+		 * Remove the tween from the scene.  
+		 * This will terminate the control of the Scene over the tween.
+		 *
+		 * Using the reset option you can decide if the tween should remain in the current state or be rewound to set the target elements back to the state they were in before the tween was added to the scene.
+		 * @memberof! animation.GSAP#
+		 *
+		 * @example
+		 * // remove the tween from the scene without resetting it
+		 * scene.removeTween();
+		 *
+		 * // remove the tween from the scene and reset it to initial position
+		 * scene.removeTween(true);
+		 *
+		 * @param {boolean} [reset=false] - If `true` the tween will be reset to its initial values.
+		 * @returns {Scene} Parent object for chaining.
+		 */
+		Scene.removeTween = function (reset) {
+			if (_tween) {
+				if (reset) {
+					_tween.progress(0).pause();
+				}
+				_tween.kill();
+				_tween = undefined;
+				log(3, "removed tween (reset: " + (reset ? "true" : "false") + ")");
 			}
-			var a = (!targets || targets.length === 0) ? [] : _isArrayLike(targets) ? _flattenArray(targets) : [targets],
-				i = a.length;
-			while (--i > -1) {
-				a[i] = new Draggable(a[i], vars);
+			return Scene;
+		};
+
+	});
+}));
+/*!
+ * ScrollMagic v2.0.6 (2018-10-08)
+ * The javascript library for magical scroll interactions.
+ * (c) 2018 Jan Paepke (@janpaepke)
+ * Project Website: http://scrollmagic.io
+ * 
+ * @version 2.0.6
+ * @license Dual licensed under MIT license and GPL.
+ * @author Jan Paepke - e-mail@janpaepke.de
+ *
+ * @file Debug Extension for ScrollMagic.
+ */
+/**
+ * This plugin was formerly known as the ScrollMagic debug extension.
+ *
+ * It enables you to add visual indicators to your page, to be able to see exactly when a scene is triggered.
+ *
+ * To have access to this extension, please include `plugins/debug.addIndicators.js`.
+ * @mixin debug.addIndicators
+ */
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['ScrollMagic'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		factory(require('scrollmagic'));
+	} else {
+		// no browser global export needed, just execute
+		factory(root.ScrollMagic || (root.jQuery && root.jQuery.ScrollMagic));
+	}
+}(this, function (ScrollMagic) {
+	"use strict";
+	var NAMESPACE = "debug.addIndicators";
+
+	var
+	console = window.console || {},
+		err = Function.prototype.bind.call(console.error || console.log ||
+		function () {}, console);
+	if (!ScrollMagic) {
+		err("(" + NAMESPACE + ") -> ERROR: The ScrollMagic main module could not be found. Please make sure it's loaded before this plugin or use an asynchronous loader like requirejs.");
+	}
+
+	// plugin settings
+	var
+	FONT_SIZE = "0.85em",
+		ZINDEX = "9999",
+		EDGE_OFFSET = 15; // minimum edge distance, added to indentation
+
+	// overall vars
+	var
+	_util = ScrollMagic._util,
+		_autoindex = 0;
+
+
+
+	ScrollMagic.Scene.extend(function () {
+		var
+		Scene = this,
+			_indicator;
+
+		var log = function () {
+			if (Scene._log) { // not available, when main source minified
+				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
+				Scene._log.apply(this, arguments);
 			}
-			return a;
 		};
 
-		Draggable.get = function(target) {
-			return _lookup[(_unwrapElement(target) || {})._gsDragID];
+		/**
+		 * Add visual indicators for a ScrollMagic.Scene.  
+		 * @memberof! debug.addIndicators#
+		 *
+		 * @example
+		 * // add basic indicators
+		 * scene.addIndicators()
+		 *
+		 * // passing options
+		 * scene.addIndicators({name: "pin scene", colorEnd: "#FFFFFF"});
+		 *
+		 * @param {object} [options] - An object containing one or more options for the indicators.
+		 * @param {(string|object)} [options.parent=undefined] - A selector, DOM Object or a jQuery object that the indicators should be added to.  
+		 If undefined, the controller's container will be used.
+		 * @param {number} [options.name=""] - This string will be displayed at the start and end indicators of the scene for identification purposes. If no name is supplied an automatic index will be used.
+		 * @param {number} [options.indent=0] - Additional position offset for the indicators (useful, when having multiple scenes starting at the same position).
+		 * @param {string} [options.colorStart=green] - CSS color definition for the start indicator.
+		 * @param {string} [options.colorEnd=red] - CSS color definition for the end indicator.
+		 * @param {string} [options.colorTrigger=blue] - CSS color definition for the trigger indicator.
+		 */
+		Scene.addIndicators = function (options) {
+			if (!_indicator) {
+				var
+				DEFAULT_OPTIONS = {
+					name: "",
+					indent: 0,
+					parent: undefined,
+					colorStart: "green",
+					colorEnd: "red",
+					colorTrigger: "blue",
+				};
+
+				options = _util.extend({}, DEFAULT_OPTIONS, options);
+
+				_autoindex++;
+				_indicator = new Indicator(Scene, options);
+
+				Scene.on("add.plugin_addIndicators", _indicator.add);
+				Scene.on("remove.plugin_addIndicators", _indicator.remove);
+				Scene.on("destroy.plugin_addIndicators", Scene.removeIndicators);
+
+				// it the scene already has a controller we can start right away.
+				if (Scene.controller()) {
+					_indicator.add();
+				}
+			}
+			return Scene;
 		};
 
-		Draggable.timeSinceDrag = function() {
-			return (_getTime() - _lastDragTime) / 1000;
+		/**
+		 * Removes visual indicators from a ScrollMagic.Scene.
+		 * @memberof! debug.addIndicators#
+		 *
+		 * @example
+		 * // remove previously added indicators
+		 * scene.removeIndicators()
+		 *
+		 */
+		Scene.removeIndicators = function () {
+			if (_indicator) {
+				_indicator.remove();
+				this.off("*.plugin_addIndicators");
+				_indicator = undefined;
+			}
+			return Scene;
 		};
 
-		var _tempRect = {}, //reuse to reduce garbage collection tasks
-			_oldIERect = function(e) { //IE8 doesn't support getBoundingClientRect(), so we use this as a backup.
-				var top = 0,
-					left = 0,
-					width, height;
-				e = _unwrapElement(e);
-				width = e.offsetWidth;
-				height = e.offsetHeight;
-				while(e) {
-					top += e.offsetTop;
-					left += e.offsetLeft;
-					e = e.offsetParent;
-				}
-				return {top: top, left: left, width: width, height: height};
-			},
-			_parseRect = function(e, undefined) { //accepts a DOM element, a mouse event, or a rectangle object and returns the corresponding rectangle with left, right, width, height, top, and bottom properties
-				if (e === window) {
-					_tempRect.left = _tempRect.top = 0;
-					_tempRect.width = _tempRect.right = _docElement.clientWidth || e.innerWidth || _doc.body.clientWidth || 0;
-					_tempRect.height = _tempRect.bottom = ((e.innerHeight || 0) - 20 < _docElement.clientHeight) ? _docElement.clientHeight : e.innerHeight || _doc.body.clientHeight || 0;
-					return _tempRect;
-				}
-				var r = (e.pageX !== undefined) ? {left:e.pageX - _getDocScrollLeft(), top:e.pageY - _getDocScrollTop(), right:e.pageX - _getDocScrollLeft() + 1, bottom:e.pageY - _getDocScrollTop() + 1} : (!e.nodeType && e.left !== undefined && e.top !== undefined) ? e : _isOldIE ? _oldIERect(e) : _unwrapElement(e).getBoundingClientRect();
-				if (r.right === undefined && r.width !== undefined) {
-					r.right = r.left + r.width;
-					r.bottom = r.top + r.height;
-				} else if (r.width === undefined) { //some browsers don't include width and height properties. We can't just set them directly on r because some browsers throw errors, so create a new generic object.
-					r = {width: r.right - r.left, height: r.bottom - r.top, right: r.right, left: r.left, bottom: r.bottom, top: r.top};
-				}
-				return r;
+	});
+
+
+/*
+	 * ----------------------------------------------------------------
+	 * Extension for controller to store and update related indicators
+	 * ----------------------------------------------------------------
+	 */
+	// add option to globally auto-add indicators to scenes
+	/**
+	 * Every ScrollMagic.Controller instance now accepts an additional option.  
+	 * See {@link ScrollMagic.Controller} for a complete list of the standard options.
+	 * @memberof! debug.addIndicators#
+	 * @method new ScrollMagic.Controller(options)
+	 * @example
+	 * // make a controller and add indicators to all scenes attached
+	 * var controller = new ScrollMagic.Controller({addIndicators: true});
+	 * // this scene will automatically have indicators added to it
+	 * new ScrollMagic.Scene()
+	 *                .addTo(controller);
+	 *
+	 * @param {object} [options] - Options for the Controller.
+	 * @param {boolean} [options.addIndicators=false] - If set to `true` every scene that is added to the controller will automatically get indicators added to it.
+	 */
+	ScrollMagic.Controller.addOption("addIndicators", false);
+	// extend Controller
+	ScrollMagic.Controller.extend(function () {
+		var
+		Controller = this,
+			_info = Controller.info(),
+			_container = _info.container,
+			_isDocument = _info.isDocument,
+			_vertical = _info.vertical,
+			_indicators = { // container for all indicators and methods
+				groups: []
 			};
 
-		Draggable.hitTest = function(obj1, obj2, threshold) {
-			if (obj1 === obj2) {
-				return false;
+		var log = function () {
+			if (Controller._log) { // not available, when main source minified
+				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
+				Controller._log.apply(this, arguments);
 			}
-			var r1 = _parseRect(obj1),
-				r2 = _parseRect(obj2),
-				isOutside = (r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom || r2.bottom < r1.top),
-				overlap, area, isRatio;
-			if (isOutside || !threshold) {
-				return !isOutside;
-			}
-			isRatio = ((threshold + "").indexOf("%") !== -1);
-			threshold = parseFloat(threshold) || 0;
-			overlap = {left:Math.max(r1.left, r2.left), top:Math.max(r1.top, r2.top)};
-			overlap.width = Math.min(r1.right, r2.right) - overlap.left;
-			overlap.height = Math.min(r1.bottom, r2.bottom) - overlap.top;
-			if (overlap.width < 0 || overlap.height < 0) {
-				return false;
-			}
-			if (isRatio) {
-				threshold *= 0.01;
-				area = overlap.width * overlap.height;
-				return (area >= r1.width * r1.height * threshold || area >= r2.width * r2.height * threshold);
-			}
-			return (overlap.width > threshold && overlap.height > threshold);
+		};
+		if (Controller._indicators) {
+			log(2, "WARNING: Scene already has a property '_indicators', which will be overwritten by plugin.");
+		}
+
+		// add indicators container
+		this._indicators = _indicators;
+/*
+			needed updates:
+			+++++++++++++++
+			start/end position on scene shift (handled in Indicator class)
+			trigger parameters on triggerHook value change (handled in Indicator class)
+			bounds position on container scroll or resize (to keep alignment to bottom/right)
+			trigger position on container resize, window resize (if container isn't document) and window scroll (if container isn't document)
+		*/
+
+		// event handler for when associated bounds markers need to be repositioned
+		var handleBoundsPositionChange = function () {
+			_indicators.updateBoundsPositions();
 		};
 
-		_placeholderDiv.style.cssText = "visibility:hidden;height:1px;top:-1px;pointer-events:none;position:relative;clear:both;";
+		// event handler for when associated trigger groups need to be repositioned
+		var handleTriggerPositionChange = function () {
+			_indicators.updateTriggerGroupPositions();
+		};
 
-		return Draggable;
+		_container.addEventListener("resize", handleTriggerPositionChange);
+		if (!_isDocument) {
+			window.addEventListener("resize", handleTriggerPositionChange);
+			window.addEventListener("scroll", handleTriggerPositionChange);
+		}
+		// update all related bounds containers
+		_container.addEventListener("resize", handleBoundsPositionChange);
+		_container.addEventListener("scroll", handleBoundsPositionChange);
 
-	}, true);
 
-}); if (_gsScope._gsDefine) { _gsScope._gsQueue.pop()(); }
+		// updates the position of the bounds container to aligned to the right for vertical containers and to the bottom for horizontal
+		this._indicators.updateBoundsPositions = function (specificIndicator) {
+			var // constant for all bounds
+			groups = specificIndicator ? [_util.extend({}, specificIndicator.triggerGroup, {
+				members: [specificIndicator]
+			})] : // create a group with only one element
+			_indicators.groups,
+				// use all
+				g = groups.length,
+				css = {},
+				paramPos = _vertical ? "left" : "top",
+				paramDimension = _vertical ? "width" : "height",
+				edge = _vertical ? _util.get.scrollLeft(_container) + _util.get.width(_container) - EDGE_OFFSET : _util.get.scrollTop(_container) + _util.get.height(_container) - EDGE_OFFSET,
+				b, triggerSize, group;
+			while (g--) { // group loop
+				group = groups[g];
+				b = group.members.length;
+				triggerSize = _util.get[paramDimension](group.element.firstChild);
+				while (b--) { // indicators loop
+					css[paramPos] = edge - triggerSize;
+					_util.css(group.members[b].bounds, css);
+				}
+			}
+		};
 
-//export to AMD/RequireJS and CommonJS/Node (precursor to full modular build system coming at a later date)
-(function(name) {
-	"use strict";
-	var getGlobal = function() {
-		return (_gsScope.GreenSockGlobals || _gsScope)[name];
+		// updates the positions of all trigger groups attached to a controller or a specific one, if provided
+		this._indicators.updateTriggerGroupPositions = function (specificGroup) {
+			var // constant vars
+			groups = specificGroup ? [specificGroup] : _indicators.groups,
+				i = groups.length,
+				container = _isDocument ? document.body : _container,
+				containerOffset = _isDocument ? {
+					top: 0,
+					left: 0
+				} : _util.get.offset(container, true),
+				edge = _vertical ? _util.get.width(_container) - EDGE_OFFSET : _util.get.height(_container) - EDGE_OFFSET,
+				paramDimension = _vertical ? "width" : "height",
+				paramTransform = _vertical ? "Y" : "X";
+			var // changing vars
+			group, elem, pos, elemSize, transform;
+			while (i--) {
+				group = groups[i];
+				elem = group.element;
+				pos = group.triggerHook * Controller.info("size");
+				elemSize = _util.get[paramDimension](elem.firstChild.firstChild);
+				transform = pos > elemSize ? "translate" + paramTransform + "(-100%)" : "";
+
+				_util.css(elem, {
+					top: containerOffset.top + (_vertical ? pos : edge - group.members[0].options.indent),
+					left: containerOffset.left + (_vertical ? edge - group.members[0].options.indent : pos)
+				});
+				_util.css(elem.firstChild.firstChild, {
+					"-ms-transform": transform,
+					"-webkit-transform": transform,
+					"transform": transform
+				});
+			}
+		};
+
+		// updates the label for the group to contain the name, if it only has one member
+		this._indicators.updateTriggerGroupLabel = function (group) {
+			var
+			text = "trigger" + (group.members.length > 1 ? "" : " " + group.members[0].options.name),
+				elem = group.element.firstChild.firstChild,
+				doUpdate = elem.textContent !== text;
+			if (doUpdate) {
+				elem.textContent = text;
+				if (_vertical) { // bounds position is dependent on text length, so update
+					_indicators.updateBoundsPositions();
+				}
+			}
+		};
+
+		// add indicators if global option is set
+		this.addScene = function (newScene) {
+
+			if (this._options.addIndicators && newScene instanceof ScrollMagic.Scene && newScene.controller() === Controller) {
+				newScene.addIndicators();
+			}
+			// call original destroy method
+			this.$super.addScene.apply(this, arguments);
+		};
+
+		// remove all previously set listeners on destroy
+		this.destroy = function () {
+			_container.removeEventListener("resize", handleTriggerPositionChange);
+			if (!_isDocument) {
+				window.removeEventListener("resize", handleTriggerPositionChange);
+				window.removeEventListener("scroll", handleTriggerPositionChange);
+			}
+			_container.removeEventListener("resize", handleBoundsPositionChange);
+			_container.removeEventListener("scroll", handleBoundsPositionChange);
+			// call original destroy method
+			this.$super.destroy.apply(this, arguments);
+		};
+		return Controller;
+
+	});
+
+/*
+	 * ----------------------------------------------------------------
+	 * Internal class for the construction of Indicators
+	 * ----------------------------------------------------------------
+	 */
+	var Indicator = function (Scene, options) {
+		var
+		Indicator = this,
+			_elemBounds = TPL.bounds(),
+			_elemStart = TPL.start(options.colorStart),
+			_elemEnd = TPL.end(options.colorEnd),
+			_boundsContainer = options.parent && _util.get.elements(options.parent)[0],
+			_vertical, _ctrl;
+
+		var log = function () {
+			if (Scene._log) { // not available, when main source minified
+				Array.prototype.splice.call(arguments, 1, 0, "(" + NAMESPACE + ")", "->");
+				Scene._log.apply(this, arguments);
+			}
+		};
+
+		options.name = options.name || _autoindex;
+
+		// prepare bounds elements
+		_elemStart.firstChild.textContent += " " + options.name;
+		_elemEnd.textContent += " " + options.name;
+		_elemBounds.appendChild(_elemStart);
+		_elemBounds.appendChild(_elemEnd);
+
+		// set public variables
+		Indicator.options = options;
+		Indicator.bounds = _elemBounds;
+		// will be set later
+		Indicator.triggerGroup = undefined;
+
+		// add indicators to DOM
+		this.add = function () {
+			_ctrl = Scene.controller();
+			_vertical = _ctrl.info("vertical");
+
+			var isDocument = _ctrl.info("isDocument");
+
+			if (!_boundsContainer) {
+				// no parent supplied or doesnt exist
+				_boundsContainer = isDocument ? document.body : _ctrl.info("container"); // check if window/document (then use body)
+			}
+			if (!isDocument && _util.css(_boundsContainer, "position") === 'static') {
+				// position mode needed for correct positioning of indicators
+				_util.css(_boundsContainer, {
+					position: "relative"
+				});
+			}
+
+			// add listeners for updates
+			Scene.on("change.plugin_addIndicators", handleTriggerParamsChange);
+			Scene.on("shift.plugin_addIndicators", handleBoundsParamsChange);
+
+			// updates trigger & bounds (will add elements if needed)
+			updateTriggerGroup();
+			updateBounds();
+
+			setTimeout(function () { // do after all execution is finished otherwise sometimes size calculations are off
+				_ctrl._indicators.updateBoundsPositions(Indicator);
+			}, 0);
+
+			log(3, "added indicators");
+		};
+
+		// remove indicators from DOM
+		this.remove = function () {
+			if (Indicator.triggerGroup) { // if not set there's nothing to remove
+				Scene.off("change.plugin_addIndicators", handleTriggerParamsChange);
+				Scene.off("shift.plugin_addIndicators", handleBoundsParamsChange);
+
+				if (Indicator.triggerGroup.members.length > 1) {
+					// just remove from memberlist of old group
+					var group = Indicator.triggerGroup;
+					group.members.splice(group.members.indexOf(Indicator), 1);
+					_ctrl._indicators.updateTriggerGroupLabel(group);
+					_ctrl._indicators.updateTriggerGroupPositions(group);
+					Indicator.triggerGroup = undefined;
+				} else {
+					// remove complete group
+					removeTriggerGroup();
+				}
+				removeBounds();
+
+				log(3, "removed indicators");
+			}
+		};
+
+/*
+		 * ----------------------------------------------------------------
+		 * internal Event Handlers
+		 * ----------------------------------------------------------------
+		 */
+
+		// event handler for when bounds params change
+		var handleBoundsParamsChange = function () {
+			updateBounds();
+		};
+
+		// event handler for when trigger params change
+		var handleTriggerParamsChange = function (e) {
+			if (e.what === "triggerHook") {
+				updateTriggerGroup();
+			}
+		};
+
+/*
+		 * ----------------------------------------------------------------
+		 * Bounds (start / stop) management
+		 * ----------------------------------------------------------------
+		 */
+
+		// adds an new bounds elements to the array and to the DOM
+		var addBounds = function () {
+			var v = _ctrl.info("vertical");
+			// apply stuff we didn't know before...
+			_util.css(_elemStart.firstChild, {
+				"border-bottom-width": v ? 1 : 0,
+				"border-right-width": v ? 0 : 1,
+				"bottom": v ? -1 : options.indent,
+				"right": v ? options.indent : -1,
+				"padding": v ? "0 8px" : "2px 4px",
+			});
+			_util.css(_elemEnd, {
+				"border-top-width": v ? 1 : 0,
+				"border-left-width": v ? 0 : 1,
+				"top": v ? "100%" : "",
+				"right": v ? options.indent : "",
+				"bottom": v ? "" : options.indent,
+				"left": v ? "" : "100%",
+				"padding": v ? "0 8px" : "2px 4px"
+			});
+			// append
+			_boundsContainer.appendChild(_elemBounds);
+		};
+
+		// remove bounds from list and DOM
+		var removeBounds = function () {
+			_elemBounds.parentNode.removeChild(_elemBounds);
+		};
+
+		// update the start and end positions of the scene
+		var updateBounds = function () {
+			if (_elemBounds.parentNode !== _boundsContainer) {
+				addBounds(); // Add Bounds elements (start/end)
+			}
+			var css = {};
+			css[_vertical ? "top" : "left"] = Scene.triggerPosition();
+			css[_vertical ? "height" : "width"] = Scene.duration();
+			_util.css(_elemBounds, css);
+			_util.css(_elemEnd, {
+				display: Scene.duration() > 0 ? "" : "none"
+			});
+		};
+
+/*
+		 * ----------------------------------------------------------------
+		 * trigger and trigger group management
+		 * ----------------------------------------------------------------
+		 */
+
+		// adds an new trigger group to the array and to the DOM
+		var addTriggerGroup = function () {
+			var triggerElem = TPL.trigger(options.colorTrigger); // new trigger element
+			var css = {};
+			css[_vertical ? "right" : "bottom"] = 0;
+			css[_vertical ? "border-top-width" : "border-left-width"] = 1;
+			_util.css(triggerElem.firstChild, css);
+			_util.css(triggerElem.firstChild.firstChild, {
+				padding: _vertical ? "0 8px 3px 8px" : "3px 4px"
+			});
+			document.body.appendChild(triggerElem); // directly add to body
+			var newGroup = {
+				triggerHook: Scene.triggerHook(),
+				element: triggerElem,
+				members: [Indicator]
+			};
+			_ctrl._indicators.groups.push(newGroup);
+			Indicator.triggerGroup = newGroup;
+			// update right away
+			_ctrl._indicators.updateTriggerGroupLabel(newGroup);
+			_ctrl._indicators.updateTriggerGroupPositions(newGroup);
+		};
+
+		var removeTriggerGroup = function () {
+			_ctrl._indicators.groups.splice(_ctrl._indicators.groups.indexOf(Indicator.triggerGroup), 1);
+			Indicator.triggerGroup.element.parentNode.removeChild(Indicator.triggerGroup.element);
+			Indicator.triggerGroup = undefined;
+		};
+
+		// updates the trigger group -> either join existing or add new one
+/*	
+		 * Logic:
+		 * 1 if a trigger group exist, check if it's in sync with Scene settings – if so, nothing else needs to happen
+		 * 2 try to find an existing one that matches Scene parameters
+		 * 	 2.1 If a match is found check if already assigned to an existing group
+		 *			 If so:
+		 *       A: it was the last member of existing group -> kill whole group
+		 *       B: the existing group has other members -> just remove from member list
+		 *	 2.2 Assign to matching group
+		 * 3 if no new match could be found, check if assigned to existing group
+		 *   A: yes, and it's the only member -> just update parameters and positions and keep using this group
+		 *   B: yes but there are other members -> remove from member list and create a new one
+		 *   C: no, so create a new one
+		 */
+		var updateTriggerGroup = function () {
+			var
+			triggerHook = Scene.triggerHook(),
+				closeEnough = 0.0001;
+
+			// Have a group, check if it still matches
+			if (Indicator.triggerGroup) {
+				if (Math.abs(Indicator.triggerGroup.triggerHook - triggerHook) < closeEnough) {
+					// _util.log(0, "trigger", options.name, "->", "no need to change, still in sync");
+					return; // all good
+				}
+			}
+			// Don't have a group, check if a matching one exists
+			// _util.log(0, "trigger", options.name, "->", "out of sync!");
+			var
+			groups = _ctrl._indicators.groups,
+				group, i = groups.length;
+			while (i--) {
+				group = groups[i];
+				if (Math.abs(group.triggerHook - triggerHook) < closeEnough) {
+					// found a match!
+					// _util.log(0, "trigger", options.name, "->", "found match");
+					if (Indicator.triggerGroup) { // do I have an old group that is out of sync?
+						if (Indicator.triggerGroup.members.length === 1) { // is it the only remaining group?
+							// _util.log(0, "trigger", options.name, "->", "kill");
+							// was the last member, remove the whole group
+							removeTriggerGroup();
+						} else {
+							Indicator.triggerGroup.members.splice(Indicator.triggerGroup.members.indexOf(Indicator), 1); // just remove from memberlist of old group
+							_ctrl._indicators.updateTriggerGroupLabel(Indicator.triggerGroup);
+							_ctrl._indicators.updateTriggerGroupPositions(Indicator.triggerGroup);
+							// _util.log(0, "trigger", options.name, "->", "removing from previous member list");
+						}
+					}
+					// join new group
+					group.members.push(Indicator);
+					Indicator.triggerGroup = group;
+					_ctrl._indicators.updateTriggerGroupLabel(group);
+					return;
+				}
+			}
+
+			// at this point I am obviously out of sync and don't match any other group
+			if (Indicator.triggerGroup) {
+				if (Indicator.triggerGroup.members.length === 1) {
+					// _util.log(0, "trigger", options.name, "->", "updating existing");
+					// out of sync but i'm the only member => just change and update
+					Indicator.triggerGroup.triggerHook = triggerHook;
+					_ctrl._indicators.updateTriggerGroupPositions(Indicator.triggerGroup);
+					return;
+				} else {
+					// _util.log(0, "trigger", options.name, "->", "removing from previous member list");
+					Indicator.triggerGroup.members.splice(Indicator.triggerGroup.members.indexOf(Indicator), 1); // just remove from memberlist of old group
+					_ctrl._indicators.updateTriggerGroupLabel(Indicator.triggerGroup);
+					_ctrl._indicators.updateTriggerGroupPositions(Indicator.triggerGroup);
+					Indicator.triggerGroup = undefined; // need a brand new group...
+				}
+			}
+			// _util.log(0, "trigger", options.name, "->", "add a new one");
+			// did not find any match, make new trigger group
+			addTriggerGroup();
+		};
 	};
-	if (typeof(module) !== "undefined" && module.exports) { //node
-		require("../TweenLite.js");
-		require("../plugins/CSSPlugin.js");
-		module.exports = getGlobal();
-	} else if (typeof(define) === "function" && define.amd) { //AMD
-		define(["TweenLite", "CSSPlugin"], getGlobal);
+
+/*
+	 * ----------------------------------------------------------------
+	 * Templates for the indicators
+	 * ----------------------------------------------------------------
+	 */
+	var TPL = {
+		start: function (color) {
+			// inner element (for bottom offset -1, while keeping top position 0)
+			var inner = document.createElement("div");
+			inner.textContent = "start";
+			_util.css(inner, {
+				position: "absolute",
+				overflow: "visible",
+				"border-width": 0,
+				"border-style": "solid",
+				color: color,
+				"border-color": color
+			});
+			var e = document.createElement('div');
+			// wrapper
+			_util.css(e, {
+				position: "absolute",
+				overflow: "visible",
+				width: 0,
+				height: 0
+			});
+			e.appendChild(inner);
+			return e;
+		},
+		end: function (color) {
+			var e = document.createElement('div');
+			e.textContent = "end";
+			_util.css(e, {
+				position: "absolute",
+				overflow: "visible",
+				"border-width": 0,
+				"border-style": "solid",
+				color: color,
+				"border-color": color
+			});
+			return e;
+		},
+		bounds: function () {
+			var e = document.createElement('div');
+			_util.css(e, {
+				position: "absolute",
+				overflow: "visible",
+				"white-space": "nowrap",
+				"pointer-events": "none",
+				"font-size": FONT_SIZE
+			});
+			e.style.zIndex = ZINDEX;
+			return e;
+		},
+		trigger: function (color) {
+			// inner to be above or below line but keep position
+			var inner = document.createElement('div');
+			inner.textContent = "trigger";
+			_util.css(inner, {
+				position: "relative",
+			});
+			// inner wrapper for right: 0 and main element has no size
+			var w = document.createElement('div');
+			_util.css(w, {
+				position: "absolute",
+				overflow: "visible",
+				"border-width": 0,
+				"border-style": "solid",
+				color: color,
+				"border-color": color
+			});
+			w.appendChild(inner);
+			// wrapper
+			var e = document.createElement('div');
+			_util.css(e, {
+				position: "fixed",
+				overflow: "visible",
+				"white-space": "nowrap",
+				"pointer-events": "none",
+				"font-size": FONT_SIZE
+			});
+			e.style.zIndex = ZINDEX;
+			e.appendChild(w);
+			return e;
+		},
+	};
+
+}));
+/*!
+ * ScrollMagic v2.0.6 (2018-10-08)
+ * The javascript library for magical scroll interactions.
+ * (c) 2018 Jan Paepke (@janpaepke)
+ * Project Website: http://scrollmagic.io
+ * 
+ * @version 2.0.6
+ * @license Dual licensed under MIT license and GPL.
+ * @author Jan Paepke - e-mail@janpaepke.de
+ *
+ * @file ScrollMagic jQuery plugin.
+ *
+ * requires: jQuery ~1.11 or ~2.1
+ */
+/**
+ * This plugin is meant to be used in conjunction with jQuery.  
+ * It enables ScrollMagic to make use of jQuery's advanced selector engine (sizzle) for all elements supplied to ScrollMagic objects, like scroll containers or trigger elements.  
+ * ScrollMagic also accepts jQuery elements for all methods that expect references to DOM elements. Please note, that in most cases the first element of the matched set will be used.
+ * 
+ * Additionally it provides the ScrollMagic object within the jQuery namespace, so it can be accessed using `$.ScrollMagic`.
+ *
+ * In contrast to most other plugins it does not offer new API additions for ScrollMagic.
+ *
+ * To have access to this extension, please include `plugins/jquery.ScrollMagic.js`.
+ * @example
+ * // create a new scene making use of jQuery's advanced selector engine
+ * var scene = new $.ScrollMagic.Scene({
+ *   triggerElement: "#parent div.trigger[attr='thisone']:not(.notthisone)"
+ * });
+ * @requires {@link http://jquery.com/|jQuery ~1.11 or ~2.1}
+ * @mixin framework.jQuery
+ */
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['ScrollMagic', 'jquery'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		factory(require('scrollmagic'), require('jquery'));
+	} else {
+		// Browser global
+		factory(root.ScrollMagic, root.jQuery);
 	}
-}("Draggable"));
+}(this, function (ScrollMagic, $) {
+	"use strict";
+	var NAMESPACE = "jquery.ScrollMagic";
+
+	var
+	console = window.console || {},
+		err = Function.prototype.bind.call(console.error || console.log ||
+		function () {}, console);
+	if (!ScrollMagic) {
+		err("(" + NAMESPACE + ") -> ERROR: The ScrollMagic main module could not be found. Please make sure it's loaded before this plugin or use an asynchronous loader like requirejs.");
+	}
+	if (!$) {
+		err("(" + NAMESPACE + ") -> ERROR: jQuery could not be found. Please make sure it's loaded before ScrollMagic or use an asynchronous loader like requirejs.");
+	}
+
+	ScrollMagic._util.get.elements = function (selector) {
+		return $(selector).toArray();
+	};
+	ScrollMagic._util.addClass = function (elem, classname) {
+		$(elem).addClass(classname);
+	};
+	ScrollMagic._util.removeClass = function (elem, classname) {
+		$(elem).removeClass(classname);
+	};
+	$.ScrollMagic = ScrollMagic;
+}));
