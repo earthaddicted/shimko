@@ -12,7 +12,7 @@
 		margin-top: 97px
 
 	@media screen and (max-width: 600px)
-		margin-top: 87px
+		margin-top: 89px
 
 	.section__wrapper
 		max-width: 1445px
@@ -79,8 +79,9 @@
 	.section__wrapper
 		padding-top: 0
 
-.breadcrumbs ~ .section-slider .slider-main__content
-	padding-top: 145px
+.breadcrumbs + .section-slider .slider-main__content
+	@media screen and (max-width: 768px)
+		padding-top: 145px
 
 .breadcrumbs + .section-portfolio,
 .breadcrumbs + .section-blog

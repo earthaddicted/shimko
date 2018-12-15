@@ -268,7 +268,7 @@
   padding: 166px 20px 131px; }
   @media screen and (max-height: 1440px) {
     .contacts-n__section .section-wrapper {
-      padding: 100px 20px; } }
+      padding: 150px 20px; } }
 
 .contacts-n__section .two-column__block {
   padding-top: 173px;
@@ -277,7 +277,7 @@
   padding: 166px 20px 131px; }
   @media screen and (max-height: 1440px) {
     .contacts-n__section .two-column__block {
-      padding: 100px 20px; } }
+      padding: 150px 20px; } }
   @media screen and (max-width: 1024px) {
     .contacts-n__section .two-column__block {
       padding: 50px 0; } }
@@ -2104,7 +2104,7 @@ a.btn {
       margin-top: 97px; } }
   @media screen and (max-width: 600px) {
     .breadcrumbs {
-      margin-top: 87px; } }
+      margin-top: 89px; } }
   .breadcrumbs .section__wrapper {
     max-width: 1445px;
     padding: 0 20px; }
@@ -2152,8 +2152,9 @@ a.btn {
 .breadcrumbs + .section.section-slider .section__wrapper {
   padding-top: 0; }
 
-.breadcrumbs ~ .section-slider .slider-main__content {
-  padding-top: 145px; }
+@media screen and (max-width: 768px) {
+  .breadcrumbs + .section-slider .slider-main__content {
+    padding-top: 145px; } }
 
 .breadcrumbs + .section-portfolio .section__wrapper,
 .breadcrumbs + .section-blog .section__wrapper {
