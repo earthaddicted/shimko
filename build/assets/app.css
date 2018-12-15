@@ -651,7 +651,6 @@
         .slider-main__text::after {
           width: 40px;
           height: 2px;
-          left: 47.8%;
           bottom: 6px; } }
   .slider-main__heading {
     display: block;
@@ -2103,6 +2102,9 @@ a.btn {
   @media screen and (max-width: 812px) {
     .breadcrumbs {
       margin-top: 97px; } }
+  @media screen and (max-width: 600px) {
+    .breadcrumbs {
+      margin-top: 87px; } }
   .breadcrumbs .section__wrapper {
     max-width: 1445px;
     padding: 0 20px; }
@@ -2113,11 +2115,17 @@ a.btn {
     display: -o-flex;
     display: flex;
     justify-content: center; }
+    @media screen and (max-width: 600px) {
+      .breadcrumbs-block__list {
+        flex-wrap: wrap; } }
   .breadcrumbs-block__item, .breadcrumbs-block__link {
     font-size: 16px;
     font-weight: 300;
     line-height: 14.86px;
     letter-spacing: 0.75px; }
+    @media screen and (max-width: 600px) {
+      .breadcrumbs-block__item, .breadcrumbs-block__link {
+        line-height: normal; } }
   .breadcrumbs-block__link {
     color: #efcc7d;
     border-bottom: 1px solid #efcc7d; }
@@ -2125,7 +2133,8 @@ a.btn {
       border-bottom: 1px solid transparent; }
   .breadcrumbs-block__item {
     color: #b9b9b7;
-    position: relative; }
+    position: relative;
+    white-space: nowrap; }
     .breadcrumbs-block__item:nth-of-type(n+2)::before {
       position: relative;
       display: inline-block;
@@ -2142,6 +2151,9 @@ a.btn {
 
 .breadcrumbs + .section.section-slider .section__wrapper {
   padding-top: 0; }
+
+.breadcrumbs ~ .section-slider .slider-main__content {
+  padding-top: 145px; }
 
 .breadcrumbs + .section-portfolio .section__wrapper,
 .breadcrumbs + .section-blog .section__wrapper {
@@ -2204,7 +2216,6 @@ a.btn {
         .block-header__text::after {
           width: 40px;
           height: 2px;
-          left: 47.8%;
           bottom: 6px; } }
   .block-header__heading {
     display: block;
@@ -2525,6 +2536,17 @@ a.btn {
       column-count: 3; } }
   .grid .masonry-grid-item {
     display: inline-block; }
+
+.section-article {
+  max-width: 750px;
+  margin: 100px auto 30px;
+  padding: 20px;
+  color: #585858;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  text-align: justify;
+  text-align-last: center; }
 
 /*  portfolio */
 .section-portfolio .section__wrapper {

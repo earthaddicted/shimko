@@ -11,6 +11,9 @@
 	@media screen and (max-width: 812px)
 		margin-top: 97px
 
+	@media screen and (max-width: 600px)
+		margin-top: 87px
+
 	.section__wrapper
 		max-width: 1445px
 		padding: 0 20px
@@ -25,6 +28,9 @@
 			display: flex
 			justify-content: center
 
+			@media screen and (max-width: 600px)
+				flex-wrap: wrap
+
 			// @media screen and (max-width: 1260px)
 			// 	justify-content: center
 
@@ -34,6 +40,9 @@
 			font-weight: 300
 			line-height: 14.86px
 			letter-spacing: 0.75px
+
+			@media screen and (max-width: 600px)
+				line-height: normal
 
 		&__link
 			// &:first-of-type
@@ -48,6 +57,7 @@
 		&__item
 			color: #b9b9b7
 			position: relative
+			white-space: nowrap
 
 			&:nth-of-type(n+2)
 				&::before
@@ -69,6 +79,8 @@
 	.section__wrapper
 		padding-top: 0
 
+.breadcrumbs ~ .section-slider .slider-main__content
+	padding-top: 145px
 
 .breadcrumbs + .section-portfolio,
 .breadcrumbs + .section-blog

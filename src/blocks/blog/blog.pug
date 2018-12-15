@@ -2,7 +2,6 @@ mixin blog(data)
 	+b.blog-block.grid
 		if data
 			each item in data
-				//- +e('a').item.masonry-grid-item(href="kitchens.html")
 				+e.item.masonry-grid-item
 
 					+e('div').container

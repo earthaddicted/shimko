@@ -2,8 +2,6 @@ mixin b-btnsIndividualOrder()
 	+b('button').btn.btn-yellow.order-individual
 		+e('span').item ИНДИВИДУАЛЬНЫЙ ЗАКАЗ
 
-
-
 mixin b-btnsCommonTransparent()
 	+b('button').btn.btn-transparent.works
 		+e('span').item Наши работи
@@ -17,7 +15,9 @@ mixin b-btnsCommonTransparentMore()
 		+e('span').item Узнать больше
 
 mixin b-btnsCommonTransparentReadMore()
-	+b('button').btn.btn-transparent.more
+	//- +b('button').btn.btn-transparent.more
+	//- 	+e('span').item Читать все
+	+b('a').btn.btn-transparent.more(href='blog-article.html')
 		+e('span').item Читать все
 
 
@@ -26,8 +26,6 @@ mixin b-btnsCommonTransparentDeatails()
 		+e('span').item Подробнее
 
 mixin b-btnsIndividualNews()
-	//- +b('button').btn.btn-yellow
-	//- 	+e('span').item ВCE НОВОСТИ
 
 	+b('a').btn.btn-yellow
 		+e('span').item ВCE НОВОСТИ
