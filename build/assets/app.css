@@ -1900,6 +1900,7 @@ a.btn {
     height: 100%;
     z-index: 0;
     height: 100vh;
+    height: 100%;
     padding-top: 165px; }
     .news-slider__content::before {
       position: absolute;
@@ -2412,6 +2413,9 @@ a.btn {
       @media screen and (max-width: 1024px) {
         .terms-section .two-column__content h3 {
           font-size: 32px; } }
+      @media screen and (max-width: 600px) {
+        .terms-section .two-column__content h3 {
+          font-size: 24px; } }
     .terms-section .two-column__content p {
       display: block; }
     .terms-section .two-column__content .form-submit.btn-popup {
