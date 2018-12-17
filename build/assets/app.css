@@ -227,7 +227,6 @@
   color: #e7e7e4; }
 
 .contacts {
-  -webkit-writing-mode: tb-rl;
   -ms-writing-mode: tb-rl;
   writing-mode: tb-rl; }
   .contacts__block {
