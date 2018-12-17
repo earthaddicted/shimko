@@ -2917,7 +2917,8 @@ img {
 html,
 body {
   height: 100%;
-  width: 100vw;
+  max-width: 100vw;
+  width: 100%;
   background: #f7f7f7; }
 
 .main {
