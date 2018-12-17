@@ -1,5 +1,5 @@
 $(window).on('load resize scroll',function(){
-    if ($(window).width() < 1025) {
+    if ($(window).width() < 1261) {
 
         if (window.pageYOffset > 200) {
             $('header .logo').css({'background': 'rgba(255, 255, 255, .95)'});

@@ -1,6 +1,5 @@
 /* slider */
 .slider-main
-	// height: 100%
 	position: relative
 	max-width: auto
 	opacity: 0
@@ -68,7 +67,6 @@
 			@media screen and (max-width: 1024px)
 				width: 40px
 				height: 2px
-				// left: 47.8%
 				bottom: 6px
 
 	&__heading
@@ -112,7 +110,6 @@
 
 
 /* slider multiple */
-
 .slider-multiple__wrapper
 	position: relative
 	margin-bottom: 2px
@@ -139,7 +136,6 @@
 .text-multiple
 	position: absolute
 	width: 609px
-	// height: 443px
 	left: 0
 	bottom: 0
 	z-index: 10
@@ -147,7 +143,6 @@
 	background-color: rgba(19, 19, 19, .56) //#131313
 	color: #fff
 	padding: 43px 56px 43px 77px
-	// transition: width .2s ease-in, all .5s ease 
 	overflow: hidden
 
 	@media screen and (max-width: 1266px)
@@ -156,12 +151,10 @@
 	@media screen and (max-width: 812px)
 		padding: 20px
 		width: 320px
-		// height: 300px
 
 	&.hidden
 		width: 101px
 		padding: 30px 23px
-		// transition: all .1s ease-out
 
 		@media screen and (max-width: 812px)
 			width: 68px
@@ -169,25 +162,19 @@
 
 		.text-multiple__outer
 			display: block
-			// visibility: visible
 			opacity: 1
 			z-index: 0
 			width: auto
 			height: auto
 			padding-top: 35px
 			transform: translateX(0)
-			// transition-delay: 2s
 
 		.text-multiple__inner
 			display: none
 			visibility: hidden
-			// opacity: 0
 			z-index: -2
 			width: 0
 			height: 0
-			// transform: translateX(-100%)
-			// transition:  all .2s cubic-bezier(0.25,0.1,0.25,1)
-			// transition-delay: 2s
 
 		.text-multiple__logo
 			margin: 0 auto 37px
@@ -198,7 +185,6 @@
 
 		.arrow-action
 			top: 0
-			// top: 22px;
 			right: 0
 			width: 101px
 			height: 62px
@@ -217,20 +203,16 @@
 				@media screen and (max-width: 812px)
 					margin-right: 29px
 
-
 	&__inner
 		display: block
 		visibility: visible
-		// opacity: 1
 		z-index: 0
 		width: 100%
 		height: auto
 		transform: translateX(0)
 
-
 	&__outer
 		display: none
-		// visibility: hidden
 		opacity: 0
 		z-index: -2
 		width: 0
@@ -244,7 +226,6 @@
 			&__product-type
 				font-weight: 500
 				font-size: 16px
-				// margin-top: 14px
 
 	&__logo
 		width: 34px
@@ -277,7 +258,6 @@
 		@media screen and (max-width: 812px)
 			display: block
 			text-align: left
-
 
 		.btn
 			margin: 10px 0
@@ -338,7 +318,6 @@
 		writing-mode: tb-rl
 		transform: rotate(180deg)
 		font-size: 16px
-		// font-size: 24px
 		font-weight: 300
 		line-height: 41.07px
 
@@ -359,19 +338,9 @@
 		max-height: 100%
 		object-fit: cover
 
-		// @media screen and (max-width: 812px)
-		// 	position: absolute
-		// 	top: 0
-		// 	left: 0
-		// 	width: 100%
-		// 	height: 300px
-
 	&__item
 		position: relative
-		// min-height: 762px
 		overflow: hidden
-		// height: 100%
-
 
 	&__text
 		display: block
@@ -440,7 +409,6 @@
 /* slider multiple END */
 
 .slick-slide > img
-	// height: 100%
 	width: 100%
 	object-fit: cover
 /* ============= slider section ============= */
@@ -465,7 +433,6 @@
 		color: #000
 		cursor: pointer
 
-
 		@media screen and (max-width: 1024px)
 			top: 90.4%
 		svg
@@ -473,12 +440,8 @@
 				fill: #000
 
 	.slick-prev
-		// left: 52.1%
 		left: 50%
 		margin-left: 34px
-
-		@media screen and (max-width: 1024px)
-			// left: 53.1%
 
 		&::before
 			display: block
@@ -488,18 +451,13 @@
 			background: url('../assets/img/right-arrow.png') no-repeat
 
 	.slick-next
-		// top: 83.1%
 		right: 49.8%
 		padding-top: 4px
-
-		@media screen and (max-width: 1024px)
-			// top: 91.3%
 
 	.sr-text
 		position: absolute !important
 		top: -9999px !important
 		left: -9999px !important
-
 
 	.slick-next
 		&::before
@@ -531,7 +489,6 @@
 
 .slider-video
 	position: relative
-	// max-height: 750px
 	height: 100%
 	padding: 20px 0
 
@@ -539,7 +496,6 @@
 		display: block
 		position: relative
 		max-height: 750px
-		// max-width: 1175px
 		height: 750px
 
 		@media screen and (max-width: 1024px)
@@ -550,13 +506,9 @@
 			max-height: 250px
 			height: 250px
 
-
 	&__video
 		height: 100%
 		position: relative
-		// max-height: 750px
-		// @media screen and (max-width: 1024px)
-
 
 	iframe
 		border: none
@@ -566,19 +518,13 @@
 		display: flex
 		display: block
 		max-height: 750px
-		// max-height: 310px
 		width: 100%
 		height: 100%
-
-		// display: block;
 		position: absolute
-		// top: 50%
-		// left: 50%
 		min-width: 100%
 		min-height: 100%
 		width: auto
 		height: auto
-		// transform:translate(-50%, -50%)
 
 	.slick-prev,
 	.slick-next
@@ -592,7 +538,6 @@
 
 		&::before
 			margin-left: -5px
-		// padding-right: 7px
 
 		&::after
 			content: none
@@ -606,7 +551,6 @@
 
 		&::before
 			margin-left: 5px
-
 
 .multiple-slider__decor
 	.slider-multiple__item
