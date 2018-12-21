@@ -202,6 +202,7 @@
       z-index: 1;
       opacity: 1;
       left: unset;
+      visibility: visible;
       transform: translateY(0); } }
 
 .dropdown-item__link {
