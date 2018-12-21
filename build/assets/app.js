@@ -24,7 +24,7 @@ $('.blog-block').masonry({
 		.setTween(
 			tlAppearItem
 			)
-			.addIndicators({name:"paralax"})
+			// .addIndicators({name:"paralax"})
 			.addTo(controller);
 		}
 })();

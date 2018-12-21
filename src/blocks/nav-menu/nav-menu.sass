@@ -36,7 +36,6 @@
 			display: block
 			margin: 0 2.3vw
 
-
 	&__item
 		display: block
 		height: 100%
@@ -104,7 +103,6 @@ header .nav
 .dropdown
 	&-menu
 		position: absolute
-		left: -20%
 		background: $yellow
 		padding: 20px 0
 		z-index: -2
@@ -127,7 +125,7 @@ header .nav
 			border-right: 5px solid transparent
 			border-bottom: 10px solid $yellow
 			top: -8px
-			left: 50%
+			left: 26%
 			opacity: 0
 			transform: translate(-50%, 20px)
 			transition: .25s ease-in-out
@@ -140,10 +138,11 @@ header .nav
 			background: transparent
 			margin-top: -20px
 			box-shadow: 16px 11px 60px 0px rgba(0, 0, 0, 0)
-			z-index: 1
+			z-index: 2
 			opacity: 1
 			left: unset
 			transform: translateY(0)
+			visibility: visible
 
 	&-item
 		&__link
@@ -159,11 +158,9 @@ header .nav
 			&:hover
 				color: #515050
 
-
 			@media screen and (max-width: 1260px)
 				display: block
 				height: 100%
 				color: $yellow
-
 
 /*  nav-menu END */
