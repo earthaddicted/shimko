@@ -201,13 +201,8 @@
       z-index: 2;
       opacity: 1;
       left: unset;
-<<<<<<< HEAD
       transform: translateY(0);
       visibility: visible; } }
-=======
-      visibility: visible;
-      transform: translateY(0); } }
->>>>>>> 735c43fd82830132c90f7f4907b242384123954e
 
 .dropdown-item__link {
   display: block;
