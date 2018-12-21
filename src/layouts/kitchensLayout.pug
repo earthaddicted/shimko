@@ -52,13 +52,34 @@ block main
 						+e.materials-image
 							img(src='assets/img/materials-1.png' alt='materials')
 							img(src='assets/img/materials-2.png' alt='materials')
+							img(src='assets/img/materials-1.png' alt='materials')
+							img(src='assets/img/materials-2.png' alt='materials')
 
-		+b.section.single
+
+			+b.section.materials-section
 			+e.wrapper
-				+single(globals.singleSectionFunctionalKitchen)
-				+b.functional
-					+e.item
-						img(src='assets/img/kitchen-functional.png' alt='functional')
+				+e.two-column__block
+					+b.two-column__block
+						+e.content
+							+b('span').special-title
+								| СТИЛЬ МИНИМАЛИЗМ
+
+							+b.second-heading.second-heading__left Функционал
+
+							+b('p') В кухне Minimal используется Австрийская фурнитура Blum. Также особенностью является отказ от стандартных ручек, вместо них используются потайные профили для открывания. Каждая кухня имеет встроенную систему освещения рабочей зоны
+
+						+e.materials-image
+							img(src='assets/img/materials-1.png' alt='materials')
+							img(src='assets/img/materials-2.png' alt='materials')
+							img(src='assets/img/materials-1.png' alt='materials')
+							img(src='assets/img/materials-2.png' alt='materials')
+
+		// +b.section.single
+		// 	+e.wrapper
+		// 		+single(globals.singleSectionFunctionalKitchen)
+		// 		+b.functional
+		// 			+e.item
+		// 				img(src='assets/img/kitchen-functional.png' alt='functional')
 
 
 		+b.section.terms-section

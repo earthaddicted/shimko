@@ -725,6 +725,10 @@
     .text-multiple {
       padding: 20px;
       width: 320px; } }
+  @media screen and (max-width: 500px) {
+    .text-multiple {
+      background: transparent;
+      border-bottom: 0 solid transparent; } }
   .text-multiple.hidden {
     width: 101px;
     padding: 30px 23px; }
@@ -732,6 +736,9 @@
       .text-multiple.hidden {
         width: 68px;
         padding: 30px 7px; } }
+    @media screen and (max-width: 812px) {
+      .text-multiple.hidden {
+        width: 320px; } }
     .text-multiple.hidden .text-multiple__outer {
       display: block;
       opacity: 1;
@@ -740,17 +747,35 @@
       height: auto;
       padding-top: 35px;
       transform: translateX(0); }
+      @media screen and (max-width: 500px) {
+        .text-multiple.hidden .text-multiple__outer {
+          width: 320px;
+          padding: 20px; } }
     .text-multiple.hidden .text-multiple__inner {
       display: none;
       visibility: hidden;
       z-index: -2;
       width: 0;
       height: 0; }
+      @media screen and (max-width: 500px) {
+        .text-multiple.hidden .text-multiple__inner {
+          display: block;
+          visibility: visible;
+          z-index: 0;
+          width: 100%;
+          height: auto;
+          transform: translateX(0); } }
     .text-multiple.hidden .text-multiple__logo {
       margin: 0 auto 37px; }
+      @media screen and (max-width: 500px) {
+        .text-multiple.hidden .text-multiple__logo {
+          display: none; } }
     .text-multiple.hidden .text-multiple__product-type {
       line-height: 49px;
       line-height: 54px; }
+      @media screen and (max-width: 500px) {
+        .text-multiple.hidden .text-multiple__product-type {
+          display: block; } }
     .text-multiple.hidden .arrow-action {
       top: 0;
       right: 0;
@@ -803,6 +828,9 @@
     @media screen and (max-width: 600px) {
       .text-multiple__product-type {
         line-height: unset; } }
+    @media screen and (max-width: 500px) {
+      .text-multiple__product-type {
+        text-shadow: 2px 2px 7px #00001d; } }
   .text-multiple__product-block {
     display: -webkit-flex;
     display: -moz-flex;
@@ -1488,6 +1516,15 @@ a.btn {
     padding: 15px 38px;
     border: 1px solid #fff;
     background: transparent; }
+    @media screen and (max-width: 500px) {
+      .btn-transparent {
+        text-shadow: 3px 3px 21px black;
+        box-shadow: 3px 9px 69px 8px black; } }
+    .btn-transparent .btn__item {
+      text-shadow: 4px 4px 2px #969696; }
+      @media screen and (max-width: 500px) {
+        .btn-transparent .btn__item {
+          text-shadow: 2px 2px 21px black; } }
     .btn-transparent:hover {
       border: 1px solid transparent;
       background: #efcc7d; }
@@ -2304,6 +2341,9 @@ a.btn {
   max-width: 520px;
   margin-top: 52px;
   padding: 20px 53px; }
+  @media screen and (max-width: 1260px) {
+    .materials-section .two-column__content {
+      padding: 0 53px; } }
   @media screen and (max-width: 1024px) {
     .materials-section .two-column__content {
       margin-top: 0;
@@ -2311,8 +2351,10 @@ a.btn {
 
 .materials-section .two-column__block {
   max-width: 1625px;
-  justify-content: space-between;
   padding: 139px 20px 30px; }
+  @media screen and (max-width: 1260px) {
+    .materials-section .two-column__block {
+      padding: 50px 20px 30px; } }
   .materials-section .two-column__block p {
     padding: 20px 0;
     color: #585858;
@@ -2327,13 +2369,16 @@ a.btn {
   display: -ms-flex;
   display: -o-flex;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 0 20px; }
+  padding: 0 20px 20px; }
+  @media screen and (max-width: 1260px) {
+    .two-column__materials-image {
+      justify-content: center; } }
   .two-column__materials-image img {
     display: inline-block;
-    max-width: 46%;
-    margin: 15px; }
+    width: 220px;
+    margin: 5px; }
 
 .functional {
   max-width: 1170px;
@@ -2355,7 +2400,8 @@ a.btn {
         display: flex; } }
     @media screen and (max-width: 768px) {
       .terms-section .two-column__block {
-        display: block; } }
+        display: block;
+        padding: 0 20px 5px; } }
   .terms-section .two-column__price-block span,
   .terms-section .two-column__price-block p {
     display: block;
@@ -2372,8 +2418,7 @@ a.btn {
     background-color: #e7e7e4;
     padding: 50px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; }
+    flex-direction: column; }
     @media screen and (max-width: 1260px) {
       .terms-section .two-column__content {
         min-height: 360px;
@@ -2389,6 +2434,9 @@ a.btn {
       text-align: left;
       align-items: flex-start;
       max-width: 487px; }
+      @media screen and (max-width: 768px) {
+        .terms-section .two-column__content:first-of-type {
+          max-width: 100%; } }
       .terms-section .two-column__content:first-of-type span {
         padding-bottom: 6px; }
       @media screen and (max-width: 768px) {
@@ -2507,8 +2555,8 @@ a.btn {
       transition: .2s ease-in-out; }
     .blog-block__img img {
       max-width: initial;
-      height: 100%;
-      min-width: 100%; }
+      height: 200%;
+      min-width: 200%; }
   .blog-block__text-block {
     padding: 0 30px 57px; }
   .blog-block__date, .blog-block__text {
@@ -2551,24 +2599,24 @@ a.btn {
   line-height: 20px;
   text-align: justify;
   text-align-last: center; }
+  @media only screen and (max-width: 1024px) {
+    .section-article {
+      margin: 50px auto 30px; } }
 
 .blog-block__img {
   background: #f7f7f7; }
 
 .blog-block__img img {
-  top: 14px;
-  left: -169px;
+  top: 35px;
+  top: 15%;
+  left: -50%;
   max-width: initial;
-  height: 382px;
+  height: 500px;
   min-width: 100%;
   position: absolute; }
-  @media only screen and (min-width: 1440px) {
-    .blog-block__img img {
-      left: -130px; } }
   @media only screen and (max-width: 600px) {
     .blog-block__img img {
       top: 29px;
-      left: -119px;
       height: 265px; } }
   @media only screen and (max-width: 480px) {
     .blog-block__img img {

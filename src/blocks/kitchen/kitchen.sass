@@ -79,14 +79,19 @@
 		margin-top: 52px
 		padding: 20px 53px
 
+		@media screen and (max-width: 1260px)
+			padding: 0 53px
+
 		@media screen and (max-width: 1024px)
 			margin-top: 0
 			padding: 20px
 
 	.two-column__block
 		max-width: 1625px
-		justify-content: space-between
 		padding: 139px 20px 30px
+
+		@media screen and (max-width: 1260px)
+			padding: 50px 20px 30px
 
 		p
 			padding: 20px 0
@@ -102,14 +107,17 @@
 	display: -ms-flex
 	display: -o-flex
 	display: flex
-	justify-content: center
+	flex-wrap: wrap
 	align-items: center
-	padding: 0 20px
+	padding: 0 20px 20px
+
+	@media screen and (max-width: 1260px)
+		justify-content: center
 
 	img
 		display: inline-block
-		max-width: 46%
-		margin: 15px
+		width: 220px
+		margin: 5px
 
 .functional
 	max-width: 1170px
@@ -134,6 +142,7 @@
 
 			@media screen and (max-width: 768px)
 				display: block
+				padding: 0 20px 5px
 
 		&__price-block
 			span,
@@ -150,14 +159,11 @@
 	.two-column__content
 		width: 100%
 		margin-right: 16px
-		// max-height: 489px
 		min-height: 489px
 		background-color: #e7e7e4
 		padding: 50px
 		display: flex
 		flex-direction: column
-		justify-content: space-between
-
 
 		@media screen and (max-width: 1260px)
 			min-height: 360px
@@ -174,6 +180,9 @@
 			text-align: left
 			align-items: flex-start
 			max-width: 487px
+
+			@media screen and (max-width: 768px)
+				max-width: 100%
 
 			span
 				padding-bottom: 6px
@@ -206,7 +215,6 @@
 
 		p
 			display: block
-
 
 		.form-submit.btn-popup
 			margin-bottom: 13px

@@ -20,7 +20,17 @@ block main
 
 		+b.section.section-slider
 			+e.wrapper
-				+sliderTop(globals.sliderAbrticle)
+				+b.slider-main
+					+e.item
+						img(src='assets/img/about-bg.jpg' alt='article image')
+						+e.content
+							+e.logo
+								img(src="assets/img/logo-s.png" alt="logo")
+							+e.text
+								SHIMKO KITCHEN FURNITURE
+
+							+e('h1').heading Название статьи
+
 
 		+b.section.section-article
 			+e.wrapper

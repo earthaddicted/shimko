@@ -10,7 +10,7 @@ $('.blog-block').masonry({
 (function() {
 	if ($('.blog-block__item').length) {
 		var tlAppearItem = new TimelineMax()
-		.fromTo('.blog-block__img img', 4, { y:0}, { y:-110})
+		.fromTo('.blog-block__img img', 4, { y:0}, { y:-250})
 
 		var controller = new ScrollMagic.Controller();
 
@@ -24,7 +24,7 @@ $('.blog-block').masonry({
 		.setTween(
 			tlAppearItem
 			)
-			// .addIndicators({name:"paralax"})
+			.addIndicators({name:"paralax"})
 			.addTo(controller);
 		}
 })();
