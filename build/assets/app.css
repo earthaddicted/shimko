@@ -111,7 +111,8 @@
     height: 100%;
     margin: 0 1vw;
     border-top: 4px solid transparent;
-    margin: 0 0.5vw 0 1vw; }
+    margin: 0 0.5vw 0 1vw;
+    position: relative; }
     @media screen and (max-width: 1260px) {
       .nav__item {
         height: auto;
@@ -124,6 +125,14 @@
           border-top: 0 solid transparent; } }
       .nav__item.active .nav__link, .nav__item:hover .nav__link {
         color: #efcc7d; }
+      .nav__item.active .dropdown-menu, .nav__item:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+        transform: translateY(0); }
+        .nav__item.active .dropdown-menu::before, .nav__item:hover .dropdown-menu::before {
+          opacity: 1;
+          transform: translate(-50%, 0); }
   .nav__link {
     display: block;
     height: 100%;
@@ -152,6 +161,65 @@
     height: 100%;
     overflow-y: auto;
     padding: 95px 0 30px; } }
+
+.dropdown-menu {
+  position: absolute;
+  left: -20%;
+  background: #efcc7d;
+  padding: 20px 0;
+  z-index: -2;
+  border-radius: 2px;
+  box-shadow: 16px 11px 60px 0 rgba(0, 0, 0, 0.75);
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  top: 100%;
+  margin-top: -9px; }
+  .dropdown-menu::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #efcc7d;
+    top: -8px;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, 20px);
+    transition: .25s ease-in-out; }
+    @media screen and (max-width: 1260px) {
+      .dropdown-menu::before {
+        display: none; } }
+  @media screen and (max-width: 1260px) {
+    .dropdown-menu {
+      position: relative;
+      background: transparent;
+      margin-top: -20px;
+      box-shadow: 16px 11px 60px 0px rgba(0, 0, 0, 0);
+      z-index: 1;
+      opacity: 1;
+      left: unset;
+      transform: translateY(0); } }
+
+.dropdown-item__link {
+  display: block;
+  font-size: 1.145rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 5px 20px;
+  line-height: 30px;
+  white-space: nowrap;
+  color: #fff; }
+  .dropdown-item__link:hover {
+    color: #515050; }
+  @media screen and (max-width: 1260px) {
+    .dropdown-item__link {
+      display: block;
+      height: 100%;
+      color: #efcc7d; } }
 
 /*  nav-menu END */
 /* aside block */
@@ -357,6 +425,11 @@
         display: block;
         padding: 0;
         background: white; } }
+  .header .btn.order-individual {
+    margin-left: 10px; }
+    @media screen and (max-width: 1260px) {
+      .header .btn.order-individual {
+        margin-left: 0; } }
 
 /* header  END */
 /* social */
@@ -1140,7 +1213,8 @@
     left: 0;
     background: rgba(255, 255, 255, 0.3);
     width: 100%;
-    overflow: hidden; }
+    overflow: hidden;
+    z-index: 2; }
     header .logo a {
       display: inline-block; }
     header .logo img {
@@ -1508,7 +1582,6 @@ a.btn {
       color: #efcc7d; }
   .btn-transparent {
     margin: auto;
-    text-shadow: 1px 3px 7px rgba(26, 26, 26, 0.26);
     color: #fff;
     font-weight: 300;
     line-height: 14.86px;
@@ -1520,11 +1593,9 @@ a.btn {
       .btn-transparent {
         text-shadow: 3px 3px 21px black;
         box-shadow: 3px 9px 69px 8px black; } }
-    .btn-transparent .btn__item {
-      text-shadow: 4px 4px 2px #969696; }
-      @media screen and (max-width: 500px) {
-        .btn-transparent .btn__item {
-          text-shadow: 2px 2px 21px black; } }
+    @media screen and (max-width: 500px) {
+      .btn-transparent .btn__item {
+        text-shadow: 2px 2px 21px black; } }
     .btn-transparent:hover {
       border: 1px solid transparent;
       background: #efcc7d; }
@@ -1548,6 +1619,9 @@ a.btn {
     @media screen and (max-width: 1260px) {
       .btn.order-individual {
         margin: 20px 2.6vw; } }
+    @media screen and (max-width: 1024px) {
+      .btn.order-individual {
+        margin: 20px 10px; } }
     .btn.order-individual:hover {
       color: #efcc7d;
       border: 1px solid #efcc7d; }

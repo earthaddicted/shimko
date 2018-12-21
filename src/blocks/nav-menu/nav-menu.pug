@@ -3,11 +3,23 @@ mixin nav-menu(navmenu)
 		+e('ul').menu
 			if globals.navmenu.menu
 				each item in globals.navmenu.menu
-					+e('li').item(class = item.isActive ? 'active' : '')
-						+e.link(href=item.url)= item.title
+					+menu_item(item)
+					//- +e('li').item(class = item.isActive ? 'active' : '')
+					//- 	+e.link(href=item.url)= item.title
 
-		+b-btnsIndividualOrder()
-		+lang()
+			+b-btnsIndividualOrder()
+			+lang()
+
+mixin menu_item(menuItem)
+	+e('li').item.button-dropdown
+		+e('a').link.dropdown-toggle(href= menuItem.url)=menuItem.title
+		if menuItem.dropdown
+			+b('ul').dropdown-menu
+				each item in menuItem.dropdown
+					+b('li').dropdown-item
+						+e('a').link(href= item.url)= item.title
+
+		
 
 
 mixin footer-menu(footerMenu)
@@ -17,3 +29,23 @@ mixin footer-menu(footerMenu)
 				each item in globals.footerMenu.menu
 					+e('li').item
 						+e.link(href=item.url)= item.title
+
+
+
+
+//- mixin nav__menu(navmenu)
+//- 	+b('nav').nav.collapse.navbar-collapse#myNavbar
+//- 		+e('ul').menu
+//- 			if globals.navmenu.menu
+//- 				each item in globals.navmenu.menu
+//- 					+menu_item(item)
+
+//- mixin menu_item(menuItem)
+//- 	+e('li').item.button-dropdown
+//- 		+e('a').link.dropdown-toggle(href= menuItem.url data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")=menuItem.title
+//- 		if menuItem.dropdown
+//- 			+b('ul').dropdown-menu
+//- 				each item in menuItem.dropdown
+//- 					+b('li').dropdown-item
+//- 						+e('a').link(href= item.url)= item.title
+
