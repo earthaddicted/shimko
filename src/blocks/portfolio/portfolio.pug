@@ -2,31 +2,35 @@ mixin portfolio(data)
 	+b.portfolio-block
 		if data
 			each item in data
-				//- +e('a').item(href="kitchens.html")
-				+e.item
+				+e('a').item.item(href=item.kitchenImageLarge data-fancybox="gallery" data-caption="")
+
 					+e.title= item.title
 
 					+e('div').container
+						+e.img-icon
+							img(src=item.galleryICon alt="gallery icon")
 						+e.img
 							img(src=item.kitchenImage alt="kitchen image")
 
-						+e.text
-							+e.logo
-								img(src= item.logoS alt=data.logoSAlt)
+					+e.text
+						+e.logo
+							img(src= item.logoS alt=data.logoSAlt)
 
-							+b.portfolio__product
-								+e.description
-									+e.item фасад низ:
-									+e.type ДСП Egger
+						+b.portfolio__product
+							+e.description
+								+e.item фасад низ:
+								+e.type ДСП Egger
 
-								+e.description
-									+e.item фасад верх:
-									+e.type ДСП Egger
+							+e.description
+								+e.item фасад верх:
+								+e.type ДСП Egger
 
-								+e.description
-									+e.item фурнитура:
-									+e.type Blum
+							+e.description
+								+e.item фурнитура:
+								+e.type Blum
 
-								+e.description
-									+e.item столешница:
-									+e.type На основе ДСП, Egger
+							+e.description
+								+e.item столешница:
+								+e.type На основе ДСП, Egger
+
+

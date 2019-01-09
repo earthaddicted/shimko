@@ -2727,18 +2727,6 @@ a.btn {
         max-width: 300px;
         width: 300px;
         margin: 20px 10px; } }
-    .portfolio-block__item:hover .portfolio-block__container::before {
-      background: rgba(0, 0, 0, 0.7); }
-    .portfolio-block__item:hover .portfolio-block__text::before {
-      top: 0;
-      opacity: 1; }
-    .portfolio-block__item:hover .portfolio-block__text::after {
-      bottom: 0;
-      opacity: 1; }
-    .portfolio-block__item:hover .portfolio-block__logo,
-    .portfolio-block__item:hover .portfolio__product {
-      opacity: 1;
-      margin-bottom: 0; }
   .portfolio-block__title {
     display: block;
     text-align: left;
@@ -2754,55 +2742,23 @@ a.btn {
     @media screen and (max-width: 1024px) {
       .portfolio-block__container {
         height: 291px; } }
-    .portfolio-block__container::before {
-      content: ' ';
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0);
-      transition: background .3s ease-in-out; }
   .portfolio-block__img {
     height: 100%; }
     .portfolio-block__img img {
       display: block;
       height: 100%; }
+    .portfolio-block__img-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px; }
+      .portfolio-block__img-icon img {
+        max-height: 100%; }
   .portfolio-block__text {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; }
-    .portfolio-block__text::before {
-      position: absolute;
-      left: 0;
-      top: -50px;
-      width: 100%;
-      height: 7px;
-      background: #efcc7d;
-      content: '';
-      transition: top .5s ease-in-out;
-      opacity: 0; }
-    .portfolio-block__text::after {
-      position: absolute;
-      bottom: -50px;
-      opacity: 0;
-      left: 0;
-      width: 100%;
-      height: 7px;
-      background: #efcc7d;
-      content: '';
-      transition: bottom .5s ease-in-out; }
+    color: #000; }
   .portfolio-block__logo {
+    display: none;
     padding: 40px 0 46px;
     opacity: 0;
     margin-bottom: -30px;
@@ -2813,10 +2769,7 @@ a.btn {
 
 .portfolio__product {
   display: block;
-  padding: 44px 40px;
-  opacity: 0;
-  margin-bottom: -30px;
-  transition: all .7s ease-in-out; }
+  padding: 44px 40px; }
   @media screen and (max-width: 1024px) {
     .portfolio__product {
       padding: 20px 10px; } }
@@ -2827,7 +2780,7 @@ a.btn {
   display: -ms-flex;
   display: -o-flex;
   display: flex;
-  color: #f7f7f7;
+  color: #302f2c;
   font-size: 14px;
   font-weight: 300;
   line-height: 20px; }

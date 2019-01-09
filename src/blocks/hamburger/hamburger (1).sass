@@ -1,0 +1,71 @@
+/*  hamburger */
+$basic-icon-color: #c2c2c2
+
+.hamburger
+	&__block
+		display: none
+		position: fixed
+		width: 40px
+		height: 40px
+		top: 27px
+		right: 20px
+		z-index: 10
+
+		@media screen and (max-width: 1024px)
+			display: block
+
+	&__icon
+		position: absolute
+		top: 50%
+		left: 50%
+		margin-left: -22px
+		margin-top: -22px
+		width: 24px
+		height: 14px
+		cursor: pointer
+		// height: 33px
+		cursor: pointer
+		// width: 30px
+		// position: relative
+		// transition: all 0.2s ease-in-out
+
+		.bar
+			position: absolute
+			left: 0
+			width: 24px
+			height: 2px
+			background-color: $basic-icon-color
+			// width: 100%
+			// height: 3px
+			// background-color: $basic-icon-color
+			// border-radius: 20px
+			// transition: all 0.5s ease-in-out
+
+			&-1
+				top: 0%
+			// 	@include position-absolute($top: 8px, $left: 0) 
+
+			&-2
+				top: 50%
+			// 	@include position-absolute($top: 16px, $left: 0)
+
+			&-3
+				top: 100%
+			// 	@include position-absolute($top: 24px, $left: 0)
+
+		// &.open
+			// transform: rotate(90deg)
+
+			// .bar
+			// 	&-2
+			// 		opacity: 0
+
+			// 	&-1
+			// 		transform: rotate(45deg)
+			// 		@include position-absolute($top: 16px, $left: 0)
+
+			// 	&-3
+			// 		transform: rotate(-45deg)
+			// 		@include position-absolute($top: 16px, $left: 0)
+
+/* hamburger END */
