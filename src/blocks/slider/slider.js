@@ -193,13 +193,16 @@ function adjustExpanding (){
 /* ========== slider kitchen block animation ==========  */
 ;(function($){
 
-	var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: 0.1}});
+	if ($('.slider-multiple__wrapper:nth-of-type(2)').length) {
 
-	new ScrollMagic.Scene({triggerElement: ".slider-multiple__wrapper:nth-of-type(2)"})
-		.setClassToggle(".slider-multiple__wrapper:nth-of-type(2) > .text-multiple", "hidden")
-		.addTo(controller);
+		var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: 0.1}});
 
-	// controller.enabled(false);
+		new ScrollMagic.Scene({triggerElement: ".slider-multiple__wrapper:nth-of-type(2)"})
+			.setClassToggle(".slider-multiple__wrapper:nth-of-type(2) > .text-multiple", "hidden")
+			.addTo(controller);
+
+		// controller.enabled(false);
+	}
 
 })(jQuery);
 
